@@ -1,9 +1,408 @@
 /* ─────────────────────────────────────────
    ANTRIKSH CLOUD — script.js
+   Immersive 3D single-page experience
+   Three.js + GSAP ScrollTrigger + preserved features
    ───────────────────────────────────────── */
 
-/* ── HERO NEURAL NETWORK CANVAS ── */
+/* ═══════════════════════════════════════════
+   1. CONFIG & DETECTION
+   ═══════════════════════════════════════════ */
+const CONFIG = {
+  isMobile: window.innerWidth < 768 || !window.matchMedia('(hover: hover)').matches,
+  hasWebGL: (() => {
+    try {
+      const c = document.createElement('canvas');
+      return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')));
+    } catch (e) { return false; }
+  })(),
+  pixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+};
+if (CONFIG.isMobile) CONFIG.pixelRatio = Math.min(CONFIG.pixelRatio, 1.5);
+
+/* ═══════════════════════════════════════════
+   2. THREE.JS SCENE MANAGER
+   ═══════════════════════════════════════════ */
+let sceneManager = null;
+
+function initThreeJS() {
+  if (!CONFIG.hasWebGL || typeof THREE === 'undefined') return;
+
+  const canvas = document.getElementById('three-canvas');
+  if (!canvas) return;
+
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    alpha: true,
+    antialias: !CONFIG.isMobile,
+  });
+  renderer.setPixelRatio(CONFIG.pixelRatio);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor(0x000000, 0);
+
+  // ── Ambient Particle Scene ──
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.z = 30;
+
+  // Particle system
+  const particleCount = CONFIG.isMobile ? 80 : 250;
+  const positions = new Float32Array(particleCount * 3);
+  const velocities = [];
+  const colors = new Float32Array(particleCount * 3);
+
+  const palette = [
+    [0.231, 0.510, 0.965],  // blue
+    [0.486, 0.227, 0.929],  // purple
+    [0.133, 0.639, 0.290],  // green
+    [0.961, 0.620, 0.043],  // amber
+  ];
+
+  for (let i = 0; i < particleCount; i++) {
+    positions[i * 3]     = (Math.random() - 0.5) * 80;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 60;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 40;
+
+    velocities.push({
+      x: (Math.random() - 0.5) * 0.008,
+      y: (Math.random() - 0.5) * 0.008,
+      z: (Math.random() - 0.5) * 0.004,
+    });
+
+    const c = palette[Math.floor(Math.random() * palette.length)];
+    colors[i * 3]     = c[0];
+    colors[i * 3 + 1] = c[1];
+    colors[i * 3 + 2] = c[2];
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+  const material = new THREE.PointsMaterial({
+    size: CONFIG.isMobile ? 0.15 : 0.2,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.6,
+    sizeAttenuation: true,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+  });
+
+  const particles = new THREE.Points(geometry, material);
+  scene.add(particles);
+
+  // ── GPU Cluster Hero Objects ──
+  const heroGroup = new THREE.Group();
+  scene.add(heroGroup);
+
+  const moduleCount = CONFIG.isMobile ? 24 : 72;
+  const cols = CONFIG.isMobile ? 6 : 12;
+  const rows = Math.ceil(moduleCount / cols);
+  const moduleGeo = new THREE.BoxGeometry(0.6, 0.6, 0.3);
+
+  for (let i = 0; i < moduleCount; i++) {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+    const moduleMat = new THREE.MeshBasicMaterial({
+      color: new THREE.Color().setHSL(0.6 + Math.random() * 0.1, 0.7, 0.35 + Math.random() * 0.15),
+      transparent: true,
+      opacity: 0.25 + Math.random() * 0.15,
+    });
+    const mesh = new THREE.Mesh(moduleGeo, moduleMat);
+    mesh.position.set(
+      (col - cols / 2) * 1.1,
+      (row - rows / 2) * 1.1,
+      0
+    );
+    mesh.userData.baseOpacity = moduleMat.opacity;
+    mesh.userData.pulseSpeed = 0.5 + Math.random() * 1.5;
+    mesh.userData.pulseOffset = Math.random() * Math.PI * 2;
+    heroGroup.add(mesh);
+  }
+
+  // Connection lines between modules
+  const lineMat = new THREE.LineBasicMaterial({
+    color: 0x3b82f6,
+    transparent: true,
+    opacity: 0.08,
+  });
+  for (let i = 0; i < heroGroup.children.length; i++) {
+    const m = heroGroup.children[i];
+    // Connect to right neighbour
+    if ((i + 1) % cols !== 0 && i + 1 < heroGroup.children.length) {
+      const n = heroGroup.children[i + 1];
+      const lineGeo = new THREE.BufferGeometry().setFromPoints([m.position, n.position]);
+      heroGroup.add(new THREE.Line(lineGeo, lineMat));
+    }
+    // Connect to bottom neighbour
+    if (i + cols < heroGroup.children.length) {
+      const n = heroGroup.children[i + cols];
+      const lineGeo = new THREE.BufferGeometry().setFromPoints([m.position, n.position]);
+      heroGroup.add(new THREE.Line(lineGeo, lineMat));
+    }
+  }
+
+  heroGroup.position.z = -5;
+
+  // ── Mouse tracking ──
+  let mouseX = 0, mouseY = 0;
+  document.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  // ── Scroll progress ──
+  let scrollProgress = 0;
+
+  // ── Animation Loop ──
+  const clock = new THREE.Clock();
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    const t = clock.getElapsedTime();
+    const dt = clock.getDelta();
+
+    // Update scroll progress
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    scrollProgress = docHeight > 0 ? window.scrollY / docHeight : 0;
+
+    // Ambient particles
+    const posArray = geometry.attributes.position.array;
+    for (let i = 0; i < particleCount; i++) {
+      posArray[i * 3]     += velocities[i].x + mouseX * 0.001;
+      posArray[i * 3 + 1] += velocities[i].y - mouseY * 0.001;
+      posArray[i * 3 + 2] += velocities[i].z;
+
+      // Wrap around
+      if (posArray[i * 3] > 40) posArray[i * 3] = -40;
+      if (posArray[i * 3] < -40) posArray[i * 3] = 40;
+      if (posArray[i * 3 + 1] > 30) posArray[i * 3 + 1] = -30;
+      if (posArray[i * 3 + 1] < -30) posArray[i * 3 + 1] = 30;
+      if (posArray[i * 3 + 2] > 20) posArray[i * 3 + 2] = -20;
+      if (posArray[i * 3 + 2] < -20) posArray[i * 3 + 2] = 20;
+    }
+    geometry.attributes.position.needsUpdate = true;
+
+    // Hero GPU cluster animation
+    const heroSection = document.getElementById('hero');
+    if (heroSection) {
+      const heroRect = heroSection.getBoundingClientRect();
+      const heroVisible = heroRect.bottom > 0 && heroRect.top < window.innerHeight;
+
+      if (heroVisible) {
+        heroGroup.visible = true;
+        heroGroup.rotation.y = Math.sin(t * 0.2) * 0.05 + mouseX * 0.03;
+        heroGroup.rotation.x = Math.cos(t * 0.15) * 0.03 - mouseY * 0.02;
+
+        // Pulse modules
+        heroGroup.children.forEach(child => {
+          if (child.isMesh && child.userData.baseOpacity !== undefined) {
+            const pulse = Math.sin(t * child.userData.pulseSpeed + child.userData.pulseOffset) * 0.5 + 0.5;
+            child.material.opacity = child.userData.baseOpacity + pulse * 0.15;
+          }
+        });
+      } else {
+        heroGroup.visible = false;
+      }
+    }
+
+    // Camera gentle parallax based on scroll
+    camera.position.x = mouseX * 0.5;
+    camera.position.y = -mouseY * 0.3;
+    camera.position.z = 30 + scrollProgress * 10;
+    camera.lookAt(0, 0, 0);
+
+    // Particle opacity fades with scroll
+    material.opacity = Math.max(0.15, 0.6 - scrollProgress * 0.5);
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  // Resize handler
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  sceneManager = { renderer, scene, camera };
+}
+
+/* ═══════════════════════════════════════════
+   3. GSAP SCROLL SYSTEM
+   ═══════════════════════════════════════════ */
+function initGSAP() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    // Fallback: use IntersectionObserver for reveals
+    initFallbackReveals();
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ── Reveal animations ──
+  gsap.utils.toArray('.reveal').forEach(el => {
+    const delay = el.classList.contains('stagger-1') ? 0.1 :
+                  el.classList.contains('stagger-2') ? 0.2 :
+                  el.classList.contains('stagger-3') ? 0.3 :
+                  el.classList.contains('stagger-4') ? 0.4 : 0;
+
+    gsap.from(el, {
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        once: true,
+      },
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      delay,
+      ease: 'power2.out',
+    });
+  });
+
+  // ── Scale-in animations ──
+  gsap.utils.toArray('.scale-in').forEach(el => {
+    const delay = el.classList.contains('stagger-1') ? 0.1 :
+                  el.classList.contains('stagger-2') ? 0.2 :
+                  el.classList.contains('stagger-3') ? 0.3 :
+                  el.classList.contains('stagger-4') ? 0.4 : 0;
+
+    gsap.from(el, {
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%',
+        once: true,
+      },
+      scale: 0.85,
+      opacity: 0,
+      duration: 0.7,
+      delay,
+      ease: 'back.out(1.4)',
+    });
+  });
+
+  // ── Parallax on section headings ──
+  gsap.utils.toArray('section h2').forEach(h2 => {
+    gsap.to(h2, {
+      scrollTrigger: {
+        trigger: h2,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1,
+      },
+      y: -20,
+      ease: 'none',
+    });
+  });
+
+  // ── Bar fill animations (triggered via ScrollTrigger) ──
+  gsap.utils.toArray('.bar-fill, .bw-fill').forEach(el => {
+    const w = el.dataset.w || '0%';
+    gsap.fromTo(el,
+      { width: '0%' },
+      {
+        width: w,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 90%',
+          once: true,
+        },
+      }
+    );
+  });
+
+  // ── Timeline power bar fills ──
+  gsap.utils.toArray('.tl-pw-fill').forEach(el => {
+    const pw = el.dataset.pw || '0%';
+    gsap.fromTo(el,
+      { width: '0%' },
+      {
+        width: pw,
+        duration: 1.2,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 90%',
+          once: true,
+        },
+      }
+    );
+  });
+
+  // ── Count-up numbers via ScrollTrigger ──
+  gsap.utils.toArray('.count-num').forEach(el => {
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 90%',
+      once: true,
+      onEnter: () => countUp(el),
+    });
+  });
+
+  // ── Hero elements fire immediately ──
+  setTimeout(() => {
+    document.querySelectorAll('#hero .reveal, #hero .count-num').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      if (el.classList.contains('count-num')) countUp(el);
+    });
+  }, 120);
+}
+
+function initFallbackReveals() {
+  // Fallback IntersectionObserver for when GSAP isn't available
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+
+      if (el.classList.contains('reveal') || el.classList.contains('scale-in')) {
+        el.classList.add('visible');
+      }
+      if (el.classList.contains('tl-pw-fill') && !el.dataset.anim) {
+        el.style.width = el.dataset.pw || '0%';
+        el.dataset.anim = '1';
+      }
+      if (el.classList.contains('bar-fill') && !el.dataset.anim) {
+        setTimeout(() => { el.style.width = el.dataset.w || '0%'; }, 60);
+        el.dataset.anim = '1';
+      }
+      if (el.classList.contains('bw-fill') && !el.dataset.anim) {
+        setTimeout(() => { el.style.width = el.dataset.w || '0%'; }, 60);
+        el.dataset.anim = '1';
+      }
+      if (el.classList.contains('count-num')) countUp(el);
+
+      io.unobserve(el);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll(
+    '.reveal, .scale-in, .tl-pw-fill, .bar-fill, .bw-fill, .count-num'
+  ).forEach(el => io.observe(el));
+
+  // Hero elements fire immediately
+  setTimeout(() => {
+    document.querySelectorAll('#hero .reveal, #hero .count-num').forEach(el => {
+      el.classList.add('visible');
+      if (el.classList.contains('count-num')) countUp(el);
+    });
+  }, 120);
+}
+
+/* ═══════════════════════════════════════════
+   4. PRESERVED FEATURES
+   ═══════════════════════════════════════════ */
+
+/* ── HERO NEURAL NETWORK CANVAS (mobile fallback) ── */
 (function () {
+  if (!CONFIG.isMobile) return; // Desktop uses Three.js hero
   const c = document.getElementById('hero-canvas');
   if (!c) return;
   const ctx = c.getContext('2d');
@@ -151,54 +550,6 @@ function countUp(el) {
   requestAnimationFrame(step);
 }
 
-/* ── SCROLL-TRIGGERED ANIMATIONS ── */
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    const el = e.target;
-
-    // Fade / scale reveals
-    if (el.classList.contains('fade-up') || el.classList.contains('scale-in')) {
-      el.classList.add('visible');
-    }
-
-    // Timeline power bars
-    if (el.classList.contains('tl-pw-fill') && !el.dataset.anim) {
-      el.style.width = el.dataset.pw || '0%';
-      el.dataset.anim = '1';
-    }
-
-    // Comparison bar fills
-    if (el.classList.contains('bar-fill') && !el.dataset.anim) {
-      setTimeout(() => { el.style.width = el.dataset.w || '0%'; }, 60);
-      el.dataset.anim = '1';
-    }
-
-    // BW race bar fills
-    if (el.classList.contains('bw-fill') && !el.dataset.anim) {
-      setTimeout(() => { el.style.width = el.dataset.w || '0%'; }, 60);
-      el.dataset.anim = '1';
-    }
-
-    // Count-up
-    if (el.classList.contains('count-num')) countUp(el);
-
-    io.unobserve(el);
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-document.querySelectorAll(
-  '.fade-up, .scale-in, .tl-pw-fill, .bar-fill, .bw-fill, .count-num'
-).forEach(el => io.observe(el));
-
-/* Hero elements fire immediately (already in viewport) */
-setTimeout(() => {
-  document.querySelectorAll('#hero .fade-up, #hero .count-num').forEach(el => {
-    el.classList.add('visible');
-    if (el.classList.contains('count-num')) countUp(el);
-  });
-}, 120);
-
 /* ── FAQ ACCORDION ── */
 function faq(btn) {
   const a    = btn.nextElementSibling;
@@ -209,7 +560,6 @@ function faq(btn) {
   });
   if (!open) { a.classList.add('open'); btn.classList.add('open'); }
 }
-// expose globally (called from onclick in HTML)
 window.faq = faq;
 
 /* ── MOBILE NAV: close on link click ── */
@@ -224,8 +574,8 @@ document.querySelectorAll('#navLinks a').forEach(a =>
   const slider = document.getElementById('gpu-slider');
   if (!slider) return;
 
-  const ANT_RATE = 2.50;   // $ per GPU per hr
-  const AWS_RATE = 7.00;   // $ per GPU per hr (H100 equivalent)
+  const ANT_RATE = 2.50;
+  const AWS_RATE = 7.00;
 
   function fmt(n) {
     if (n >= 1e6) return '$' + (n / 1e6).toFixed(2) + 'M';
@@ -252,7 +602,7 @@ document.querySelectorAll('#navLinks a').forEach(a =>
   }
 
   slider.addEventListener('input', update);
-  update(); // initialise on load
+  update();
 })();
 
 /* ── TERMINAL TYPEWRITER ── */
@@ -273,7 +623,6 @@ document.querySelectorAll('#navLinks a').forEach(a =>
 
   function runLines() {
     if (lineIdx >= terms.length) {
-      // restart after pause
       setTimeout(() => {
         terms.forEach(t => { t.textContent = ''; t.classList.remove('typed'); });
         lineIdx = 0;
@@ -286,13 +635,22 @@ document.querySelectorAll('#navLinks a').forEach(a =>
     typeLine(el, el.dataset.text, () => { lineIdx++; runLines(); });
   }
 
-  // Only start when terminal scrolls into view
   const termWrap = document.getElementById('terminal-wrap');
   if (!termWrap) return;
-  const tio = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) { runLines(); tio.disconnect(); }
-  }, { threshold: 0.3 });
-  tio.observe(termWrap);
+
+  if (typeof ScrollTrigger !== 'undefined') {
+    ScrollTrigger.create({
+      trigger: termWrap,
+      start: 'top 70%',
+      once: true,
+      onEnter: () => runLines(),
+    });
+  } else {
+    const tio = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { runLines(); tio.disconnect(); }
+    }, { threshold: 0.3 });
+    tio.observe(termWrap);
+  }
 })();
 
 /* ── SCROLL-TO-TOP BUTTON ── */
@@ -312,14 +670,63 @@ document.querySelectorAll('#navLinks a').forEach(a =>
   const links    = document.querySelectorAll('.nav-links a[href^="#"]');
   if (!sections.length || !links.length) return;
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      links.forEach(l => l.classList.remove('active-nav'));
-      const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-      if (active) active.classList.add('active-nav');
+  if (typeof ScrollTrigger !== 'undefined') {
+    sections.forEach(s => {
+      ScrollTrigger.create({
+        trigger: s,
+        start: 'top 40%',
+        end: 'bottom 40%',
+        onToggle: self => {
+          if (self.isActive) {
+            links.forEach(l => l.classList.remove('active-nav'));
+            const active = document.querySelector(`.nav-links a[href="#${s.id}"]`);
+            if (active) active.classList.add('active-nav');
+          }
+        },
+      });
     });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-
-  sections.forEach(s => observer.observe(s));
+  } else {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        links.forEach(l => l.classList.remove('active-nav'));
+        const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active-nav');
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => observer.observe(s));
+  }
 })();
+
+/* ═══════════════════════════════════════════
+   5. INITIALIZATION
+   ═══════════════════════════════════════════ */
+function init() {
+  // Initialize Three.js (progressive enhancement)
+  if (!CONFIG.isMobile) {
+    initThreeJS();
+  }
+
+  // Initialize GSAP or fallback
+  initGSAP();
+}
+
+// Wait for DOM + libraries
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+// Retry initialization for deferred scripts
+window.addEventListener('load', () => {
+  if (!sceneManager && !CONFIG.isMobile && typeof THREE !== 'undefined') {
+    initThreeJS();
+  }
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    // GSAP may have loaded after DOMContentLoaded
+    if (!ScrollTrigger.getAll().length) {
+      initGSAP();
+    }
+  }
+});
