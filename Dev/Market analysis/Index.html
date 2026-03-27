@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Antriksh Cloud — Market Analysis. India's $41.7B AI infrastructure opportunity, the 51× gap, competition landscape, data points and resources.">
+    <title>Market Analysis — Antriksh Cloud</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue:       #3b82f6;
+            --blue-dark:  #1d4ed8;
+            --blue-light: #eff6ff;
+            --purple:     #7c3aed;
+            --indigo:     #4f46e5;
+            --ink:        #0f172a;
+            --ink-mid:    #334155;
+            --ink-soft:   #64748b;
+            --border:     #e2e8f0;
+            --border-mid: #cbd5e1;
+            --bg:         #ffffff;
+            --bg-subtle:  #f8fafc;
+            --bg-tinted:  #f1f5f9;
+            --grad:       linear-gradient(135deg,#3b82f6,#7c3aed);
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:16px;line-height:1.6;color:var(--ink);background:var(--bg);overflow-x:hidden}
+        a{color:inherit;text-decoration:none}
+        button{cursor:pointer;font-family:inherit}
+        p{color:var(--ink-mid);line-height:1.75}
+        h1{font-size:clamp(2.25rem,4vw,3.75rem);font-weight:700;line-height:1.1;letter-spacing:-0.03em}
+        h2{font-size:clamp(1.75rem,3vw,2.75rem);font-weight:700;line-height:1.12;letter-spacing:-0.025em}
+        h3{font-size:1.25rem;font-weight:600;line-height:1.3;letter-spacing:-0.01em}
+        h4{font-size:1rem;font-weight:600;line-height:1.4}
+        .container{max-width:1160px;margin:0 auto;padding:0 2rem}
+
+        /* NAV */
+        #nav{position:fixed;top:0;left:0;right:0;z-index:200;height:64px;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center}
+        #nav .container{display:flex;align-items:center;gap:1.25rem;width:100%}
+        .nav-logo{display:flex;align-items:center;gap:.625rem;font-weight:700;font-size:1rem;color:var(--ink)}
+        .nav-logo-mark{width:34px;height:34px;background:var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .nav-back{display:inline-flex;align-items:center;gap:.4rem;font-size:.8125rem;font-weight:500;color:var(--ink-soft);padding:.375rem .875rem;border-radius:6px;border:1px solid var(--border);transition:all .15s;white-space:nowrap}
+        .nav-back:hover{color:var(--ink);border-color:var(--border-mid);background:var(--bg-subtle)}
+        .nav-divider{width:1px;height:22px;background:var(--border);flex-shrink:0}
+        .nav-page-label{font-size:.8125rem;font-weight:500;color:var(--ink-soft)}
+
+        /* PAGE HERO */
+        .page-hero{padding-top:64px;background:var(--ink);color:#fff}
+        .page-hero .container{padding-top:4rem;padding-bottom:4rem}
+        .page-hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.6875rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:1.5rem}
+        .page-hero-title{font-size:clamp(3rem,6vw,5.5rem);font-weight:700;line-height:1.0;letter-spacing:-0.035em;color:#fff;margin-bottom:1.25rem}
+        .page-hero-grad{background:linear-gradient(135deg,#3b82f6,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .page-hero-sub{font-size:1.0625rem;color:rgba(255,255,255,.55);max-width:560px;line-height:1.75;margin-bottom:2.5rem}
+        .page-hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;max-width:760px}
+        .page-hero-stat{padding:1.25rem 1.5rem;border-right:1px solid rgba(255,255,255,.1)}
+        .page-hero-stat:last-child{border-right:none}
+        .page-hero-stat-val{font-size:1.5rem;font-weight:700;color:#fff;letter-spacing:-0.025em;line-height:1.15;margin-bottom:.2rem}
+        .page-hero-stat-label{font-size:.75rem;color:rgba(255,255,255,.4);font-weight:500;line-height:1.4}
+        @media(max-width:640px){
+            .page-hero-stats{grid-template-columns:1fr 1fr}
+            .page-hero-stat:nth-child(2){border-right:none}
+            .page-hero-stat:nth-child(3){border-top:1px solid rgba(255,255,255,.1)}
+            .page-hero-stat:nth-child(4){border-top:1px solid rgba(255,255,255,.1);border-right:none}
+        }
+
+        /* TAB NAV (inline) */
+        .tab-nav-wrap{background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:100}
+        .tab-nav{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+        .tab-nav::-webkit-scrollbar{display:none}
+        .tab-btn{flex-shrink:0;padding:.875rem 1.25rem;font-size:.875rem;font-weight:500;color:var(--ink-soft);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:color .15s,border-color .15s;white-space:nowrap}
+        .tab-btn:hover{color:var(--ink)}
+        .tab-btn.active{color:var(--blue);border-bottom-color:var(--blue);font-weight:600}
+
+        /* TAB PANELS */
+        .tab-panel{display:none;padding:4rem 0 6rem}
+        .tab-panel.active{display:block}
+
+        /* SHARED SECTION STYLES */
+        .section-label{display:inline-flex;align-items:center;gap:.5rem;font-size:.6875rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem}
+        .section-label::before{content:'';display:inline-block;width:16px;height:1px;background:var(--blue)}
+        .section-intro{max-width:580px;margin-top:.75rem;font-size:1.0625rem}
+        .btn{display:inline-flex;align-items:center;gap:.4rem;font-size:.875rem;font-weight:600;padding:.625rem 1.25rem;border-radius:8px;border:none;transition:all .18s;white-space:nowrap;cursor:pointer}
+        .btn-primary{background:var(--blue);color:#fff}
+        .btn-primary:hover{background:var(--blue-dark);transform:translateY(-1px)}
+        .btn-outline{background:transparent;color:var(--ink);border:1px solid var(--border-mid)}
+        .btn-outline:hover{border-color:var(--ink);background:var(--bg-subtle)}
+
+        /* ── WHY TAB ─────────────────────────────────── */
+        .why-hero{background:var(--ink);border-radius:16px;padding:3.5rem;margin-bottom:2.5rem;color:#fff}
+        .why-hero h2{color:#fff;margin-bottom:.875rem}
+        .why-hero p{color:rgba(255,255,255,.6);font-size:1.0625rem;max-width:620px}
+        .timeline-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;margin-top:2.5rem}
+        @media(max-width:700px){.timeline-strip{grid-template-columns:1fr 1fr}}
+        .tl-cell{padding:1.5rem;background:rgba(255,255,255,.04)}
+        .tl-year{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--blue);font-weight:600;margin-bottom:.375rem}
+        .tl-text{font-size:.875rem;color:rgba(255,255,255,.75);line-height:1.6}
+        .tl-text strong{color:#fff}
+
+        .metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:2.5rem 0}
+        @media(max-width:720px){.metrics-row{grid-template-columns:1fr 1fr}}
+        .metric-cell{padding:1.75rem 1.5rem;background:var(--bg)}
+        .metric-val{font-size:2rem;font-weight:700;color:var(--ink);letter-spacing:-0.03em;line-height:1;margin-bottom:.3rem}
+        .metric-label{font-size:.8125rem;color:var(--ink-soft)}
+
+        .value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:2.5rem 0}
+        @media(max-width:860px){.value-grid{grid-template-columns:1fr 1fr}}
+        @media(max-width:560px){.value-grid{grid-template-columns:1fr}}
+        .value-card{border:1px solid var(--border);border-radius:12px;padding:1.75rem;background:var(--bg-subtle)}
+        .value-icon{font-size:1.5rem;margin-bottom:.875rem}
+        .value-card h4{margin-bottom:.5rem}
+        .value-card p{font-size:.875rem}
+
+        .achievement-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2rem}
+        @media(max-width:700px){.achievement-grid{grid-template-columns:1fr}}
+        .achievement-card{border:1px solid var(--border);border-radius:12px;padding:1.75rem;background:var(--bg)}
+        .achievement-card h4{font-size:.9375rem;color:var(--blue);margin-bottom:1rem}
+        .achievement-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+        .achievement-list li{font-size:.875rem;color:var(--ink-mid);display:flex;gap:.5rem}
+        .achievement-list li::before{content:'✓';color:#22c55e;flex-shrink:0;font-weight:700}
+
+        .scale-banner{background:var(--grad);border-radius:16px;padding:3rem;color:#fff;margin-top:2.5rem;text-align:center}
+        .scale-banner h2{color:#fff;margin-bottom:.5rem}
+        .scale-banner p{color:rgba(255,255,255,.75);margin-bottom:2rem}
+        .scale-cells{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem}
+        .scale-cell{background:rgba(255,255,255,.12);border-radius:10px;padding:1.25rem 2rem;text-align:center;min-width:140px}
+        .scale-cell-val{font-size:1.75rem;font-weight:700;color:#fff;line-height:1;margin-bottom:.25rem}
+        .scale-cell-label{font-size:.75rem;color:rgba(255,255,255,.65)}
+
+        /* ── AI GROWTH TAB ───────────────────────────── */
+        .img-card{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--bg-subtle);margin-bottom:1.5rem}
+        .img-card img{width:100%;height:auto;display:block}
+        .img-card-body{padding:1.5rem}
+        .img-card-body h3{margin-bottom:.5rem}
+        .img-card-body p{font-size:.875rem}
+        .img-card-body .source{font-size:.75rem;color:var(--ink-soft);margin-top:.75rem}
+        .img-card-body .source a{color:var(--blue)}
+
+        .img-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2rem 0}
+        @media(max-width:760px){.img-grid{grid-template-columns:1fr}}
+
+        .market-table-wrap{overflow-x:auto;margin:2rem 0}
+        .market-table{width:100%;border-collapse:collapse;font-size:.875rem;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+        .market-table th{background:var(--ink);color:rgba(255,255,255,.5);font-size:.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:1rem 1.125rem;text-align:center}
+        .market-table th:first-child{text-align:left}
+        .market-table th.hl{color:#fff}
+        .market-table td{padding:.9rem 1.125rem;border-bottom:1px solid var(--border);color:var(--ink-mid);text-align:center}
+        .market-table td:first-child{text-align:left;font-weight:500;color:var(--ink)}
+        .market-table tbody tr:last-child td{border-bottom:none}
+        .market-table tbody tr:hover td{background:var(--bg-tinted)}
+        .val-good{color:#22c55e;font-weight:700}
+        .val-bad{color:#ef4444;font-weight:700}
+        .val-hi{color:var(--blue);font-weight:700}
+
+        .growth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:2rem 0}
+        @media(max-width:760px){.growth-grid{grid-template-columns:1fr 1fr}}
+        @media(max-width:480px){.growth-grid{grid-template-columns:1fr}}
+        .growth-cell{border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--bg-subtle)}
+        .growth-cell-icon{font-size:1.25rem;margin-bottom:.625rem}
+        .growth-cell-val{font-size:1.625rem;font-weight:700;color:var(--ink);letter-spacing:-0.025em;margin-bottom:.25rem}
+        .growth-cell-label{font-size:.8125rem;color:var(--ink-soft);line-height:1.5}
+
+        /* ── INDIA GAP TAB ───────────────────────────── */
+        .gap-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:2.5rem 0}
+        @media(max-width:640px){.gap-grid{grid-template-columns:1fr}}
+        .gap-card{border:1px solid var(--border);border-radius:14px;padding:2rem;background:var(--bg-subtle)}
+        .gap-card.dark{background:var(--ink);border-color:var(--ink)}
+        .gap-flag{font-size:2rem;margin-bottom:.5rem}
+        .gap-num{font-size:2.5rem;font-weight:700;letter-spacing:-0.035em;line-height:1;margin-bottom:.3rem}
+        .gap-num.bad{color:#ef4444}.gap-num.good{color:#22c55e}
+        .gap-sub{font-size:.75rem;color:var(--ink-soft);margin-bottom:1.25rem}
+        .gap-sub.light{color:rgba(255,255,255,.4)}
+        .gap-rows{display:flex;flex-direction:column;gap:.5rem}
+        .gap-row{display:flex;justify-content:space-between;align-items:center;font-size:.8125rem}
+        .gap-row .lbl{color:var(--ink-soft)}.gap-row .lbl.light{color:rgba(255,255,255,.45)}
+        .gap-row .val{font-weight:600}
+
+        .sankey-wrap{margin-top:2.5rem;border:1px solid var(--border);border-radius:14px;padding:1.75rem;background:var(--bg-subtle)}
+        .sankey-cap{font-size:.75rem;color:var(--ink-soft);margin-top:1rem;text-align:center}
+
+        .risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+        @media(max-width:640px){.risk-grid{grid-template-columns:1fr}}
+        .risk-card{border-radius:12px;padding:1.75rem}
+        .risk-card.danger{background:#fef2f2;border:1px solid #fecaca}
+        .risk-card.success{background:#f0fdf4;border:1px solid #bbf7d0}
+        .risk-card h3{font-size:1.0625rem;margin-bottom:1rem}
+        .risk-card.danger h3{color:#dc2626}
+        .risk-card.success h3{color:#16a34a}
+        .risk-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+        .risk-list li{font-size:.875rem;display:flex;gap:.5rem}
+        .risk-card.danger .risk-list li{color:#7f1d1d}
+        .risk-card.success .risk-list li{color:#14532d}
+        .risk-list li::before{flex-shrink:0;font-weight:700}
+        .risk-card.danger .risk-list li::before{content:'•';color:#dc2626}
+        .risk-card.success .risk-list li::before{content:'•';color:#16a34a}
+
+        /* ── COMPETITION TAB ─────────────────────────── */
+        .comp-table-wrap{overflow-x:auto;margin:2rem 0;border:1px solid var(--border);border-radius:14px}
+        .comp-table{width:100%;border-collapse:collapse;font-size:.8125rem}
+        .comp-table th{background:var(--ink);color:rgba(255,255,255,.5);font-size:.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:.875rem 1rem;text-align:left;white-space:nowrap}
+        .comp-table th:first-child{color:#fff}
+        .comp-table td{padding:.875rem 1rem;border-bottom:1px solid var(--border);color:var(--ink-mid);vertical-align:top}
+        .comp-table td:first-child{font-weight:600;color:var(--ink)}
+        .comp-table tbody tr:last-child td{border-bottom:none}
+        .comp-table tbody tr:hover td{background:var(--bg-tinted)}
+        .badge{display:inline-block;font-size:.65rem;font-weight:700;padding:.15rem .5rem;border-radius:100px;margin-left:.375rem;vertical-align:middle}
+        .badge-blue{background:#dbeafe;color:#1d4ed8}
+        .badge-green{background:#dcfce7;color:#15803d}
+        .badge-amber{background:#fef9c3;color:#a16207}
+        .badge-red{background:#fee2e2;color:#b91c1c}
+
+        .insight-cells{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin:2.5rem 0}
+        @media(max-width:760px){.insight-cells{grid-template-columns:1fr 1fr}}
+        @media(max-width:480px){.insight-cells{grid-template-columns:1fr}}
+        .insight-cell{border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--bg-subtle);text-align:center}
+        .insight-cell-val{font-size:2rem;font-weight:700;color:var(--blue);letter-spacing:-0.025em;line-height:1;margin-bottom:.375rem}
+        .insight-cell-label{font-size:.8125rem;color:var(--ink-soft);line-height:1.5}
+
+        /* ── DATA POINTS TAB ─────────────────────────── */
+        .dp-accordion{display:flex;flex-direction:column;gap:.75rem;margin-top:2rem}
+        .dp-item{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg)}
+        .dp-header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;cursor:pointer;gap:1rem;transition:background .15s}
+        .dp-header:hover{background:var(--bg-subtle)}
+        .dp-header-left{display:flex;align-items:center;gap:.875rem}
+        .dp-icon{font-size:1.125rem;flex-shrink:0;width:32px;text-align:center}
+        .dp-title{font-weight:600;font-size:.9375rem}
+        .dp-chevron{color:var(--ink-soft);transition:transform .25s;font-size:.875rem;flex-shrink:0}
+        .dp-header.open .dp-chevron{transform:rotate(180deg);color:var(--blue)}
+        .dp-body{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s}
+        .dp-body.open{max-height:800px;padding:0 1.5rem 1.5rem}
+        .dp-body p{font-size:.875rem;margin-bottom:.75rem}
+        .dp-body p:last-child{margin-bottom:0}
+        .dp-body ul{list-style:none;display:flex;flex-direction:column;gap:.4rem;margin-top:.5rem}
+        .dp-body ul li{font-size:.875rem;color:var(--ink-mid);display:flex;gap:.5rem}
+        .dp-body ul li::before{content:'→';color:var(--blue);flex-shrink:0}
+        .dp-body strong{color:var(--ink)}
+
+        /* ── VENTURE COMPUTE TAB ─────────────────────── */
+        .vc-hero{background:var(--ink);border-radius:16px;padding:3.5rem;margin-bottom:2.5rem;color:#fff}
+        .vc-hero h2{color:#fff;margin-bottom:.875rem}
+        .vc-hero p{color:rgba(255,255,255,.6);font-size:1.0625rem;max-width:620px}
+        .vc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+        @media(max-width:760px){.vc-grid{grid-template-columns:1fr}}
+        .vc-card{border:1px solid var(--border);border-radius:14px;padding:2rem;background:var(--bg-subtle)}
+        .vc-card.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+        .vc-tag{display:inline-block;font-size:.6875rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .75rem;border-radius:100px;background:#eff6ff;color:var(--blue);margin-bottom:1rem}
+        .vc-tag.on-dark{background:rgba(255,255,255,.1);color:rgba(255,255,255,.65)}
+        .vc-card h3{margin-bottom:.625rem}
+        .vc-card p{font-size:.875rem;line-height:1.75}
+        .vc-card.dark p{color:rgba(255,255,255,.6)}
+        .vc-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-top:1.25rem}
+        .vc-list li{display:flex;gap:.5rem;font-size:.875rem}
+        .vc-list li .ar{color:var(--blue);flex-shrink:0;font-weight:700}
+        .vc-card.dark .vc-list li{color:rgba(255,255,255,.75)}
+        .vc-card.dark .vc-list li .ar{color:#93c5fd}
+        .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+        .chip{font-size:.75rem;font-weight:500;padding:.3rem .75rem;border-radius:100px;background:var(--bg-tinted);border:1px solid var(--border);color:var(--ink-mid)}
+
+        /* ── RESOURCES TAB ───────────────────────────── */
+        .resource-section-title{font-size:.6875rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);margin:2.5rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+        .file-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+        @media(max-width:900px){.file-grid{grid-template-columns:1fr 1fr}}
+        @media(max-width:560px){.file-grid{grid-template-columns:1fr}}
+        .file-card{border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--bg-subtle);cursor:pointer;transition:all .18s;display:flex;flex-direction:column;gap:.875rem}
+        .file-card:hover{border-color:var(--blue);background:var(--blue-light);transform:translateY(-2px);box-shadow:0 4px 16px rgba(59,130,246,.1)}
+        .file-icon-wrap{width:40px;height:40px;border-radius:9px;background:var(--bg-tinted);display:flex;align-items:center;justify-content:center;color:var(--blue)}
+        .file-icon-wrap svg{width:18px;height:18px;fill:currentColor}
+        .file-card h4{font-size:.9375rem;margin-bottom:.2rem}
+        .file-card p{font-size:.8125rem}
+        .file-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+        .file-type{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--ink-soft);background:var(--bg-tinted);padding:.2rem .5rem;border-radius:4px;border:1px solid var(--border)}
+        .file-link{font-size:.8125rem;font-weight:600;color:var(--blue)}
+
+        /* FADE ANIMATION */
+        .fade-up{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+        .fade-up.visible{opacity:1;transform:none}
+        .fade-up:nth-child(2){transition-delay:.07s}
+        .fade-up:nth-child(3){transition-delay:.14s}
+        .fade-up:nth-child(4){transition-delay:.21s}
+        .fade-up:nth-child(5){transition-delay:.28s}
+        .fade-up:nth-child(6){transition-delay:.35s}
+
+        /* HIGHLIGHT BOX */
+        .highlight-box{background:var(--blue-light);border:1px solid #bfdbfe;border-radius:10px;padding:1.25rem 1.5rem;margin:1.5rem 0;font-size:.9rem;color:var(--ink-mid)}
+        .highlight-box strong{color:var(--ink)}
+
+        /* FOOTER */
+        footer{background:#020617;padding:2.5rem 0;margin-top:0}
+        .footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem}
+        .footer-logo{display:flex;align-items:center;gap:.5rem;font-size:.875rem;font-weight:600;color:#fff}
+        .footer-logo-mark{width:28px;height:28px;background:rgba(255,255,255,.07);border-radius:6px;display:flex;align-items:center;justify-content:center}
+        .footer-links{display:flex;flex-wrap:wrap;gap:1.25rem}
+        .footer-links a{font-size:.8125rem;color:rgba(255,255,255,.4);transition:color .15s}
+        .footer-links a:hover{color:rgba(255,255,255,.8)}
+        .footer-copy{font-size:.75rem;color:rgba(255,255,255,.2);width:100%;margin-top:.5rem}
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+    <div class="container">
+        <a href="../index.html" class="nav-back">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            Back to Antriksh Cloud
+        </a>
+        <div class="nav-divider"></div>
+        <a href="../index.html" class="nav-logo">
+            <div class="nav-logo-mark">
+                <svg width="20" height="20" viewBox="56 48 58 48" fill="white">
+                    <path d="M83.58 78.95v-.57l-1.06.32-1.03-3.41 6.86-2.08 1.03 3.41-1.63.5v2.02l9.28 17.65h-2.33l-7.16-13.33 4.36 13.33h-2.32l-4.76-14.44-8.27 14.44h-2.33L83.58 78.95z"/>
+                    <path d="M76.58 72.97l-9.23 2.69-2.69-9.29 9.23-2.69 2.69 9.29z"/>
+                    <path d="M63.96 68.88l1.56 5.4-3.17.93-1.56-5.4 3.17-.93z"/>
+                    <path d="M110.13 57.83c.96 3.3-.27 6.55-2.74 7.27l-3.45-11.94c2.47-.71 5.24 1.38 6.19 4.67z"/>
+                    <path d="M102.51 51.5l4.56 15.81-6.26 1.82-4.53-15.81 6.23-1.82z"/>
+                    <path d="M73.95 60.79l21.43-6.25 4.01 13.99-21.4 6.23-4.04-13.97z"/>
+                </svg>
+            </div>
+            Antriksh Cloud
+        </a>
+        <div class="nav-divider"></div>
+        <span class="nav-page-label">Market Analysis</span>
+    </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+    <div class="container">
+        <div class="page-hero-tag">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            Market Analysis
+        </div>
+        <h1 class="page-hero-title">India's $41.7B<br>AI Infrastructure<br><span class="page-hero-grad">Opportunity.</span></h1>
+        <p class="page-hero-sub">A deep dive into why India's AI gap is the world's largest untapped compute opportunity — and how Antriksh is built to capture it.</p>
+        <div class="page-hero-stats">
+            <div class="page-hero-stat">
+                <div class="page-hero-stat-val">51×</div>
+                <div class="page-hero-stat-label">Infrastructure gap vs USA</div>
+            </div>
+            <div class="page-hero-stat">
+                <div class="page-hero-stat-val">48%</div>
+                <div class="page-hero-stat-label">India AI adoption — world's highest</div>
+            </div>
+            <div class="page-hero-stat">
+                <div class="page-hero-stat-val">$41.7B</div>
+                <div class="page-hero-stat-label">India SAM by 2030</div>
+            </div>
+            <div class="page-hero-stat">
+                <div class="page-hero-stat-val">33%</div>
+                <div class="page-hero-stat-label">GPU market CAGR 2022–2030</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TAB NAV -->
+<div class="tab-nav-wrap">
+    <div class="container">
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="switchTab('why',this)">Why Antriksh</button>
+            <button class="tab-btn" onclick="switchTab('growth',this)">AI Growth</button>
+            <button class="tab-btn" onclick="switchTab('gap',this)">India's Gap</button>
+            <button class="tab-btn" onclick="switchTab('competition',this)">Competition</button>
+            <button class="tab-btn" onclick="switchTab('venture',this)">Venture Compute</button>
+            <button class="tab-btn" onclick="switchTab('datapoints',this)">Data Points</button>
+            <button class="tab-btn" onclick="switchTab('resources',this)">Resources</button>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- TAB: WHY ANTRIKSH -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div id="tab-why" class="tab-panel active">
+    <div class="container">
+
+        <div class="why-hero fade-up">
+            <h2>In the race to AGI,<br>compute is destiny.</h2>
+            <p>Nations with massive GPU clusters will lead the intelligence explosion, while others become permanent consumers. India's window to act is closing fast — and Antriksh is India's answer.</p>
+            <div class="timeline-strip">
+                <div class="tl-cell">
+                    <div class="tl-year">2025</div>
+                    <div class="tl-text"><strong>PhD-Level AI</strong> — Systems match human expert performance</div>
+                </div>
+                <div class="tl-cell">
+                    <div class="tl-year">2026</div>
+                    <div class="tl-text"><strong>AI Researchers</strong> — AI begins improving itself exponentially</div>
+                </div>
+                <div class="tl-cell">
+                    <div class="tl-year">2027</div>
+                    <div class="tl-text"><strong>AGI Emergence</strong> — Human-level general intelligence arrives</div>
+                </div>
+                <div class="tl-cell">
+                    <div class="tl-year">2030</div>
+                    <div class="tl-text"><strong>Superintelligence</strong> — Beyond human comprehension</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="metrics-row fade-up">
+            <div class="metric-cell">
+                <div class="metric-val">100×</div>
+                <div class="metric-label">Compute growth every 2 years</div>
+            </div>
+            <div class="metric-cell">
+                <div class="metric-val">$1T+</div>
+                <div class="metric-label">Global AI infrastructure spending by 2030</div>
+            </div>
+            <div class="metric-cell">
+                <div class="metric-val">100 GW</div>
+                <div class="metric-label">AI power demand by 2030</div>
+            </div>
+            <div class="metric-cell">
+                <div class="metric-val">3:1</div>
+                <div class="metric-label">AI compute demand-to-supply gap ratio</div>
+            </div>
+        </div>
+
+        <div class="section-label" style="margin-top:3rem">Why We're Building</div>
+        <h2>Five reasons Antriksh<br>is a generational opportunity.</h2>
+        <div class="value-grid" style="margin-top:2rem">
+            <div class="value-card fade-up">
+                <div class="value-icon">💎</div>
+                <h4>Compute is the New Oil</h4>
+                <p>GPUs are the bottleneck between current AI and AGI. Owning 500MW of sovereign compute positions Antriksh at the epicentre of the $10 trillion value creation event in the next 5 years.</p>
+            </div>
+            <div class="value-card fade-up">
+                <div class="value-icon">🚀</div>
+                <h4>Trillion-Dollar CapEx Race</h4>
+                <p>Microsoft, Google, and Meta are each building 5GW+ facilities. Global spending heads toward $1T by 2030. Demand vastly outstrips supply. Early movers capture 50–100× returns.</p>
+            </div>
+            <div class="value-card fade-up">
+                <div class="value-icon">⚡</div>
+                <h4>India's Cost &amp; Energy Edge</h4>
+                <p>Direct-to-chip liquid cooling + campus PUE &lt; 1.10 delivers 40–50% lower TCO than US/EU. Our ₹0.08/kWh power cost and 67% lower labour costs create an unbeatable economic moat.</p>
+            </div>
+            <div class="value-card fade-up">
+                <div class="value-icon">🛡️</div>
+                <h4>Sovereign AI Infrastructure</h4>
+                <p>India cannot depend on foreign clouds for defence AI, government services, or critical research. Antriksh provides the trusted, sovereign infrastructure that keeps Indian data under Indian control.</p>
+            </div>
+            <div class="value-card fade-up">
+                <div class="value-icon">📈</div>
+                <h4>Exponential Returns Flywheel</h4>
+                <p>Compute leases + enterprise contracts + equity-for-compute ventures create compounding returns. As AI capabilities explode, this infrastructure becomes exponentially more valuable.</p>
+            </div>
+            <div class="value-card fade-up">
+                <div class="value-icon">🇮🇳</div>
+                <h4>Once-in-History Moment</h4>
+                <p>India has 48% AI adoption — the world's highest — but 51× less infrastructure than the US. The nation that controls AI infrastructure controls the future. That window is open now.</p>
+            </div>
+        </div>
+
+        <div class="section-label" style="margin-top:3.5rem">Execution Milestones</div>
+        <h2>From vision to reality —<br>already in motion.</h2>
+        <div class="achievement-grid" style="margin-top:2rem">
+            <div class="achievement-card fade-up">
+                <h4>🎯 Government Partnership</h4>
+                <ul class="achievement-list">
+                    <li>500MW in-principle power approval secured — industry first</li>
+                    <li>MoU finalising with state incentives</li>
+                    <li>Fast-track environmental &amp; land-use clearances</li>
+                    <li>Single-window coordination for all utilities</li>
+                    <li>Capital subsidies &amp; SEZ tax exemptions in discussion</li>
+                </ul>
+            </div>
+            <div class="achievement-card fade-up">
+                <h4>⚡ Infrastructure Ready</h4>
+                <ul class="achievement-list">
+                    <li>14 sites evaluated, optimal location secured</li>
+                    <li>Direct canal water access for liquid cooling</li>
+                    <li>Multiple 100 Gbps fibre carriers within 5km</li>
+                    <li>Greenfield land for 3MW → 100MW → 500MW phases</li>
+                    <li>Adjacent to substations &amp; transport corridors</li>
+                </ul>
+            </div>
+            <div class="achievement-card fade-up">
+                <h4>🔬 Technology Validated</h4>
+                <ul class="achievement-list">
+                    <li>CDAC &amp; NSM design validation completed</li>
+                    <li>PUE ~1.10 with zero-liquid-discharge cooling</li>
+                    <li>99.99% uptime Tier 4 standards targeted</li>
+                    <li>≥50% renewable power commitment</li>
+                    <li>150+ kW/rack density for latest GPUs</li>
+                </ul>
+            </div>
+            <div class="achievement-card fade-up">
+                <h4>🌍 Global Positioning</h4>
+                <ul class="achievement-list">
+                    <li>US GPU export restrictions lifted — perfect timing</li>
+                    <li>Silicon Valley office for technology partnerships</li>
+                    <li>By-invitation network via IIT, TiE, Valley connections</li>
+                    <li>Strategic anchor customers in pipeline</li>
+                    <li>3 UHNIs committed, institutional round preparing</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="scale-banner fade-up" style="margin-top:3rem">
+            <h2>Why 500MW Changes Everything</h2>
+            <p>This isn't incremental. It's a quantum leap that positions India among the global AI superpowers overnight.</p>
+            <div class="scale-cells">
+                <div class="scale-cell"><div class="scale-cell-val">Top 5</div><div class="scale-cell-label">Global AI Infrastructure</div></div>
+                <div class="scale-cell"><div class="scale-cell-val">288K</div><div class="scale-cell-label">Next-gen GPUs at full build</div></div>
+                <div class="scale-cell"><div class="scale-cell-val">126 EF</div><div class="scale-cell-label">ExaFLOPS compute capacity</div></div>
+                <div class="scale-cell"><div class="scale-cell-val">10,000+</div><div class="scale-cell-label">AI startups enabled</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- TAB: AI GROWTH -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div id="tab-growth" class="tab-panel">
+    <div class="container">
+        <div class="section-label">Market Sizing</div>
+        <h2>The global AI compute market<br>is exploding.</h2>
+        <p class="section-intro">GPU compute demand is growing faster than any technology market in history. India is at the centre of this — maximum adoption, minimum infrastructure.</p>
+
+        <div class="growth-grid" style="margin-top:2.5rem">
+            <div class="growth-cell fade-up">
+                <div class="growth-cell-icon">📈</div>
+                <div class="growth-cell-val">33.3%</div>
+                <div class="growth-cell-label">Global AI GPU market CAGR 2022–2030. Market grows from $52B to $353B.</div>
+            </div>
+            <div class="growth-cell fade-up">
+                <div class="growth-cell-icon">🇮🇳</div>
+                <div class="growth-cell-val">$41.7B</div>
+                <div class="growth-cell-label">India AI market SAM by 2030. 30% annual growth rate. India is 5.5% of global TAM.</div>
+            </div>
+            <div class="growth-cell fade-up">
+                <div class="growth-cell-icon">🌍</div>
+                <div class="growth-cell-val">$757B</div>
+                <div class="growth-cell-label">Global AI total addressable market in 2025, growing to $3.68T by 2034.</div>
+            </div>
+            <div class="growth-cell fade-up">
+                <div class="growth-cell-icon">📱</div>
+                <div class="growth-cell-val">280M</div>
+                <div class="growth-cell-label">ChatGPT users — India is #1 globally at 13.5% share. Up from 5M in 2 years.</div>
+            </div>
+            <div class="growth-cell fade-up">
+                <div class="growth-cell-icon">🏛️</div>
+                <div class="growth-cell-val">₹10,732 Cr</div>
+                <div class="growth-cell-label">Indian government budget allocated for AI infrastructure investment.</div>
+            </div>
+            <div class="growth-cell fade-up">
+                <div class="growth-cell-icon">⚡</div>
+                <div class="growth-cell-val">20–25 GW</div>
+                <div class="growth-cell-label">Additional data centre capacity India needs by 2030 to meet AI demand.</div>
+            </div>
+        </div>
+
+        <div class="section-label" style="margin-top:3.5rem">India Leads ChatGPT Growth</div>
+        <div class="img-card fade-up">
+            <img src="../../MarketAnalysis/ChatGPT Mobile App Monthly Active Users.png" alt="ChatGPT Global User Growth — India #1">
+            <div class="img-card-body">
+                <h3>India Leads ChatGPT's 56× Growth</h3>
+                <p>From 5 million to 280 million users in 2 years. India is consistently #1 globally with a 13.5% share of all ChatGPT mobile users — more than any other country. The blue base layer shows India's dominance as ChatGPT scaled from a niche tool to a global platform.</p>
+                <p class="source"><strong>Sources:</strong> <a href="https://timesofindia.indiatimes.com/technology/tech-news/india-leads-global-chatgpt-usage-surpasses-us/articleshow/121573055.cms" target="_blank">Times of India</a> · Mary Meeker's AI Trends Report 2025</p>
+            </div>
+        </div>
+
+        <div class="img-grid">
+            <div class="img-card fade-up">
+                <img src="../../MarketAnalysis/usage_AI copy.png" alt="Global AI Adoption Rates by Country">
+                <div class="img-card-body">
+                    <h3>India's 48% AI Adoption Rate</h3>
+                    <p>India leads global AI adoption at 48% — 2.2× higher than the US (22%) and higher than every major economy. This massive adoption gap creates unprecedented infrastructure demand.</p>
+                    <p class="source">Source: McKinsey Global Survey 2024</p>
+                </div>
+            </div>
+            <div class="img-card fade-up">
+                <img src="../../MarketAnalysis/AI Hyperscaler Capital Spending Jan 13.jpg" alt="AI Hyperscaler Capital Spending">
+                <div class="img-card-body">
+                    <h3>Hyperscalers Commit Trillions</h3>
+                    <p>Microsoft, Google, Meta, and Amazon are collectively committing $300B+ annually to AI infrastructure. This is capital chasing US and EU locations — not India. That gap is the Antriksh opportunity.</p>
+                    <p class="source">Source: Company filings, January 2025</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-label" style="margin-top:3rem">Global AI Adoption Comparison</div>
+        <div class="market-table-wrap fade-up">
+            <table class="market-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th class="hl">🇮🇳 India</th>
+                        <th>🇨🇳 China</th>
+                        <th>🇺🇸 USA</th>
+                        <th>🇪🇺 EU</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AI Adoption Rate</td>
+                        <td class="val-good">48%</td>
+                        <td>37%</td>
+                        <td>22%</td>
+                        <td>26%</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile Data (EB/month)</td>
+                        <td class="val-hi">26</td>
+                        <td>26</td>
+                        <td>10</td>
+                        <td>17</td>
+                    </tr>
+                    <tr>
+                        <td>DC Capacity per Million Users (MW)</td>
+                        <td class="val-bad">1</td>
+                        <td>4</td>
+                        <td>51</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>Infrastructure Gap vs USA</td>
+                        <td class="val-bad">51×</td>
+                        <td>12.8×</td>
+                        <td>Baseline</td>
+                        <td>4.3×</td>
+                    </tr>
+                    <tr>
+                        <td>Share of Global DC Investment</td>
+                        <td class="val-bad">1–4%</td>
+                        <td>~20%</td>
+                        <td>~50%</td>
+                        <td>~15%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight-box fade-up">
+            <strong>Key insight:</strong> India has 2.2× higher AI adoption than the USA but 51× less data centre infrastructure. With 1.4 billion people embracing AI and generating 20% of the world's data, this gap represents the world's largest untapped AI infrastructure market.
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- TAB: INDIA'S GAP -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div id="tab-gap" class="tab-panel">
+    <div class="container">
+        <div class="section-label">The Core Problem</div>
+        <h2>Maximum AI demand.<br>Minimum infrastructure.</h2>
+        <p class="section-intro">India generates 20% of the world's data but holds just 3% of global data centre capacity. This isn't a market gap — it's a structural crisis that Antriksh is purpose-built to resolve.</p>
+
+        <div class="gap-grid">
+            <div class="gap-card fade-up">
+                <div class="gap-flag">🇮🇳</div>
+                <div class="gap-num bad">1 MW</div>
+                <div class="gap-sub">India — data centre capacity per million users</div>
+                <div class="gap-rows">
+                    <div class="gap-row"><span class="lbl">AI Adoption Rate</span><span class="val" style="color:#22c55e">48% — world's highest</span></div>
+                    <div class="gap-row"><span class="lbl">ChatGPT Share</span><span class="val" style="color:#3b82f6">#1 globally (13.5%)</span></div>
+                    <div class="gap-row"><span class="lbl">Domestic GPUs</span><span class="val" style="color:#ef4444">&lt; 50,000</span></div>
+                    <div class="gap-row"><span class="lbl">Foreign dependency</span><span class="val" style="color:#ef4444">90%+</span></div>
+                    <div class="gap-row"><span class="lbl">Avg. inference latency</span><span class="val" style="color:#ef4444">200 ms+</span></div>
+                    <div class="gap-row"><span class="lbl">Share of global DC investment</span><span class="val" style="color:#ef4444">1–4%</span></div>
+                </div>
+            </div>
+            <div class="gap-card dark fade-up">
+                <div class="gap-flag">🇺🇸</div>
+                <div class="gap-num good">51 MW</div>
+                <div class="gap-sub light">USA — data centre capacity per million users</div>
+                <div class="gap-rows">
+                    <div class="gap-row"><span class="lbl light">AI Adoption Rate</span><span class="val" style="color:rgba(255,255,255,.45)">22%</span></div>
+                    <div class="gap-row"><span class="lbl light">DC Investment</span><span class="val" style="color:#4ade80">100× India's</span></div>
+                    <div class="gap-row"><span class="lbl light">Domestic GPUs</span><span class="val" style="color:#4ade80">&gt; 2 million</span></div>
+                    <div class="gap-row"><span class="lbl light">Self-reliance</span><span class="val" style="color:#4ade80">100%</span></div>
+                    <div class="gap-row"><span class="lbl light">Avg. latency</span><span class="val" style="color:#4ade80">&lt; 10 ms</span></div>
+                    <div class="gap-row"><span class="lbl light">Share of global DC investment</span><span class="val" style="color:#4ade80">~50%</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="img-card fade-up" style="margin-top:2rem">
+            <img src="../../MarketAnalysis/Data Centers by Country.jpg" alt="Data Centers by Country">
+            <div class="img-card-body">
+                <h3>Data Centres by Country</h3>
+                <p>India barely registers on the global data centre map despite being one of the world's most digitally active populations. Countries like Singapore, Germany, and even Netherlands have more AI-ready data centre capacity than India.</p>
+                <p class="source">Source: Data Centre Map 2024</p>
+            </div>
+        </div>
+
+        <div class="section-label" style="margin-top:3rem">Where the World Gets Its AI Compute</div>
+        <div class="sankey-wrap fade-up">
+            <p style="font-size:.875rem;font-weight:600;color:var(--ink);margin-bottom:.25rem">Where the world gets its AI compute</p>
+            <p style="font-size:.8125rem;margin-bottom:1.25rem">Most countries — India included — rely almost entirely on American and Chinese cloud operators for AI infrastructure.</p>
+            <div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--ink-soft);font-weight:500;padding:0 .25rem;margin-bottom:.5rem">
+                <span>Companies based here ...</span><span>... operating AI facilities here</span>
+            </div>
+            <div id="sankey-chart" style="width:100%;height:340px;"></div>
+            <p class="sankey-cap">Source: Oxford University via The New York Times</p>
+        </div>
+
+        <div class="risk-grid">
+            <div class="risk-card danger fade-up">
+                <h3>❌ The Cost of Inaction</h3>
+                <ul class="risk-list">
+                    <li>Permanent dependence on US and Chinese AI systems</li>
+                    <li>Loss of data and AI sovereignty</li>
+                    <li>Exclusion from $10T AGI value creation</li>
+                    <li>1.4 billion Indians remain AI consumers, not creators</li>
+                    <li>Economic colonisation through AI monopolies</li>
+                </ul>
+            </div>
+            <div class="risk-card success fade-up">
+                <h3>✅ The Prize for Action</h3>
+                <ul class="risk-list">
+                    <li>Lead the Global South in the AI revolution</li>
+                    <li>Create a $1 trillion AI economy by 2047</li>
+                    <li>Secure technological sovereignty permanently</li>
+                    <li>Enable 10,000+ Indian AI unicorns</li>
+                    <li>Position India as a trusted AI partner for democratic nations</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- TAB: COMPETITION -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div id="tab-competition" class="tab-panel">
+    <div class="container">
+        <div class="section-label">Competitive Landscape</div>
+        <h2>Hyperscalers underinvest.<br>Specialists win.</h2>
+        <p class="section-intro">India receives only 1–4% of global hyperscaler AI infrastructure investment despite 18% of world population and 26.5% annual cloud market growth. That underinvestment is the opportunity.</p>
+
+        <div class="insight-cells fade-up">
+            <div class="insight-cell">
+                <div class="insight-cell-val">100:1</div>
+                <div class="insight-cell-label">US vs India AI infrastructure investment ratio</div>
+            </div>
+            <div class="insight-cell">
+                <div class="insight-cell-val">$500B</div>
+                <div class="insight-cell-label">US Stargate AI project vs India's $1.24B sovereign AI initiative</div>
+            </div>
+            <div class="insight-cell">
+                <div class="insight-cell-val">35×</div>
+                <div class="insight-cell-label">Singapore's per-capita cloud investment advantage over India</div>
+            </div>
+        </div>
+
+        <div class="section-label" style="margin-top:3rem">Hyperscaler India Investment</div>
+        <div class="comp-table-wrap fade-up">
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th>Cloud Provider</th>
+                        <th>Global CapEx (2023–25)</th>
+                        <th>India Investment</th>
+                        <th>India's Share</th>
+                        <th>India Presence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Amazon Web Services</td>
+                        <td>~$100B / year</td>
+                        <td>$12.7B by 2030 (~$1.8B/yr)</td>
+                        <td><span class="badge badge-amber">~2%</span></td>
+                        <td>2 regions (3rd planned)</td>
+                    </tr>
+                    <tr>
+                        <td>Microsoft Azure</td>
+                        <td>$80B (FY2025)</td>
+                        <td>$3B over 2 years</td>
+                        <td><span class="badge badge-amber">~2%</span></td>
+                        <td>3 regions (4th in progress)</td>
+                    </tr>
+                    <tr>
+                        <td>Google Cloud</td>
+                        <td>$75B (2025 CapEx)</td>
+                        <td>Undisclosed (est. &lt;$1B/yr)</td>
+                        <td><span class="badge badge-red">&lt;1.5%</span></td>
+                        <td>2 regions</td>
+                    </tr>
+                    <tr>
+                        <td>Oracle Cloud</td>
+                        <td>Multi-billion ($6.5B Malaysia, $8B Japan)</td>
+                        <td>Undisclosed, high growth</td>
+                        <td><span class="badge badge-amber">~4%</span></td>
+                        <td>2 regions (2 more planned)</td>
+                    </tr>
+                    <tr>
+                        <td>Meta (AI Infrastructure)</td>
+                        <td>600,000 H100 GPUs (US-exclusive)</td>
+                        <td>$0</td>
+                        <td><span class="badge badge-red">0%</span></td>
+                        <td>None — AI clusters US-only</td>
+                    </tr>
+                    <tr>
+                        <td>Chinese Providers (Alibaba, Tencent)</td>
+                        <td>~$53B (Alibaba 3-year plan)</td>
+                        <td>Exited India (Alibaba closed July 2024)</td>
+                        <td><span class="badge badge-red">0%</span></td>
+                        <td>Alibaba: departed India</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-label" style="margin-top:3.5rem">GPU Cloud Specialists — Global Leaders</div>
+        <p class="section-intro">The infrastructure gap has spawned a new generation of AI-native GPU cloud providers. These are the companies Antriksh is modelled after — and will compete alongside in India.</p>
+        <div class="comp-table-wrap fade-up" style="margin-top:1.5rem">
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Valuation</th>
+                        <th>Revenue / Growth</th>
+                        <th>GPU Scale</th>
+                        <th>Pricing</th>
+                        <th>Key Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CoreWeave <span class="badge badge-blue">Decacorn</span></td>
+                        <td><strong>$80B</strong> (IPO March 2025)</td>
+                        <td>$1.92B (2024), 736% YoY. $4.9B est. 2025</td>
+                        <td>250,000+ GPUs (H100/H200/GB200), 1.3GW</td>
+                        <td>H100: $2.23–4.25/hr</td>
+                        <td>IPO: $23B → $80B in 4 months. NVIDIA 7% stake. OpenAI $15.9B deal.</td>
+                    </tr>
+                    <tr>
+                        <td>Lambda Labs <span class="badge badge-green">Unicorn</span></td>
+                        <td>$2.5B (Feb 2025)</td>
+                        <td>$425M ARR, 70% YoY</td>
+                        <td>25,000+ GPUs (H100, H200, A100)</td>
+                        <td>H100: $2.49/hr</td>
+                        <td>NVIDIA Partner of the Year 2024. Developer-focused.</td>
+                    </tr>
+                    <tr>
+                        <td>Crusoe Energy <span class="badge badge-green">Unicorn</span></td>
+                        <td>$2.8B</td>
+                        <td>~$300M ARR, rapid growth</td>
+                        <td>Sustainable GPU cloud, renewable-focused</td>
+                        <td>Competitive with CoreWeave</td>
+                        <td>Clean energy differentiation. $686M raised total.</td>
+                    </tr>
+                    <tr>
+                        <td>E2E Networks <span class="badge badge-amber">India</span></td>
+                        <td>~$72M market cap</td>
+                        <td>Small, growing</td>
+                        <td>&lt; 5,000 GPUs (A100, H100 — limited)</td>
+                        <td>Higher than global specialists</td>
+                        <td>India's largest current GPU cloud — but 6× smaller than Antriksh Phase 1.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight-box fade-up" style="margin-top:2rem">
+            <strong>Antriksh's position:</strong> No Indian player currently operates at meaningful GPU scale. E2E Networks — the largest — has under 5,000 GPUs. Antriksh's Phase 1 PoC alone deploys 1,728 GPUs and scales to 288,000. At full build, Antriksh will be 6× larger than any current India competitor — with liquid cooling, sovereign zones, and pricing 40–50% below hyperscalers.
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- TAB: VENTURE COMPUTE -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div id="tab-venture" class="tab-panel">
+    <div class="container">
+        <div class="vc-hero fade-up">
+            <h2>GPU credits for equity.<br>We bet on India's next unicorns.</h2>
+            <p>The Venture Compute programme gives high-potential AI startups access to serious compute without burning runway. 10% of Antriksh capacity is permanently reserved for portfolio companies.</p>
+        </div>
+
+        <div class="vc-grid">
+            <div class="vc-card dark fade-up">
+                <div class="vc-tag on-dark">For AI Startups</div>
+                <h3 style="color:#fff">GPU credits in exchange for equity.</h3>
+                <p>We allocate GPU credits in exchange for a small equity stake (5–10%). You get the compute to build your product without burning runway. We bet on your long-term success.</p>
+                <ul class="vc-list">
+                    <li><span class="ar">→</span><span>Credits from $50K to $2M in GPU time</span></li>
+                    <li><span class="ar">→</span><span>10% of total Antriksh capacity permanently reserved for portfolio</span></li>
+                    <li><span class="ar">→</span><span>Incubation support: GTM, hiring, regulatory navigation</span></li>
+                    <li><span class="ar">→</span><span>Priority access as we scale to 500 MW</span></li>
+                    <li><span class="ar">→</span><span>Target: 50+ portfolio companies over 5 years</span></li>
+                </ul>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:1.25rem">
+                <div class="vc-card fade-up">
+                    <div class="vc-tag purple" style="background:#f5f3ff;color:#7c3aed">For Enterprise</div>
+                    <h3>Reserved capacity contracts.</h3>
+                    <p>Lock in pricing and guaranteed GPU allocation for production AI workloads. Multi-year contracts with SLA-backed uptime and dedicated sovereign zones for regulated industries.</p>
+                    <ul class="vc-list" style="margin-top:1rem">
+                        <li><span class="ar">→</span><span>Dedicated sovereign zones for BFSI, healthcare, defence</span></li>
+                        <li><span class="ar">→</span><span>Managed MLOps and fine-tuning support</span></li>
+                        <li><span class="ar">→</span><span>INR billing · zero egress fees · on-site assessment</span></li>
+                    </ul>
+                </div>
+                <div class="vc-card fade-up" style="background:var(--bg-tinted)">
+                    <div style="font-size:.8125rem;font-weight:600;color:var(--ink);margin-bottom:.875rem">Workloads we're optimised for</div>
+                    <div class="chips">
+                        <span class="chip">LLM training</span>
+                        <span class="chip">Inference at scale</span>
+                        <span class="chip">Indian language models</span>
+                        <span class="chip">Enterprise RAG</span>
+                        <span class="chip">Vision &amp; multimodal</span>
+                        <span class="chip">Sovereign AI (Govt)</span>
+                        <span class="chip">Fine-tuning pipelines</span>
+                        <span class="chip">Agentic AI</span>
+                        <span class="chip">AI research (IITs, IISc)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-label" style="margin-top:3.5rem">Why Venture Compute Works</div>
+        <div class="value-grid" style="margin-top:1.5rem">
+            <div class="value-card fade-up">
+                <div class="value-icon">💡</div>
+                <h4>Solves the Chicken-and-Egg Problem</h4>
+                <p>AI startups need GPUs to train models, but can't afford them before they have revenue. GPU-for-equity breaks this cycle — compute unlocks the product, product unlocks the revenue.</p>
+            </div>
+            <div class="value-card fade-up">
+                <div class="value-icon">📈</div>
+                <h4>Exponential Portfolio Upside</h4>
+                <p>By taking 5–10% equity stakes across 50+ AI startups, Antriksh builds a portfolio of India's next generation of AI companies. One unicorn exit can return 10–100× the cost of the credits issued.</p>
+            </div>
+            <div class="value-card fade-up">
+                <div class="value-icon">🏗️</div>
+                <h4>Fills Utilisation Gaps</h4>
+                <p>The 10% capacity reserved for the portfolio keeps Antriksh's infrastructure busy during demand troughs — improving overall utilisation and protecting EBITDA margins at every phase.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- TAB: DATA POINTS -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div id="tab-datapoints" class="tab-panel">
+    <div class="container">
+        <div class="section-label">Supporting Evidence</div>
+        <h2>The data behind<br>every claim we make.</h2>
+        <p class="section-intro">Sourced from government reports, industry surveys, and third-party research. Click any item to expand.</p>
+
+        <div class="img-grid" style="margin:2.5rem 0">
+            <div class="img-card fade-up">
+                <img src="../../MarketAnalysis/Claude Website Users by Country.png" alt="Claude AI Users by Country">
+                <div class="img-card-body">
+                    <h3>India Leads Claude Usage Too</h3>
+                    <p>It's not just ChatGPT. India consistently tops usage charts across all major AI platforms — Claude, Perplexity, and others. The demand is real and sustained.</p>
+                    <p class="source">Source: Anthropic / SimilarWeb 2025</p>
+                </div>
+            </div>
+            <div class="img-card fade-up">
+                <img src="../../MarketAnalysis/Perplexity AI Website Traffic Stats.png" alt="Perplexity AI Traffic by Country">
+                <div class="img-card-body">
+                    <h3>India's AI Usage is Cross-Platform</h3>
+                    <p>India's dominance in AI usage holds across every major platform. This is structural demand, not a single-product phenomenon. Infrastructure is the only constraint.</p>
+                    <p class="source">Source: SimilarWeb 2025</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dp-accordion">
+            <div class="dp-item fade-up">
+                <div class="dp-header" onclick="toggleDp(this)">
+                    <div class="dp-header-left">
+                        <div class="dp-icon">📊</div>
+                        <div class="dp-title">India's AI Market Will Reach $41.7B by 2030</div>
+                    </div>
+                    <span class="dp-chevron">▾</span>
+                </div>
+                <div class="dp-body">
+                    <p>India's AI market is growing at 30% annually and is projected to reach $41.7B by 2030. This represents 5.5% of the global $757B TAM. The GPU-as-a-service component alone is growing at 28.78% CAGR, reaching $28.7B globally by 2030.</p>
+                    <ul>
+                        <li>Global AI market projected to reach $3.68T by 2034 (19.2% CAGR)</li>
+                        <li>AI chips/GPU market expected to reach $92B by 2025</li>
+                        <li>Data centre capacity demand growing 19–22% annually through 2030</li>
+                        <li>India DC market to add 987+ MW capacity by 2026</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="dp-item fade-up">
+                <div class="dp-header" onclick="toggleDp(this)">
+                    <div class="dp-header-left">
+                        <div class="dp-icon">🏗️</div>
+                        <div class="dp-title">India Has 3% of Global DC Capacity Despite 20% of Global Data</div>
+                    </div>
+                    <span class="dp-chevron">▾</span>
+                </div>
+                <div class="dp-body">
+                    <p>India generates approximately 20% of the world's data — driven by its 1.4 billion population and world-leading mobile data consumption — yet holds just 3% of global data centre capacity. This is the structural mismatch Antriksh resolves.</p>
+                    <ul>
+                        <li>India's mobile data consumption: 26 EB/month — equal to China, 2.6× the USA</li>
+                        <li>India DC capacity: 854 MW (2023), up from 350 MW (2019)</li>
+                        <li>Needs 20,000–25,000 MW of AI-ready capacity by 2030</li>
+                        <li>Current trajectory delivers &lt;3,000 MW — a 7–8× shortfall</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="dp-item fade-up">
+                <div class="dp-header" onclick="toggleDp(this)">
+                    <div class="dp-header-left">
+                        <div class="dp-icon">⚡</div>
+                        <div class="dp-title">GPU Rack Density Doubling Every 2–3 Years</div>
+                    </div>
+                    <span class="dp-chevron">▾</span>
+                </div>
+                <div class="dp-body">
+                    <p>Traditional data centres are physically incapable of hosting modern AI GPUs. Rack density requirements have exploded, making legacy infrastructure obsolete for AI workloads.</p>
+                    <ul>
+                        <li>Average DC power density doubled: 8 kW → 17 kW per rack</li>
+                        <li>AI-ready DCs expected to reach 30 kW per rack by 2027</li>
+                        <li>NVIDIA GB200 NVL72 requires 120+ kW per rack</li>
+                        <li>Antriksh supports 150–300 kW per rack via liquid cooling</li>
+                        <li>Air-cooled legacy DCs throttle GPU performance by 15–30%</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="dp-item fade-up">
+                <div class="dp-header" onclick="toggleDp(this)">
+                    <div class="dp-header-left">
+                        <div class="dp-icon">🏛️</div>
+                        <div class="dp-title">Government Policy Strongly Supports Domestic AI Infrastructure</div>
+                    </div>
+                    <span class="dp-chevron">▾</span>
+                </div>
+                <div class="dp-body">
+                    <p>The Indian government has recognised AI data centres as critical infrastructure and created a favourable policy environment for domestic investment.</p>
+                    <ul>
+                        <li>₹10,732 crore ($1.24B) allocated for India AI infrastructure</li>
+                        <li>Infrastructure status granted to the data centre sector (Draft DC Policy 2020)</li>
+                        <li>DPDP Act mandates data localisation for sensitive categories</li>
+                        <li>US GPU export restrictions lifted — direct allocation now possible</li>
+                        <li>SEZ tax exemptions and capital subsidies available for qualifying projects</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="dp-item fade-up">
+                <div class="dp-header" onclick="toggleDp(this)">
+                    <div class="dp-header-left">
+                        <div class="dp-icon">💰</div>
+                        <div class="dp-title">CoreWeave Proves the GPU-Specialist Model Works</div>
+                    </div>
+                    <span class="dp-chevron">▾</span>
+                </div>
+                <div class="dp-body">
+                    <p>CoreWeave's journey from a $40/share IPO in March 2025 to $80B market cap in four months is the clearest proof that AI-native GPU infrastructure commands a premium over general cloud.</p>
+                    <ul>
+                        <li>IPO: $23B valuation → $80B in under 4 months (+300%)</li>
+                        <li>Revenue: $1.92B in 2024, 736% YoY growth</li>
+                        <li>Q1 2025: $982M revenue — equivalent to $4B annualised run rate</li>
+                        <li>62% EBITDA margin — comparable to Antriksh's 66% target</li>
+                        <li>NVIDIA holds 7% equity stake — strategic validation</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="dp-item fade-up">
+                <div class="dp-header" onclick="toggleDp(this)">
+                    <div class="dp-header-left">
+                        <div class="dp-icon">🌱</div>
+                        <div class="dp-title">India's Renewable Energy Advantage</div>
+                    </div>
+                    <span class="dp-chevron">▾</span>
+                </div>
+                <div class="dp-body">
+                    <p>Antriksh's site is designed to run primarily on renewable hydropower, giving it a structural cost and sustainability advantage over US and European competitors that rely on gas or coal-heavy grids.</p>
+                    <ul>
+                        <li>Target power cost: ₹0.08/kWh — 47% below US/EU average of $0.12–0.15/kWh</li>
+                        <li>Canal-side location provides sustainable water for liquid cooling</li>
+                        <li>Zero-liquid-discharge cooling system — no environmental liability</li>
+                        <li>≥50% renewable hydropower commitment from day one</li>
+                        <li>Waste heat recovery system reduces net energy consumption further</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- TAB: RESOURCES -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div id="tab-resources" class="tab-panel">
+    <div class="container">
+        <div class="section-label">Documentation</div>
+        <h2>All project files<br>in one place.</h2>
+        <p class="section-intro">Read online or download. All documents open in a new tab.</p>
+
+        <div class="resource-section-title">About Us</div>
+        <div class="file-grid">
+            <a href="https://2d0c05bd-aca5-4a48-acc4-0e7b5681c6e8.usrfiles.com/ugd/2d0c05_28485947d498418982ee423b2f2a3c2a.pdf" target="_blank" class="file-card fade-up">
+                <div class="file-icon-wrap"><svg viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/></svg></div>
+                <div>
+                    <h4>Founder's Profile</h4>
+                    <p>Leadership vision and entrepreneurial journey in cloud infrastructure.</p>
+                </div>
+                <div class="file-footer">
+                    <span class="file-type">PDF</span>
+                    <span class="file-link">Open →</span>
+                </div>
+            </a>
+            <a href="https://2d0c05bd-aca5-4a48-acc4-0e7b5681c6e8.usrfiles.com/ugd/2d0c05_b6e4ede4f0004048bafe9c207125a429.pdf" target="_blank" class="file-card fade-up">
+                <div class="file-icon-wrap"><svg viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/></svg></div>
+                <div>
+                    <h4>Team</h4>
+                    <p>Meet the world-class team driving cloud innovation in India.</p>
+                </div>
+                <div class="file-footer">
+                    <span class="file-type">PDF</span>
+                    <span class="file-link">Open →</span>
+                </div>
+            </a>
+            <a href="https://2d0c05bd-aca5-4a48-acc4-0e7b5681c6e8.usrfiles.com/ugd/2d0c05_9184c37f1b474405a0b059645ecb09c2.pdf" target="_blank" class="file-card fade-up">
+                <div class="file-icon-wrap"><svg viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/></svg></div>
+                <div>
+                    <h4>Vision &amp; Mission</h4>
+                    <p>Building India's sovereign AI infrastructure for the future.</p>
+                </div>
+                <div class="file-footer">
+                    <span class="file-type">PDF</span>
+                    <span class="file-link">Open →</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="resource-section-title">Market Analysis</div>
+        <div class="file-grid">
+            <a href="https://2d0c05bd-aca5-4a48-acc4-0e7b5681c6e8.usrfiles.com/ugd/2d0c05_c629a2fa84994199a658e79a28f795b7.pdf" target="_blank" class="file-card fade-up">
+                <div class="file-icon-wrap"><svg viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/></svg></div>
+                <div>
+                    <h4>AI Infrastructure Market Analysis</h4>
+                    <p>In-depth analysis of market opportunities and competitive landscape.</p>
+                </div>
+                <div class="file-footer">
+                    <span class="file-type">PDF</span>
+                    <span class="file-link">Open →</span>
+                </div>
+            </a>
+            <a href="https://2d0c05bd-aca5-4a48-acc4-0e7b5681c6e8.usrfiles.com/ugd/2d0c05_f440f6e6ab134729ba7763ed699414b0.pdf" target="_blank" class="file-card fade-up">
+                <div class="file-icon-wrap"><svg viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/></svg></div>
+                <div>
+                    <h4>List of Projects</h4>
+                    <p>Timelines of similar global AI infrastructure projects.</p>
+                </div>
+                <div class="file-footer">
+                    <span class="file-type">PDF</span>
+                    <span class="file-link">Open →</span>
+                </div>
+            </a>
+            <a href="../../Resources/Market Analysis.pdf" target="_blank" class="file-card fade-up">
+                <div class="file-icon-wrap"><svg viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/></svg></div>
+                <div>
+                    <h4>Full Market Analysis Report</h4>
+                    <p>Comprehensive PDF covering all market data and projections.</p>
+                </div>
+                <div class="file-footer">
+                    <span class="file-type">PDF</span>
+                    <span class="file-link">Open →</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="resource-section-title">Infrastructure &amp; Technology</div>
+        <div class="file-grid">
+            <a href="../../Resources/Cloud Infra Insights.pdf" target="_blank" class="file-card fade-up">
+                <div class="file-icon-wrap"><svg viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/></svg></div>
+                <div>
+                    <h4>Cloud Infrastructure Insights</h4>
+                    <p>Technical deep dive into Antriksh's infrastructure design.</p>
+                </div>
+                <div class="file-footer">
+                    <span class="file-type">PDF</span>
+                    <span class="file-link">Open →</span>
+                </div>
+            </a>
+            <a href="../../Resources/Antriksh Cloud.pdf" target="_blank" class="file-card fade-up">
+                <div class="file-icon-wrap"><svg viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/></svg></div>
+                <div>
+                    <h4>Antriksh Cloud Project Report</h4>
+                    <p>Comprehensive technical specifications and deployment strategy.</p>
+                </div>
+                <div class="file-footer">
+                    <span class="file-type">PDF</span>
+                    <span class="file-link">Open →</span>
+                </div>
+            </a>
+            <a href="../../Resources/jll-data-center-outlook-2025.pdf" target="_blank" class="file-card fade-up">
+                <div class="file-icon-wrap"><svg viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/></svg></div>
+                <div>
+                    <h4>JLL Data Centre Outlook 2025</h4>
+                    <p>Industry report on global data centre market trends and forecasts.</p>
+                </div>
+                <div class="file-footer">
+                    <span class="file-type">PDF</span>
+                    <span class="file-link">Open →</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="resource-section-title">Investment</div>
+        <div class="file-grid">
+            <a href="../../Resources/Investment Growth Metrics & RoI.pdf" target="_blank" class="file-card fade-up">
+                <div class="file-icon-wrap"><svg viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/></svg></div>
+                <div>
+                    <h4>Investment Growth Metrics &amp; RoI</h4>
+                    <p>Financial projections, IRR analysis, and return scenarios.</p>
+                </div>
+                <div class="file-footer">
+                    <span class="file-type">PDF</span>
+                    <span class="file-link">Open →</span>
+                </div>
+            </a>
+            <a href="../index.html#waitlist" class="file-card fade-up" style="border-color:var(--blue);background:var(--blue-light)">
+                <div class="file-icon-wrap" style="background:#dbeafe;color:var(--blue)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div>
+                    <h4>Request Early Access</h4>
+                    <p>Join the waitlist for priority GPU allocation and locked-in pricing.</p>
+                </div>
+                <div class="file-footer">
+                    <span class="file-type" style="background:#dbeafe;border-color:#bfdbfe;color:var(--blue)">Waitlist</span>
+                    <span class="file-link">Apply →</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <div class="footer-logo-mark">
+                    <svg width="16" height="16" viewBox="56 48 58 48" fill="white">
+                        <path d="M83.58 78.95v-.57l-1.06.32-1.03-3.41 6.86-2.08 1.03 3.41-1.63.5v2.02l9.28 17.65h-2.33l-7.16-13.33 4.36 13.33h-2.32l-4.76-14.44-8.27 14.44h-2.33L83.58 78.95z"/>
+                        <path d="M76.58 72.97l-9.23 2.69-2.69-9.29 9.23-2.69 2.69 9.29z"/>
+                        <path d="M63.96 68.88l1.56 5.4-3.17.93-1.56-5.4 3.17-.93z"/>
+                        <path d="M110.13 57.83c.96 3.3-.27 6.55-2.74 7.27l-3.45-11.94c2.47-.71 5.24 1.38 6.19 4.67z"/>
+                        <path d="M102.51 51.5l4.56 15.81-6.26 1.82-4.53-15.81 6.23-1.82z"/>
+                        <path d="M73.95 60.79l21.43-6.25 4.01 13.99-21.4 6.23-4.04-13.97z"/>
+                    </svg>
+                </div>
+                Antriksh Cloud
+            </div>
+            <div class="footer-links">
+                <a href="../index.html">Main Site</a>
+                <a href="../index.html#why">Why Us</a>
+                <a href="../index.html#tech">Technology</a>
+                <a href="../index.html#careers">Careers</a>
+                <a href="../index.html#waitlist">Get Early Access</a>
+                <a href="mailto:ceo@antriksh.cloud">ceo@antriksh.cloud</a>
+            </div>
+            <div class="footer-copy">© 2025 Antriksh Cloud Private Limited · US +1 (206) 665-0905 · IN +91 86829 40765</div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-sankey/0.12.3/d3-sankey.min.js"></script>
+<script>
+// ── Tab switching ────────────────────────────────────────────
+function switchTab(id, clicked) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    // activate the correct tab button
+    const tabMap = {why:0, growth:1, gap:2, competition:3, venture:4, datapoints:5, resources:6};
+    const i = tabMap[id];
+    document.querySelectorAll('.tab-btn')[i]?.classList.add('active');
+    // scroll tab nav into view
+    document.querySelector('.tab-nav-wrap').scrollIntoView({behavior:'smooth', block:'start'});
+    // build sankey when switching to gap tab
+    if (id === 'gap') buildSankey();
+}
+
+// ── Sankey ────────────────────────────────────────────────────
+let sankeyBuilt = false;
+function buildSankey() {
+    if (sankeyBuilt) return;
+    if (typeof d3 === 'undefined' || typeof d3.sankey === 'undefined') {
+        setTimeout(buildSankey, 200); return;
+    }
+    const el = document.getElementById('sankey-chart');
+    if (!el) return;
+    const m = {top:8, right:110, bottom:8, left:110};
+    const cw = Math.min(el.offsetWidth, 900);
+    const w = cw - m.left - m.right, h = 340 - m.top - m.bottom;
+    const svg = d3.select('#sankey-chart').append('svg')
+        .attr('width', cw).attr('height', h + m.top + m.bottom)
+        .append('g').attr('transform', `translate(${m.left},${m.top})`);
+    const nodes = [
+        {id:0,name:'China',color:'#ef4444'},{id:1,name:'United States',color:'#3b82f6'},
+        {id:2,name:'Switzerland',color:'#6366f1'},{id:3,name:'France',color:'#f59e0b'},
+        {id:4,name:'Asia',color:'#94a3b8'},{id:5,name:'Europe',color:'#94a3b8'},
+        {id:6,name:'Middle East',color:'#94a3b8'},{id:7,name:'North America',color:'#94a3b8'},
+        {id:8,name:'South Africa',color:'#94a3b8'},{id:9,name:'South America',color:'#94a3b8'},
+        {id:10,name:'Australia',color:'#94a3b8'}
+    ];
+    const links = [
+        {source:0,target:4,value:35,color:'#ef4444'},{source:0,target:5,value:8,color:'#ef4444'},
+        {source:0,target:6,value:3,color:'#ef4444'},{source:0,target:7,value:5,color:'#ef4444'},
+        {source:0,target:8,value:2,color:'#ef4444'},{source:0,target:9,value:2,color:'#ef4444'},
+        {source:0,target:10,value:2,color:'#ef4444'},{source:1,target:4,value:15,color:'#3b82f6'},
+        {source:1,target:5,value:20,color:'#3b82f6'},{source:1,target:6,value:5,color:'#3b82f6'},
+        {source:1,target:7,value:25,color:'#3b82f6'},{source:1,target:8,value:3,color:'#3b82f6'},
+        {source:1,target:9,value:5,color:'#3b82f6'},{source:1,target:10,value:5,color:'#3b82f6'},
+        {source:2,target:5,value:3,color:'#6366f1'},{source:3,target:5,value:4,color:'#f59e0b'}
+    ];
+    const sk = d3.sankey().nodeId(d=>d.id).nodeWidth(12).nodePadding(9).extent([[1,1],[w-1,h-5]]);
+    const {nodes:sn, links:sl} = sk({nodes:nodes.map(d=>({...d})), links:links.map(d=>({...d}))});
+    svg.append('g').selectAll('path').data(sl).enter().append('path')
+        .attr('d',d3.sankeyLinkHorizontal())
+        .attr('stroke',d=>d.color).attr('stroke-width',d=>Math.max(1,d.width))
+        .attr('fill','none').style('opacity',0.28)
+        .on('mouseover',function(){d3.select(this).style('opacity',0.6)})
+        .on('mouseout',function(){d3.select(this).style('opacity',0.28)});
+    const node = svg.append('g').selectAll('g').data(sn).enter().append('g');
+    node.append('rect').attr('x',d=>d.x0).attr('y',d=>d.y0)
+        .attr('height',d=>d.y1-d.y0).attr('width',d=>d.x1-d.x0)
+        .attr('fill',d=>d.color).attr('rx',2);
+    node.append('text')
+        .attr('x',d=>d.x0<w/2?d.x0-8:d.x1+8).attr('y',d=>(d.y0+d.y1)/2)
+        .attr('dy','0.35em').attr('text-anchor',d=>d.x0<w/2?'end':'start')
+        .attr('fill',d=>d.id<4?d.color:'#475569')
+        .style('font-weight',d=>d.id<4?'600':'400')
+        .style('font-size','13px').style('font-family','Inter,sans-serif')
+        .text(d=>d.name);
+    sankeyBuilt = true;
+}
+
+// ── Accordion (data points) ───────────────────────────────────
+function toggleDp(header) {
+    const body = header.nextElementSibling;
+    const isOpen = body.classList.contains('open');
+    document.querySelectorAll('.dp-body.open').forEach(b => {
+        b.classList.remove('open');
+        b.previousElementSibling.classList.remove('open');
+    });
+    if (!isOpen) { body.classList.add('open'); header.classList.add('open'); }
+}
+
+// ── Intersection observer ─────────────────────────────────────
+const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:0.08, rootMargin:'0px 0px -24px 0px'});
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

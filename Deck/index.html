@@ -1,0 +1,2213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antriksh Cloud - Investor Pitch Deck</title>
+    <style>
+        /* Contact */
+        .contact-info {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .contact-info p {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-info a {
+            color: #1565c0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .logo-placeholder {
+            width: 140px;
+            height: 140px;
+            background: #e3f2fd;
+            border-radius: 20px;
+            margin: 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+        
+        .telescope-logo {
+            width: 100%;
+            height: 100%;
+        }
+        /* Leadership */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .team-member {
+            text-align: center;
+            background: #fafafa;
+            padding: 1.5rem 0.8rem;
+            border-radius: 10px;
+        }
+
+        .member-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #bbdefb 0%, #90caf9 100%);
+            border-radius: 50%;
+            margin: 0 auto 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1565c0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .team-member p {
+            font-size: 0.75rem;
+            margin: 0.3rem 0;
+        }
+
+        .website-cta {
+            text-align: center;
+            margin-top: auto;
+            padding-bottom: 40px;
+        }
+        .learn-more-btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            color: #1a1a2e;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.05em;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .learn-more-btn:hover {
+            background: transparent;
+            color: black;
+            transform: translateY(-2px);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f5f5f5;
+            font-size: 14px;
+        }
+
+        /* A4 Landscape Page Setup */
+        .slide {
+            width: 297mm;
+            height: 210mm;
+            margin: 0 auto 10mm auto;
+            padding: 15mm 20mm;
+            background: #ffffff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            page-break-after: always;
+            page-break-inside: avoid;
+            overflow: hidden;
+        }
+        
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        
+        .slide-number {
+            position: absolute;
+            bottom: 10mm;
+            right: 15mm;
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .company-logo {
+            position: absolute;
+            bottom: 10mm;
+            left: 15mm;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: #1565c0;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .company-logo svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        @media screen {
+            body {
+                background: #e5e5e5;
+                padding: 20px 0;
+            }
+        }
+
+        @media print {
+            @page {
+                size: A4 landscape;
+                margin: 0;
+            }
+            
+            body {
+                margin: 0;
+                padding: 0;
+                background: white;
+            }
+            
+            .slide {
+                margin: 0;
+                box-shadow: none;
+                height: 210mm;
+                width: 297mm;
+                padding: 15mm 20mm;
+            }
+        }
+
+        /* Title Slide */
+        .slide-title {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            justify-content: center;
+        }
+
+        .slide-title .slide-content {
+            text-align: center;
+            justify-content: center;
+        }
+
+        .slide-title h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #1565c0;
+            letter-spacing: -1px;
+        }
+
+        .slide-title .tagline {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: #424242;
+        }
+
+        .logo-main {
+            width: 140px;
+            height: 140px;
+            margin: 1.5rem auto;
+        }
+
+        /* General Styles */
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1565c0;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.5px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1565c0;
+            margin-bottom: 0.6rem;
+        }
+
+        h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #424242;
+        }
+
+        p {
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+            color: #424242;
+            line-height: 1.5;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        /* Key Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 1rem 0.8rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .stat-box .number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1565c0;
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-box .label {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        /* Problem Slide Specific */
+        .comparison-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .country-card {
+            background: #f8f9fa;
+            padding: 1.2rem;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+        }
+
+        .country-card.india {
+            border: 2px solid #dc2626;
+        }
+
+        .country-card.usa {
+            border: 2px solid #2e7d32;
+        }
+
+        .country-card.eu {
+            border: 2px solid #1565c0;
+        }
+
+        .country-flag {
+            font-size: 1.8rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .metric-comparison {
+            margin: 0.6rem 0;
+        }
+
+        .metric-comparison .metric-name {
+            font-size: 0.7rem;
+            color: #64748b;
+            margin-bottom: 0.2rem;
+        }
+
+        .metric-comparison .metric-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        /* Solution Visual */
+        .solution-diagram {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.6rem;
+            margin: 1rem 0;
+        }
+
+        .solution-item {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 0.8rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .solution-icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .solution-item h4 {
+            font-size: 0.8rem;
+            color: #1565c0;
+        }
+
+        .solution-item p {
+            font-size: 0.65rem;
+            margin: 0;
+            color: #424242;
+        }
+
+        /* Business Model Visual */
+        .dual-engine {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .engine-card {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            padding: 1.2rem;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .engine-card h3 {
+            color: #e65100;
+            margin-bottom: 0.6rem;
+            font-size: 1rem;
+        }
+
+        .engine-card p {
+            font-size: 0.8rem;
+            margin: 0.4rem 0;
+            color: #424242;
+        }
+
+        .engine-card ul {
+            font-size: 0.75rem;
+            margin: 0.4rem 0;
+            padding-left: 1rem;
+        }
+
+        /* Unit Economics Table */
+        .economics-simple {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .economics-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0.8rem 0;
+        }
+
+        .economics-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .economics-item h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .economics-item p {
+            font-size: 0.75rem;
+            margin: 0;
+        }
+
+        .economics-arrow {
+            color: #1565c0;
+            font-size: 1.2rem;
+            margin: 0 0.3rem;
+        }
+
+        /* Team Grid Compact */
+        .team-grid-compact {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.6rem;
+            margin: 1rem 0;
+        }
+
+        .team-member-compact {
+            text-align: center;
+            background: #f8f9fa;
+            padding: 0.8rem 0.4rem;
+            border-radius: 10px;
+        }
+
+        .member-photo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 50%;
+            margin: 0 auto 0.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #1565c0;
+            font-weight: 700;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            border: 2px solid #fff;
+        }
+
+        .member-photo.orange {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            color: #e65100;
+        }
+
+        .member-photo.green {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            color: #2e7d32;
+        }
+
+        .member-photo.purple {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            color: #7b1fa2;
+        }
+
+        .member-photo.red {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            color: #dc2626;
+        }
+
+        .team-member-compact h4 {
+            font-size: 0.75rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .team-member-compact p {
+            font-size: 0.65rem;
+            margin: 0.1rem 0;
+        }
+
+        /* Financial Chart Simple */
+        .financial-chart {
+            background: #f8f9fa;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+        }
+
+        .chart-bars {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 120px;
+            margin: 1rem 0;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(to top, #1565c0, #42a5f5);
+            margin: 0 0.2rem;
+            border-radius: 6px 6px 0 0;
+            position: relative;
+        }
+
+        .chart-label {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .chart-value {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #1565c0;
+        }
+
+        /* Investment Box */
+        .investment-highlight {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .investment-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #7b1fa2;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Buttons */
+        .cta-button {
+            background: #1565c0;
+            color: white;
+            padding: 0.7rem 1.3rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin: 0.4rem;
+            font-size: 0.85rem;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            color: #e65100;
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+
+        .highlight-box p {
+            font-size: 0.8rem;
+            margin: 0;
+            color: #424242;
+        }
+
+        /* Quick Comparison Table */
+        .quick-comparison {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.75rem;
+        }
+
+        .quick-comparison th {
+            background: #e3f2fd;
+            padding: 0.6rem;
+            text-align: left;
+            font-weight: 600;
+            color: #1565c0;
+        }
+
+        .quick-comparison td {
+            padding: 0.6rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .quick-comparison tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        /* Page break utilities */
+        .page-break {
+            page-break-after: always;
+        }
+
+        .no-break {
+            page-break-inside: avoid;
+        }
+
+        /* Why Win Box */
+        .why-win-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .win-card {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 1.2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .win-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2e7d32;
+            margin-bottom: 0.2rem;
+        }
+
+        .win-label {
+            font-size: 0.8rem;
+            color: #424242;
+        }
+
+        /* Reduce spacing for landscape */
+        ul {
+            margin: 0.4rem 0;
+            padding-left: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.2rem;
+            font-size: 0.75rem;
+            line-height: 1.3;
+        }
+
+        /* Compact lists */
+        .compact-list {
+            line-height: 1.3;
+        }
+
+        .compact-list li {
+            margin-bottom: 0.15rem;
+        }
+
+        /* Code block */
+        .code-demo {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.7rem;
+            margin: 0.8rem 0;
+        }
+
+        /* Timeline styling */
+        .timeline-container {
+            position: relative;
+            padding: 0 1rem;
+            margin: 1rem 0;
+        }
+
+        .timeline-graphic {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .timeline-phases {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .phase-box {
+            text-align: center;
+            padding: 0.8rem 0.5rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .phase-box.active {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border: 2px solid #1565c0;
+        }
+
+        .phase-box.future {
+            background: #ffffff;
+            border: 2px dashed #ddd;
+        }
+
+        .phase-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .phase-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .phase-timeline {
+            font-size: 0.65rem;
+            color: #64748b;
+        }
+
+        /* TAM SAM SOM */
+        .tam-sam-som {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .market-segment {
+            text-align: center;
+            padding: 0.8rem;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .market-segment.tam {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 1rem 1.5rem;
+        }
+
+        .market-segment.sam {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 0.9rem 1.3rem;
+        }
+
+        .market-segment.som {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            padding: 0.8rem 1.1rem;
+        }
+
+        .market-label {
+            font-size: 0.6rem;
+            color: #64748b;
+            margin-bottom: 0.2rem;
+        }
+
+        .market-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.1rem;
+        }
+
+        .market-desc {
+            font-size: 0.6rem;
+            color: #64748b;
+        }
+
+        /* Progress bar for timeline */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #1565c0 0%, #42a5f5 100%);
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .progress-markers {
+            position: absolute;
+            top: -8px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .progress-marker {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 3px solid #1565c0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            font-weight: bold;
+        }
+
+        .progress-marker.completed {
+            background: #1565c0;
+            color: white;
+        }
+
+        .progress-marker.current {
+            background: #e65100;
+            border-color: #e65100;
+        }
+
+        /* Executive Summary specific styles */
+        .exec-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .exec-summary-item {
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
+            padding: 0.8rem;
+            border-radius: 10px;
+            border-left: 3px solid #1565c0;
+        }
+
+        .exec-summary-item h4 {
+            color: #1565c0;
+            font-size: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .exec-summary-item p {
+            font-size: 0.7rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+        /* Title Slide */
+        .slide-title {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        }
+
+        .slide-title .slide-content {
+            text-align: center;
+            justify-content: center;
+        }
+
+        .slide-title h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1565c0;
+            letter-spacing: -1px;
+        }
+
+        .slide-title .tagline {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: #424242;
+        }
+
+        .slide-title .highlight {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1565c0;
+            margin: 2rem 0;
+        }
+    </style>
+
+    <script>
+        // Print functionality
+        function printDeck() {
+            window.print();
+        }
+        
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'p' || e.key === 'P') {
+                printDeck();
+            }
+        });
+        
+        // Automatically assign slide numbers
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            
+            slides.forEach((slide, index) => {
+                // Skip the first slide (title slide)
+                if (index === 0) return;
+                
+                // Check if slide already has a slide number element
+                let slideNumber = slide.querySelector('.slide-number');
+                
+                // If not, create one
+                if (!slideNumber) {
+                    slideNumber = document.createElement('div');
+                    slideNumber.className = 'slide-number';
+                    slide.appendChild(slideNumber);
+                }
+                
+                // Set the slide number (starting from 2 for the second slide)
+                slideNumber.textContent = index + 1;
+            });
+        });
+    </script>
+
+</head>
+<body>
+
+    <div class="slide slide-title">
+        <div class="slide-content">
+            <h1>Antriksh Cloud</h1>
+            <p class="tagline">India's 500 MW Sovereign AI GPU Cloud</p>
+            <div class="logo-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="56 48 58 48" preserveAspectRatio="xMidYMid meet">
+                    <!-- Antriksh Cloud Logo -->
+                    <g fill="#1565c0">
+                        <!-- Bottom V-shaped element -->
+                        <path d="M 83.582031 78.949219 L 83.582031 78.378906 L 82.519531 78.699219 L 81.492188 75.292969 L 88.347656 73.207031 L 89.378906 76.617188 L 87.746094 77.113281 L 87.746094 79.132812 L 97.023438 96.78125 L 94.695312 96.78125 L 87.535156 83.449219 L 91.894531 96.78125 L 89.570312 96.78125 L 84.8125 82.335938 L 76.539062 96.78125 L 74.214844 96.78125 L 83.582031 78.949219"/>
+                        
+                        <!-- Left square element -->
+                        <path d="M 76.582031 72.972656 L 67.351562 75.664062 L 64.664062 66.371094 L 73.894531 63.679688 L 76.582031 72.972656"/>
+                        
+                        <!-- Small left connector -->
+                        <path d="M 63.957031 68.878906 L 65.515625 74.277344 L 62.34375 75.203125 L 60.78125 69.804688 L 63.957031 68.878906"/>
+                        
+                        <!-- Top right curved element -->
+                        <path d="M 110.128906 57.828125 C 111.085938 61.125 109.855469 64.378906 107.386719 65.097656 L 103.9375 53.160156 C 106.402344 52.445312 109.179688 54.53125 110.128906 57.828125"/>
+                        
+                        <!-- Right vertical element -->
+                        <path d="M 102.507812 51.503906 L 107.066406 67.308594 L 100.808594 69.128906 L 96.273438 53.316406 L 102.507812 51.503906"/>
+                        
+                        <!-- Center parallelogram -->
+                        <path d="M 73.949219 60.785156 L 95.382812 54.539062 L 99.394531 68.535156 L 77.992188 74.769531 L 73.949219 60.785156"/>
+                    </g>
+                </svg>
+            </div>
+            <p class="highlight">Building India's AI Infrastructure</p>
+            <p style="color: #666; margin-top: 2rem;">Deep Tech</p>
+            <p style="color: #666; margin-top: 2rem;">Investor Pitch Deck | 2025</p>
+        </div>
+    </div>
+
+
+    <!-- Slide 2: Executive Summary -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Executive Summary</h2>
+            <p class="subtitle">Building India's AI infrastructure leader at hyperscale</p>
+            
+            <div class="exec-summary-grid">
+                <div class="exec-summary-item">
+                    <h4>📊 The Opportunity</h4>
+                    <p>• $41.7B market opportunity<br>
+                    • India has 51x infrastructure gap vs US<br>
+                    • 48% AI adoption but only 1-4% of global investment</p>
+                </div>
+                <div class="exec-summary-item">
+                    <h4>🚀 Our Solution</h4>
+                    <p>• 500MW liquid-cooled AI campus<br>
+                    • 288,000 GPUs (6x any competitor)<br>
+                    • Software-defined, 100% sovereign</p>
+                </div>
+                <div class="exec-summary-item">
+                    <h4>💼 Business Model</h4>
+                    <p>• GPU-as-a-Service (60%)<br>
+                    • Sovereign cloud (25%)<br>
+                    • Venture engine (10%)</p>
+                </div>
+            </div>
+            
+            <div class="exec-summary-grid" style="margin-top: 0.6rem;">
+                <div class="exec-summary-item">
+                    <h4>🏆 Competitive Edge</h4>
+                    <p>• 40-50% cost advantage<br>
+                    • 150-300kW per rack density<br>
+                    • Strategic canal-side location</p>
+                </div>
+                <div class="exec-summary-item">
+                    <h4>📈 Financial Highlights</h4>
+                    <p>• 66% EBITDA margins<br>
+                    • $850M revenue by Year 5<br>
+                    • 2.4 year payback period</p>
+                </div>
+                <div class="exec-summary-item">
+                    <h4>💰 Investment Ask</h4>
+                    <p>• $66M round in 3 Tranches<br>
+                    • 46% target IRR<br>
+                    • Revenue in 6-8 months</p>
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);  padding: 1rem; border-radius: 10px; text-align: center; margin-top: 1rem;">
+                <h3 style=" margin-bottom: 0.4rem; font-size: 1rem;">The Bottom Line</h3>
+                <p style="margin: 0; font-size: 0.85rem;">
+                    <strong>500MW secured • Govt backing • GB200 allocation • Ready to build</strong><br>
+                    First-mover advantage to become India's AI infrastructure champion
+                </p>
+            </div>
+
+            <div class="website-cta">
+               <a href="https://www.antriksh.cloud" target="_blank" class="learn-more-btn">
+                   🌐 Learn more on our Website →
+               </a>
+            </div>
+
+        </div>
+        <div class="company-logo">
+            <svg viewBox="56 48 58 48" preserveAspectRatio="xMidYMid meet">
+                <g fill="#1565c0">
+                    <path d="M 83.582031 78.949219 L 83.582031 78.378906 L 82.519531 78.699219 L 81.492188 75.292969 L 88.347656 73.207031 L 89.378906 76.617188 L 87.746094 77.113281 L 87.746094 79.132812 L 97.023438 96.78125 L 94.695312 96.78125 L 87.535156 83.449219 L 91.894531 96.78125 L 89.570312 96.78125 L 84.8125 82.335938 L 76.539062 96.78125 L 74.214844 96.78125 L 83.582031 78.949219"/>
+                    <path d="M 76.582031 72.972656 L 67.351562 75.664062 L 64.664062 66.371094 L 73.894531 63.679688 L 76.582031 72.972656"/>
+                    <path d="M 63.957031 68.878906 L 65.515625 74.277344 L 62.34375 75.203125 L 60.78125 69.804688 L 63.957031 68.878906"/>
+                    <path d="M 110.128906 57.828125 C 111.085938 61.125 109.855469 64.378906 107.386719 65.097656 L 103.9375 53.160156 C 106.402344 52.445312 109.179688 54.53125 110.128906 57.828125"/>
+                    <path d="M 102.507812 51.503906 L 107.066406 67.308594 L 100.808594 69.128906 L 96.273438 53.316406 L 102.507812 51.503906"/>
+                    <path d="M 73.949219 60.785156 L 95.382812 54.539062 L 99.394531 68.535156 L 77.992188 74.769531 L 73.949219 60.785156"/>
+                </g>
+            </svg>
+            <span>Antriksh Cloud</span>
+        </div>
+    </div>
+
+    <!-- Slide 3: Problem & Opportunity -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>India: Maximum Demand, Minimum Supply</h2>
+            <p class="subtitle">$41.7B opportunity in India's AI infrastructure gap</p>
+            
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 0.8rem;">
+                <div>
+                    <div class="comparison-visual" style="grid-template-columns: repeat(3, 1fr);">
+                        <div class="country-card india">
+                            <div class="country-flag">🇮🇳</div>
+                            <h3 style="font-size: 0.9rem;">India</h3>
+                            <div class="metric-comparison">
+                                <div class="metric-name">AI Adoption Rate</div>
+                                <div class="metric-value" style="color: #2e7d32;">48%</div>
+                            </div>
+                            <div class="metric-comparison">
+                                <div class="metric-name">DC per Million Users</div>
+                                <div class="metric-value" style="color: #dc2626;">1 MW</div>
+                            </div>
+                        </div>
+                        <div class="country-card usa">
+                            <div class="country-flag">🇺🇸</div>
+                            <h3 style="font-size: 0.9rem;">USA</h3>
+                            <div class="metric-comparison">
+                                <div class="metric-name">AI Adoption Rate</div>
+                                <div class="metric-value" style="color: #64748b;">22%</div>
+                            </div>
+                            <div class="metric-comparison">
+                                <div class="metric-name">DC per Million Users</div>
+                                <div class="metric-value" style="color: #2e7d32;">51 MW</div>
+                            </div>
+                        </div>
+                        <div class="country-card eu">
+                            <div class="country-flag">🇪🇺</div>
+                            <h3 style="font-size: 0.9rem;">EU</h3>
+                            <div class="metric-comparison">
+                                <div class="metric-name">AI Adoption Rate</div>
+                                <div class="metric-value" style="color: #64748b;">32%</div>
+                            </div>
+                            <div class="metric-comparison">
+                                <div class="metric-name">DC per Million Users</div>
+                                <div class="metric-value" style="color: #2e7d32;">28 MW</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); padding: 0.8rem; border-radius: 10px; margin-top: 0.6rem;">
+                        <p style="font-size: 0.75rem; margin: 0; text-align: center;"><strong>Critical Gap:</strong> India leads in AI adoption but has 51x less infrastructure than US, 28x less than EU</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="highlight-box" style="margin: 0;">
+                        <h3>51x Gap = $41.7B</h3>
+                        <p style="font-size: 0.75rem;">• 90%+ demand foreign<br>
+                        • India gets 1-4% investment<br>
+                        • GPU cloud 10x growth</p>
+                    </div>
+                    
+                    <div class="stats-grid" style="grid-template-columns: 1fr; gap: 0.4rem; margin-top: 0.6rem;">
+                        <div class="stat-box" style="padding: 0.6rem;">
+                            <div class="number" style="font-size: 1.3rem;">2.2x</div>
+                            <div class="label" style="font-size: 0.65rem;">Higher AI adoption</div>
+                        </div>
+                        <div class="stat-box" style="padding: 0.6rem;">
+                            <div class="number" style="font-size: 1.3rem;">100:1</div>
+                            <div class="label" style="font-size: 0.65rem;">US vs India invest</div>
+                        </div>
+                        <div class="stat-box" style="padding: 0.6rem;">
+                            <div class="number" style="font-size: 1.3rem;">30%</div>
+                            <div class="label" style="font-size: 0.65rem;">Market CAGR</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="company-logo">
+            <svg viewBox="56 48 58 48" preserveAspectRatio="xMidYMid meet">
+                <g fill="#1565c0">
+                    <path d="M 83.582031 78.949219 L 83.582031 78.378906 L 82.519531 78.699219 L 81.492188 75.292969 L 88.347656 73.207031 L 89.378906 76.617188 L 87.746094 77.113281 L 87.746094 79.132812 L 97.023438 96.78125 L 94.695312 96.78125 L 87.535156 83.449219 L 91.894531 96.78125 L 89.570312 96.78125 L 84.8125 82.335938 L 76.539062 96.78125 L 74.214844 96.78125 L 83.582031 78.949219"/>
+                    <path d="M 76.582031 72.972656 L 67.351562 75.664062 L 64.664062 66.371094 L 73.894531 63.679688 L 76.582031 72.972656"/>
+                    <path d="M 63.957031 68.878906 L 65.515625 74.277344 L 62.34375 75.203125 L 60.78125 69.804688 L 63.957031 68.878906"/>
+                    <path d="M 110.128906 57.828125 C 111.085938 61.125 109.855469 64.378906 107.386719 65.097656 L 103.9375 53.160156 C 106.402344 52.445312 109.179688 54.53125 110.128906 57.828125"/>
+                    <path d="M 102.507812 51.503906 L 107.066406 67.308594 L 100.808594 69.128906 L 96.273438 53.316406 L 102.507812 51.503906"/>
+                    <path d="M 73.949219 60.785156 L 95.382812 54.539062 L 99.394531 68.535156 L 77.992188 74.769531 L 73.949219 60.785156"/>
+                </g>
+            </svg>
+            <span>Antriksh Cloud</span>
+        </div>
+    </div>
+
+    <!-- Slide 4: Solution -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Solution: Liquid-Cooled Software-Defined AI GPU Data Center</h2>
+            <p class="subtitle">Leapfrogging traditional DCs with 150kW+ per rack design (expandable to 300kW)</p>
+            
+            <div style="display: grid; grid-template-columns: 5fr 2fr; gap: 1rem;">
+                <div>
+                    <div class="solution-diagram">
+                        <div class="solution-item">
+                            <div class="solution-icon">🏗️</div>
+                            <h4>500MW Scale</h4>
+                            <p>288K GPUs<br>6x any rival</p>
+                        </div>
+                        <div class="solution-item">
+                            <div class="solution-icon">💧</div>
+                            <h4>Liquid Cooled</h4>
+                            <p>150-300kW/rack<br>vs 20-30kW avg</p>
+                        </div>
+                        <div class="solution-item">
+                            <div class="solution-icon">🛡️</div>
+                            <h4>100% Sovereign</h4>
+                            <p>Data stays India<br>CERT-In ready</p>
+                        </div>
+                        <div class="solution-item">
+                            <div class="solution-icon">📍</div>
+                            <h4>Strategic Site</h4>
+                            <p>Canal water<br>5-30ms latency</p>
+                        </div>
+                    </div>
+                    
+                    <table class="quick-comparison" style="margin-top: 0.8rem; font-size: 0.7rem;">
+                        <thead>
+                            <tr>
+                                <th>Comparison</th>
+                                <th>Traditional DCs</th>
+                                <th>Antriksh Cloud</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Rack Density</td>
+                                <td>20-30kW (air-cooled)</td>
+                                <td style="color: #2e7d32; font-weight: 600;">✓ 150kW+ (liquid-cooled)</td>
+                            </tr>
+                            <tr>
+                                <td>Infrastructure</td>
+                                <td>Hardware-defined</td>
+                                <td style="color: #2e7d32; font-weight: 600;">✓ Software-defined</td>
+                            </tr>
+                            <tr>
+                                <td>Cooling</td>
+                                <td>Air-cooled, throttles</td>
+                                <td style="color: #2e7d32; font-weight: 600;">✓ Direct-to-chip liquid</td>
+                            </tr>
+                            <tr>
+                                <td>AI Focus</td>
+                                <td>Mixed workloads</td>
+                                <td style="color: #2e7d32; font-weight: 600;">✓ 100% AI-only</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 1rem; border-radius: 12px;">
+                    <h3 style="color: #2e7d32; font-size: 0.9rem;">Deploy in Seconds</h3>
+                    <div class="code-demo">
+                        <pre style="margin: 0;">from antriksh import GPU
+cluster = GPU.create(
+  region="delhi-1", 
+  gpus=8, 
+  type="GB200"
+)
+model = cluster.deploy("llama-70b")</pre>
+                    </div>
+                    <div style="margin-top: 0.6rem;">
+                        <h4 style="font-size: 0.8rem; color: #2e7d32;">Key Advantages:</h4>
+                        <p style="font-size: 0.7rem; margin: 0.2rem 0;">
+                            ✓ 15 min to first GPU<br>
+                            ✓ Multi-cloud native<br>
+                            ✓ Zero egress fees<br>
+                            ✓ INR billing, 40% cheaper<br>
+                            ✓ PUE < 1.10 efficiency
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="company-logo">
+            <svg viewBox="56 48 58 48" preserveAspectRatio="xMidYMid meet">
+                <g fill="#1565c0">
+                    <path d="M 83.582031 78.949219 L 83.582031 78.378906 L 82.519531 78.699219 L 81.492188 75.292969 L 88.347656 73.207031 L 89.378906 76.617188 L 87.746094 77.113281 L 87.746094 79.132812 L 97.023438 96.78125 L 94.695312 96.78125 L 87.535156 83.449219 L 91.894531 96.78125 L 89.570312 96.78125 L 84.8125 82.335938 L 76.539062 96.78125 L 74.214844 96.78125 L 83.582031 78.949219"/>
+                    <path d="M 76.582031 72.972656 L 67.351562 75.664062 L 64.664062 66.371094 L 73.894531 63.679688 L 76.582031 72.972656"/>
+                    <path d="M 63.957031 68.878906 L 65.515625 74.277344 L 62.34375 75.203125 L 60.78125 69.804688 L 63.957031 68.878906"/>
+                    <path d="M 110.128906 57.828125 C 111.085938 61.125 109.855469 64.378906 107.386719 65.097656 L 103.9375 53.160156 C 106.402344 52.445312 109.179688 54.53125 110.128906 57.828125"/>
+                    <path d="M 102.507812 51.503906 L 107.066406 67.308594 L 100.808594 69.128906 L 96.273438 53.316406 L 102.507812 51.503906"/>
+                    <path d="M 73.949219 60.785156 L 95.382812 54.539062 L 99.394531 68.535156 L 77.992188 74.769531 L 73.949219 60.785156"/>
+                </g>
+            </svg>
+            <span>Antriksh Cloud</span>
+        </div>
+    </div>
+
+    <!-- Slide 5: Why Now -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Why Now: Perfect Timing</h2>
+            <p class="subtitle">Three mega-trends creating a $41.7B opportunity window</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-bottom: 0.8rem;">
+                <!-- Global GPU Explosion -->
+                <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 0.8rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <div style="text-align: center; margin-bottom: 0.4rem;">
+                        <div style="font-size: 1.5rem;">🌍</div>
+                        <h3 style="color: #1565c0; font-size: 0.85rem; margin: 0;">Global GPU Boom</h3>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem; text-align: center;">
+                        <div style="background: rgba(255,255,255,0.7); padding: 0.3rem; border-radius: 6px;">
+                            <div style="font-size: 1rem; font-weight: 700; color: #1565c0;">10x</div>
+                            <div style="font-size: 0.55rem;">Growth</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.7); padding: 0.3rem; border-radius: 6px;">
+                            <div style="font-size: 1rem; font-weight: 700; color: #1565c0;">$500B</div>
+                            <div style="font-size: 0.55rem;">Capital</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.65rem; margin: 0.3rem 0 0 0; text-align: center;">CoreWeave: $80B<br>Specialists win 80%</p>
+                </div>
+                
+                <!-- India's AI Moment -->
+                <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 0.8rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <div style="text-align: center; margin-bottom: 0.4rem;">
+                        <div style="font-size: 1.5rem;">🇮🇳</div>
+                        <h3 style="color: #2e7d32; font-size: 0.85rem; margin: 0;">India Ready</h3>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem; text-align: center;">
+                        <div style="background: rgba(255,255,255,0.7); padding: 0.3rem; border-radius: 6px;">
+                            <div style="font-size: 1rem; font-weight: 700; color: #2e7d32;">Max AI Adoption</div>
+                            <!-- <div style="font-size: 0.55rem;">48%</div> -->
+                        </div>
+                        <div style="background: rgba(255,255,255,0.7); padding: 0.3rem; border-radius: 6px;">
+                            <div style="font-size: 0.8rem; font-weight: 700; color: #2e7d32;">National Priority Infra Status</div>
+                            <!-- <div style="font-size: 0.55rem;">National Priority Infra Status</div> -->
+                        </div>
+                    </div>
+                    <p style="font-size: 0.65rem; margin: 0.3rem 0 0 0; text-align: center;">Export ban lifted<br>Data sovereignty</p>
+                </div>
+                
+                <!-- Market White Space -->
+                <div style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); padding: 0.8rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <div style="text-align: center; margin-bottom: 0.4rem;">
+                        <div style="font-size: 1.5rem;">📈</div>
+                        <h3 style="color: #e65100; font-size: 0.85rem; margin: 0;">Market Gap</h3>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem; text-align: center;">
+                        <div style="background: rgba(255,255,255,0.7); padding: 0.3rem; border-radius: 6px;">
+                            <div style="font-size: 1rem; font-weight: 700; color: #e65100;"><50K</div>
+                            <div style="font-size: 0.55rem;">GPUs</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.7); padding: 0.3rem; border-radius: 6px;">
+                            <div style="font-size: 1rem; font-weight: 700; color: #e65100;">$72M</div>
+                            <div style="font-size: 0.55rem;">E2E Val</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.65rem; margin: 0.3rem 0 0 0; text-align: center;">No player >100MW<br>Wide open market</p>
+                </div>
+            </div>
+            
+            <!-- Investment Paradox and Market Funnel -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+                <!-- Investment Paradox -->
+                <div style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); padding: 0.8rem; border-radius: 10px; text-align: center;">
+                    <h4 style="color: #dc2626; margin-bottom: 0.4rem; font-size: 0.85rem;">⚠️ The Investment Paradox</h4>
+                    <div style="display: flex; justify-content: space-around; align-items: center;">
+                        <div>
+                            <div style="font-size: 1.8rem; font-weight: 700; color: #dc2626;">48%</div>
+                            <div style="font-size: 0.6rem; color: #7f1d1d;">AI Adoption</div>
+                        </div>
+                        <div style="font-size: 1.5rem; color: #dc2626;">→</div>
+                        <div>
+                            <div style="font-size: 1.8rem; font-weight: 700; color: #dc2626;"><1%</div>
+                            <div style="font-size: 0.6rem; color: #7f1d1d;">of Investment</div>
+                        </div>
+                    </div>
+                    <p style="margin: 0.4rem 0 0 0; font-size: 0.7rem; font-weight: 600;">Maximum demand + Minimum supply = Massive opportunity</p>
+                </div>
+                
+                <!-- Market Funnel -->
+                <div style="background: #f8f9fa; padding: 0.8rem; border-radius: 10px;">
+                    <h4 style="text-align: center; color: #1565c0; margin-bottom: 0.5rem; font-size: 1rem;">🎯 Current Market Size in 2025</h4>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <div style="text-align: center; flex: 1;">
+                            <div style="font-size: 1rem; color: #64748b;">TAM</div>
+                            <div style="font-size: 1rem; font-weight: 700; color: #1565c0;">$757B</div>
+                        </div>
+                        <div style="color: #cbd5e1;">→</div>
+                        <div style="text-align: center; flex: 1;">
+                            <div style="font-size: 1rem; color: #64748b;">APAC</div>
+                            <div style="font-size: 1rem; font-weight: 700; color: #1565c0;">$227B</div>
+                        </div>
+                        <div style="color: #cbd5e1;">→</div>
+                        <div style="text-align: center; flex: 1;">
+                            <div style="font-size: 1rem; color: #64748b;">India</div>
+                            <div style="font-size: 1rem; font-weight: 700; color: #2e7d32;">$41.7B</div>
+                        </div>
+                        <div style="color: #cbd5e1;">→</div>
+                        <div style="text-align: center; flex: 1;">
+                            <div style="font-size: 1rem; color: #64748b;">Target</div>
+                            <div style="font-size: 1rem; font-weight: 700; color: #e65100;">$12.5B</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div style="background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%); color: white; padding: 0.8rem; border-radius: 10px; text-align: center; margin-top: 0.8rem;">
+                <h3 style="color: white; margin-bottom: 0.3rem; font-size: 1rem;">🚀 The Window is Open NOW</h3>
+                <p style="margin: 0; color: white; font-size: 0.8rem;">First sovereign AI infrastructure player at scale wins the entire $41.7B market</p>
+            </div>
+        </div>
+        <div class="company-logo">
+            <svg viewBox="56 48 58 48" preserveAspectRatio="xMidYMid meet">
+                <g fill="#1565c0">
+                    <path d="M 83.582031 78.949219 L 83.582031 78.378906 L 82.519531 78.699219 L 81.492188 75.292969 L 88.347656 73.207031 L 89.378906 76.617188 L 87.746094 77.113281 L 87.746094 79.132812 L 97.023438 96.78125 L 94.695312 96.78125 L 87.535156 83.449219 L 91.894531 96.78125 L 89.570312 96.78125 L 84.8125 82.335938 L 76.539062 96.78125 L 74.214844 96.78125 L 83.582031 78.949219"/>
+                    <path d="M 76.582031 72.972656 L 67.351562 75.664062 L 64.664062 66.371094 L 73.894531 63.679688 L 76.582031 72.972656"/>
+                    <path d="M 63.957031 68.878906 L 65.515625 74.277344 L 62.34375 75.203125 L 60.78125 69.804688 L 63.957031 68.878906"/>
+                    <path d="M 110.128906 57.828125 C 111.085938 61.125 109.855469 64.378906 107.386719 65.097656 L 103.9375 53.160156 C 106.402344 52.445312 109.179688 54.53125 110.128906 57.828125"/>
+                    <path d="M 102.507812 51.503906 L 107.066406 67.308594 L 100.808594 69.128906 L 96.273438 53.316406 L 102.507812 51.503906"/>
+                    <path d="M 73.949219 60.785156 L 95.382812 54.539062 L 99.394531 68.535156 L 77.992188 74.769531 L 73.949219 60.785156"/>
+                </g>
+            </svg>
+            <span>Antriksh Cloud</span>
+        </div>
+    </div>
+
+    <!-- Slide 6: Business Model -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Dual-Engine Business Model</h2>
+            <p class="subtitle">Two synergistic engines driving exponential value creation</p>
+            
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
+                <div class="dual-engine">
+                    <div class="engine-card">
+                        <h3>🏗️ Infrastructure Engine</h3>
+                        <p style="font-weight: 600; font-size: 0.85rem;">Predictable Cash Flow</p>
+                        <ul style="margin: 0.3rem 0; padding-left: 1rem;">
+                            <li>On-demand GPU cloud</li>
+                            <li>Reserved instances</li>
+                            <li>Managed private cloud</li>
+                            <li>Sovereign SaaS hosting</li>
+                        </ul>
+                        <div style="background: rgba(255,255,255,0.5); padding: 0.6rem; border-radius: 8px; margin-top: 0.6rem;">
+                            <p style="margin: 0; font-weight: 600; font-size: 0.7rem;">Target: 85% contracted</p>
+                            <p style="margin: 0; font-size: 0.7rem;">Margin: 66% EBITDA</p>
+                        </div>
+                    </div>
+                    <div class="engine-card">
+                        <h3>🚀 Venture Engine</h3>
+                        <p style="font-weight: 600; font-size: 0.85rem;">Exponential Upside</p>
+                        <ul style="margin: 0.3rem 0; padding-left: 1rem;">
+                            <li>GPU hours → equity</li>
+                            <li>Portfolio 50+ startups</li>
+                            <li>Strategic partnerships</li>
+                            <li>Exit: 10-100x</li>
+                        </ul>
+                        <div style="background: rgba(255,255,255,0.5); padding: 0.6rem; border-radius: 8px; margin-top: 0.6rem;">
+                            <p style="margin: 0; font-weight: 600; font-size: 0.7rem;">Target: 10% capacity</p>
+                            <p style="margin: 0; font-size: 0.7rem;">Returns: 25-100x</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="text-align: center; color: #1565c0; font-size: 0.9rem; margin-bottom: 0.6rem;">Revenue Mix</h3>
+                    <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 0.8rem; border-radius: 10px; text-align: center; margin-bottom: 0.4rem;">
+                        <h4 style="color: #1565c0; font-size: 1.5rem; margin: 0;">60%</h4>
+                        <p style="margin: 0.2rem 0 0 0; font-weight: 600; font-size: 0.7rem;">GPU-as-a-Service</p>
+                        <p style="margin: 0; font-size: 0.65rem; color: #64748b;">60% discounted - hyperscalers</p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); padding: 0.8rem; border-radius: 10px; text-align: center; margin-bottom: 0.4rem;">
+                        <h4 style="color: #e65100; font-size: 1.5rem; margin: 0;">25%</h4>
+                        <p style="margin: 0.2rem 0 0 0; font-weight: 600; font-size: 0.7rem;">Sovereign Cloud</p>
+                        <p style="margin: 0; font-size: 0.65rem; color: #64748b;">3-5 yr contracts</p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 0.8rem; border-radius: 10px; text-align: center;">
+                        <h4 style="color: #2e7d32; font-size: 1.5rem; margin: 0;">10%</h4>
+                        <p style="margin: 0.2rem 0 0 0; font-weight: 600; font-size: 0.7rem;">AI Ventures</p>
+                        <p style="margin: 0; font-size: 0.65rem; color: #64748b;">Equity plays</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; font-style: italic; font-size: 0.85rem; color: #64748b; margin-top: 0.8rem;">
+                "Infrastructure profits fund growth → Venture wins accelerate returns"
+            </div>
+        </div>
+        <div class="company-logo">
+            <svg viewBox="56 48 58 48" preserveAspectRatio="xMidYMid meet">
+                <g fill="#1565c0">
+                    <path d="M 83.582031 78.949219 L 83.582031 78.378906 L 82.519531 78.699219 L 81.492188 75.292969 L 88.347656 73.207031 L 89.378906 76.617188 L 87.746094 77.113281 L 87.746094 79.132812 L 97.023438 96.78125 L 94.695312 96.78125 L 87.535156 83.449219 L 91.894531 96.78125 L 89.570312 96.78125 L 84.8125 82.335938 L 76.539062 96.78125 L 74.214844 96.78125 L 83.582031 78.949219"/>
+                    <path d="M 76.582031 72.972656 L 67.351562 75.664062 L 64.664062 66.371094 L 73.894531 63.679688 L 76.582031 72.972656"/>
+                    <path d="M 63.957031 68.878906 L 65.515625 74.277344 L 62.34375 75.203125 L 60.78125 69.804688 L 63.957031 68.878906"/>
+                    <path d="M 110.128906 57.828125 C 111.085938 61.125 109.855469 64.378906 107.386719 65.097656 L 103.9375 53.160156 C 106.402344 52.445312 109.179688 54.53125 110.128906 57.828125"/>
+                    <path d="M 102.507812 51.503906 L 107.066406 67.308594 L 100.808594 69.128906 L 96.273438 53.316406 L 102.507812 51.503906"/>
+                    <path d="M 73.949219 60.785156 L 95.382812 54.539062 L 99.394531 68.535156 L 77.992188 74.769531 L 73.949219 60.785156"/>
+                </g>
+            </svg>
+            <span>Antriksh Cloud</span>
+        </div>
+    </div>
+
+    <!-- Slide 7: Unit Economics -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Superior Unit Economics</h2>
+            <p class="subtitle">World-class efficiency meets India cost advantage</p>
+
+            
+            <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 1rem;">
+                <div class="economics-simple">
+                    <h3 style="text-align: center; color: #1565c0; margin-bottom: 0.8rem; font-size: 1rem;">Per MW Economics</h3>
+                    <div class="economics-flow">
+                        <div class="economics-item">
+                            <h4 style="color: #1565c0;">$34.4M*</h4>
+                            <p>CAPEX/MW</p>
+                        </div>
+                        <span class="economics-arrow">→</span>
+                        <div class="economics-item">
+                            <h4 style="color: #e65100;">$16M</h4>
+                            <p>Revenue/MW</p>
+                        </div>
+                        <span class="economics-arrow">→</span>
+                        <div class="economics-item">
+                            <h4 style="color: #2e7d32;">66%</h4>
+                            <p>EBITDA Margin</p>
+                        </div>
+                    </div>
+                    
+                    <table class="quick-comparison" style="margin-top: 0.8rem;">
+                        <thead>
+                            <tr>
+                                <th>Cost Advantage</th>
+                                <th>Industry Avg</th>
+                                <th>Antriksh</th>
+                                <th>Advantage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Power Cost</td>
+                                <td>$0.12-0.15/kWh</td>
+                                <td><strong>$0.08/kWh</strong></td>
+                                <td style="color: #2e7d32; font-weight: 600;">47% Lower</td>
+                            </tr>
+                            <tr>
+                                <td>Labor Cost</td>
+                                <td>US/EU baseline</td>
+                                <td><strong>67% Lower</strong></td>
+                                <td style="color: #2e7d32; font-weight: 600;">Major Win</td>
+                            </tr>
+                            <tr>
+                                <td>Construction</td>
+                                <td>$40-50M/MW</td>
+                                <td><strong>$34.4M/MW</strong></td>
+                                <td style="color: #2e7d32; font-weight: 600;">23% Lower</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div>
+                    <div style="background: white; padding: 0.8rem; border: 1px solid #e3f2fd; border-radius: 10px;">
+                        <h4 style="color: #1565c0; font-size: 0.85rem;">Key Metrics</h4>
+                        <ul style="margin: 0.3rem 0; padding-left: 1rem; font-size: 0.7rem;">
+                            <li><strong>Payback:</strong> 2.4 years</li>
+                            <li><strong>Levered IRR:</strong> 65%</li>
+                            <li><strong>Break-even:</strong> 65% util</li>
+                            <li><strong>Target util:</strong> 85%</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 0.8rem; border-radius: 10px; margin-top: 0.6rem;">
+                        <h4 style="color: #2e7d32; font-size: 0.85rem;">Density Edge</h4>
+                        <ul style="margin: 0.3rem 0; padding-left: 1rem; font-size: 0.7rem;">
+                            <li><strong>576 GPUs</strong> per MW</li>
+                            <li><strong>11.52 ExaFLOPS</strong>/MW</li>
+                            <li><strong>150-300 kW</strong> per rack</li>
+                            <li><strong>1.10 PUE</strong> efficiency</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 0.6rem; padding: 0.6rem; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 8px;">
+                        <p style="margin: 0; font-size: 0.8rem; font-weight: 600; color: #e65100;">
+                            "Best ₹-per-FLOP in India"
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <p>* These cost are for Tier IV Design per MW of Total Energy Consumption by the Facility.</p>
+            <p>* The PoC ask for a 3MW Facility to make the site live is lesser. (Since Container based Rapid Deployment solution)</p>
+        </div>
+        <div class="company-logo">
+            <svg viewBox="56 48 58 48" preserveAspectRatio="xMidYMid meet">
+                <g fill="#1565c0">
+                    <path d="M 83.582031 78.949219 L 83.582031 78.378906 L 82.519531 78.699219 L 81.492188 75.292969 L 88.347656 73.207031 L 89.378906 76.617188 L 87.746094 77.113281 L 87.746094 79.132812 L 97.023438 96.78125 L 94.695312 96.78125 L 87.535156 83.449219 L 91.894531 96.78125 L 89.570312 96.78125 L 84.8125 82.335938 L 76.539062 96.78125 L 74.214844 96.78125 L 83.582031 78.949219"/>
+                    <path d="M 76.582031 72.972656 L 67.351562 75.664062 L 64.664062 66.371094 L 73.894531 63.679688 L 76.582031 72.972656"/>
+                    <path d="M 63.957031 68.878906 L 65.515625 74.277344 L 62.34375 75.203125 L 60.78125 69.804688 L 63.957031 68.878906"/>
+                    <path d="M 110.128906 57.828125 C 111.085938 61.125 109.855469 64.378906 107.386719 65.097656 L 103.9375 53.160156 C 106.402344 52.445312 109.179688 54.53125 110.128906 57.828125"/>
+                    <path d="M 102.507812 51.503906 L 107.066406 67.308594 L 100.808594 69.128906 L 96.273438 53.316406 L 102.507812 51.503906"/>
+                    <path d="M 73.949219 60.785156 L 95.382812 54.539062 L 99.394531 68.535156 L 77.992188 74.769531 L 73.949219 60.785156"/>
+                </g>
+            </svg>
+            <span>Antriksh Cloud</span>
+        </div>
+    </div>
+
+    <!-- Slide 8: Traction & Execution -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>From Vision to Execution</h2>
+            <p class="subtitle">Container-based PoC in 6-8 months, scaling to 500MW in 5 years</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
+                <div>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="number" style="font-size: 1rem;">500MW</div>
+                            <div class="label">Power Secured</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="number" style="font-size: 1rem;">Canal Site</div>
+                            <div class="label">Water Access</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="number" style="font-size: 1rem;">$1.6B+</div>
+                            <div class="label">Team Track Record</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-graphic">
+                        <h3 style="color: #1565c0; text-align: center; margin-bottom: 1rem; font-size: 1rem;">Phased Execution Timeline</h3>
+                        
+                        <div class="timeline-phases">
+                            <div class="phase-box active">
+                                <div class="phase-number" style="color: #1565c0;">Phase 1</div>
+                                <div class="phase-title">Container PoC</div>
+                                <div class="phase-timeline">6-8 months</div>
+                                <div style="margin-top: 0.3rem;">
+                                    <p style="font-size: 0.6rem; margin: 0;">• 3MW capacity</p>
+                                    <p style="font-size: 0.6rem; margin: 0;">• 1,728 GPUs</p>
+                                    <p style="font-size: 0.6rem; margin: 0;">• Revenue starts</p>
+                                </div>
+                            </div>
+                            
+                            <div class="phase-box future">
+                                <div class="phase-number" style="color: #e65100;">Phase 2</div>
+                                <div class="phase-title">Scale Building</div>
+                                <div class="phase-timeline">18 months</div>
+                                <div style="margin-top: 0.3rem;">
+                                    <p style="font-size: 0.6rem; margin: 0;">• 100MW building</p>
+                                    <p style="font-size: 0.6rem; margin: 0;">• 57,600 GPUs</p>
+                                    <p style="font-size: 0.6rem; margin: 0;">• Enterprise scale</p>
+                                </div>
+                            </div>
+                            
+                            <div class="phase-box future">
+                                <div class="phase-number" style="color: #2e7d32;">Phase 3</div>
+                                <div class="phase-title">Expansion</div>
+                                <div class="phase-timeline">3 years</div>
+                                <div style="margin-top: 0.3rem;">
+                                    <p style="font-size: 0.6rem; margin: 0;">• 200-300MW</p>
+                                    <p style="font-size: 0.6rem; margin: 0;">• Market leader</p>
+                                    <p style="font-size: 0.6rem; margin: 0;">• Platform scale</p>
+                                </div>
+                            </div>
+                            
+                            <div class="phase-box future">
+                                <div class="phase-number" style="color: #7b1fa2;">Phase 4</div>
+                                <div class="phase-title">Full Campus</div>
+                                <div class="phase-timeline">5 years total</div>
+                                <div style="margin-top: 0.3rem;">
+                                    <p style="font-size: 0.6rem; margin: 0;">• 500MW complete</p>
+                                    <p style="font-size: 0.6rem; margin: 0;">• 288,000 GPUs</p>
+                                    <p style="font-size: 0.6rem; margin: 0;">• AI leader</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 5%;"></div>
+                            <div class="progress-markers">
+                                <div class="progress-marker completed">✓</div>
+                                <div class="progress-marker current">1</div>
+                                <div class="progress-marker">2</div>
+                                <div class="progress-marker">3</div>
+                                <div class="progress-marker">4</div>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
+                            <span style="font-size: 0.65rem; color: #64748b;">Day 0</span>
+                            <span style="font-size: 0.65rem; color: #64748b;">6-8 mo</span>
+                            <span style="font-size: 0.65rem; color: #64748b;">18 mo</span>
+                            <span style="font-size: 0.65rem; color: #64748b;">3 yr</span>
+                            <span style="font-size: 0.65rem; color: #64748b;">5 yr</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 0rem;">
+                    <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 0.8rem; border-radius: 10px;">
+                        <h4 style="color: #1565c0; font-size: 0.85rem;">✓ Achieved</h4>
+                        <ul style="margin: 0.3rem 0; padding-left: 0.8rem; font-size: 0.7rem;">
+                            <li>Govt MoU in final stages</li>
+                            <!-- <li>IndiaAI Provider status</li> -->
+                            <li>Canal-side multi acre site locked</li>
+                            <li>500MW power inprinciple secured</li>
+                        </ul>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 0.8rem; border-radius: 10px;">
+                        <h4 style="color: #2e7d32; font-size: 0.85rem;">🚀 Ready to Deploy</h4>
+                        <ul style="margin: 0.3rem 0; padding-left: 0.8rem; font-size: 0.7rem;">
+                            <li>3MW Container design</li>
+                            <li>NVIDIA GB200 supply confirmed</li>
+                            <li>1.6Tbps fiber connectivity confirmed</li>
+                            <!-- <li>Anchor customers signed</li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="company-logo">
+            <svg viewBox="56 48 58 48" preserveAspectRatio="xMidYMid meet">
+                <g fill="#1565c0">
+                    <path d="M 83.582031 78.949219 L 83.582031 78.378906 L 82.519531 78.699219 L 81.492188 75.292969 L 88.347656 73.207031 L 89.378906 76.617188 L 87.746094 77.113281 L 87.746094 79.132812 L 97.023438 96.78125 L 94.695312 96.78125 L 87.535156 83.449219 L 91.894531 96.78125 L 89.570312 96.78125 L 84.8125 82.335938 L 76.539062 96.78125 L 74.214844 96.78125 L 83.582031 78.949219"/>
+                    <path d="M 76.582031 72.972656 L 67.351562 75.664062 L 64.664062 66.371094 L 73.894531 63.679688 L 76.582031 72.972656"/>
+                    <path d="M 63.957031 68.878906 L 65.515625 74.277344 L 62.34375 75.203125 L 60.78125 69.804688 L 63.957031 68.878906"/>
+                    <path d="M 110.128906 57.828125 C 111.085938 61.125 109.855469 64.378906 107.386719 65.097656 L 103.9375 53.160156 C 106.402344 52.445312 109.179688 54.53125 110.128906 57.828125"/>
+                    <path d="M 102.507812 51.503906 L 107.066406 67.308594 L 100.808594 69.128906 L 96.273438 53.316406 L 102.507812 51.503906"/>
+                    <path d="M 73.949219 60.785156 L 95.382812 54.539062 L 99.394531 68.535156 L 77.992188 74.769531 L 73.949219 60.785156"/>
+                </g>
+            </svg>
+            <span>Antriksh Cloud</span>
+        </div>
+    </div>
+
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Leadership Team</h2>
+            <p class="large-text">Deep expertise in AI Systems and Large Infrastructure projects</p>
+            
+            <div style="display: flex; gap: 0.8rem; justify-content: space-between; margin-top: 1.2rem;">
+                <div class="team-member" style="flex: 1;">
+                    <div style="width: 140px; height: 140px; margin: 0 auto 0.8rem; border-radius: 50%; overflow: hidden; background: #f0f0f0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <img src="abhigyan.jpg" alt="Abhigyan J Singh" style="width: 100%; height: 100%; object-fit: cover; object-position: center center;">
+                    </div>
+                    <h4 style="margin: 0.4rem 0 0.2rem 0; font-size: 0.8rem;">Abhigyan J Singh</h4>
+                    <p style="font-weight: 600; color: #1565c0; margin-bottom: 0.3rem; font-size: 0.7rem;">CEO & Founder</p>
+                    <p style="font-size: 0.65rem; line-height: 1.4;">IIT-M EE • MS CS UB <br/>5+ yrs AI systems</p>
+                </div>
+                
+                <div class="team-member" style="flex: 1;">
+                    <div style="width: 140px; height: 140px; margin: 0 auto 0.8rem; border-radius: 50%; overflow: hidden; background: #f0f0f0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <img src="anuraag.jpg" alt="Anuraag J Singh" style="width: 280%; height: 280%; object-fit: cover; object-position: center 25%; margin-left: -60%; margin-top: -70%;">
+                    </div>
+                    <h4 style="margin: 0.4rem 0 0.2rem 0; font-size: 0.8rem;">Anuraag J Singh</h4>
+                    <p style="font-weight: 600; color: #1565c0; margin-bottom: 0.3rem; font-size: 0.7rem;">Director - Operations</p>
+                    <p style="font-size: 0.65rem; line-height: 1.4;">32 yrs infrastructure<br/>Large-scale project mgmt</p>
+                </div>
+                
+                
+                <div class="team-member" style="flex: 1;">
+                    <div style="width: 140px; height: 140px; margin: 0 auto 0.8rem; border-radius: 50%; overflow: hidden; background: #f0f0f0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <img src="adesh.jpg" alt="Adesh Saini" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
+                    </div>
+                    <h4 style="margin: 0.4rem 0 0.2rem 0; font-size: 0.8rem;">Adesh Saini</h4>
+                    <p style="font-weight: 600; color: #1565c0; margin-bottom: 0.3rem; font-size: 0.7rem;">Liaisoning Partner</p>
+                    <p style="font-size: 0.65rem; line-height: 1.4;">50 yrs govt relations<br/>Key state approvals</p>
+                </div>
+
+
+                <div class="team-member" style="flex: 1;">
+                    <div style="width: 140px; height: 140px; margin: 0 auto 0.8rem; border-radius: 50%; overflow: hidden; background: #f0f0f0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <img src="dinesh.jpg" alt="Dinesh K Saini" style="width: 100%; height: 100%; object-fit: cover; object-position: center 20%;">
+                    </div>
+                    <h4 style="margin: 0.4rem 0 0.2rem 0; font-size: 0.8rem;">Dinesh K Saini</h4>
+                    <p style="font-weight: 600; color: #1565c0; margin-bottom: 0.3rem; font-size: 0.7rem;">Director - Construction</p>
+                    <p style="font-size: 0.65rem; line-height: 1.4;">Ex-Delhi Metro Director<br/>$1.6B projects • IIT-R '81</p>
+                </div>
+                
+                
+                <div class="team-member" style="flex: 1;">
+                    <div style="width: 140px; height: 140px; margin: 0 auto 0.8rem; border-radius: 50%; overflow: hidden; background: #f0f0f0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <img src="ken.jpg" alt="Ken Moreano" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+                    </div>
+                    <h4 style="margin: 0.4rem 0 0.2rem 0; font-size: 0.8rem;">Ken Moreano</h4>
+                    <p style="font-weight: 600; color: #1565c0; margin-bottom: 0.3rem; font-size: 0.7rem;">Tech Partnership Lead</p>
+                    <p style="font-size: 0.65rem; line-height: 1.4;">CEO Scott Data Center USA<br/>20+ yrs data center ops<br/>Under Negotiations</p>
+                </div>
+            </div>
+            
+            <!-- Combined Metrics-Focused Bottom Section -->
+            <div style="background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%); border-radius: 8px; padding: 1rem; margin-top: 1rem; border: 1px solid #e3f2fd;">
+                <h3 style="text-align: center; color: #1565c0; font-size: 0.9rem; margin-bottom: 0.8rem;">Proven Track Record of Mega-Project Delivery</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.6rem;">
+                    <div style="text-align: center; background: white; padding: 0.5rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #1565c0; line-height: 1;">$1.6B+</div>
+                        <p style="font-size: 0.55rem; color: #666; margin: 0.2rem 0 0 0; line-height: 1.2;">Infrastructure<br>Delivered</p>
+                    </div>
+                    
+                    <div style="text-align: center; background: white; padding: 0.5rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #2e7d32; line-height: 1;">500MW</div>
+                        <p style="font-size: 0.55rem; color: #666; margin: 0.2rem 0 0 0; line-height: 1.2;">Power<br>Secured</p>
+                    </div>
+                    
+                    <div style="text-align: center; background: white; padding: 0.5rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #e65100; line-height: 1;">100+ yrs</div>
+                        <p style="font-size: 0.55rem; color: #666; margin: 0.2rem 0 0 0; line-height: 1.2;">Infrastructure<br>Experience</p>
+                    </div>
+                    
+                    <div style="text-align: center; background: white; padding: 0.5rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #7b1fa2; line-height: 1;">5 Decades</div>
+                        <p style="font-size: 0.55rem; color: #666; margin: 0.2rem 0 0 0; line-height: 1.2;">Government<br>Relations</p>
+                    </div>
+                    
+                    <div style="text-align: center; background: white; padding: 0.5rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #1565c0; line-height: 1;">100%</div>
+                        <p style="font-size: 0.55rem; color: #666; margin: 0.2rem 0 0 0; line-height: 1.2;">On-Time<br>Delivery</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: Financial Projections -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Financial Projections</h2>
+            <p class="subtitle">Based on phased rollout: 3MW → 100MW → 200MW → 500MW over 5 years</p>
+            
+            <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 1rem;">
+                <div class="financial-chart">
+                    <h3 style="text-align: center; color: #1565c0; font-size: 0.9rem;">Revenue Growth Trajectory</h3>
+                    <div class="chart-bars">
+                        <div class="chart-bar" style="height: 10%;">
+                            <div class="chart-value">$5M</div>
+                            <div class="chart-label">Yr 1 (3MW)</div>
+                        </div>
+                        <div class="chart-bar" style="height: 40%;">
+                            <div class="chart-value">$170M</div>
+                            <div class="chart-label">Yr 2 (100MW)</div>
+                        </div>
+                        <div class="chart-bar" style="height: 60%;">
+                            <div class="chart-value">$340M</div>
+                            <div class="chart-label">Yr 3 (200MW)</div>
+                        </div>
+                        <div class="chart-bar" style="height: 100%;">
+                            <div class="chart-value">$850M</div>
+                            <div class="chart-label">Yr 5 (500MW)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 0.4rem;">
+                        <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 0.8rem; border-radius: 10px; text-align: center;">
+                            <h3 style="color: #1565c0; font-size: 1.4rem; margin: 0;">44%</h3>
+                            <p style="margin: 0; font-size: 0.7rem;">EBITDA Year 1</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 0.8rem; border-radius: 10px; text-align: center;">
+                            <h3 style="color: #2e7d32; font-size: 1.4rem; margin: 0;">60%</h3>
+                            <p style="margin: 0; font-size: 0.7rem;">EBITDA Year 5</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); padding: 0.8rem; border-radius: 10px; text-align: center;">
+                            <h3 style="color: #e65100; font-size: 1.4rem; margin: 0;">$10B+</h3>
+                            <p style="margin: 0; font-size: 0.7rem;">2030 Valuation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <table class="quick-comparison" style="margin-top: 0.8rem;">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Year 1 (3MW)</th>
+                        <th>Year 2 (100MW)</th>
+                        <th>Year 3 (200MW)</th>
+                        <th>Year 5 (500MW)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MW Live</td>
+                        <td>3 (Container)</td>
+                        <td>100</td>
+                        <td>200</td>
+                        <td>500</td>
+                    </tr>
+                    <tr>
+                        <td>Revenue</td>
+                        <td>$5M</td>
+                        <td>$170M</td>
+                        <td>$340M</td>
+                        <td>$850M</td>
+                    </tr>
+                    <tr>
+                        <td>EBITDA</td>
+                        <td>$2.2M</td>
+                        <td>$95M</td>
+                        <td>$204M</td>
+                        <td>$510M</td>
+                    </tr>
+                    <tr>
+                        <td>EBITDA %</td>
+                        <td style="color: #e65100; font-weight: 600;">44%</td>
+                        <td style="color: #e65100; font-weight: 600;">56%</td>
+                        <td style="color: #2e7d32; font-weight: 600;">60%</td>
+                        <td style="color: #2e7d32; font-weight: 600;">60%</td>
+                    </tr>
+                    <tr>
+                        <td>GPUs Live</td>
+                        <td>1,728</td>
+                        <td>57,600</td>
+                        <td>115,200</td>
+                        <td>288,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="company-logo">
+            <svg viewBox="56 48 58 48" preserveAspectRatio="xMidYMid meet">
+                <g fill="#1565c0">
+                    <path d="M 83.582031 78.949219 L 83.582031 78.378906 L 82.519531 78.699219 L 81.492188 75.292969 L 88.347656 73.207031 L 89.378906 76.617188 L 87.746094 77.113281 L 87.746094 79.132812 L 97.023438 96.78125 L 94.695312 96.78125 L 87.535156 83.449219 L 91.894531 96.78125 L 89.570312 96.78125 L 84.8125 82.335938 L 76.539062 96.78125 L 74.214844 96.78125 L 83.582031 78.949219"/>
+                    <path d="M 76.582031 72.972656 L 67.351562 75.664062 L 64.664062 66.371094 L 73.894531 63.679688 L 76.582031 72.972656"/>
+                    <path d="M 63.957031 68.878906 L 65.515625 74.277344 L 62.34375 75.203125 L 60.78125 69.804688 L 63.957031 68.878906"/>
+                    <path d="M 110.128906 57.828125 C 111.085938 61.125 109.855469 64.378906 107.386719 65.097656 L 103.9375 53.160156 C 106.402344 52.445312 109.179688 54.53125 110.128906 57.828125"/>
+                    <path d="M 102.507812 51.503906 L 107.066406 67.308594 L 100.808594 69.128906 L 96.273438 53.316406 L 102.507812 51.503906"/>
+                    <path d="M 73.949219 60.785156 L 95.382812 54.539062 L 99.394531 68.535156 L 77.992188 74.769531 L 73.949219 60.785156"/>
+                </g>
+            </svg>
+            <span>Antriksh Cloud</span>
+        </div>
+    </div>
+
+    <!-- Slide 12: Investment Ask -->
+    <!-- <div class="slide">
+        <div class="slide-content">
+            <h2>Investment Opportunity</h2>
+            <p class="subtitle">Strategic capital deployment for rapid proof-of-concept and scale</p>
+            
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
+                <div>
+                    <div class="investment-highlight">
+                        <div class="investment-amount" style="font-size: 2.2rem;">$66 Million</div>
+                        <p style="font-size: 1.1rem; color: #7b1fa2; margin-top: 0.3rem;">Seed Infrastructure Round</p>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; margin: 0.8rem 0;">
+                        <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 0.8rem; border-radius: 10px; text-align: center;">
+                            <h3 style="color: #1565c0; font-size: 1.3rem; margin: 0;">46%</h3>
+                            <p style="margin: 0; font-size: 0.65rem;">Target IRR</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 0.8rem; border-radius: 10px; text-align: center;">
+                            <h3 style="color: #2e7d32; font-size: 1.3rem; margin: 0;">25-50x</h3>
+                            <p style="margin: 0; font-size: 0.65rem;">Returns</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); padding: 0.8rem; border-radius: 10px; text-align: center;">
+                            <h3 style="color: #e65100; font-size: 1.3rem; margin: 0;">6-8 Mo</h3>
+                            <p style="margin: 0; font-size: 0.65rem;">Revenue</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); padding: 0.8rem; border-radius: 10px; text-align: center;">
+                            <h3 style="color: #7b1fa2; font-size: 1.3rem; margin: 0;">3MW</h3>
+                            <p style="margin: 0; font-size: 0.65rem;">Phase 1</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%); color: white; padding: 0.8rem; border-radius: 10px; text-align: center;">
+                        <p style="margin: 0; font-size: 0.8rem;color: white;">
+                            ✓ Container PoC generates revenue in 6-8 months — creating optional early exit<br>
+                            ✓ Scale from 3MW to 100MW building once metrics proven in 18 months
+                        </p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="color: #1565c0; font-size: 0.9rem;">Detailed Use of Funds</h3>
+                    <div style="background: #f8f9fa; padding: 0.8rem; border-radius: 10px; font-size: 0.7rem;">
+                        <h4 style="font-size: 0.8rem; margin-bottom: 0.4rem;">Phase 1: Container PoC (3MW)</h4>
+                        <div style="display: flex; justify-content: space-between; padding: 0.3rem 0; border-bottom: 1px solid #e0e0e0;">
+                            <span>Container Infrastructure</span>
+                            <span style="font-weight: 600;">$8M</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.3rem 0; border-bottom: 1px solid #e0e0e0;">
+                            <span>GB200 GPUs (1,728)</span>
+                            <span style="font-weight: 600;">$12M</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.3rem 0; border-bottom: 1px solid #e0e0e0;">
+                            <span>Liquid Cooling Systems</span>
+                            <span style="font-weight: 600;">$5M</span>
+                        </div>
+                        
+                        <h4 style="font-size: 0.8rem; margin: 0.6rem 0 0.4rem 0;">Site & Infrastructure</h4>
+                        <div style="display: flex; justify-content: space-between; padding: 0.3rem 0; border-bottom: 1px solid #e0e0e0;">
+                            <span>Land (Multi-year)</span>
+                            <span style="font-weight: 600;">$8M</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.3rem 0; border-bottom: 1px solid #e0e0e0;">
+                            <span>Site Development</span>
+                            <span style="font-weight: 600;">$9M</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.3rem 0; border-bottom: 1px solid #e0e0e0;">
+                            <span>Design & Engineering</span>
+                            <span style="font-weight: 600;">$3M</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.3rem 0; border-bottom: 1px solid #e0e0e0;">
+                            <span>Power & Utilities</span>
+                            <span style="font-weight: 600;">$6M</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.3rem 0; border-bottom: 1px solid #e0e0e0;">
+                            <span>Permits & Clearances</span>
+                            <span style="font-weight: 600;">$3M</span>
+                        </div>
+                        
+                        <h4 style="font-size: 0.8rem; margin: 0.6rem 0 0.4rem 0;">Operations & Scale</h4>
+                        <div style="display: flex; justify-content: space-between; padding: 0.3rem 0; border-bottom: 1px solid #e0e0e0;">
+                            <span>Software & Platform</span>
+                            <span style="font-weight: 600;">$3M</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.3rem 0; border-bottom: 1px solid #e0e0e0;">
+                            <span>Project Management</span>
+                            <span style="font-weight: 600;">$2M</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.3rem 0; border-bottom: 1px solid #e0e0e0;">
+                            <span>Working Capital</span>
+                            <span style="font-weight: 600;">$2M</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.3rem 0;">
+                            <span>Contingency (6%)</span>
+                            <span style="font-weight: 600;">$4M</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="company-logo">
+            <svg viewBox="56 48 58 48" preserveAspectRatio="xMidYMid meet">
+                <g fill="#1565c0">
+                    <path d="M 83.582031 78.949219 L 83.582031 78.378906 L 82.519531 78.699219 L 81.492188 75.292969 L 88.347656 73.207031 L 89.378906 76.617188 L 87.746094 77.113281 L 87.746094 79.132812 L 97.023438 96.78125 L 94.695312 96.78125 L 87.535156 83.449219 L 91.894531 96.78125 L 89.570312 96.78125 L 84.8125 82.335938 L 76.539062 96.78125 L 74.214844 96.78125 L 83.582031 78.949219"/>
+                    <path d="M 76.582031 72.972656 L 67.351562 75.664062 L 64.664062 66.371094 L 73.894531 63.679688 L 76.582031 72.972656"/>
+                    <path d="M 63.957031 68.878906 L 65.515625 74.277344 L 62.34375 75.203125 L 60.78125 69.804688 L 63.957031 68.878906"/>
+                    <path d="M 110.128906 57.828125 C 111.085938 61.125 109.855469 64.378906 107.386719 65.097656 L 103.9375 53.160156 C 106.402344 52.445312 109.179688 54.53125 110.128906 57.828125"/>
+                    <path d="M 102.507812 51.503906 L 107.066406 67.308594 L 100.808594 69.128906 L 96.273438 53.316406 L 102.507812 51.503906"/>
+                    <path d="M 73.949219 60.785156 L 95.382812 54.539062 L 99.394531 68.535156 L 77.992188 74.769531 L 73.949219 60.785156"/>
+                </g>
+            </svg>
+            <span>Antriksh Cloud</span>
+        </div>
+    </div>
+ -->
+    <!-- Slide 12: Investment Ask -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2>Investment Opportunity: 3MW Phase 1 PoC</h2>
+            <p class="subtitle">De-risked $66M seed round for 3MW proof-of-concept in progressive tranches</p>
+            
+            <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 1rem;">
+                <div>
+                    <div class="investment-highlight">
+                        <div class="investment-amount" style="font-size: 2.2rem;">$66 Million</div>
+                        <p style="font-size: 0.8rem; color: #7b1fa2;">3MW Phase 1 PoC - 3 Progressive Tranches. <br>1.76 MW GPU IT Load (~24 Racks)</p>
+                    </div>
+                    
+                    <!-- Tranche Structure Visual -->
+                    <div style="background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%); padding: 1rem; border-radius: 12px; margin: 0.8rem 0;">
+                        <h3 style="color: #1565c0; font-size: 0.9rem; text-align: center; margin-bottom: 0.8rem;">3MW PoC Capital Deployment</h3>
+                        
+                        <div style="display: flex; align-items: flex-end; gap: 0.5rem; height: 120px; margin-bottom: 0.5rem;">
+                            <div style="flex: 1; background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 8px 8px 0 0; height: 15%; position: relative;">
+                                <div style="position: absolute; top: -25px; left: 0; right: 0; text-align: center; font-weight: 700; color: #1565c0;">$6M</div>
+                                <div style="position: absolute; bottom: -20px; left: 0; right: 0; text-align: center; font-size: 0.65rem;">Tranche 1</div>
+                            </div>
+                            <div style="flex: 1; background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-radius: 8px 8px 0 0; height: 46%; position: relative;">
+                                <div style="position: absolute; top: -25px; left: 0; right: 0; text-align: center; font-weight: 700; color: #2e7d32;">$19M</div>
+                                <div style="position: absolute; bottom: -20px; left: 0; right: 0; text-align: center; font-size: 0.65rem;">Tranche 2</div>
+                            </div>
+                            <div style="flex: 1; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-radius: 8px 8px 0 0; height: 100%; position: relative;">
+                                <div style="position: absolute; top: -25px; left: 0; right: 0; text-align: center; font-weight: 700; color: #e65100;">$41M</div>
+                                <div style="position: absolute; bottom: -20px; left: 0; right: 0; text-align: center; font-size: 0.65rem;">Tranche 3</div>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; margin-top: 25px;">
+                            <div style="flex: 1; text-align: center; font-size: 0.6rem; color: #666;">
+                                <strong>9%</strong><br>3MW Site Secured
+                            </div>
+                            <div style="flex: 1; text-align: center; font-size: 0.6rem; color: #666;">
+                                <strong>29%</strong><br>3MW Infra Ready
+                            </div>
+                            <div style="flex: 1; text-align: center; font-size: 0.6rem; color: #666;">
+                                <strong>62%</strong><br>3MW Operational
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem;">
+                        <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 0.6rem; border-radius: 10px; text-align: center;">
+                            <h3 style="color: #1565c0; font-size: 1.2rem; margin: 0;">3MW</h3>
+                            <p style="margin: 0; font-size: 0.6rem;">Phase 1 PoC</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 0.6rem; border-radius: 10px; text-align: center;">
+                            <h3 style="color: #2e7d32; font-size: 1.2rem; margin: 0;">1,728</h3>
+                            <p style="margin: 0; font-size: 0.6rem;">GB200 GPUs</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); padding: 0.6rem; border-radius: 10px; text-align: center;">
+                            <h3 style="color: #e65100; font-size: 1.2rem; margin: 0;">Mo 6</h3>
+                            <p style="margin: 0; font-size: 0.6rem;">Revenue Start</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); padding: 0.6rem; border-radius: 10px; text-align: center;">
+                            <h3 style="color: #7b1fa2; font-size: 1.2rem; margin: 0;">46%</h3>
+                            <p style="margin: 0; font-size: 0.6rem;">Target IRR</p>
+                        </div>
+                    </div>
+
+                    <p> <br>* PoC Costs are lesser than full Tier IV Facility.<br>
+                        Assuing PuE of 1.7 for the PoC, 3MW / 1.7 = 1.76 MW of IT Load
+                    </p>
+
+                </div>
+                
+                <div>
+                    <h3 style="color: #1565c0; font-size: 0.85rem; margin-bottom: 0.5rem;">Detailed 3MW PoC Milestones</h3>
+                    <div style="background: #f8f9fa; padding: 0.4rem; border-radius: 5px; font-size: 0.5rem; max-height: 480px; overflow-y: auto;">
+                        <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 0.4rem; border-radius: 6px; margin-bottom: 0.3rem;">
+                            <h4 style="font-size: 0.65rem; margin: 0 0 0.2rem 0; color: #1565c0;">Tranche 1: $6M - Regulatory & Site</h4>
+                            <div style="line-height: 1.2; font-size: 0.55rem;">
+                                <strong>Government & Regulatory:</strong><br>
+                                • Final MoU with state government<br>
+                                • Environmental & pollution clearances<br>
+                                • Fire safety NOC<br>
+                                <strong>Site & Infrastructure:</strong><br>
+                                • Land lease execution<br>
+                                • Soil testing & geotechnical survey<br>
+                                • Container layout design approval<br>
+                                <strong>Power & Connectivity:</strong><br>
+                                • Power allocation letter<br>
+                                • Fiber connectivity agreement<br>
+                                <strong>Supply Chain:</strong><br>
+                                • NVIDIA partner agreement<br>
+                                • GB200 allocation confirmation
+                            </div>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 0.4rem; border-radius: 6px; margin-bottom: 0.3rem;">
+                            <h4 style="font-size: 0.65rem; margin: 0 0 0.2rem 0; color: #2e7d32;">Tranche 2: $19M - Infrastructure Build</h4>
+                            <div style="line-height: 1.2; font-size: 0.55rem;">
+                                <strong>Civil & Construction:</strong><br>
+                                • Site grading & compaction<br>
+                                • Container pad foundations<br>
+                                • Access roads & security fencing<br>
+                                • Drainage & fire suppression<br>
+                                <strong>Power Infrastructure:</strong><br>
+                                • Substation construction<br>
+                                • Transformer installation<br>
+                                • UPS & backup generators<br>
+                                <strong>Container Deployment:</strong><br>
+                                • 3 x 1MW container shells<br>
+                                • Internal racking systems<br>
+                                • Liquid cooling piping (dry)<br>
+                                <strong>Commercial Progress:</strong><br>
+                                • 3+ anchor customer contracts<br>
+                                • $15M+ committed revenue<br>
+                                • Partnership agreements
+                            </div>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); padding: 0.4rem; border-radius: 6px;">
+                            <h4 style="font-size: 0.65rem; margin: 0 0 0.2rem 0; color: #e65100;">Tranche 3: $41M - Go-Live & Revenue</h4>
+                            <div style="line-height: 1.2; font-size: 0.55rem;">
+                                <strong>GPU Procurement & Installation:</strong><br>
+                                • 1,728 NVIDIA GB200 GPUs<br>
+                                • Rack integration & cabling<br>
+                                • Network fabric deployment<br>
+                                <strong>Cooling & Operations:</strong><br>
+                                • Liquid cooling system fill<br>
+                                • CDU commissioning<br>
+                                • PUE optimization (<1.10)<br>
+                                <strong>Software & Platform:</strong><br>
+                                • Cloud orchestration layer<br>
+                                • Billing & provisioning system<br>
+                                • Security & monitoring tools<br>
+                                <strong>Revenue Generation:</strong><br>
+                                • First customer go-live<br>
+                                • $1M+ MRR achieved<br>
+                                • 85%+ utilization target<br>
+                                <strong>Scale Preparation:</strong><br>
+                                • Series A fundraising<br>
+                                • 100MW site planning
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%); color: white; padding: 0.5rem; border-radius: 8px; text-align: center; margin-top: 0.5rem;">
+                        <p style="margin: 0; font-size: 0.65rem; color: white; font-weight: 600;">
+                            3MW Container PoC: 6 Months to Revenue<br>
+                            Validates Model for 500MW Scale
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="company-logo">
+            <svg viewBox="56 48 58 48" preserveAspectRatio="xMidYMid meet">
+                <g fill="#1565c0">
+                    <path d="M 83.582031 78.949219 L 83.582031 78.378906 L 82.519531 78.699219 L 81.492188 75.292969 L 88.347656 73.207031 L 89.378906 76.617188 L 87.746094 77.113281 L 87.746094 79.132812 L 97.023438 96.78125 L 94.695312 96.78125 L 87.535156 83.449219 L 91.894531 96.78125 L 89.570312 96.78125 L 84.8125 82.335938 L 76.539062 96.78125 L 74.214844 96.78125 L 83.582031 78.949219"/>
+                    <path d="M 76.582031 72.972656 L 67.351562 75.664062 L 64.664062 66.371094 L 73.894531 63.679688 L 76.582031 72.972656"/>
+                    <path d="M 63.957031 68.878906 L 65.515625 74.277344 L 62.34375 75.203125 L 60.78125 69.804688 L 63.957031 68.878906"/>
+                    <path d="M 110.128906 57.828125 C 111.085938 61.125 109.855469 64.378906 107.386719 65.097656 L 103.9375 53.160156 C 106.402344 52.445312 109.179688 54.53125 110.128906 57.828125"/>
+                    <path d="M 102.507812 51.503906 L 107.066406 67.308594 L 100.808594 69.128906 L 96.273438 53.316406 L 102.507812 51.503906"/>
+                    <path d="M 73.949219 60.785156 L 95.382812 54.539062 L 99.394531 68.535156 L 77.992188 74.769531 L 73.949219 60.785156"/>
+                </g>
+            </svg>
+            <span>Antriksh Cloud</span>
+        </div>
+        </div>
+    </div>
+
+    <!-- Slide 14: Contact -->
+    <div class="slide">
+        <div class="slide-content" style="justify-content: center;">
+            <div style="text-align: center;">
+                <h2>Let's Build India's AI Infrastructure Together</h2>
+                
+                <svg style="width: 140px; height: 140px; margin: 1.5rem auto;" viewBox="56 48 58 48" preserveAspectRatio="xMidYMid meet">
+                    <g fill="#1565c0">
+                        <path d="M 83.582031 78.949219 L 83.582031 78.378906 L 82.519531 78.699219 L 81.492188 75.292969 L 88.347656 73.207031 L 89.378906 76.617188 L 87.746094 77.113281 L 87.746094 79.132812 L 97.023438 96.78125 L 94.695312 96.78125 L 87.535156 83.449219 L 91.894531 96.78125 L 89.570312 96.78125 L 84.8125 82.335938 L 76.539062 96.78125 L 74.214844 96.78125 L 83.582031 78.949219"/>
+                        <path d="M 76.582031 72.972656 L 67.351562 75.664062 L 64.664062 66.371094 L 73.894531 63.679688 L 76.582031 72.972656"/>
+                        <path d="M 63.957031 68.878906 L 65.515625 74.277344 L 62.34375 75.203125 L 60.78125 69.804688 L 63.957031 68.878906"/>
+                        <path d="M 110.128906 57.828125 C 111.085938 61.125 109.855469 64.378906 107.386719 65.097656 L 103.9375 53.160156 C 106.402344 52.445312 109.179688 54.53125 110.128906 57.828125"/>
+                        <path d="M 102.507812 51.503906 L 107.066406 67.308594 L 100.808594 69.128906 L 96.273438 53.316406 L 102.507812 51.503906"/>
+                        <path d="M 73.949219 60.785156 L 95.382812 54.539062 L 99.394531 68.535156 L 77.992188 74.769531 L 73.949219 60.785156"/>
+                    </g>
+                </svg>
+                
+                <div style="font-size: 1rem; margin: 1.5rem 0;">
+                    <p style="margin: 0.6rem 0;">📧 <a href="mailto:ceo@antriksh.cloud" style="color: #1565c0; text-decoration: none;">ceo@antriksh.cloud</a></p>
+                    <p style="margin: 0.6rem 0;">🌐 <a href="https://www.antriksh.cloud" style="color: #1565c0; text-decoration: none;">www.antriksh.cloud</a></p>
+                    <p style="margin: 0.6rem 0;">📱 +91 86829 40765 | +1 206 665 0905</p>
+                </div>
+                
+                <div style="margin-top: 1.5rem;">
+                    <a href="https://calendly.com/antrikshcloud" class="cta-button">Schedule Meeting</a>
+                    <a href="https://www.antriksh.cloud" class="cta-button" style="background: white; color: #1565c0; border: 2px solid #1565c0;">Learn More</a>
+                    <!-- <a href="#" class="cta-button" style="background: #2e7d32;">Request Data Room Access</a> -->
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 1rem; border-radius: 10px; margin-top: 1.5rem;">
+                    <p style="margin: 0; font-weight: 600; color: #1565c0; font-size: 0.9rem;">
+                        📊 Data Room Available
+                    </p>
+                    <p style="margin: 0.3rem 0 0 0; font-size: 0.8rem; color: #424242;">
+                        Detailed financial models, technical specs, government agreements, and more available for serious investors
+                    </p>
+                </div>
+                
+                <p style="margin-top: 1rem; font-style: italic; color: #666; font-size: 0.9rem;">
+                    Building the infrastructure for India's trillion-dollar digital economy
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

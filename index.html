@@ -1,0 +1,2742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Antriksh Cloud - Building India's first 500MW liquid-cooled AI GPU infrastructure. $41.7B opportunity. 288,000 GPUs. 46% target IRR. We're actively hiring world-class talent.">
+    <meta name="keywords" content="AI infrastructure, GPU cloud, India technology, liquid cooling, data center, careers, engineering jobs, San Francisco, Delhi, sovereign AI, GenAI, NVIDIA GB200">
+    
+    <!-- Compatibility fixes -->
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta property="og:title" content="Antriksh Cloud - India's AI Infrastructure Pioneer">
+    <meta property="og:description" content="Building 500MW liquid-cooled GPU infrastructure for India's $41.7B AI opportunity. Actively hiring world-class engineers in SF and India.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://antriksh.cloud">
+    <meta property="og:image" content="https://antriksh.cloud/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Antriksh Cloud - India's AI Infrastructure Pioneer">
+    <meta name="twitter:description" content="Building 500MW liquid-cooled GPU infrastructure. Actively hiring world-class engineers!">
+    <meta name="twitter:image" content="https://antriksh.cloud/twitter-card.png">
+    <title>Antriksh Cloud - India's AI Infrastructure Pioneer</title>
+    
+    <!-- Primary Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fallback Tailwind CSS from alternative CDNs -->
+    <script>
+        // Check if Tailwind loaded, if not try alternative CDN
+        setTimeout(function() {
+            if (typeof tailwind === 'undefined') {
+                console.log('Primary Tailwind CDN failed, trying alternative...');
+                var script = document.createElement('script');
+                script.src = 'https://unpkg.com/tailwindcss@latest/dist/tailwind.min.js';
+                script.onerror = function() {
+                    console.error('All Tailwind CDNs failed, loading fallback CSS');
+                    loadFallbackCSS();
+                };
+                document.head.appendChild(script);
+            }
+        }, 100);
+    </script>
+    <style>
+        /* Loading skeleton animations */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Show skeleton while page loads */
+        .loading-skeleton {
+            min-height: 200px;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Hide content until fonts load */
+        .fonts-loading body {
+            opacity: 0;
+        }
+
+        .fonts-loaded body {
+            opacity: 1;
+            transition: opacity 0.3s ease-in;
+        }
+    </style>
+    <script>
+        (function() {
+            'use strict';
+            
+            // Safe function wrapper
+            function safeExecute(fn, fallback) {
+                try {
+                    return fn();
+                } catch (error) {
+                    console.error('Error in function:', error);
+                    if (fallback) return fallback();
+                }
+            }
+
+            // Enhanced mobile menu toggle with error handling
+            window.toggleMobileMenu = function() {
+                safeExecute(function() {
+                    var menu = document.getElementById('mobileMenu');
+                    if (!menu) {
+                        console.warn('Mobile menu element not found');
+                        return;
+                    }
+                    menu.classList.toggle('hidden');
+                });
+            };
+
+            // DOM ready handler with multiple fallbacks
+            function ready(fn) {
+                if (document.readyState === 'loading') {
+                    if (document.addEventListener) {
+                        document.addEventListener('DOMContentLoaded', fn);
+                    } else if (document.attachEvent) {
+                        document.attachEvent('onreadystatechange', function() {
+                            if (document.readyState === 'complete') fn();
+                        });
+                    } else {
+                        window.onload = fn;
+                    }
+                } else {
+                    fn();
+                }
+            }
+
+            ready(function() {
+                // Initialize all features with error handling
+                initializeSmoothScroll();
+                initializeIntersectionObserver();
+                initializeWhatsAppButton();
+                initializeMobileMenu();
+                initializeSankeyChart();
+            });
+
+            function initializeSmoothScroll() {
+                safeExecute(function() {
+                    var links = document.querySelectorAll('a[href^="#"]');
+                    if (!links.length) return;
+
+                    links.forEach(function(link) {
+                        link.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            var targetId = this.getAttribute('href');
+                            if (!targetId || targetId === '#') return;
+                            
+                            var target = document.querySelector(targetId);
+                            if (!target) return;
+
+                            var headerOffset = 80;
+                            var elementPosition = target.getBoundingClientRect().top;
+                            var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            if ('scrollBehavior' in document.documentElement.style) {
+                                window.scrollTo({
+                                    top: offsetPosition,
+                                    behavior: 'smooth'
+                                });
+                            } else {
+                                window.scrollTo(0, offsetPosition);
+                            }
+                        });
+                    });
+                });
+            }
+
+            function initializeIntersectionObserver() {
+                safeExecute(function() {
+                    var elements = document.querySelectorAll('.fade-in, .scale-in');
+                    if (!elements.length) return;
+
+                    if ('IntersectionObserver' in window) {
+                        var observer = new IntersectionObserver(function(entries) {
+                            entries.forEach(function(entry) {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add('visible');
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, {
+                            threshold: 0.1,
+                            rootMargin: '0px 0px -50px 0px'
+                        });
+
+                        elements.forEach(function(el) {
+                            observer.observe(el);
+                        });
+                    } else {
+                        // Fallback for older browsers
+                        elements.forEach(function(el) {
+                            el.classList.add('visible');
+                        });
+                    }
+                });
+            }
+
+            function initializeWhatsAppButton() {
+                safeExecute(function() {
+                    setTimeout(function() {
+                        var whatsappBtn = document.querySelector('.whatsapp-float');
+                        if (whatsappBtn) {
+                            whatsappBtn.style.opacity = '1';
+                            whatsappBtn.style.transform = 'translateY(0)';
+                        }
+                    }, 1000);
+                });
+            }
+
+            function initializeMobileMenu() {
+                safeExecute(function() {
+                    var mobileLinks = document.querySelectorAll('#mobileMenu a');
+                    var menu = document.getElementById('mobileMenu');
+                    
+                    if (!mobileLinks.length || !menu) return;
+
+                    mobileLinks.forEach(function(link) {
+                        link.addEventListener('click', function() {
+                            menu.classList.add('hidden');
+                        });
+                    });
+                });
+            }
+
+            function initializeSankeyChart() {
+                safeExecute(function() {
+                    // Wait for D3 to load
+                    var checkD3 = setInterval(function() {
+                        if (typeof d3 !== 'undefined' && typeof d3.sankey !== 'undefined') {
+                            clearInterval(checkD3);
+                            createSankeyChart();
+                        }
+                    }, 100);
+
+                    // Stop checking after 5 seconds
+                    setTimeout(function() {
+                        clearInterval(checkD3);
+                    }, 5000);
+                });
+            }
+
+            function createSankeyChart() {
+                // Your existing Sankey chart code wrapped in try-catch
+                safeExecute(function() {
+                    // ... (your existing Sankey chart code)
+                });
+            }
+        })();
+    </script>
+
+    <!-- Optimized font loading with fallback -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script>
+        // Font loading with fallback
+        (function() {
+            var fontLink = document.createElement('link');
+            fontLink.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap';
+            fontLink.rel = 'stylesheet';
+            
+            document.documentElement.classList.add('fonts-loading');
+            
+            fontLink.onload = function() {
+                document.documentElement.classList.remove('fonts-loading');
+                document.documentElement.classList.add('fonts-loaded');
+            };
+            
+            fontLink.onerror = function() {
+                document.documentElement.classList.remove('fonts-loading');
+                // Fall back to system fonts
+                var style = document.createElement('style');
+                style.textContent = 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }';
+                document.head.appendChild(style);
+            };
+            
+            document.head.appendChild(fontLink);
+            
+            // Timeout fallback after 3 seconds
+            setTimeout(function() {
+                document.documentElement.classList.remove('fonts-loading');
+            }, 3000);
+        })();
+    </script>
+
+
+    <script>
+        // Enhanced CDN fallback system
+        (function() {
+            var cdnFallbacks = {
+                tailwind: [
+                    'https://cdn.tailwindcss.com',
+                    'https://unpkg.com/tailwindcss@latest/dist/tailwind.min.js',
+                    'https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js'
+                ],
+                d3: [
+                    'https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js',
+                    'https://unpkg.com/d3@7.8.5/dist/d3.min.js',
+                    'https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js'
+                ]
+            };
+
+            function loadScript(urls, index, callback) {
+                if (index >= urls.length) {
+                    console.error('All CDN attempts failed for', urls);
+                    if (callback) callback(false);
+                    return;
+                }
+
+                var script = document.createElement('script');
+                script.src = urls[index];
+                script.onload = function() {
+                    console.log('Successfully loaded from:', urls[index]);
+                    if (callback) callback(true);
+                };
+                script.onerror = function() {
+                    console.warn('Failed to load from:', urls[index]);
+                    loadScript(urls, index + 1, callback);
+                };
+                document.head.appendChild(script);
+            }
+
+            // Load Tailwind with fallbacks
+            window.addEventListener('load', function() {
+                if (typeof tailwind === 'undefined') {
+                    loadScript(cdnFallbacks.tailwind, 0, function(success) {
+                        if (!success) {
+                            // Load minimal fallback CSS
+                            var style = document.createElement('style');
+                            style.textContent = `
+                                /* Minimal fallback styles */
+                                body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; }
+                                .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+                                .hidden { display: none; }
+                                .text-center { text-align: center; }
+                                .flex { display: flex; }
+                                .grid { display: grid; }
+                                .rounded-full { border-radius: 9999px; }
+                                .bg-white { background-color: white; }
+                                .text-white { color: white; }
+                                .font-bold { font-weight: 700; }
+                                .mb-4 { margin-bottom: 1rem; }
+                                .p-4 { padding: 1rem; }
+                            `;
+                            document.head.appendChild(style);
+                        }
+                    });
+                }
+            });
+        })();
+    </script>
+
+    
+    <!-- Add structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Antriksh Cloud",
+      "description": "India's first 500MW liquid-cooled AI infrastructure",
+      "url": "https://antriksh.cloud"
+    }
+    </script>
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://antriksh.cloud">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Reset and Normalize */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
+            color: #1f2937;
+        }
+        
+        /* Improved Typography Scale */
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+        
+        p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        /* Gradient Animations with Fallback */
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: #3b82f6; /* Fallback color for unsupported browsers */
+            background-size: 300% 300%;
+            animation: gradient 4s ease infinite;
+        }
+        
+        /* Fallback for browsers that don't support background-clip */
+        @supports not (-webkit-background-clip: text) {
+            .gradient-text {
+                background: none;
+                color: #3b82f6;
+            }
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Smooth Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .scale-in {
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.6s ease-out;
+        }
+        
+        .scale-in.visible {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        /* Hover Effects */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Glass Effect with Fallback */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Fallback for browsers without backdrop-filter support */
+        @supports not (backdrop-filter: blur(10px)) {
+            .glass-effect {
+                background: rgba(255, 255, 255, 0.95);
+            }
+        }
+        
+        /* Number Counter Animation */
+        .counter {
+            animation: countUp 2s ease-out forwards;
+        }
+        
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Floating Animation */
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Pulse Animation */
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 5px;
+        }
+        
+        /* Background Patterns */
+        .dot-pattern {
+            background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        
+        .grid-pattern {
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            border-radius: 50px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-weight: 600;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(100px);
+        }
+        
+        .whatsapp-float:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+            padding-right: 28px;
+        }
+        
+        .whatsapp-text {
+            max-width: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            transition: max-width 0.3s ease;
+        }
+        
+        .whatsapp-float:hover .whatsapp-text {
+            max-width: 100px;
+        }
+        
+        /* Mobile responsive improvements */
+        @media (max-width: 640px) {
+            .whatsapp-float {
+                bottom: 15px;
+                right: 15px;
+                padding: 12px 16px;
+            }
+            
+            .whatsapp-float svg {
+                width: 24px;
+                height: 24px;
+            }
+            
+            /* Improve mobile typography */
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            h2 {
+                font-size: 1.75rem !important;
+                line-height: 1.3 !important;
+            }
+            
+            h3 {
+                font-size: 1.5rem !important;
+            }
+            
+            p {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+            
+            /* Better mobile spacing */
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            section {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+        }
+        
+        /* Animation */
+        @keyframes whatsappPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        .whatsapp-float {
+            animation: whatsappPulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            animation: none;
+        }
+        
+        /* Consistent Section Spacing */
+        section {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        
+        @media (min-width: 768px) {
+            section {
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+            }
+        }
+        
+        /* Improved Card Styling */
+        .info-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Better Mobile Menu */
+        #mobileMenu {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            margin-top: 1rem;
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-b from-white via-blue-50/30 to-white">
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-lg shadow-sm border-b border-gray-100">
+        <nav class="container mx-auto px-4 sm:px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6" viewBox="56 48 58 48" preserveAspectRatio="xMidYMid meet">
+                            <g fill="white">
+                                <path d="M 83.582031 78.949219 L 83.582031 78.378906 L 82.519531 78.699219 L 81.492188 75.292969 L 88.347656 73.207031 L 89.378906 76.617188 L 87.746094 77.113281 L 87.746094 79.132812 L 97.023438 96.78125 L 94.695312 96.78125 L 87.535156 83.449219 L 91.894531 96.78125 L 89.570312 96.78125 L 84.8125 82.335938 L 76.539062 96.78125 L 74.214844 96.78125 L 83.582031 78.949219"/>
+                                <path d="M 76.582031 72.972656 L 67.351562 75.664062 L 64.664062 66.371094 L 73.894531 63.679688 L 76.582031 72.972656"/>
+                                <path d="M 63.957031 68.878906 L 65.515625 74.277344 L 62.34375 75.203125 L 60.78125 69.804688 L 63.957031 68.878906"/>
+                                <path d="M 110.128906 57.828125 C 111.085938 61.125 109.855469 64.378906 107.386719 65.097656 L 103.9375 53.160156 C 106.402344 52.445312 109.179688 54.53125 110.128906 57.828125"/>
+                                <path d="M 102.507812 51.503906 L 107.066406 67.308594 L 100.808594 69.128906 L 96.273438 53.316406 L 102.507812 51.503906"/>
+                                <path d="M 73.949219 60.785156 L 95.382812 54.539062 L 99.394531 68.535156 L 77.992188 74.769531 L 73.949219 60.785156"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold gradient-text">Antriksh Cloud</span>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#problem" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Problem</a>
+                    <a href="#solution" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Solution</a>
+                    <a href="#traction" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Traction</a>
+                    <a href="#investment" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Investment</a>
+                    <a href="#careers" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Careers</a>
+                    <a href="https://antriksh.cloud/MarketAnalysis" target="_blank" class="bg-gradient-to-r from-teal-100 to-cyan-100 hover:from-teal-200 hover:to-cyan-200 text-teal-700 font-semibold px-4 py-2 rounded-full transition-all shadow-md">
+                        Market Analysis
+                    </a>
+                    <a href="https://www.antriksh.cloud/Deck" target="_blank" class="bg-gradient-to-r from-amber-100 to-orange-100 hover:from-amber-200 hover:to-orange-200 text-orange-700 font-semibold px-4 py-2 rounded-full transition-all shadow-md">
+                        View Deck
+                    </a>
+                    <a href="https://calendly.com/antrikshcloud" target="_blank" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold px-5 py-2 rounded-full transition-all transform hover:scale-105 shadow-lg">
+                        Schedule a Discussion
+                    </a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#problem" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Problem</a>
+                    <a href="#solution" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Solution</a>
+                    <a href="#traction" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Traction</a>
+                    <a href="#investment" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Investment</a>
+                    <a href="#careers" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Careers</a>
+                    <a href="https://antriksh.cloud/MarketAnalysis" target="_blank" class="bg-gradient-to-r from-teal-100 to-cyan-100 hover:from-teal-200 hover:to-cyan-200 text-teal-700 font-semibold px-6 py-2.5 rounded-full transition-all text-center">
+                        Market Analysis
+                    </a>
+                    <a href="https://www.antriksh.cloud/Deck" target="_blank" class="bg-gradient-to-r from-amber-100 to-orange-100 hover:from-amber-200 hover:to-orange-200 text-orange-700 font-semibold px-6 py-2.5 rounded-full transition-all text-center shadow-md">
+                        View Investment Deck
+                    </a>
+                    <a href="https://calendly.com/antrikshcloud" target="_blank" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold px-6 py-2.5 rounded-full transition-all text-center">
+                        Schedule a Discussion
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 overflow-hidden bg-gradient-to-b from-blue-50 via-purple-50 to-white">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 grid-pattern opacity-20"></div>
+        <div class="absolute top-20 right-10 w-72 h-72 bg-purple-300 rounded-full filter blur-3xl opacity-20 float hidden md:block"></div>
+        <div class="absolute bottom-20 left-10 w-96 h-96 bg-blue-300 rounded-full filter blur-3xl opacity-20 float hidden md:block" style="animation-delay: 3s"></div>
+        
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="max-w-5xl mx-auto">
+                <!-- Status Badge -->
+                <div class="flex justify-center mb-6 sm:mb-8 fade-in">
+                    <div class="inline-flex items-center bg-gradient-to-r from-emerald-50 to-green-50 border border-emerald-200 rounded-full px-3 sm:px-6 py-2 sm:py-3 shadow-md">
+                        <span class="w-2 h-2 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full pulse-dot mr-2 sm:mr-3"></span>
+                        <span class="text-emerald-800 font-semibold text-xs sm:text-sm">MoU in Final Stages • Land & Power Secured • Strong Investor Interest</span>
+                    </div>
+                </div>
+                
+                <!-- Main Headline -->
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-black text-center mb-6 leading-tight fade-in" style="animation-delay: 0.2s">
+                    India's First <span class="gradient-text">500MW</span><br/>
+                    <span class="text-gray-900">Liquid-Cooled Sovereign AI Infrastructure</span>
+                </h1>
+                
+                <!-- Subheadline -->
+                <p class="text-lg sm:text-xl md:text-2xl text-gray-600 text-center mb-12 max-w-3xl mx-auto fade-in" style="animation-delay: 0.4s">
+                    <span class="font-semibold text-gray-800">Building sovereign GPU clusters for India's $41.7 billion AI opportunity. </span>
+                    288,000 GPUs ready to power the nation's AI ambitions.
+                </p>
+                
+                <!-- Key Metrics -->
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4 max-w-5xl mx-auto fade-in" style="animation-delay: 0.8s">
+                    <div class="bg-gradient-to-br from-blue-50 to-sky-100 p-3 sm:p-6 rounded-2xl text-center hover-lift border border-blue-100">
+                        <div class="text-2xl sm:text-4xl font-black gradient-text counter">51x</div>
+                        <div class="text-xs sm:text-sm text-gray-600 font-medium mt-1">Infrastructure Gap</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-50 to-violet-100 p-3 sm:p-6 rounded-2xl text-center hover-lift border border-purple-100">
+                        <div class="text-2xl sm:text-4xl font-black gradient-text counter">$66M</div>
+                        <div class="text-xs sm:text-sm text-gray-600 font-medium mt-1">Seed Round</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-100 p-3 sm:p-6 rounded-2xl text-center hover-lift border border-green-100">
+                        <div class="text-2xl sm:text-4xl font-black gradient-text counter">46%</div>
+                        <div class="text-xs sm:text-sm text-gray-600 font-medium mt-1">Target IRR</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-amber-50 to-yellow-100 p-3 sm:p-6 rounded-2xl text-center hover-lift border border-amber-100">
+                        <div class="text-2xl sm:text-4xl font-black gradient-text counter">2.4yr</div>
+                        <div class="text-xs sm:text-sm text-gray-600 font-medium mt-1">Payback</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-rose-50 to-pink-100 p-3 sm:p-6 rounded-2xl text-center hover-lift border border-rose-100">
+                        <div class="text-2xl sm:text-4xl font-black gradient-text counter">6 Mo</div>
+                        <div class="text-xs sm:text-sm text-gray-600 font-medium mt-1">To Revenue</div>
+                    </div>
+                </div>
+                
+                <!-- Join Us CTA -->
+                <div class="mt-12 text-center fade-in" style="animation-delay: 1s">
+                    <p class="text-lg text-gray-600 mb-4">
+                        Building this infrastructure requires world-class talent. We're hiring now.
+                    </p>
+                    <a href="#careers" class="inline-flex items-center bg-gradient-to-r from-indigo-100 to-purple-100 hover:from-indigo-200 hover:to-purple-200 text-indigo-700 font-semibold px-6 py-3 rounded-full transition-all transform hover:scale-105 group">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <span>Join Our Mission</span>
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Infrastructure 101 Explainer Box -->
+    <section class="py-8 bg-gradient-to-r from-blue-50 to-purple-50">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="info-card border-l-4 border-blue-500">
+                <h3 class="text-xl font-bold text-gray-900 mb-3 flex items-center">
+                    <svg class="w-6 h-6 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    What is AI Infrastructure?
+                </h3>
+                <p class="text-gray-700 text-base leading-relaxed">
+                    <strong>Think of it this way:</strong> When you use ChatGPT or any AI app, it needs powerful computers (GPUs) to work. 
+                    Currently, 90% of India's AI runs on computers located overseas, causing delays and security risks. 
+                    Antriksh Cloud is building India's own "AI Factory powerhouse" – a massive facility with 200k+ GPUs that will 
+                    keep Indian data in India while making AI faster and cheaper for everyone.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="py-16 sm:py-24 bg-gradient-to-b from-rose-50 via-pink-50 to-white relative">
+        <div class="absolute inset-0 dot-pattern opacity-20"></div>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="max-w-5xl mx-auto">
+                <!-- Section Header -->
+                <div class="text-center mb-12 sm:mb-16 fade-in">
+                    <div class="inline-flex items-center bg-red-100 text-red-700 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">
+                        <svg class="w-3 h-3 sm:w-4 sm:h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                        </svg>
+                        The Critical Gap
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-3 sm:mb-4">
+                        India's AI Paradox
+                    </h2>
+                    <p class="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto">
+                        World's highest AI adoption, yet critically dependent on foreign infrastructure
+                    </p>
+                </div>
+
+                <!-- Enhanced Problem Section with Visual Comparison -->
+                <div class="mt-8 mb-12 bg-gradient-to-r from-red-50 to-orange-50 rounded-3xl p-6 border border-red-200">
+                    <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                        <span class="text-2xl mr-2">⚠️</span>
+                        Why This Matters: The Real Cost of Foreign Dependency
+                    </h4>
+                    <div class="grid md:grid-cols-3 gap-4 text-sm">
+                        <div class="bg-white rounded-xl p-4">
+                            <div class="text-3xl mb-2">💸</div>
+                            <h5 class="font-bold text-red-700">3-4x Higher Costs</h5>
+                            <p class="text-gray-600">Indian companies pay premium prices for foreign GPU access</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-4">
+                            <div class="text-3xl mb-2">🐌</div>
+                            <h5 class="font-bold text-red-700">200ms+ Latency</h5>
+                            <p class="text-gray-600">Slow response times hurt user experience</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-4">
+                            <div class="text-3xl mb-2">🔓</div>
+                            <h5 class="font-bold text-red-700">Data Security Risks</h5>
+                            <p class="text-gray-600">Sensitive Indian data processed overseas</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Visual Comparison -->
+                <div class="grid md:grid-cols-2 gap-4 sm:gap-8 mb-12">
+                    <!-- India Card -->
+                    <div class="bg-white rounded-3xl p-4 sm:p-8 shadow-xl hover-lift scale-in">
+                        <div class="flex items-center justify-between mb-4 sm:mb-6">
+                            <div>
+                                <div class="text-4xl sm:text-6xl mb-1 sm:mb-2">🇮🇳</div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900">India</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-3xl sm:text-5xl font-black text-green-600">48%</div>
+                                <div class="text-xs sm:text-sm text-gray-600">AI Adoption Rate</div>
+                            </div>
+                        </div>
+                        <div class="space-y-3 sm:space-y-4">
+                            <div class="bg-red-50 rounded-xl p-3 sm:p-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-700 font-medium text-sm sm:text-base">Data Center Capacity</span>
+                                    <span class="text-xl sm:text-2xl font-bold text-red-600">1 MW</span>
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1">per million users</div>
+                            </div>
+                            <div class="bg-red-50 rounded-xl p-3 sm:p-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-700 font-medium text-sm sm:text-base">GPU Infrastructure</span>
+                                    <span class="text-xl sm:text-2xl font-bold text-red-600"><50K</span>
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1">total GPUs available</div>
+                            </div>
+                            <div class="bg-red-50 rounded-xl p-3 sm:p-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-700 font-medium text-sm sm:text-base">Foreign Dependency</span>
+                                    <span class="text-xl sm:text-2xl font-bold text-red-600">90%+</span>
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1">of AI workloads</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- USA Card -->
+                    <div class="bg-white rounded-3xl p-4 sm:p-8 shadow-xl hover-lift scale-in" style="animation-delay: 0.2s">
+                        <div class="flex items-center justify-between mb-4 sm:mb-6">
+                            <div>
+                                <div class="text-4xl sm:text-6xl mb-1 sm:mb-2">🇺🇸</div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-gray-900">USA</h3>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-3xl sm:text-5xl font-black text-gray-400">22%</div>
+                                <div class="text-xs sm:text-sm text-gray-600">AI Adoption Rate</div>
+                            </div>
+                        </div>
+                        <div class="space-y-3 sm:space-y-4">
+                            <div class="bg-green-50 rounded-xl p-3 sm:p-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-700 font-medium text-sm sm:text-base">Data Center Capacity</span>
+                                    <span class="text-xl sm:text-2xl font-bold text-green-600">51 MW</span>
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1">per million users</div>
+                            </div>
+                            <div class="bg-green-50 rounded-xl p-3 sm:p-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-700 font-medium text-sm sm:text-base">GPU Infrastructure</span>
+                                    <span class="text-xl sm:text-2xl font-bold text-green-600">>2M</span>
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1">GPUs deployed</div>
+                            </div>
+                            <div class="bg-green-50 rounded-xl p-3 sm:p-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-700 font-medium text-sm sm:text-base">Self-Reliance</span>
+                                    <span class="text-xl sm:text-2xl font-bold text-green-600">100%</span>
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1">domestic capacity</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Market Opportunity -->
+                <div class="bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl p-6 sm:p-10 text-white text-center fade-in">
+                    <h3 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">This 51x Gap = $41.7 Billion Opportunity</h3>
+                    <p class="text-base sm:text-xl mb-4 sm:mb-6 text-blue-100">
+                        India's AI revolution is bottlenecked by infrastructure. We're building the solution.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4 sm:gap-8">
+                        <div>
+                            <div class="text-2xl sm:text-4xl font-black">$757B</div>
+                            <div class="text-xs sm:text-sm text-blue-200">Global TAM</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-4xl font-black">$41.7B</div>
+                            <div class="text-xs sm:text-sm text-blue-200">India SAM</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-4xl font-black">30%</div>
+                            <div class="text-xs sm:text-sm text-blue-200">Annual Growth</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-4xl font-black">2025</div>
+                            <div class="text-xs sm:text-sm text-blue-200">Critical Year</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Deep Dive Link -->
+                <div class="mt-12 pt-8 border-t border-gray-200 text-center fade-in">
+                    <a href="https://antriksh.cloud/MarketAnalysis" class="inline-flex items-center bg-gradient-to-r from-indigo-100 to-purple-100 hover:from-indigo-200 hover:to-purple-200 text-indigo-700 font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all transform hover:scale-105 shadow-lg group">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span>Deep Dive: Market Analysis & Infrastructure Gap</span>
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global AI Infrastructure Dependencies Section -->
+    <section class="py-12 sm:py-16 bg-gradient-to-b from-white via-indigo-50 to-white relative">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="max-w-3xl mx-auto">
+                <!-- Section Header -->
+                <div class="text-center mb-8 fade-in">
+                    <div class="inline-flex items-center bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold mb-3">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        Global AI Infrastructure
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-3">
+                        Where the World Gets Its A.I.
+                    </h2>
+                    <p class="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+                        Companies and countries throughout the world rely mostly on major American and Chinese cloud operators for A.I. facilities
+                    </p>
+                </div>
+
+                <!-- Sankey Diagram Container -->
+                <div class="bg-white rounded-2xl shadow-xl p-4 sm:p-6 fade-in">
+                    <div class="flex justify-between text-xs sm:text-sm text-gray-700 font-medium mb-3">
+                        <span>Companies based here ...</span>
+                        <span class="text-right">... operating A.I. facilities here</span>
+                    </div>
+                    
+                    <div id="sankey-chart" class="w-full mx-auto" style="height: 380px; max-width: 700px;"></div>
+                    
+                    <p class="text-center text-xs text-gray-500 mt-4">
+                        Source: Oxford University, <a href="https://www.nytimes.com/interactive/2025/06/23/technology/ai-computing-global-divide.html" target="_blank" class="underline hover:text-gray-700">The New York Times</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-sankey/0.12.3/d3-sankey.min.js"></script>
+    <script>
+        // Set dimensions and margins
+        const margin = {top: 10, right: 100, bottom: 10, left: 100};
+        const container = document.getElementById('sankey-chart');
+        const containerWidth = Math.min(container.offsetWidth, 700); // Cap at 700px
+        const width = containerWidth - margin.left - margin.right;
+        const height = 380 - margin.top - margin.bottom;
+
+        // Create SVG
+        const svg = d3.select("#sankey-chart")
+            .append("svg")
+            .attr("width", containerWidth)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // Define nodes with sharp, professional colors
+        const nodes = [
+            {id: 0, name: "China", color: "#dc2626"},
+            {id: 1, name: "United States", color: "#2563eb"},
+            {id: 2, name: "Switzerland", color: "#4f46e5"},
+            {id: 3, name: "France", color: "#f59e0b"},
+            {id: 4, name: "Asia", color: "#6b7280"},
+            {id: 5, name: "Europe", color: "#6b7280"},
+            {id: 6, name: "Middle East", color: "#6b7280"},
+            {id: 7, name: "North America", color: "#6b7280"},
+            {id: 8, name: "South Africa", color: "#6b7280"},
+            {id: 9, name: "South America", color: "#6b7280"},
+            {id: 10, name: "Australia", color: "#6b7280"}
+        ];
+
+        // Define links with sharper colors
+        const links = [
+            {source: 0, target: 4, value: 35, color: "#dc2626"},
+            {source: 0, target: 5, value: 8, color: "#dc2626"},
+            {source: 0, target: 6, value: 3, color: "#dc2626"},
+            {source: 0, target: 7, value: 5, color: "#dc2626"},
+            {source: 0, target: 8, value: 2, color: "#dc2626"},
+            {source: 0, target: 9, value: 2, color: "#dc2626"},
+            {source: 0, target: 10, value: 2, color: "#dc2626"},
+            {source: 1, target: 4, value: 15, color: "#2563eb"},
+            {source: 1, target: 5, value: 20, color: "#2563eb"},
+            {source: 1, target: 6, value: 5, color: "#2563eb"},
+            {source: 1, target: 7, value: 25, color: "#2563eb"},
+            {source: 1, target: 8, value: 3, color: "#2563eb"},
+            {source: 1, target: 9, value: 5, color: "#2563eb"},
+            {source: 1, target: 10, value: 5, color: "#2563eb"},
+            {source: 2, target: 5, value: 3, color: "#4f46e5"},
+            {source: 3, target: 5, value: 4, color: "#f59e0b"}
+        ];
+
+        // Create sankey generator with tighter spacing
+        const sankey = d3.sankey()
+            .nodeId(d => d.id)
+            .nodeWidth(15)
+            .nodePadding(8)
+            .extent([[1, 1], [width - 1, height - 6]]);
+
+        // Generate the sankey diagram
+        const {nodes: sankeyNodes, links: sankeyLinks} = sankey({
+            nodes: nodes.map(d => Object.assign({}, d)),
+            links: links.map(d => Object.assign({}, d))
+        });
+
+        // Add links with sharper appearance
+        const link = svg.append("g")
+            .selectAll(".link")
+            .data(sankeyLinks)
+            .enter().append("path")
+            .attr("class", "link")
+            .attr("d", d3.sankeyLinkHorizontal())
+            .attr("stroke", d => d.color)
+            .attr("stroke-width", d => Math.max(1, d.width))
+            .attr("fill", "none")
+            .style("opacity", 0.3)
+            .transition()
+            .duration(600)
+            .delay((d, i) => i * 30)
+            .style("opacity", 0.4);
+
+        // Add hover effect to links
+        svg.selectAll(".link")
+            .on("mouseover", function() {
+                d3.select(this)
+                    .transition()
+                    .duration(150)
+                    .style("opacity", 0.7)
+                    .attr("stroke-width", d => Math.max(1.5, d.width * 1.1));
+            })
+            .on("mouseout", function() {
+                d3.select(this)
+                    .transition()
+                    .duration(150)
+                    .style("opacity", 0.4)
+                    .attr("stroke-width", d => Math.max(1, d.width));
+            });
+
+        // Add nodes with sharper styling
+        const node = svg.append("g")
+            .selectAll(".node")
+            .data(sankeyNodes)
+            .enter().append("g")
+            .attr("class", "node")
+            .style("opacity", 0);
+
+        // Add rectangles with sharp corners
+        node.append("rect")
+            .attr("x", d => d.x0)
+            .attr("y", d => d.y0)
+            .attr("height", d => d.y1 - d.y0)
+            .attr("width", d => d.x1 - d.x0)
+            .attr("fill", d => d.color)
+            .attr("rx", 2)
+            .attr("ry", 2)
+            .style("stroke", d => d.color)
+            .style("stroke-width", 1);
+
+        // Add node labels with cleaner typography
+        node.append("text")
+            .attr("x", d => d.x0 < width / 2 ? d.x0 - 10 : d.x1 + 10)
+            .attr("y", d => (d.y1 + d.y0) / 2)
+            .attr("dy", "0.35em")
+            .attr("text-anchor", d => d.x0 < width / 2 ? "end" : "start")
+            .attr("fill", d => d.id < 4 ? d.color : "#111827")
+            .style("font-weight", d => d.id < 4 ? "700" : "500")
+            .style("font-size", "13px")
+            .style("font-family", "'Inter', -apple-system, BlinkMacSystemFont, sans-serif")
+            .text(d => d.name);
+
+        // Animate nodes appearing
+        node.transition()
+            .duration(600)
+            .delay((d, i) => i * 80)
+            .style("opacity", 1);
+
+        // Add hover effect to nodes
+        node.on("mouseover", function(event, d) {
+            d3.select(this).select("rect")
+                .transition()
+                .duration(150)
+                .style("stroke-width", 2)
+                .style("filter", "drop-shadow(0 4px 6px rgba(0,0,0,0.1))");
+        })
+        .on("mouseout", function() {
+            d3.select(this).select("rect")
+                .transition()
+                .duration(150)
+                .style("stroke-width", 1)
+                .style("filter", "none");
+        });
+
+        // Clean, minimal tooltip
+        const tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("position", "absolute")
+            .style("padding", "6px 10px")
+            .style("background", "rgba(17, 24, 39, 0.95)")
+            .style("color", "white")
+            .style("border-radius", "4px")
+            .style("font-size", "12px")
+            .style("font-family", "'Inter', sans-serif")
+            .style("pointer-events", "none")
+            .style("opacity", 0)
+            .style("box-shadow", "0 4px 6px rgba(0, 0, 0, 0.1)");
+
+        // Node hover tooltips
+        node.on("mouseover", function(event, d) {
+            const flows = d.sourceLinks.length + d.targetLinks.length;
+            tooltip.transition()
+                .duration(150)
+                .style("opacity", 1);
+            tooltip.html(`<strong>${d.name}</strong><br/>${flows} connections`)
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 28) + "px");
+        })
+        .on("mouseout", function() {
+            tooltip.transition()
+                .duration(150)
+                .style("opacity", 0);
+        });
+
+        // Clean up tooltip on resize
+        window.addEventListener('resize', function() {
+            const newContainerWidth = Math.min(container.offsetWidth, 700);
+            const newWidth = newContainerWidth - margin.left - margin.right;
+            if (Math.abs(newWidth - width) > 50) {
+                location.reload();
+            }
+        });
+    </script>
+
+    <!-- Solution Section -->
+    <section id="solution" class="py-16 sm:py-24 bg-gradient-to-b from-white via-indigo-50 to-white relative">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="max-w-6xl mx-auto">
+                <!-- Section Header -->
+                <div class="text-center mb-16 fade-in">
+                    <div class="inline-flex items-center bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
+                        </svg>
+                        The Solution
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                        Next-Gen Infrastructure for AI Sovereignty
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Liquid-cooled, software-defined, and purpose-built for India's GenAI workloads
+                    </p>
+                </div>
+
+                <!-- Market Context Box -->
+                <div class="mb-12 bg-gradient-to-br from-emerald-50 to-green-50 rounded-3xl p-6 border border-emerald-200">
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">📈 India's AI Boom: The Numbers</h4>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2">•</span>
+                                    <span><strong>48% AI adoption</strong> - Highest globally</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2">•</span>
+                                    <span><strong>$41.7B market</strong> by 2030</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2">•</span>
+                                    <span><strong>30% annual growth</strong> in AI compute demand</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2">•</span>
+                                    <span><strong>20,000-25,000 MW</strong> capacity needed by 2030</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2">•</span>
+                                    <span><strong>Make-in-India push</strong> with government support</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-600 mr-2">•</span>
+                                    <span><strong>Data localization laws</strong> mandate domestic infrastructure</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Core Features Grid -->
+                <div class="grid md:grid-cols-3 gap-6 sm:gap-8 mb-16">
+                    <!-- Liquid Cooling -->
+                    <div class="bg-gradient-to-br from-sky-50 via-blue-50 to-cyan-50 rounded-3xl p-6 sm:p-8 hover-lift scale-in border border-sky-100">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                            <span class="text-3xl">💧</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Liquid-Cooled Design</h3>
+                        <p class="text-gray-600 mb-6">Direct-to-chip cooling enabling 150-300kW per rack density - 10x more than traditional air-cooled facilities.</p>
+                        <div class="space-y-3">
+                            <div class="flex items-center text-sm">
+                                <svg class="w-5 h-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>PUE < 1.10 efficiency</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <svg class="w-5 h-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>40-50% lower TCO</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <svg class="w-5 h-5 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Zero thermal throttling</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Software Defined -->
+                    <div class="bg-gradient-to-br from-violet-50 via-purple-50 to-pink-50 rounded-3xl p-6 sm:p-8 hover-lift scale-in border border-violet-100" style="animation-delay: 0.2s">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                            <span class="text-3xl">⚡</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Software-Defined</h3>
+                        <p class="text-gray-600 mb-6">Deploy GPU clusters in minutes, not months. Multi-cloud native architecture with seamless scaling.</p>
+                        <div class="bg-gray-900 rounded-xl p-3 sm:p-4 text-xs sm:text-sm overflow-x-auto">
+                            <code class="text-green-400">
+                                <span class="text-gray-500"># Deploy in seconds</span><br/>
+                                <span class="text-blue-400">cluster</span> = antriksh.<span class="text-yellow-400">create</span>(<br/>
+                                &nbsp;&nbsp;<span class="text-purple-400">gpus</span>=<span class="text-orange-400">8</span>,<br/>
+                                &nbsp;&nbsp;<span class="text-purple-400">type</span>=<span class="text-green-400">"GB200"</span><br/>
+                                )
+                            </code>
+                        </div>
+                    </div>
+                    
+                    <!-- Sovereign AI -->
+                    <div class="bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 rounded-3xl p-6 sm:p-8 hover-lift scale-in border border-emerald-100" style="animation-delay: 0.4s">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-400 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                            <span class="text-3xl">🛡️</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">100% Sovereign</h3>
+                        <p class="text-gray-600 mb-6">Data never leaves India. Built for government, defense, and enterprises requiring complete data sovereignty.</p>
+                        <div class="space-y-3">
+                            <div class="flex items-center text-sm">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>CERT-In compliant</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>Delhi NCR location</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span>5-30ms latency</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How We Help AI Builders -->
+                <div class="mt-16 mb-12 fade-in">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 text-center">
+                        Built for AI Builders' Real Challenges
+                    </h3>
+                    <p class="text-lg text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+                        We understand the infrastructure bottlenecks holding back AI Innovation and AI Inference Deployment
+                    </p>
+                    
+                    <!-- Challenge-Solution Cards Grid -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Card 1: Cost Challenge -->
+                        <div class="bg-gradient-to-br from-rose-50 via-pink-50 to-rose-50 rounded-3xl p-6 hover-lift scale-in border border-rose-100">
+                            <div class="w-14 h-14 bg-gradient-to-br from-rose-400 to-pink-400 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                                <span class="text-2xl">💰</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-3">Crushing GPU Costs</h4>
+                            <div class="space-y-3">
+                                <div class="bg-white/60 rounded-xl p-3 border border-rose-200">
+                                    <p class="text-sm text-gray-700">
+                                        <span class="font-semibold text-rose-700">Challenge:</span> High Cost for basic clusters
+                                    </p>
+                                </div>
+                                <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-3 border border-green-200">
+                                    <p class="text-sm text-gray-700">
+                                        <span class="font-semibold text-green-700">Solution:</span> 40-50% lower cost compared to Hyperscalers + Venture Compute equity options
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Security Challenge -->
+                        <div class="bg-gradient-to-br from-indigo-50 via-blue-50 to-indigo-50 rounded-3xl p-6 hover-lift scale-in border border-indigo-100" style="animation-delay: 0.1s">
+                            <div class="w-14 h-14 bg-gradient-to-br from-indigo-400 to-blue-400 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                                <span class="text-2xl">🔒</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-3">Data Sovereignty Concerns</h4>
+                            <div class="space-y-3">
+                                <div class="bg-white/60 rounded-xl p-3 border border-indigo-200">
+                                    <p class="text-sm text-gray-700">
+                                        <span class="font-semibold text-indigo-700">Challenge:</span> No secure options for regulated industries
+                                    </p>
+                                </div>
+                                <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-3 border border-green-200">
+                                    <p class="text-sm text-gray-700">
+                                        <span class="font-semibold text-green-700">Solution:</span> Air-gapped, CERT-In compliant, data never leaves India
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Latency Challenge -->
+                        <div class="bg-gradient-to-br from-amber-50 via-yellow-50 to-amber-50 rounded-3xl p-6 hover-lift scale-in border border-amber-100" style="animation-delay: 0.2s">
+                            <div class="w-14 h-14 bg-gradient-to-br from-amber-400 to-yellow-400 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                                <span class="text-2xl">🌐</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-3">Geographic Limitations</h4>
+                            <div class="space-y-3">
+                                <div class="bg-white/60 rounded-xl p-3 border border-amber-200">
+                                    <p class="text-sm text-gray-700">
+                                        <span class="font-semibold text-amber-700">Challenge:</span> 200ms+ latency from DC outside India
+                                    </p>
+                                </div>
+                                <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-3 border border-green-200">
+                                    <p class="text-sm text-gray-700">
+                                        <span class="font-semibold text-green-700">Solution:</span> 10-50ms latency across India with local inference
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Flexibility Challenge -->
+                        <div class="bg-gradient-to-br from-purple-50 via-violet-50 to-purple-50 rounded-3xl p-6 hover-lift scale-in border border-purple-100" style="animation-delay: 0.3s">
+                            <div class="w-14 h-14 bg-gradient-to-br from-purple-400 to-violet-400 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                                <span class="text-2xl">🎯</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-3">Rigid Infrastructure</h4>
+                            <div class="space-y-3">
+                                <div class="bg-white/60 rounded-xl p-3 border border-purple-200">
+                                    <p class="text-sm text-gray-700">
+                                        <span class="font-semibold text-purple-700">Challenge:</span> Fixed allocations, slow provisioning
+                                    </p>
+                                </div>
+                                <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-3 border border-green-200">
+                                    <p class="text-sm text-gray-700">
+                                        <span class="font-semibold text-green-700">Solution:</span> Scale 8-1,024 GPUs in minutes, pay per use
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Market Access Challenge -->
+                        <div class="bg-gradient-to-br from-teal-50 via-cyan-50 to-teal-50 rounded-3xl p-6 hover-lift scale-in border border-teal-100" style="animation-delay: 0.4s">
+                            <div class="w-14 h-14 bg-gradient-to-br from-teal-400 to-cyan-400 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                                <span class="text-2xl">🚀</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-3">India Market Access</h4>
+                            <div class="space-y-3">
+                                <div class="bg-white/60 rounded-xl p-3 border border-teal-200">
+                                    <p class="text-sm text-gray-700">
+                                        <span class="font-semibold text-teal-700">Challenge:</span> Complex regulations, no local partner
+                                    </p>
+                                </div>
+                                <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-3 border border-green-200">
+                                    <p class="text-sm text-gray-700">
+                                        <span class="font-semibold text-green-700">Solution:</span> Navigate compliance, regulation, market access & reach 1.4B users
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 6: Special - Venture Compute -->
+                        <div class="bg-gradient-to-br from-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-3xl p-6 hover-lift scale-in border-2 border-purple-300 shadow-xl" style="animation-delay: 0.5s">
+                            <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                                <span class="text-2xl">🦄</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-3">For AI Startups</h4>
+                            <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-4 border border-purple-200">
+                                <p class="text-sm text-gray-700 mb-2">
+                                    <span class="font-bold text-purple-700">Venture Compute Program:</span>
+                                </p>
+                                <ul class="space-y-1 text-sm text-gray-600">
+                                    <li class="flex items-center">
+                                        <svg class="w-4 h-4 text-purple-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                        GPU credits for equity (5-10%)
+                                    </li>
+                                    <li class="flex items-center">
+                                        <svg class="w-4 h-4 text-purple-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                        10% capacity reserved
+                                    </li>
+                                    <li class="flex items-center">
+                                        <svg class="w-4 h-4 text-purple-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                        Incubation support included
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Scale Comparison -->
+                <div class="bg-gradient-to-r from-slate-800 via-gray-800 to-slate-800 rounded-3xl p-6 sm:p-10 text-white fade-in shadow-2xl">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-center">Unprecedented Scale for India</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4 text-center">
+                        <div class="bg-white/10 backdrop-blur rounded-xl p-3 sm:p-6">
+                            <div class="text-2xl sm:text-3xl font-black mb-1 sm:mb-2">500MW</div>
+                            <div class="text-xs sm:text-sm text-gray-300">Total Power Capacity</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur rounded-xl p-3 sm:p-6">
+                            <div class="text-2xl sm:text-3xl font-black mb-1 sm:mb-2">288K</div>
+                            <div class="text-xs sm:text-sm text-gray-300">Next-Gen GPUs</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur rounded-xl p-3 sm:p-6">
+                            <div class="text-2xl sm:text-3xl font-black mb-1 sm:mb-2">$0.08</div>
+                            <div class="text-xs sm:text-sm text-gray-300">per kWh Power</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur rounded-xl p-3 sm:p-6">
+                            <div class="text-2xl sm:text-3xl font-black mb-1 sm:mb-2">6x</div>
+                            <div class="text-xs sm:text-sm text-gray-300">Larger than Rivals</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur rounded-xl p-3 sm:p-6">
+                            <div class="text-2xl sm:text-3xl font-black mb-1 sm:mb-2">1.10</div>
+                            <div class="text-xs sm:text-sm text-gray-300">Target PUE</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Venture Compute -->
+                <div class="mt-8 bg-gradient-to-r from-violet-50 via-purple-50 to-pink-50 rounded-3xl p-4 sm:p-8 border-2 border-purple-200 fade-in">
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-400 to-pink-400 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-xl sm:text-2xl">🚀</span>
+                        </div>
+                        <div class="ml-4 sm:ml-6">
+                            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-3">Venture Compute Engine</h3>
+                            <p class="text-gray-700 text-sm sm:text-lg">
+                                Beyond infrastructure: We're incubating India's AI unicorns with GPU credits for equity. 
+                                10% of capacity allocated to high-potential startups, creating exponential value beyond traditional revenue.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Growth CTA -->
+                <div class="mt-8 bg-gradient-to-r from-indigo-500 to-blue-600 rounded-3xl p-4 sm:p-8 text-white text-center fade-in shadow-xl">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Built by World-Class Engineers, Growing Rapidly</h3>
+                    <p class="text-sm sm:text-lg text-blue-100 mb-4 sm:mb-6">
+                        Our team includes cloud infrastructure pioneers, AI researchers, and data center experts from leading tech companies.
+                        We're actively expanding our teams in SF and India.
+                    </p>
+                    <a href="#careers" class="inline-flex items-center bg-white hover:bg-gray-100 text-indigo-600 font-bold px-4 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-lg transition-all transform hover:scale-105 shadow-lg group">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+                        </svg>
+                        <span>Join Our Engineering Team Now</span>
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Traction Section -->
+    <section id="traction" class="py-16 sm:py-24 bg-gradient-to-b from-blue-50 via-white to-purple-50 relative">
+        <div class="absolute inset-0 dot-pattern opacity-30"></div>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="max-w-5xl mx-auto">
+                <!-- Section Header -->
+                <div class="text-center mb-16 fade-in">
+                    <div class="inline-flex items-center bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                        Execution Ready
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                        Everything in Place to Build
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Years of planning culminating in immediate execution capability
+                    </p>
+                </div>
+                
+                <!-- Progress Timeline -->
+                <div class="bg-white rounded-3xl p-4 sm:p-8 shadow-xl mb-12 fade-in">
+                    <div class="space-y-4 sm:space-y-6">
+                        <!-- Completed Items -->
+                        <div class="flex items-start scale-in">
+                            <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-4 sm:ml-6 flex-1">
+                                <h4 class="text-lg sm:text-xl font-bold text-gray-900">500MW Power Allocation Secured</h4>
+                                <p class="text-gray-600 mt-1 text-sm sm:text-base">Strategic canal-side location with abundant water for cooling infrastructure</p>
+                            </div>
+                            <span class="text-xs sm:text-sm text-green-600 font-semibold ml-2">Completed</span>
+                        </div>
+                        
+                        <div class="flex items-start scale-in" style="animation-delay: 0.1s">
+                            <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-4 sm:ml-6 flex-1">
+                                <h4 class="text-lg sm:text-xl font-bold text-gray-900">Government MoU in Final Stages</h4>
+                                <p class="text-gray-600 mt-1 text-sm sm:text-base">State backing with infrastructure status and regulatory clearances</p>
+                            </div>
+                            <span class="text-xs sm:text-sm text-green-600 font-semibold ml-2">Final Review</span>
+                        </div>
+                        
+                        <div class="flex items-start scale-in" style="animation-delay: 0.2s">
+                            <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-4 sm:ml-6 flex-1">
+                                <h4 class="text-lg sm:text-xl font-bold text-gray-900">NVIDIA GB200 Supply Confirmed</h4>
+                                <p class="text-gray-600 mt-1 text-sm sm:text-base">Direct allocation secured for immediate deployment upon funding</p>
+                            </div>
+                            <span class="text-xs sm:text-sm text-green-600 font-semibold ml-2">Confirmed</span>
+                        </div>
+                        
+                        <div class="flex items-start scale-in" style="animation-delay: 0.3s">
+                            <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-4 sm:ml-6 flex-1">
+                                <h4 class="text-lg sm:text-xl font-bold text-gray-900">Technical Design Complete</h4>
+                                <p class="text-gray-600 mt-1 text-sm sm:text-base">3MW container PoC ready for deployment within 6 months</p>
+                            </div>
+                            <span class="text-xs sm:text-sm text-green-600 font-semibold ml-2">Ready</span>
+                        </div>
+                        
+                        <!-- Next Step -->
+                        <div class="flex items-start scale-in" style="animation-delay: 0.4s">
+                            <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center flex-shrink-0 pulse-dot shadow-lg">
+                                <span class="text-white font-bold text-sm sm:text-base">→</span>
+                            </div>
+                            <div class="ml-4 sm:ml-6 flex-1">
+                                <h4 class="text-lg sm:text-xl font-bold text-gray-900">Ready for Deployment</h4>
+                                <p class="text-gray-600 mt-1 text-sm sm:text-base">3MW PoC generates revenue in 6-8 months, validates model for 500MW scale</p>
+                                <div class="mt-3 bg-indigo-50 rounded-lg p-3 border border-indigo-200">
+                                    <p class="text-indigo-700 font-semibold text-sm sm:text-base">
+                                        <span class="text-indigo-900">Next: Funding</span> • Our round will open very soon after the MoU is signed. Already have infrastructure investors' interest and commitments pouring in.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Visualization -->
+                <div class="mt-12 bg-white rounded-3xl p-6 sm:p-8 shadow-xl fade-in">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Our Journey to 500MW</h3>
+                    <div class="relative">
+                        <!-- Timeline line -->
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500"></div>
+                        
+                        <!-- Timeline items -->
+                        <div class="space-y-8">
+                            <div class="flex items-center">
+                                <div class="flex-1 text-right pr-4 sm:pr-8">
+                                    <h4 class="font-bold text-gray-900">Phase 1: Proof of Concept</h4>
+                                    <p class="text-sm text-gray-600">3MW container deployment</p>
+                                </div>
+                                <div class="w-4 h-4 bg-blue-500 rounded-full z-10 relative"></div>
+                                <div class="flex-1 pl-4 sm:pl-8">
+                                    <span class="text-sm font-bold text-blue-600">6-8 months</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="flex-1 text-right pr-4 sm:pr-8">
+                                    <span class="text-sm font-bold text-green-600">Year 1-2</span>
+                                </div>
+                                <div class="w-4 h-4 bg-green-500 rounded-full z-10 relative"></div>
+                                <div class="flex-1 pl-4 sm:pl-8">
+                                    <h4 class="font-bold text-gray-900">Phase 2: Scale to 100MW</h4>
+                                    <p class="text-sm text-gray-600">Enterprise customers onboarded</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="flex-1 text-right pr-4 sm:pr-8">
+                                    <h4 class="font-bold text-gray-900">Phase 3: Full 500MW</h4>
+                                    <p class="text-sm text-gray-600">India's largest AI infrastructure</p>
+                                </div>
+                                <div class="w-4 h-4 bg-purple-500 rounded-full z-10 relative"></div>
+                                <div class="flex-1 pl-4 sm:pl-8">
+                                    <span class="text-sm font-bold text-purple-600">Year 5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Credibility -->
+                <div class="grid md:grid-cols-2 gap-4 sm:gap-8 mt-12 mb-12 fade-in">
+                    <!-- Track Record -->
+                    <div class="bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 rounded-3xl p-4 sm:p-8 border border-blue-100">
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Leadership Team Track Record</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700 text-sm sm:text-base">Infrastructure Delivered</span>
+                                <span class="text-lg sm:text-xl font-bold gradient-text">$1.6B+</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700 text-sm sm:text-base">Technical Leadership</span>
+                                <span class="text-lg sm:text-xl font-bold gradient-text">IIT Alumni</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700 text-sm sm:text-base">Data Center Experience</span>
+                                <span class="text-lg sm:text-xl font-bold gradient-text">20+ Years</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700 text-sm sm:text-base">Government Relations</span>
+                                <span class="text-lg sm:text-xl font-bold gradient-text">5 Decades</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700 text-sm sm:text-base">Combined Experience</span>
+                                <span class="text-lg sm:text-xl font-bold gradient-text">100+ Years</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-blue-200">
+                            <a href="#careers" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold group text-sm sm:text-base">
+                                <span>We're hiring exceptional talent now</span>
+                                <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Focus Areas -->
+                    <div class="bg-gradient-to-br from-violet-50 via-purple-50 to-pink-50 rounded-3xl p-4 sm:p-8 fade-in border border-purple-100" style="animation-delay: 0.2s">
+                        <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Initial Focus Areas</h3>
+                        <div class="space-y-3 sm:space-y-4">
+                            <div class="font-semibold text-purple-700 mb-2 text-sm sm:text-base">GenAI Inference Workloads:</div>
+                            <div class="flex items-center text-sm sm:text-base">
+                                <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700">LLM serving for Indian languages</span>
+                            </div>
+                            <div class="flex items-center text-sm sm:text-base">
+                                <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Enterprise RAG deployments</span>
+                            </div>
+                            <div class="flex items-center text-sm sm:text-base">
+                                <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Government AI initiatives</span>
+                            </div>
+                            <div class="flex items-center text-sm sm:text-base">
+                                <div class="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700">Vision & multimodal workloads</span>
+                            </div>
+                            
+                            <div class="font-semibold text-pink-700 mb-2 mt-4 sm:mt-6 text-sm sm:text-base">Venture Compute Engine:</div>
+                            <div class="flex items-center text-sm sm:text-base">
+                                <div class="w-2 h-2 bg-pink-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700">GPU credits for equity program</span>
+                            </div>
+                            <div class="flex items-center text-sm sm:text-base">
+                                <div class="w-2 h-2 bg-pink-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700">AI startup incubation & acceleration</span>
+                            </div>
+                            <div class="flex items-center text-sm sm:text-base">
+                                <div class="w-2 h-2 bg-pink-500 rounded-full mr-3"></div>
+                                <span class="text-gray-700">10% capacity for portfolio companies</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Model Section -->
+    <section id="business-model" class="py-16 sm:py-24 bg-gradient-to-b from-white via-emerald-50 to-white relative">
+        <div class="absolute inset-0 grid-pattern opacity-20"></div>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <!-- Section Header -->
+                <div class="text-center mb-16 fade-in">
+                    <div class="inline-flex items-center bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"></path>
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"></path>
+                        </svg>
+                        Revenue Model
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                        Five Revenue Streams, One Platform
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Multiple monetization paths ensuring 66% EBITDA margins and 46% IRR
+                    </p>
+                </div>
+
+                <!-- Revenue Streams Grid -->
+                <div class="grid md:grid-cols-5 gap-4 mb-12 fade-in">
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-6 hover-lift">
+                        <div class="text-3xl mb-3">⚡</div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">GPU-as-a-Service</h3>
+                        <div class="text-2xl font-black text-blue-600 mb-2">$2.50-5/hr</div>
+                        <p class="text-sm text-gray-600">On-demand GPU compute at 40-50% below hyperscalers</p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-purple-50 to-violet-100 rounded-2xl p-6 hover-lift">
+                        <div class="text-3xl mb-3">📊</div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Enterprise Contracts</h3>
+                        <div class="text-2xl font-black text-purple-600 mb-2">$1-10M/yr</div>
+                        <p class="text-sm text-gray-600">Long-term reserved capacity for Fortune 500</p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-6 hover-lift">
+                        <div class="text-3xl mb-3">🤖</div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Inference APIs</h3>
+                        <div class="text-2xl font-black text-green-600 mb-2">$0.10-10/M</div>
+                        <p class="text-sm text-gray-600">Pay-per-token model hosting & serving</p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-orange-50 to-amber-100 rounded-2xl p-6 hover-lift">
+                        <div class="text-3xl mb-3">🔧</div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Managed Services</h3>
+                        <div class="text-2xl font-black text-orange-600 mb-2">20% margin</div>
+                        <p class="text-sm text-gray-600">MLOps, fine-tuning, optimization</p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-pink-50 to-rose-100 rounded-2xl p-6 hover-lift">
+                        <div class="text-3xl mb-3">🚀</div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Venture Compute</h3>
+                        <div class="text-2xl font-black text-pink-600 mb-2">5-10% equity</div>
+                        <p class="text-sm text-gray-600">GPU credits for startup equity</p>
+                    </div>
+                </div>
+
+                <!-- Customer Segments -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl mb-12 fade-in">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Target Customer Segments</h3>
+                    
+                    <div class="grid md:grid-cols-5 gap-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">🤖</span>
+                            </div>
+                            <h4 class="font-bold text-gray-900 mb-2">GenAI Platforms</h4>
+                            <p class="text-sm text-gray-600 mb-3">OpenAI, Anthropic, Perplexity & Indian LLM companies</p>
+                            <div class="text-xs text-cyan-600 font-semibold">Agentic Inference</div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">🏢</span>
+                            </div>
+                            <h4 class="font-bold text-gray-900 mb-2">Enterprise AI</h4>
+                            <p class="text-sm text-gray-600 mb-3">BFSI, Healthcare, Manufacturing deploying GenAI at scale</p>
+                            <div class="text-xs text-blue-600 font-semibold">Sandboxed Models</div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">🏛️</span>
+                            </div>
+                            <h4 class="font-bold text-gray-900 mb-2">Government & Defense</h4>
+                            <p class="text-sm text-gray-600 mb-3">Sovereign AI for critical national infrastructure</p>
+                            <div class="text-xs text-green-600 font-semibold">Defence Grade Privacy</div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">🦄</span>
+                            </div>
+                            <h4 class="font-bold text-gray-900 mb-2">AI Startups</h4>
+                            <p class="text-sm text-gray-600 mb-3">Next unicorns building on our infrastructure</p>
+                            <div class="text-xs text-purple-600 font-semibold">Easy access to large Clusters</div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">🎓</span>
+                            </div>
+                            <h4 class="font-bold text-gray-900 mb-2">AI Research Labs</h4>
+                            <p class="text-sm text-gray-600 mb-3">IITs, IISc, and AI R&D centers</p>
+                            <div class="text-xs text-orange-600 font-semibold">Innovation Ecosystem</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unit Economics Visual -->
+                <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-6 sm:p-10 text-white fade-in mt-12">
+                    <h3 class="text-2xl font-bold mb-8 text-center">Superior Unit Economics vs Competition</h3>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="text-4xl font-black mb-2">$16M</div>
+                            <div class="text-sm text-indigo-200 mb-4">Revenue per MW</div>
+                            <div class="text-xs bg-white/20 rounded-lg px-3 py-2">vs Industry: $10-12M</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-black mb-2">66%</div>
+                            <div class="text-sm text-indigo-200 mb-4">EBITDA Margin</div>
+                            <div class="text-xs bg-white/20 rounded-lg px-3 py-2">vs Industry: 35-45%</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-black mb-2">2.4yr</div>
+                            <div class="text-sm text-indigo-200 mb-4">Payback Period</div>
+                            <div class="text-xs bg-white/20 rounded-lg px-3 py-2">vs Industry: 3.5-4yr</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Section -->
+    <section id="investment" class="py-16 sm:py-24 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-white relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full filter blur-3xl hidden md:block"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full filter blur-3xl hidden md:block"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="max-w-5xl mx-auto">
+                <!-- Section Header -->
+                <div class="text-center mb-12 fade-in">
+                    <div class="inline-flex items-center bg-white/20 backdrop-blur text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"></path>
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"></path>
+                        </svg>
+                        Investment Opportunity
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-4">
+                        India's CoreWeave Moment
+                    </h2>
+                    <p class="text-xl text-blue-100 max-w-3xl mx-auto mb-4">
+                        $66M seed round to build India's sovereign AI infrastructure
+                    </p>
+                    <div class="inline-flex items-center bg-gradient-to-r from-yellow-100/20 to-amber-100/20 backdrop-blur rounded-full px-6 py-3 border border-yellow-300/50">
+                        <span class="w-2 h-2 bg-green-500 rounded-full mr-3 animate-pulse"></span>
+                        <span class="font-semibold">Asset Backed, Low Risk Profile, High Returns Infrastructure Investment</span>
+                    </div>
+                </div>
+
+                <!-- 5 Key Investment Highlights -->
+                <div class="bg-gradient-to-r from-white/20 to-white/30 backdrop-blur rounded-3xl p-6 mb-10 fade-in border border-white/30">
+                    <h3 class="text-xl font-bold mb-6 text-center">Why This is a Generational Investment</h3>
+                    <div class="grid md:grid-cols-5 gap-4">
+                        <div class="text-center">
+                            <div class="w-14 h-14 bg-gradient-to-br from-green-400/30 to-emerald-400/30 backdrop-blur rounded-2xl flex items-center justify-center mx-auto mb-3 border border-green-300/50">
+                                <span class="text-2xl">🎯</span>
+                            </div>
+                            <h4 class="font-bold mb-1 text-sm">First Mover</h4>
+                            <p class="text-xs text-blue-100">India's first liquid-cooled AI infra</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-14 h-14 bg-gradient-to-br from-blue-400/30 to-indigo-400/30 backdrop-blur rounded-2xl flex items-center justify-center mx-auto mb-3 border border-blue-300/50">
+                                <span class="text-2xl">💎</span>
+                            </div>
+                            <h4 class="font-bold mb-1 text-sm">Proven Team</h4>
+                            <p class="text-xs text-blue-100">$1.6B+ infra delivered</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-14 h-14 bg-gradient-to-br from-purple-400/30 to-pink-400/30 backdrop-blur rounded-2xl flex items-center justify-center mx-auto mb-3 border border-purple-300/50">
+                                <span class="text-2xl">📈</span>
+                            </div>
+                            <h4 class="font-bold mb-1 text-sm">46% Target IRR</h4>
+                            <p class="text-xs text-blue-100">2.4yr payback period</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-14 h-14 bg-gradient-to-br from-amber-400/30 to-orange-400/30 backdrop-blur rounded-2xl flex items-center justify-center mx-auto mb-3 border border-amber-300/50">
+                                <span class="text-2xl">🚀</span>
+                            </div>
+                            <h4 class="font-bold mb-1 text-sm">$41.7B Market</h4>
+                            <p class="text-xs text-blue-100">30% annual growth</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-14 h-14 bg-gradient-to-br from-red-400/30 to-rose-400/30 backdrop-blur rounded-2xl flex items-center justify-center mx-auto mb-3 border border-red-300/50">
+                                <span class="text-2xl">🏛️</span>
+                            </div>
+                            <h4 class="font-bold mb-1 text-sm">Gov Backed</h4>
+                            <p class="text-xs text-blue-100">MoU finalizing now</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Investment Structure -->
+                <div class="bg-gradient-to-r from-white/15 to-white/25 backdrop-blur rounded-3xl p-6 sm:p-10 mb-12 fade-in border border-white/20">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-center">Progressive Funding Tranches</h3>
+                    
+                    <!-- Visual Progress Bar -->
+                    <div class="mb-6 sm:mb-10">
+                        <div class="bg-gradient-to-br from-white/10 to-white/20 rounded-full h-6 sm:h-8 overflow-hidden backdrop-blur">
+                            <div class="flex h-full">
+                                <div class="bg-gradient-to-r from-green-400 to-green-500 flex items-center justify-center text-xs sm:text-sm font-bold" style="width: 9%">
+                                    $6M
+                                </div>
+                                <div class="bg-gradient-to-r from-blue-400 to-blue-500 flex items-center justify-center text-xs sm:text-sm font-bold" style="width: 29%">
+                                    $19M
+                                </div>
+                                <div class="bg-gradient-to-r from-orange-400 to-orange-600 flex items-center justify-center text-xs sm:text-sm font-bold" style="width: 62%">
+                                    $41M
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tranche Details -->
+                    <div class="grid md:grid-cols-3 gap-4 sm:gap-6">
+                        <div class="bg-gradient-to-br from-white/15 to-white/25 backdrop-blur rounded-2xl p-4 sm:p-6 border border-white/20">
+                            <div class="flex items-center justify-between mb-3 sm:mb-4">
+                                <h4 class="text-lg sm:text-xl font-bold">Tranche 1</h4>
+                                <span class="bg-green-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-bold">9%</span>
+                            </div>
+                            <div class="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">$6M</div>
+                            <div class="text-xs sm:text-sm text-blue-200 mb-3 sm:mb-4">Months 0-2</div>
+                            <ul class="space-y-2 text-xs sm:text-sm">
+                                <li class="flex items-start">
+                                    <svg class="w-3 h-3 sm:w-4 sm:h-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Site secured & validated</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-3 h-3 sm:w-4 sm:h-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Regulatory approvals</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-3 h-3 sm:w-4 sm:h-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>GPU allocation locked</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-white/15 to-white/25 backdrop-blur rounded-2xl p-4 sm:p-6 border border-white/20">
+                            <div class="flex items-center justify-between mb-3 sm:mb-4">
+                                <h4 class="text-lg sm:text-xl font-bold">Tranche 2</h4>
+                                <span class="bg-blue-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-bold">29%</span>
+                            </div>
+                            <div class="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">$19M</div>
+                            <div class="text-xs sm:text-sm text-blue-200 mb-3 sm:mb-4">Months 2-5</div>
+                            <ul class="space-y-2 text-xs sm:text-sm">
+                                <li class="flex items-start">
+                                    <svg class="w-3 h-3 sm:w-4 sm:h-4 text-blue-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Infrastructure build</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-3 h-3 sm:w-4 sm:h-4 text-blue-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Customer contracts signed</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-3 h-3 sm:w-4 sm:h-4 text-blue-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Container deployment</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-white/15 to-white/25 backdrop-blur rounded-2xl p-4 sm:p-6 border border-white/20">
+                            <div class="flex items-center justify-between mb-3 sm:mb-4">
+                                <h4 class="text-lg sm:text-xl font-bold">Tranche 3</h4>
+                                <span class="bg-orange-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-bold">62%</span>
+                            </div>
+                            <div class="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">$41M</div>
+                            <div class="text-xs sm:text-sm text-blue-200 mb-3 sm:mb-4">Months 5-8</div>
+                            <ul class="space-y-2 text-xs sm:text-sm">
+                                <li class="flex items-start">
+                                    <svg class="w-3 h-3 sm:w-4 sm:h-4 text-orange-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>GPU deployment (1,728)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-3 h-3 sm:w-4 sm:h-4 text-orange-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Go-live & revenue start</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-3 h-3 sm:w-4 sm:h-4 text-orange-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Series A preparation</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 sm:mt-8 text-center">
+                        <p class="text-sm sm:text-lg">
+                            <span class="font-bold">91% of capital protected</span> until infrastructure and commercial milestones are met
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 5 Key Investor Benefits -->
+                <div class="bg-gradient-to-r from-amber-100/20 to-yellow-100/20 backdrop-blur rounded-3xl p-6 mb-10 fade-in border border-amber-300/50">
+                    <h3 class="text-xl font-bold mb-6 text-center">What You Get as an Antriksh Investor</h3>
+                    <div class="grid md:grid-cols-5 gap-4">
+                        <div class="bg-white/10 rounded-xl p-4 text-center">
+                            <div class="text-2xl mb-2">💰</div>
+                            <h4 class="font-bold text-sm mb-1">46% IRR</h4>
+                            <p class="text-xs">10x+ exit potential</p>
+                        </div>
+                        <div class="bg-white/10 rounded-xl p-4 text-center">
+                            <div class="text-2xl mb-2">🛡️</div>
+                            <h4 class="font-bold text-sm mb-1">Protected</h4>
+                            <p class="text-xs">Milestone-based funding</p>
+                        </div>
+                        <div class="bg-white/10 rounded-xl p-4 text-center">
+                            <div class="text-2xl mb-2">⚡</div>
+                            <h4 class="font-bold text-sm mb-1">GPU Access</h4>
+                            <p class="text-xs">Priority for portfolio</p>
+                        </div>
+                        <div class="bg-white/10 rounded-xl p-4 text-center">
+                            <div class="text-2xl mb-2">🎯</div>
+                            <h4 class="font-bold text-sm mb-1">Co-invest</h4>
+                            <p class="text-xs">In Venture Compute</p>
+                        </div>
+                        <div class="bg-white/10 rounded-xl p-4 text-center">
+                            <div class="text-2xl mb-2">📈</div>
+                            <h4 class="font-bold text-sm mb-1">Liquidity</h4>
+                            <p class="text-xs">IPO/M&A in 7-10yr</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exit Strategy -->
+                <div class="bg-gradient-to-r from-green-100/20 to-emerald-100/20 backdrop-blur rounded-3xl p-8 mb-12 fade-in border border-green-300/50">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Clear Path to Liquidity</h3>
+                    
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="text-2xl mb-3">📈</div>
+                            <h4 class="text-lg font-bold mb-2">IPO Target</h4>
+                            <p class="text-xs">Year 7-10 at $10B+ valuation following CoreWeave's path</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl mb-3">🤝</div>
+                            <h4 class="text-lg font-bold mb-2">Strategic Acquisition</h4>
+                            <p class="text-xs">Hyperscalers seeking India presence & sovereign infrastructure</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl mb-3">💰</div>
+                            <h4 class="text-lg font-bold mb-2">Secondary Markets</h4>
+                            <p class="text-xs">AI Infrastructure funds seeking yield from Year 3</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 text-center text-sm">
+                        <p class="font-semibold">Comparable exits: CoreWeave (IPO @ $23B → $80B in 4 months), Lambda Labs ($2.5B), Crusoe ($2.8B)</p>
+                    </div>
+                </div>
+                
+
+                
+                <!-- CTA Section -->
+                <div class="text-center fade-in">
+                    <p class="text-2xl mb-6 font-semibold">
+                        Join India's AI Infrastructure Revolution
+                    </p>
+                    
+                    
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="https://antriksh.cloud/MarketAnalysis" class="inline-flex items-center bg-gradient-to-r from-purple-100/20 to-pink-100/20 hover:from-purple-200/30 hover:to-pink-200/30 backdrop-blur text-white font-semibold px-6 py-3 rounded-full transition-all border border-purple-300/50">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            Market Analysis
+                        </a>
+                        <div class="inline-flex items-center bg-gradient-to-r from-yellow-100/20 to-amber-100/20 backdrop-blur rounded-full px-6 py-3 border border-yellow-300/50">
+                            <svg class="w-5 h-5 mr-2 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-sm font-semibold">Data Room Available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section id="careers" class="py-16 sm:py-24 bg-gradient-to-b from-white via-blue-50 to-indigo-50 relative">
+        <div class="absolute inset-0 grid-pattern opacity-20"></div>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <!-- Section Header -->
+                <div class="text-center mb-16 fade-in">
+                    <div class="inline-flex items-center bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
+                        </svg>
+                        Join Our Mission
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                        Build India's AI Future With Us<br>
+                        We are Hiring !!!
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
+                        We're assembling world-class teams in San Francisco and India to revolutionize AI infrastructure
+                    </p>
+                    <div class="inline-flex items-center bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-full px-6 py-3">
+                        <span class="w-2 h-2 bg-green-500 rounded-full mr-3 animate-pulse"></span>
+                        <span class="text-green-800 font-semibold">Actively Hiring Across All Teams</span>
+                    </div>
+                </div>
+
+                <!-- Open Positions Grid -->
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <!-- Deep Infrastructure Engineering -->
+                    <div class="bg-white rounded-3xl p-8 shadow-xl hover-lift scale-in border border-gray-100">
+                        <div class="w-14 h-14 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Deep Infrastructure Engineering</h3>
+                        <p class="text-gray-600 mb-6">
+                            We're hiring engineers experienced in cloud stacks, inference engines, cluster design, high-performance networking, and distributed systems.
+                        </p>
+                        <div class="space-y-2 text-sm text-gray-700">
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                <span>Cloud Infrastructure Architects</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                <span>GPU Cluster Engineers</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                <span>Network Performance Engineers</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                <span>Distributed Systems Experts</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                <span>ML Infrastructure Engineers</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sales & Marketing -->
+                    <div class="bg-white rounded-3xl p-8 shadow-xl hover-lift scale-in border border-gray-100" style="animation-delay: 0.1s">
+                        <div class="w-14 h-14 bg-gradient-to-br from-purple-400 to-pink-400 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Sales & Marketing</h3>
+                        <p class="text-gray-600 mb-6">
+                            Shape how India's enterprises and startups discover and adopt next-gen AI infrastructure.
+                        </p>
+                        <div class="space-y-2 text-sm text-gray-700">
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
+                                <span>Enterprise Sales Leaders</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
+                                <span>Solutions Architects</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
+                                <span>Growth Marketing Managers</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
+                                <span>Developer Relations</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
+                                <span>Content & Community</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Venture Compute -->
+                    <div class="bg-white rounded-3xl p-8 shadow-xl hover-lift scale-in border border-gray-100" style="animation-delay: 0.2s">
+                        <div class="w-14 h-14 bg-gradient-to-br from-green-400 to-emerald-400 rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Venture Compute Team</h3>
+                        <p class="text-gray-600 mb-6">
+                            Join our unique program bridging venture capital and AI infrastructure. We're hiring from VC talent pools.
+                        </p>
+                        <div class="space-y-2 text-sm text-gray-700">
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                                <span>Venture Partners</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                                <span>Portfolio Success Managers</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                                <span>Startup Ecosystem Lead</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                                <span>Technical Due Diligence</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                                <span>Incubation Program Directors</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location & Benefits -->
+                <div class="bg-gradient-to-r from-gray-800 to-gray-900 rounded-3xl p-10 text-white mb-12 fade-in">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-6">Where We Work</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-500 rounded-xl flex items-center justify-center flex-shrink-0 mr-4">
+                                        <span class="text-2xl">🌉</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold">San Francisco, USA</h4>
+                                        <p class="text-gray-300 text-sm">Innovation hub for cutting-edge AI infrastructure</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-500 rounded-xl flex items-center justify-center flex-shrink-0 mr-4">
+                                        <span class="text-2xl">🇮🇳</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold">Delhi NCR, India</h4>
+                                        <p class="text-gray-300 text-sm">Building sovereign infrastructure at scale</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-6">Why Join Antriksh</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Shape India's AI sovereignty mission</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Work with cutting-edge GPU technology</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Competitive equity & compensation</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Build at unprecedented scale</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Enable India's AI unicorns</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="text-center fade-in">
+                    <p class="text-xl text-gray-600 mb-8">
+                        Join us today to build the infrastructure that will power India's AI revolution
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="mailto:careers@antriksh.cloud" class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold px-8 py-4 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg">
+                            <span class="flex items-center justify-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                                Apply Today
+                            </span>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <p class="text-sm text-gray-500">
+                            We're an equal opportunity employer committed to building a diverse and inclusive team.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/918682940765?text=Hi%20Antriksh%20Cloud%2C%20I'm%20interested%20in%20learning%20more%20about%20your%20AI%20infrastructure%20solutions." 
+       target="_blank" 
+       class="whatsapp-float"
+       aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        <span class="whatsapp-text">Chat with us</span>
+    </a>
+
+    <!-- 6. FAQ Section (add before footer) -->
+    <section class="py-16 bg-gradient-to-b from-gray-50 to-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-3xl font-black text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <div class="bg-white rounded-2xl p-6 shadow-md">
+                    <h3 class="font-bold text-gray-900 mb-2">What makes Antriksh different from existing data centers?</h3>
+                    <p class="text-gray-600">Unlike traditional data centers built for web hosting, Antriksh is AI-native with liquid cooling supporting 150kW+ per rack (vs 20-30kW industry standard), specifically designed for GPU clusters and AI workloads.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-md">
+                    <h3 class="font-bold text-gray-900 mb-2">Why does India need its own AI infrastructure?</h3>
+                    <p class="text-gray-600">Data sovereignty laws, 200ms+ latency from foreign servers, 3-4x higher costs, and security concerns make domestic AI infrastructure critical for India's digital economy.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-md">
+                    <h3 class="font-bold text-gray-900 mb-2">How does the Venture Compute program work?</h3>
+                    <p class="text-gray-600">AI startups can exchange 5-10% equity for GPU credits, getting access to expensive compute resources without upfront capital, while Antriksh builds a portfolio of high-growth AI companies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 sm:py-16">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex justify-center mb-8">
+                <!-- <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg">
+                    <span class="text-white font-bold text-3xl">A</span>
+                </div> -->
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
+                    <svg class="w-10 h-10" viewBox="56 48 58 48" preserveAspectRatio="xMidYMid meet">
+                        <g fill="white">
+                            <path d="M 83.582031 78.949219 L 83.582031 78.378906 L 82.519531 78.699219 L 81.492188 75.292969 L 88.347656 73.207031 L 89.378906 76.617188 L 87.746094 77.113281 L 87.746094 79.132812 L 97.023438 96.78125 L 94.695312 96.78125 L 87.535156 83.449219 L 91.894531 96.78125 L 89.570312 96.78125 L 84.8125 82.335938 L 76.539062 96.78125 L 74.214844 96.78125 L 83.582031 78.949219"/>
+                            <path d="M 76.582031 72.972656 L 67.351562 75.664062 L 64.664062 66.371094 L 73.894531 63.679688 L 76.582031 72.972656"/>
+                            <path d="M 63.957031 68.878906 L 65.515625 74.277344 L 62.34375 75.203125 L 60.78125 69.804688 L 63.957031 68.878906"/>
+                            <path d="M 110.128906 57.828125 C 111.085938 61.125 109.855469 64.378906 107.386719 65.097656 L 103.9375 53.160156 C 106.402344 52.445312 109.179688 54.53125 110.128906 57.828125"/>
+                            <path d="M 102.507812 51.503906 L 107.066406 67.308594 L 100.808594 69.128906 L 96.273438 53.316406 L 102.507812 51.503906"/>
+                            <path d="M 73.949219 60.785156 L 95.382812 54.539062 L 99.394531 68.535156 L 77.992188 74.769531 L 73.949219 60.785156"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <h3 class="text-2xl font-bold mb-4 text-center">Antriksh Cloud</h3>
+            <p class="text-gray-400 mb-8 text-lg text-center">Building India's Sovereign AI Infrastructure</p>
+            
+            <!-- Footer Links -->
+            <div class="grid md:grid-cols-4 gap-8 mb-12 max-w-4xl mx-auto">
+                <!-- Company -->
+                <div class="text-center md:text-left">
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#problem" class="text-gray-400 hover:text-white transition">About</a></li>
+                        <li><a href="#solution" class="text-gray-400 hover:text-white transition">Technology</a></li>
+                        <li><a href="#traction" class="text-gray-400 hover:text-white transition">Traction</a></li>
+                        <li><a href="#careers" class="text-gray-400 hover:text-white transition">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Resources -->
+                <div class="text-center md:text-left">
+                    <h4 class="text-white font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="https://antriksh.cloud/MarketAnalysis" target="_blank" class="text-gray-400 hover:text-white transition">Market Analysis</a></li>
+                        <li><a href="https://www.antriksh.cloud/Deck" target="_blank" class="text-gray-400 hover:text-white transition">Investment Deck</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div class="text-center md:text-left">
+                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li><a href="mailto:ceo@antriksh.cloud" class="text-gray-400 hover:text-white transition">CEO: ceo@antriksh.cloud</a></li>
+                        <li><a href="mailto:careers@antriksh.cloud" class="text-gray-400 hover:text-white transition">Careers: careers@antriksh.cloud</a></li>
+                        <li><a href="https://calendly.com/antrikshcloud" target="_blank" class="text-gray-400 hover:text-white transition">Schedule Meeting</a></li>
+                        <li class="text-gray-400">US: +1 (206) 665-0905</li>
+                        <li class="text-gray-400">IN: +91 8682940765</li>
+                    </ul>
+                </div>
+                
+                <!-- Connect -->
+                <div class="text-center md:text-left">
+                    <h4 class="text-white font-semibold mb-4">Connect</h4>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="mailto:ceo@antriksh.cloud" class="text-gray-400 hover:text-white transition flex items-center justify-center md:justify-start">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                </svg>
+                                Email Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://calendly.com/antrikshcloud" target="_blank" class="text-gray-400 hover:text-white transition flex items-center justify-center md:justify-start">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zM4 8h12v8H4V8z" clip-rule="evenodd"></path>
+                                </svg>
+                                Schedule Meeting
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Join Us CTA -->
+            <div class="text-center mb-8 pb-8 border-b border-gray-800">
+                <p class="text-gray-400 mb-4">Join our team to build the future of AI infrastructure</p>
+                <a href="#careers" class="inline-flex items-center bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold px-6 py-3 rounded-full transition-all transform hover:scale-105 group">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    <span>View Open Positions</span>
+                    <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="text-gray-400 text-center">
+                <p class="text-sm">&copy; 2025 Antriksh Cloud. All Rights Reserved.</p>
+                <p class="text-sm mt-2">Building India's AI Future</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            var menu = document.getElementById('mobileMenu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        }
+        
+        // Close mobile menu when clicking on a link
+        var mobileLinks = document.querySelectorAll('#mobileMenu a');
+        for (var i = 0; i < mobileLinks.length; i++) {
+            mobileLinks[i].addEventListener('click', function() {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        }
+        
+        // Smooth scrolling with fallback
+        var anchors = document.querySelectorAll('a[href^="#"]');
+        for (var i = 0; i < anchors.length; i++) {
+            anchors[i].addEventListener('click', function(e) {
+                e.preventDefault();
+                var targetId = this.getAttribute('href');
+                var target = document.querySelector(targetId);
+                if (target) {
+                    // Check if browser supports smooth scrolling
+                    if ('scrollBehavior' in document.documentElement.style) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    } else {
+                        // Fallback for browsers without smooth scrolling
+                        var targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                        window.scrollTo(0, targetPosition);
+                    }
+                }
+            });
+        }
+        
+        // Intersection Observer with fallback
+        if ('IntersectionObserver' in window) {
+            var observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animated elements
+            var animatedElements = document.querySelectorAll('.fade-in, .scale-in');
+            animatedElements.forEach(function(el) {
+                observer.observe(el);
+            });
+        } else {
+            // Fallback: show all elements immediately if IntersectionObserver not supported
+            var elements = document.querySelectorAll('.fade-in, .scale-in');
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].classList.add('visible');
+            }
+        }
+        
+        // DOMContentLoaded with fallback
+        function onDOMReady() {
+            var liftElements = document.querySelectorAll('.hover-lift');
+            for (var i = 0; i < liftElements.length; i++) {
+                liftElements[i].style.animationDelay = (i * 0.5) + 's';
+            }
+            
+            // Animate WhatsApp button entrance
+            setTimeout(function() {
+                var whatsappBtn = document.querySelector('.whatsapp-float');
+                if (whatsappBtn) {
+                    whatsappBtn.style.opacity = '1';
+                    whatsappBtn.style.transform = 'translateY(0)';
+                }
+            }, 1000);
+        }
+        
+        // Cross-browser DOMContentLoaded
+        if (document.addEventListener) {
+            document.addEventListener('DOMContentLoaded', onDOMReady);
+        } else if (document.attachEvent) {
+            document.attachEvent('onreadystatechange', function() {
+                if (document.readyState === 'complete') {
+                    onDOMReady();
+                }
+            });
+        }
+    </script>
+    <script>
+        // Network status monitoring
+        (function() {
+            var isOnline = navigator.onLine;
+            
+            function updateNetworkStatus() {
+                if (!navigator.onLine) {
+                    document.body.classList.add('offline');
+                    showNotification('You are currently offline. Some features may be limited.');
+                } else {
+                    document.body.classList.remove('offline');
+                    if (!isOnline) {
+                        showNotification('You are back online!');
+                    }
+                }
+                isOnline = navigator.onLine;
+            }
+            
+            function showNotification(message) {
+                var notification = document.createElement('div');
+                notification.className = 'network-notification';
+                notification.textContent = message;
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: #333;
+                    color: white;
+                    padding: 12px 24px;
+                    border-radius: 8px;
+                    z-index: 9999;
+                    animation: slideIn 0.3s ease-out;
+                `;
+                document.body.appendChild(notification);
+                
+                setTimeout(function() {
+                    notification.remove();
+                }, 3000);
+            }
+            
+            window.addEventListener('online', updateNetworkStatus);
+            window.addEventListener('offline', updateNetworkStatus);
+            updateNetworkStatus();
+        })();
+    </script>
+    <script>
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').catch(function(error) {
+                    console.log('ServiceWorker registration failed:', error);
+                });
+            });
+        }
+    </script>
+    <script>
+        // Global error handler
+        window.addEventListener('error', function(event) {
+            console.error('Global error:', event.error);
+            // In production, send to your error tracking service
+            if (window.location.hostname !== 'localhost') {
+                // Example: send to your analytics endpoint
+                try {
+                    fetch('/api/errors', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            message: event.error?.message || 'Unknown error',
+                            stack: event.error?.stack,
+                            url: window.location.href,
+                            userAgent: navigator.userAgent,
+                            timestamp: new Date().toISOString()
+                        })
+                    }).catch(() => {}); // Fail silently
+                } catch (e) {}
+            }
+        });
+
+        // Promise rejection handler
+        window.addEventListener('unhandledrejection', function(event) {
+            console.error('Unhandled promise rejection:', event.reason);
+        });
+    </script>
+</body>
+</html>

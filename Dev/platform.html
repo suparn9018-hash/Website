@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Full technical specs: GB200/GB300 clusters, PUE <1.10 liquid cooling, sovereign architecture, pricing, and competitor comparison.">
+  <title>Antriksh Cloud — Platform & Technical Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="cursor-glow"></div>
+<!-- ══════════════════════════════
+     NAV — PLATFORM PAGE
+══════════════════════════════ -->
+<nav id="nav">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-mark">
+        <svg width="18" height="18" viewBox="56 48 58 48" fill="white">
+          <path d="M83.58 78.95v-.57l-1.06.32-1.03-3.41 6.86-2.08 1.03 3.41-1.63.5v2.02l9.28 17.65h-2.33l-7.16-13.33 4.36 13.33h-2.32l-4.76-14.44-8.27 14.44h-2.33L83.58 78.95z"/>
+          <path d="M76.58 72.97l-9.23 2.69-2.69-9.29 9.23-2.69 2.69 9.29z"/>
+          <path d="M63.96 68.88l1.56 5.4-3.17.93-1.56-5.4 3.17-.93z"/>
+          <path d="M110.13 57.83c.96 3.3-.27 6.55-2.74 7.27l-3.45-11.94c2.47-.71 5.24 1.38 6.19 4.67z"/>
+          <path d="M102.51 51.5l4.56 15.81-6.26 1.82-4.53-15.81 6.23-1.82z"/>
+          <path d="M73.95 60.79l21.43-6.25 4.01 13.99-21.4 6.23-4.04-13.97z"/>
+        </svg>
+      </div>
+      Antriksh Cloud
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" style="display:flex;align-items:center;gap:.3rem"><svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Home</a></li>
+      <li><a href="#efficiency">Efficiency</a></li>
+      <li><a href="#cluster">Architecture</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#revenue">Pricing</a></li>
+      <li><a href="#compare">Compare</a></li>
+      <li><a href="#journey">Roadmap</a></li>
+      <li><a href="#careers">Careers</a></li>
+      <li><a href="index.html#waitlist" class="nav-cta">Get Early Access</a></li>
+    </ul>
+    <button class="nav-btn" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════
+     PLATFORM PAGE HERO
+══════════════════════════════ -->
+<section style="background:var(--ink);padding:7rem 0 4rem">
+  <div class="container">
+    <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);color:#93c5fd;font-size:.75rem;font-weight:600;padding:.3rem .875rem;border-radius:100px;margin-bottom:1.25rem" class="fade-up">
+      <span style="width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pdot 1.8s infinite"></span>
+      Technical deep dive
+    </div>
+    <h1 style="color:#fff;max-width:620px" class="fade-up stagger-1">The full platform.<br><span style="background:linear-gradient(90deg,#60a5fa,#a78bfa,#60a5fa);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite">Every layer explained.</span></h1>
+    <p style="color:rgba(255,255,255,.45);max-width:520px;margin-top:.875rem;font-size:1.0625rem" class="fade-up stagger-2">Engineering-depth detail on infrastructure, benchmarks, pricing, and architecture. For serious evaluation.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem" class="fade-up stagger-3">
+      <a href="#efficiency"   class="btn btn-outline" style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.18)">Efficiency &amp; PUE</a>
+      <a href="#cluster"      class="btn btn-outline" style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.18)">Cluster Architecture</a>
+      <a href="#revenue"      class="btn btn-outline" style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.18)">Pricing Calculator</a>
+      <a href="#compare"      class="btn btn-outline" style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.18)">Competitor Matrix</a>
+      <a href="index.html#waitlist" class="btn btn-primary">Get Early Access</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     EFFICIENCY
+     Infographics: PUE gauges · cooling flow · time-to-GPU · photo
+══════════════════════════════ -->
+<section id="efficiency">
+  <div class="container">
+    <div class="lbl fade-up">Energy &amp; Speed</div>
+    <h2 class="fade-up">Engineered for density.<br>Not converted from commodity.</h2>
+
+    <div class="eff-grid">
+
+      <!-- ⑧ PUE Gauge chart -->
+      <div class="pue-card fade-up">
+        <div class="pue-title">Energy Efficiency · PUE (Power Usage Effectiveness — lower = less waste)</div>
+        <div class="pue-row" style="background:var(--blue-lt);border-color:#bfdbfe">
+          <div class="pue-arc">
+            <svg viewBox="0 0 60 36" width="70">
+              <path d="M6 30 A24 24 0 0 1 54 30" fill="none" stroke="#dbeafe" stroke-width="7" stroke-linecap="round"/>
+              <path d="M6 30 A24 24 0 0 1 17 10" fill="none" stroke="#3b82f6" stroke-width="7" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="pue-info">
+            <div class="pue-name">Antriksh Cloud</div>
+            <div class="pue-num" style="color:var(--blue)">&lt; 1.10</div>
+            <div class="pue-sub">Direct-to-chip liquid cooling</div>
+            <div class="pue-badge pb-best">Best in class</div>
+          </div>
+        </div>
+        <div class="pue-row">
+          <div class="pue-arc">
+            <svg viewBox="0 0 60 36" width="70">
+              <path d="M6 30 A24 24 0 0 1 54 30" fill="none" stroke="#e2e8f0" stroke-width="7" stroke-linecap="round"/>
+              <path d="M6 30 A24 24 0 0 1 44 8"  fill="none" stroke="#94a3b8" stroke-width="7" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="pue-info">
+            <div class="pue-name">Hyperscalers (AWS / GCP)</div>
+            <div class="pue-num" style="color:var(--ink-mid)">1.2–1.4</div>
+            <div class="pue-sub">Mixed air &amp; water cooling</div>
+            <div class="pue-badge pb-avg">Industry average</div>
+          </div>
+        </div>
+        <div class="pue-row">
+          <div class="pue-arc">
+            <svg viewBox="0 0 60 36" width="70">
+              <path d="M6 30 A24 24 0 0 1 54 30" fill="none" stroke="#e2e8f0" stroke-width="7" stroke-linecap="round"/>
+              <path d="M6 30 A24 24 0 0 1 53 22" fill="none" stroke="#fca5a5" stroke-width="7" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="pue-info">
+            <div class="pue-name">Standard data centres</div>
+            <div class="pue-num" style="color:#dc2626">1.4–1.6</div>
+            <div class="pue-sub">Air-cooled, older infrastructure</div>
+            <div class="pue-badge pb-bad">High energy waste</div>
+          </div>
+        </div>
+        <div class="pue-insight">
+          💡 At 500 MW, our PUE &lt; 1.10 saves <strong>~150 MW</strong> vs a 1.4 PUE facility — enough to power 120,000 Indian homes.
+        </div>
+      </div>
+
+      <!-- ⑨ Liquid cooling animated flow diagram -->
+      <div class="cooling-card fade-up stagger-1">
+        <div class="cooling-title">Direct-to-chip liquid cooling loop</div>
+        <svg viewBox="0 0 340 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
+          <defs>
+            <linearGradient id="cold-g" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"   stop-color="#3b82f6"/>
+              <stop offset="100%" stop-color="#06b6d4"/>
+            </linearGradient>
+            <linearGradient id="hot-g" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"   stop-color="#f97316"/>
+              <stop offset="100%" stop-color="#ef4444"/>
+            </linearGradient>
+          </defs>
+          <!-- GPU rack -->
+          <rect x="130" y="40"  width="80" height="130" rx="6" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
+          <text x="170" y="58" fill="rgba(255,255,255,.6)" font-size="8.5" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">GPU Rack</text>
+          <rect x="144" y="64"  width="52" height="12" rx="3" fill="rgba(59,130,246,.4)"/>
+          <rect x="144" y="80"  width="52" height="12" rx="3" fill="rgba(59,130,246,.45)"/>
+          <rect x="144" y="96"  width="52" height="12" rx="3" fill="rgba(59,130,246,.5)"/>
+          <rect x="144" y="112" width="52" height="12" rx="3" fill="rgba(239,68,68,.4)"/>
+          <rect x="144" y="128" width="52" height="12" rx="3" fill="rgba(239,68,68,.5)"/>
+          <rect x="144" y="144" width="52" height="12" rx="3" fill="rgba(239,68,68,.55)"/>
+          <text x="170" y="172" fill="rgba(255,255,255,.35)" font-size="7" font-family="IBM Plex Mono" text-anchor="middle">heat generated</text>
+          <!-- Heat exchanger -->
+          <rect x="240" y="80" width="70" height="70" rx="8" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.12)" stroke-width="1.5"/>
+          <text x="275" y="108" fill="rgba(255,255,255,.55)" font-size="8" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">Heat</text>
+          <text x="275" y="120" fill="rgba(255,255,255,.55)" font-size="8" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">Exchanger</text>
+          <text x="275" y="140" fill="rgba(255,255,255,.28)" font-size="7" font-family="IBM Plex Mono" text-anchor="middle">→ canal →</text>
+          <!-- Chiller -->
+          <rect x="20" y="80" width="70" height="70" rx="8" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.12)" stroke-width="1.5"/>
+          <text x="55" y="112" fill="rgba(255,255,255,.55)" font-size="8" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">Chiller</text>
+          <text x="55" y="124" fill="rgba(255,255,255,.55)" font-size="8" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">Pump</text>
+          <!-- Cold pipe to rack -->
+          <path d="M90 140 L130 140" fill="none" stroke="url(#cold-g)" stroke-width="5" stroke-linecap="round"/>
+          <polygon points="126,136 132,140 126,144" fill="#06b6d4"/>
+          <text x="110" y="154" fill="#3b82f6" font-size="7.5" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">cold</text>
+          <!-- Hot pipe from rack -->
+          <path d="M210 90 L240 90" fill="none" stroke="url(#hot-g)" stroke-width="5" stroke-linecap="round"/>
+          <polygon points="236,86 242,90 236,94" fill="#ef4444"/>
+          <text x="225" y="82" fill="#ef4444" font-size="7.5" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">hot</text>
+          <!-- Return loop (dashed) -->
+          <path d="M310 90 L310 220 L55 220 L55 150" fill="none" stroke="url(#cold-g)" stroke-width="4" stroke-dasharray="6 3" stroke-linecap="round"/>
+          <text x="185" y="235" fill="rgba(59,130,246,.5)" font-size="7" font-family="IBM Plex Mono" text-anchor="middle">cooled return loop</text>
+          <!-- Animated dots on cold pipe -->
+          <circle cx="0" cy="0" r="3.5" fill="#3b82f6" opacity=".9">
+            <animateMotion dur="2.5s" repeatCount="indefinite" path="M90,140 L130,140"/>
+          </circle>
+          <circle cx="0" cy="0" r="3.5" fill="#3b82f6" opacity=".7">
+            <animateMotion dur="2.5s" begin="0.8s" repeatCount="indefinite" path="M90,140 L130,140"/>
+          </circle>
+          <!-- Animated dot on hot pipe -->
+          <circle cx="0" cy="0" r="3.5" fill="#ef4444" opacity=".9">
+            <animateMotion dur="2s" repeatCount="indefinite" path="M210,90 L240,90"/>
+          </circle>
+          <!-- Legend -->
+          <rect x="20"  y="245" width="10" height="5" rx="2" fill="#3b82f6"/>
+          <text x="34"  y="251" fill="rgba(255,255,255,.4)" font-size="7" font-family="IBM Plex Mono">Cold coolant</text>
+          <rect x="130" y="245" width="10" height="5" rx="2" fill="#ef4444"/>
+          <text x="144" y="251" fill="rgba(255,255,255,.4)" font-size="7" font-family="IBM Plex Mono">Hot coolant</text>
+          <text x="225" y="251" fill="rgba(255,255,255,.25)" font-size="7" font-family="IBM Plex Mono">Zero liquid discharge</text>
+        </svg>
+      </div>
+
+      <!-- ⑩ Time-to-GPU provisioning comparison -->
+      <div class="ttg-card fade-up">
+        <div class="pue-title" style="margin-bottom:1.25rem">Time to provision a large GPU cluster</div>
+        <div class="ttg-row">
+          <div class="ttg-header">
+            <span class="ttg-who" style="color:var(--blue)">Antriksh Cloud</span>
+            <span class="ttg-time" style="color:var(--blue)">15 minutes</span>
+          </div>
+          <div class="ttg-bar ttg-ant">API call → live cluster → start training</div>
+        </div>
+        <div class="ttg-row">
+          <div class="ttg-header">
+            <span class="ttg-who" style="color:var(--ink-soft)">AWS / GCP India region</span>
+            <span class="ttg-time" style="color:var(--ink-soft)">Hours–days</span>
+          </div>
+          <div class="ttg-bar ttg-hyp">Queue wait + limited availability</div>
+        </div>
+        <div class="ttg-row" style="margin-bottom:0">
+          <div class="ttg-header">
+            <span class="ttg-who" style="color:var(--ink-soft)">Enterprise procurement</span>
+            <span class="ttg-time" style="color:var(--ink-soft)">Weeks–months</span>
+          </div>
+          <div class="ttg-bar ttg-hyp">RFP → approval → hardware lead time</div>
+        </div>
+        <div class="ttg-range">
+          <div class="ttg-stat"><div class="ttg-sv" style="color:var(--blue)">8</div><div class="ttg-sl">minimum GPUs</div></div>
+          <div class="ttg-stat"><div class="ttg-sv" style="color:var(--purple)">1,024</div><div class="ttg-sl">maximum GPUs</div></div>
+        </div>
+      </div>
+
+      <!-- ⑪ Liquid cooling photo -->
+      <div class="photo-card fade-up stagger-1" style="min-height:280px">
+        <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?w=800&q=80&auto=format&fit=crop" alt="Liquid cooling" loading="lazy">
+        <div class="photo-overlay">
+          <div class="photo-tag">Liquid-cooled infrastructure · PUE &lt; 1.10</div>
+          <div class="photo-bignum">&lt;1.10</div>
+          <div class="photo-sub">Best-in-class efficiency vs 1.4–1.6 industry average</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     CLUSTER ARCHITECTURE
+     Infographics: photo + SVG network diagram
+══════════════════════════════ -->
+<section id="cluster">
+  <div class="container">
+    <div class="lbl fade-up">Cluster Architecture</div>
+    <h2 class="fade-up">From 8 GPUs to 1,024.<br>Same API. 15 minutes.</h2>
+
+    <!-- ⑫ Data hall photo -->
+    <div class="cluster-photo-wrap fade-up">
+      <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80&auto=format&fit=crop" alt="Data centre server rows" loading="lazy">
+      <div class="cluster-overlay">
+        <div class="cluster-pills">
+          <span class="cluster-pill">NVLink mesh</span>
+          <span class="cluster-pill">400 Gb/s InfiniBand</span>
+          <span class="cluster-pill">1,024 GPUs per cluster</span>
+          <span class="cluster-pill">15-min provisioning</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑬ Architecture SVG diagram -->
+    <div class="cluster-arch fade-up">
+      <svg viewBox="0 0 860 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:540px;display:block">
+        <!-- Section labels -->
+        <text x="75"  y="18" fill="rgba(255,255,255,.28)" font-size="8" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">GPU NODE</text>
+        <text x="290" y="18" fill="rgba(59,130,246,.65)"  font-size="8" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">NVLink DOMAIN</text>
+        <text x="545" y="18" fill="rgba(34,197,94,.65)"   font-size="8" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">InfiniBand FABRIC</text>
+        <text x="760" y="18" fill="rgba(255,255,255,.28)" font-size="8" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">YOUR WORKLOAD</text>
+        <!-- GPU node -->
+        <rect x="15" y="35" width="118" height="72" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1.5"/>
+        <text x="74" y="54" fill="#93c5fd" font-size="8.5" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">GB200 / GB300</text>
+        <text x="74" y="68" fill="rgba(255,255,255,.38)" font-size="7.5" font-family="Inter" text-anchor="middle">192–288 GB HBM3e</text>
+        <text x="74" y="80" fill="rgba(255,255,255,.38)" font-size="7.5" font-family="Inter" text-anchor="middle">1.4–1.6 TB/s BW</text>
+        <text x="74" y="98" fill="rgba(255,255,255,.2)"  font-size="7"   font-family="IBM Plex Mono" text-anchor="middle">liquid-cooled</text>
+        <!-- Arrow 1 -->
+        <line x1="133" y1="71" x2="153" y2="71" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
+        <polygon points="153,67 161,71 153,75" fill="rgba(255,255,255,.28)"/>
+        <!-- NVLink box -->
+        <rect x="161" y="26" width="160" height="90" rx="8" fill="rgba(59,130,246,.07)" stroke="rgba(59,130,246,.28)" stroke-width="1.5"/>
+        <text x="241" y="43" fill="#93c5fd" font-size="8" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">8× GPU via NVLink</text>
+        <rect x="172" y="50" width="11" height="11" rx="2" fill="rgba(59,130,246,.65)"/>
+        <rect x="186" y="50" width="11" height="11" rx="2" fill="rgba(59,130,246,.65)"/>
+        <rect x="200" y="50" width="11" height="11" rx="2" fill="rgba(59,130,246,.65)"/>
+        <rect x="214" y="50" width="11" height="11" rx="2" fill="rgba(59,130,246,.65)"/>
+        <rect x="228" y="50" width="11" height="11" rx="2" fill="rgba(59,130,246,.65)"/>
+        <rect x="242" y="50" width="11" height="11" rx="2" fill="rgba(59,130,246,.65)"/>
+        <rect x="256" y="50" width="11" height="11" rx="2" fill="rgba(59,130,246,.65)"/>
+        <rect x="270" y="50" width="11" height="11" rx="2" fill="rgba(59,130,246,.65)"/>
+        <text x="241" y="77" fill="rgba(59,130,246,.6)" font-size="7" font-family="IBM Plex Mono" text-anchor="middle">full-mesh · ~900 GB/s</text>
+        <text x="241" y="106" fill="rgba(255,255,255,.18)" font-size="7" font-family="IBM Plex Mono" text-anchor="middle">= 1 node</text>
+        <!-- Arrow 2 -->
+        <line x1="321" y1="71" x2="342" y2="71" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
+        <polygon points="342,67 350,71 342,75" fill="rgba(255,255,255,.28)"/>
+        <!-- InfiniBand switch -->
+        <rect x="350" y="20" width="202" height="178" rx="10" fill="rgba(34,197,94,.04)" stroke="rgba(34,197,94,.22)" stroke-width="1.5"/>
+        <text x="451" y="37" fill="rgba(34,197,94,.75)" font-size="8" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">InfiniBand Switch · 400 Gb/s</text>
+        <rect x="362" y="45" width="78" height="28" rx="5" fill="rgba(59,130,246,.1)"  stroke="rgba(59,130,246,.2)"  stroke-width="1"/>
+        <text x="401" y="57" fill="#93c5fd" font-size="7.5" font-family="IBM Plex Mono" text-anchor="middle">Node 1 · 8×GPU</text>
+        <text x="401" y="67" fill="rgba(255,255,255,.28)" font-size="7" font-family="IBM Plex Mono" text-anchor="middle">GB200/GB300</text>
+        <rect x="462" y="45" width="78" height="28" rx="5" fill="rgba(59,130,246,.1)"  stroke="rgba(59,130,246,.2)"  stroke-width="1"/>
+        <text x="501" y="57" fill="#93c5fd" font-size="7.5" font-family="IBM Plex Mono" text-anchor="middle">Node 2 · 8×GPU</text>
+        <text x="501" y="67" fill="rgba(255,255,255,.28)" font-size="7" font-family="IBM Plex Mono" text-anchor="middle">GB200/GB300</text>
+        <rect x="362" y="83" width="78" height="28" rx="5" fill="rgba(59,130,246,.1)"  stroke="rgba(59,130,246,.2)"  stroke-width="1"/>
+        <text x="401" y="95" fill="#93c5fd" font-size="7.5" font-family="IBM Plex Mono" text-anchor="middle">Node 3 · 8×GPU</text>
+        <text x="401" y="105" fill="rgba(255,255,255,.28)" font-size="7" font-family="IBM Plex Mono" text-anchor="middle">GB200/GB300</text>
+        <rect x="462" y="83" width="78" height="28" rx="5" fill="rgba(59,130,246,.1)"  stroke="rgba(59,130,246,.2)"  stroke-width="1"/>
+        <text x="501" y="95" fill="#93c5fd" font-size="7.5" font-family="IBM Plex Mono" text-anchor="middle">Node 4 · 8×GPU</text>
+        <text x="501" y="105" fill="rgba(255,255,255,.28)" font-size="7" font-family="IBM Plex Mono" text-anchor="middle">GB200/GB300</text>
+        <text x="451" y="134" fill="rgba(34,197,94,.42)" font-size="7.5" font-family="IBM Plex Mono" text-anchor="middle">· · · up to 128 nodes · · ·</text>
+        <text x="451" y="152" fill="rgba(34,197,94,.72)" font-size="9"   font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">= 1,024 GPUs total</text>
+        <text x="451" y="185" fill="rgba(255,255,255,.2)"  font-size="7.5" font-family="IBM Plex Mono" text-anchor="middle">provisioned in 15 minutes via API</text>
+        <!-- Arrow 3 -->
+        <line x1="552" y1="109" x2="572" y2="109" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
+        <polygon points="572,105 580,109 572,113" fill="rgba(255,255,255,.28)"/>
+        <!-- Sovereign + API layer -->
+        <rect x="580" y="26" width="138" height="162" rx="10" fill="rgba(255,255,255,.02)" stroke="rgba(255,255,255,.1)"  stroke-width="1.5"/>
+        <text x="649" y="44" fill="rgba(255,255,255,.42)" font-size="8" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">Sovereign + API</text>
+        <rect x="590" y="52" width="118" height="19" rx="4" fill="rgba(239,68,68,.08)"  stroke="rgba(239,68,68,.18)"  stroke-width="1"/>
+        <text x="649" y="64" fill="rgba(239,68,68,.72)"  font-size="7" font-family="IBM Plex Mono" text-anchor="middle">CERT-In · DPDP Act</text>
+        <rect x="590" y="77" width="118" height="19" rx="4" fill="rgba(124,58,237,.08)" stroke="rgba(124,58,237,.18)" stroke-width="1"/>
+        <text x="649" y="89" fill="rgba(196,181,253,.72)" font-size="7" font-family="IBM Plex Mono" text-anchor="middle">Tenant Isolation</text>
+        <rect x="590" y="102" width="118" height="19" rx="4" fill="rgba(34,197,94,.08)"  stroke="rgba(34,197,94,.18)"  stroke-width="1"/>
+        <text x="649" y="114" fill="rgba(74,222,128,.72)" font-size="7" font-family="IBM Plex Mono" text-anchor="middle">Data stays in India</text>
+        <rect x="590" y="127" width="118" height="19" rx="4" fill="rgba(59,130,246,.08)"  stroke="rgba(59,130,246,.18)"  stroke-width="1"/>
+        <text x="649" y="139" fill="rgba(147,197,253,.72)" font-size="7" font-family="IBM Plex Mono" text-anchor="middle">Platform API</text>
+        <text x="649" y="172" fill="rgba(255,255,255,.2)"   font-size="7" font-family="IBM Plex Mono" text-anchor="middle">INR billing · Zero egress</text>
+        <!-- Arrow 4 -->
+        <line x1="718" y1="107" x2="738" y2="107" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
+        <polygon points="738,103 746,107 738,111" fill="rgba(255,255,255,.28)"/>
+        <!-- Your workload -->
+        <rect x="746" y="58" width="100" height="98" rx="10" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
+        <text x="796" y="84"  fill="#fff" font-size="8.5" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">Your</text>
+        <text x="796" y="96"  fill="#fff" font-size="8.5" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">Workload</text>
+        <text x="796" y="114" fill="rgba(255,255,255,.32)" font-size="7" font-family="IBM Plex Mono" text-anchor="middle">Training</text>
+        <text x="796" y="125" fill="rgba(255,255,255,.32)" font-size="7" font-family="IBM Plex Mono" text-anchor="middle">Inference</text>
+        <text x="796" y="136" fill="rgba(255,255,255,.32)" font-size="7" font-family="IBM Plex Mono" text-anchor="middle">Fine-tuning</text>
+        <text x="796" y="147" fill="rgba(255,255,255,.32)" font-size="7" font-family="IBM Plex Mono" text-anchor="middle">RAG / Agents</text>
+        <!-- Legend -->
+        <rect x="15"  y="226" width="10" height="3" rx="1" fill="rgba(59,130,246,.7)"/>
+        <text x="30"  y="232" fill="rgba(255,255,255,.3)" font-size="7" font-family="IBM Plex Mono">NVLink (~900 GB/s)</text>
+        <rect x="165" y="226" width="10" height="3" rx="1" fill="rgba(34,197,94,.7)"/>
+        <text x="180" y="232" fill="rgba(255,255,255,.3)" font-size="7" font-family="IBM Plex Mono">InfiniBand (400 Gb/s)</text>
+        <rect x="345" y="226" width="10" height="3" rx="1" fill="rgba(239,68,68,.6)"/>
+        <text x="360" y="232" fill="rgba(255,255,255,.3)" font-size="7" font-family="IBM Plex Mono">Sovereign boundary</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     PLATFORM STACK
+     Infographics: layer list · animated packet flow · fiber photo
+══════════════════════════════ -->
+<section id="stack">
+  <div class="container">
+    <div class="lbl lbl-dk">Platform Architecture</div>
+    <h2>Every layer built<br>for AI density.</h2>
+    <p class="stack-sub">From power to platform — purpose-engineered, not repurposed from general-purpose cloud.</p>
+
+    <div class="stack-2col">
+
+      <!-- ⑭ Stack layers -->
+      <div class="stack-layers fade-up">
+        <div class="stack-layer">
+          <span class="stack-num">01</span>
+          <div class="stack-icon" style="background:rgba(34,197,94,.14)">🌱</div>
+          <div class="stack-body">
+            <div class="stack-name">Renewable Power</div>
+            <div class="stack-desc">Hydropower + solar · 500 MW secured · ₹0.08/kWh</div>
+          </div>
+          <div class="stack-val">≥50% green</div>
+        </div>
+        <div class="stack-layer">
+          <span class="stack-num">02</span>
+          <div class="stack-icon" style="background:rgba(59,130,246,.14)">💧</div>
+          <div class="stack-body">
+            <div class="stack-name">Direct-to-Chip Liquid Cooling</div>
+            <div class="stack-desc">Coolant to the GPU die · Zero throttling · PUE &lt; 1.10</div>
+          </div>
+          <div class="stack-val">150–300 kW/rack</div>
+        </div>
+        <div class="stack-layer">
+          <span class="stack-num">03</span>
+          <div class="stack-icon" style="background:rgba(124,58,237,.14)">🔲</div>
+          <div class="stack-body">
+            <div class="stack-name">GB200 &amp; GB300 Hardware</div>
+            <div class="stack-desc">NVIDIA Blackwell · CDAC validated · Direct supply</div>
+          </div>
+          <div class="stack-val">288K GPUs at scale</div>
+        </div>
+        <div class="stack-layer">
+          <span class="stack-num">04</span>
+          <div class="stack-icon" style="background:rgba(251,191,36,.14)">🔗</div>
+          <div class="stack-body">
+            <div class="stack-name">NVLink + InfiniBand Fabric</div>
+            <div class="stack-desc">Full-mesh GPU interconnect · Multi-rail 400 Gb/s</div>
+          </div>
+          <div class="stack-val">No bottlenecks</div>
+        </div>
+        <div class="stack-layer">
+          <span class="stack-num">05</span>
+          <div class="stack-icon" style="background:rgba(239,68,68,.14)">🛡️</div>
+          <div class="stack-body">
+            <div class="stack-name">Sovereign Isolation Layer</div>
+            <div class="stack-desc">CERT-In · DPDP Act · Air-gapped zones · Full tenant isolation</div>
+          </div>
+          <div class="stack-val">Data ≠ leaves India</div>
+        </div>
+        <div class="stack-layer">
+          <span class="stack-num">06</span>
+          <div class="stack-icon" style="background:rgba(59,130,246,.14)">⚡</div>
+          <div class="stack-body">
+            <div class="stack-name">On-Demand Platform API</div>
+            <div class="stack-desc">8→1,024 GPUs in 15 min · INR billing · Zero egress</div>
+          </div>
+          <div class="stack-val">SDK coming soon</div>
+        </div>
+      </div>
+
+      <!-- Right column: animated flow + photo -->
+      <div style="display:flex;flex-direction:column;gap:1.25rem">
+
+        <!-- ⑮ Animated data packet journey -->
+        <div class="stack-viz fade-up stagger-1">
+          <div class="stack-viz-title">Your API call — layer by layer</div>
+          <svg viewBox="0 0 280 310" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
+            <rect x="20" y="10"  width="240" height="38" rx="7" fill="rgba(34,197,94,.1)"  stroke="rgba(34,197,94,.22)"  stroke-width="1"/>
+            <text x="140" y="33" fill="rgba(34,197,94,.8)"   font-size="9" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">01 — Renewable Power</text>
+            <rect x="20" y="58"  width="240" height="38" rx="7" fill="rgba(59,130,246,.1)"  stroke="rgba(59,130,246,.22)"  stroke-width="1"/>
+            <text x="140" y="81" fill="rgba(59,130,246,.8)"  font-size="9" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">02 — Liquid Cooling</text>
+            <rect x="20" y="106" width="240" height="38" rx="7" fill="rgba(124,58,237,.1)"  stroke="rgba(124,58,237,.22)"  stroke-width="1"/>
+            <text x="140" y="129" fill="rgba(196,181,253,.8)" font-size="9" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">03 — GB200 / GB300 GPUs</text>
+            <rect x="20" y="154" width="240" height="38" rx="7" fill="rgba(251,191,36,.08)" stroke="rgba(251,191,36,.22)"  stroke-width="1"/>
+            <text x="140" y="177" fill="rgba(251,191,36,.8)"  font-size="9" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">04 — NVLink + InfiniBand</text>
+            <rect x="20" y="202" width="240" height="38" rx="7" fill="rgba(239,68,68,.08)"  stroke="rgba(239,68,68,.22)"   stroke-width="1"/>
+            <text x="140" y="225" fill="rgba(239,68,68,.8)"   font-size="9" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">05 — Sovereign Isolation</text>
+            <rect x="20" y="250" width="240" height="38" rx="7" fill="rgba(59,130,246,.08)"  stroke="rgba(59,130,246,.22)"  stroke-width="1"/>
+            <text x="140" y="273" fill="rgba(147,197,253,.8)" font-size="9" font-family="IBM Plex Mono" text-anchor="middle" font-weight="600">06 — Platform API</text>
+            <!-- Animated packet dot -->
+            <circle cx="0" cy="0" r="5" fill="#22c55e">
+              <animateMotion dur="4s" repeatCount="indefinite"
+                keyTimes="0;0.15;0.3;0.45;0.6;0.75;1"
+                calcMode="spline"
+                keySplines="0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1;0.42 0 0.58 1"
+                path="M120,29 L120,77 L120,125 L120,173 L120,221 L120,269 L120,269"/>
+              <animate attributeName="fill"
+                values="#22c55e;#3b82f6;#7c3aed;#f59e0b;#ef4444;#93c5fd;#22c55e"
+                dur="4s" repeatCount="indefinite"
+                keyTimes="0;0.15;0.3;0.45;0.6;0.75;1"/>
+            </circle>
+          </svg>
+        </div>
+
+        <!-- ⑯ Fiber photo -->
+        <div class="stack-photo fade-up stagger-2">
+          <img src="https://images.unsplash.com/photo-1535481387786-733a8a4c05e1?w=800&q=80&auto=format&fit=crop" alt="Fiber optics" loading="lazy">
+          <div class="photo-overlay" style="border-radius:12px">
+            <div class="photo-tag">High-speed connectivity</div>
+            <div class="photo-bignum">1 Tbps</div>
+            <div class="photo-sub">Fiber backbone · multi-rail InfiniBand</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     ECOSYSTEM & SOCIAL PROOF
+══════════════════════════════ -->
+<section id="ecosystem" style="background:var(--bg);padding:5rem 0">
+  <div class="container">
+    <div class="lbl fade-up">Who It's Built For</div>
+    <h2 class="fade-up">The backbone for India's<br>entire AI stack.</h2>
+
+    <!-- 6-card grid of use-case tiles -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem" class="fade-up stagger-1">
+
+      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--bg-sub);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:2rem;margin-bottom:.75rem">🤖</div>
+        <div style="font-weight:700;font-size:.9375rem;color:var(--ink);margin-bottom:.375rem">AI Startups</div>
+        <div style="font-size:.8125rem;color:var(--ink-soft);line-height:1.65">Build and ship your product without hyperscaler lock-in. GPU credits available to incubated companies.</div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--bg-sub);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:2rem;margin-bottom:.75rem">🏦</div>
+        <div style="font-weight:700;font-size:.9375rem;color:var(--ink);margin-bottom:.375rem">BFSI &amp; Insurance</div>
+        <div style="font-size:.8125rem;color:var(--ink-soft);line-height:1.65">Fraud detection, credit scoring, underwriting AI — all within RBI-compliant data boundaries.</div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--bg-sub);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:2rem;margin-bottom:.75rem">🏛️</div>
+        <div style="font-weight:700;font-size:.9375rem;color:var(--ink);margin-bottom:.375rem">Government &amp; Defence</div>
+        <div style="font-size:.8125rem;color:var(--ink-soft);line-height:1.65">Air-gapped sovereign zones. No foreign jurisdiction. Full audit trail for classified workloads.</div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--bg-sub);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:2rem;margin-bottom:.75rem">🏥</div>
+        <div style="font-weight:700;font-size:.9375rem;color:var(--ink);margin-bottom:.375rem">Healthcare &amp; Pharma</div>
+        <div style="font-size:.8125rem;color:var(--ink-soft);line-height:1.65">Medical imaging, drug discovery, genomics — patient data never leaves the country.</div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--bg-sub);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:2rem;margin-bottom:.75rem">🎓</div>
+        <div style="font-weight:700;font-size:.9375rem;color:var(--ink);margin-bottom:.375rem">Research &amp; Academia</div>
+        <div style="font-size:.8125rem;color:var(--ink-soft);line-height:1.65">IITs, IISc, CDAC — access frontier compute for Indian language models and foundational AI research.</div>
+      </div>
+
+      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--bg-sub);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="font-size:2rem;margin-bottom:.75rem">🏭</div>
+        <div style="font-weight:700;font-size:.9375rem;color:var(--ink);margin-bottom:.375rem">Enterprise &amp; Manufacturing</div>
+        <div style="font-size:.8125rem;color:var(--ink-soft);line-height:1.65">Predictive maintenance, quality control vision AI, supply chain optimisation at production scale.</div>
+      </div>
+
+    </div>
+
+    <!-- Stat callout bar -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:12px;overflow:hidden;margin-top:2rem;border:1px solid var(--border)" class="fade-up stagger-2">
+      <div style="padding:1.25rem;background:var(--bg);text-align:center">
+        <div style="font-size:1.5rem;font-weight:700;color:var(--blue);letter-spacing:-0.025em">40%</div>
+        <div style="font-size:.72rem;color:var(--ink-soft);margin-top:.2rem">of India AI capacity at 500 MW</div>
+      </div>
+      <div style="padding:1.25rem;background:var(--bg);text-align:center">
+        <div style="font-size:1.5rem;font-weight:700;color:var(--purple);letter-spacing:-0.025em">3 sectors</div>
+        <div style="font-size:.72rem;color:var(--ink-soft);margin-top:.2rem">where foreign cloud legally risky</div>
+      </div>
+      <div style="padding:1.25rem;background:var(--bg);text-align:center">
+        <div style="font-size:1.5rem;font-weight:700;color:var(--green);letter-spacing:-0.025em">$0</div>
+        <div style="font-size:.72rem;color:var(--ink-soft);margin-top:.2rem">egress cost — ever</div>
+      </div>
+      <div style="padding:1.25rem;background:var(--bg);text-align:center">
+        <div style="font-size:1.5rem;font-weight:700;color:var(--amber);letter-spacing:-0.025em">INR</div>
+        <div style="font-size:.72rem;color:var(--ink-soft);margin-top:.2rem">billing — no forex risk</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     REVENUE
+     Infographics: product cards · donut chart · photo
+══════════════════════════════ -->
+<section id="revenue">
+  <div class="container">
+    <div class="lbl fade-up">How We Serve You</div>
+    <h2 class="fade-up">Five ways to access Antriksh.</h2>
+    <div class="rev-grid">
+      <div class="rev-card fade-up"><div class="rev-icon">⚡</div><div class="rev-title">GPU-as-a-Service</div><div class="rev-price p1">$2.50–5 / hr</div><div class="rev-desc">On-demand GB200 &amp; GB300. Pay by the second.</div></div>
+      <div class="rev-card fade-up stagger-1"><div class="rev-icon">📊</div><div class="rev-title">Enterprise Contracts</div><div class="rev-price p2">Reserved</div><div class="rev-desc">Long-term allocation. SLA-backed uptime.</div></div>
+      <div class="rev-card fade-up stagger-2"><div class="rev-icon">🤖</div><div class="rev-title">Inference APIs</div><div class="rev-price p3">Pay-per-token</div><div class="rev-desc">Deploy and serve models via API.</div></div>
+      <div class="rev-card fade-up stagger-3"><div class="rev-icon">🔧</div><div class="rev-title">Managed Services</div><div class="rev-price p4">Full MLOps</div><div class="rev-desc">Fine-tuning, optimisation, monitoring.</div></div>
+      <div class="rev-card fade-up stagger-4"><div class="rev-icon">🚀</div><div class="rev-title">Venture Compute</div><div class="rev-price p5">For startups</div><div class="rev-desc">GPU credits. Build without burning runway.</div></div>
+    </div>
+
+    <!-- ⑰ Donut chart + photo -->
+    <div class="rev-bottom">
+      <div class="donut-card fade-up">
+        <!-- ⑰a Revenue donut -->
+        <svg viewBox="0 0 120 120" width="120" height="120" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+          <circle cx="60" cy="60" r="40" fill="none" stroke="#e2e8f0" stroke-width="18"/>
+          <!-- GPUaaS 40% -->
+          <circle cx="60" cy="60" r="40" fill="none" stroke="#3b82f6" stroke-width="18" stroke-dasharray="100.4 150.8" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+          <!-- Enterprise 30% -->
+          <circle cx="60" cy="60" r="40" fill="none" stroke="#7c3aed" stroke-width="18" stroke-dasharray="75.3 175.9" stroke-dashoffset="-100.4" transform="rotate(-90 60 60)"/>
+          <!-- Inference 15% -->
+          <circle cx="60" cy="60" r="40" fill="none" stroke="#16a34a" stroke-width="18" stroke-dasharray="37.7 213.5" stroke-dashoffset="-175.7" transform="rotate(-90 60 60)"/>
+          <!-- Managed 10% -->
+          <circle cx="60" cy="60" r="40" fill="none" stroke="#ea580c" stroke-width="18" stroke-dasharray="25.1 226.1" stroke-dashoffset="-213.4" transform="rotate(-90 60 60)"/>
+          <!-- Venture 5% -->
+          <circle cx="60" cy="60" r="40" fill="none" stroke="#db2777" stroke-width="18" stroke-dasharray="12.6 238.6" stroke-dashoffset="-238.5" transform="rotate(-90 60 60)"/>
+          <text x="60" y="57" fill="#0f172a" font-size="9" font-family="Inter" font-weight="700" text-anchor="middle">Revenue</text>
+          <text x="60" y="69" fill="#64748b" font-size="8" font-family="Inter" text-anchor="middle">mix</text>
+        </svg>
+        <div class="donut-legend">
+          <div class="dl-row"><div class="dl-dot" style="background:#3b82f6"></div><span class="dl-name">GPU-as-a-Service</span><span class="dl-pct">40%</span></div>
+          <div class="dl-row"><div class="dl-dot" style="background:#7c3aed"></div><span class="dl-name">Enterprise</span><span class="dl-pct">30%</span></div>
+          <div class="dl-row"><div class="dl-dot" style="background:#16a34a"></div><span class="dl-name">Inference APIs</span><span class="dl-pct">15%</span></div>
+          <div class="dl-row"><div class="dl-dot" style="background:#ea580c"></div><span class="dl-name">Managed Services</span><span class="dl-pct">10%</span></div>
+          <div class="dl-row"><div class="dl-dot" style="background:#db2777"></div><span class="dl-name">Venture Compute</span><span class="dl-pct">5%</span></div>
+        </div>
+      </div>
+      <!-- ⑰b City / ecosystem photo -->
+      <div class="photo-card fade-up stagger-1" style="min-height:220px">
+        <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80&auto=format&fit=crop" alt="India tech city" loading="lazy">
+        <div class="photo-overlay">
+          <div class="photo-tag">Serving India's AI ecosystem</div>
+          <div class="photo-bignum">10K+</div>
+          <div class="photo-sub">Startups, enterprises &amp; researchers by 2030</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ㉖ Interactive pricing calculator -->
+    <div style="background:var(--ink);border-radius:14px;padding:2rem;margin-top:1.25rem" class="fade-up">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.75rem">
+        <div>
+          <div style="font-size:.65rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.28);font-family:'IBM Plex Mono',monospace">Interactive</div>
+          <div style="font-size:1.125rem;font-weight:700;color:#fff;margin-top:.25rem">Pricing Calculator</div>
+        </div>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.35)">Drag the slider to see savings</div>
+      </div>
+      <!-- Slider row -->
+      <div style="margin-bottom:1.5rem">
+        <div style="display:flex;justify-content:space-between;margin-bottom:.625rem">
+          <span style="font-size:.8125rem;font-weight:600;color:rgba(255,255,255,.7)">Number of GPUs</span>
+          <span id="gpu-count-label" style="font-family:'IBM Plex Mono',monospace;font-size:.875rem;font-weight:700;color:#3b82f6">64 GPUs</span>
+        </div>
+        <input type="range" id="gpu-slider" min="8" max="1024" step="8" value="64"
+          style="width:100%;height:5px;border-radius:100px;outline:none;cursor:pointer;accent-color:#3b82f6">
+        <div style="display:flex;justify-content:space-between;margin-top:.375rem">
+          <span style="font-size:.65rem;color:rgba(255,255,255,.25);font-family:'IBM Plex Mono',monospace">8 GPUs</span>
+          <span style="font-size:.65rem;color:rgba(255,255,255,.25);font-family:'IBM Plex Mono',monospace">1,024 GPUs</span>
+        </div>
+      </div>
+      <!-- Cost cards row -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,.07);border-radius:10px;overflow:hidden">
+        <div style="padding:1.25rem;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);border-radius:10px 0 0 10px;margin:1px">
+          <div style="font-size:.65rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(147,197,253,.6);margin-bottom:.5rem;font-family:'IBM Plex Mono',monospace">Antriksh / hr</div>
+          <div id="calc-ant" style="font-size:1.75rem;font-weight:800;color:#fff;letter-spacing:-0.03em">$160</div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.35);margin-top:.25rem">at $2.50/GPU/hr</div>
+        </div>
+        <div style="padding:1.25rem;background:rgba(255,255,255,.03)">
+          <div style="font-size:.65rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:.5rem;font-family:'IBM Plex Mono',monospace">AWS/GCP / hr</div>
+          <div id="calc-aws" style="font-size:1.75rem;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:-0.03em">$448</div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.25);margin-top:.25rem">at $7/GPU/hr (H100)</div>
+        </div>
+        <div style="padding:1.25rem;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.15);border-radius:0 10px 10px 0;margin:1px">
+          <div style="font-size:.65rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(74,222,128,.6);margin-bottom:.5rem;font-family:'IBM Plex Mono',monospace">You save / hr</div>
+          <div id="calc-save" style="font-size:1.75rem;font-weight:800;color:#4ade80;letter-spacing:-0.03em">$288</div>
+          <div id="calc-pct" style="font-size:.72rem;color:rgba(74,222,128,.5);margin-top:.25rem">64% savings</div>
+        </div>
+      </div>
+      <!-- Monthly projection -->
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.07)">
+        <div>
+          <span style="font-size:.72rem;color:rgba(255,255,255,.3)">Monthly saving (24/7):</span>
+          <span id="calc-monthly" style="font-family:'IBM Plex Mono',monospace;font-size:.875rem;font-weight:700;color:#4ade80;margin-left:.5rem">$207,360/mo</span>
+        </div>
+        <div>
+          <span style="font-size:.72rem;color:rgba(255,255,255,.3)">Annual saving:</span>
+          <span id="calc-annual" style="font-family:'IBM Plex Mono',monospace;font-size:.875rem;font-weight:700;color:#4ade80;margin-left:.5rem">$2.49M/yr</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     COMPETITOR COMPARISON
+     Infographic: interactive feature matrix
+══════════════════════════════ -->
+<section id="compare" style="background:var(--bg);padding:5rem 0">
+  <div class="container">
+    <div class="lbl fade-up">How We Compare</div>
+    <h2 class="fade-up">The only sovereign AI cloud<br>built for India.</h2>
+    <p class="fade-up stagger-1" style="max-width:520px;margin-top:.625rem">Every global GPU cloud has one problem for Indian AI builders: your data, your latency, your money — all go abroad.</p>
+
+    <!-- ㉕ Comparison matrix -->
+    <div style="overflow-x:auto;margin-top:2.5rem" class="fade-up stagger-2">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th class="comp-feature-col">Feature</th>
+            <th class="comp-us">Antriksh<br><span>Cloud</span></th>
+            <th>CoreWeave<br><span>USA</span></th>
+            <th>Lambda AI<br><span>USA</span></th>
+            <th>Neysa<br><span>India</span></th>
+            <th>AWS/GCP<br><span>Global</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="comp-feat">GPU Generation</td>
+            <td class="comp-us comp-yes">GB200 + GB300</td>
+            <td class="comp-part">B200 / H100</td>
+            <td class="comp-part">H100 / A100</td>
+            <td class="comp-part">H100</td>
+            <td class="comp-part">H100 (limited)</td>
+          </tr>
+          <tr>
+            <td class="comp-feat">Data stays in India</td>
+            <td class="comp-us comp-yes">✓ Always</td>
+            <td class="comp-no">✗</td>
+            <td class="comp-no">✗</td>
+            <td class="comp-yes">✓</td>
+            <td class="comp-part">Partial</td>
+          </tr>
+          <tr>
+            <td class="comp-feat">DPDP Act compliant</td>
+            <td class="comp-us comp-yes">✓ By design</td>
+            <td class="comp-no">✗</td>
+            <td class="comp-no">✗</td>
+            <td class="comp-part">In progress</td>
+            <td class="comp-part">Partial</td>
+          </tr>
+          <tr>
+            <td class="comp-feat">Liquid cooling (direct-to-chip)</td>
+            <td class="comp-us comp-yes">✓ PUE &lt;1.10</td>
+            <td class="comp-yes">✓</td>
+            <td class="comp-no">✗</td>
+            <td class="comp-no">✗</td>
+            <td class="comp-part">Some DCs</td>
+          </tr>
+          <tr>
+            <td class="comp-feat">Provisioning time</td>
+            <td class="comp-us comp-yes">15 minutes</td>
+            <td class="comp-part">Hours</td>
+            <td class="comp-part">Hours</td>
+            <td class="comp-part">Hours</td>
+            <td class="comp-no">Days</td>
+          </tr>
+          <tr>
+            <td class="comp-feat">INR billing</td>
+            <td class="comp-us comp-yes">✓</td>
+            <td class="comp-no">✗</td>
+            <td class="comp-no">✗</td>
+            <td class="comp-yes">✓</td>
+            <td class="comp-part">Partial</td>
+          </tr>
+          <tr>
+            <td class="comp-feat">Egress fees</td>
+            <td class="comp-us comp-yes">Zero</td>
+            <td class="comp-part">Low</td>
+            <td class="comp-no">High</td>
+            <td class="comp-part">Low</td>
+            <td class="comp-no">High</td>
+          </tr>
+          <tr>
+            <td class="comp-feat">Air-gapped sovereign zones</td>
+            <td class="comp-us comp-yes">✓</td>
+            <td class="comp-no">✗</td>
+            <td class="comp-no">✗</td>
+            <td class="comp-no">✗</td>
+            <td class="comp-part">GovCloud only</td>
+          </tr>
+          <tr>
+            <td class="comp-feat">Renewable energy</td>
+            <td class="comp-us comp-yes">✓ Hydropower</td>
+            <td class="comp-yes">✓</td>
+            <td class="comp-no">✗</td>
+            <td class="comp-no">✗</td>
+            <td class="comp-part">Partial</td>
+          </tr>
+          <tr>
+            <td class="comp-feat">Est. price vs H100 equivalent</td>
+            <td class="comp-us comp-yes">40–50% cheaper</td>
+            <td class="comp-part">−20%</td>
+            <td class="comp-part">Market rate</td>
+            <td class="comp-part">Market rate</td>
+            <td class="comp-no">Baseline</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Score pills -->
+    <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem;align-items:center" class="fade-up stagger-3">
+      <span style="font-size:.75rem;color:var(--ink-soft);font-weight:500">Score (out of 10 criteria):</span>
+      <span style="background:var(--blue);color:#fff;font-size:.75rem;font-weight:700;padding:.3rem .875rem;border-radius:100px">Antriksh — 10/10</span>
+      <span style="background:var(--bg-tint);color:var(--ink-mid);font-size:.75rem;font-weight:600;padding:.3rem .875rem;border-radius:100px;border:1px solid var(--border)">CoreWeave — 6/10</span>
+      <span style="background:var(--bg-tint);color:var(--ink-mid);font-size:.75rem;font-weight:600;padding:.3rem .875rem;border-radius:100px;border:1px solid var(--border)">Lambda — 4/10</span>
+      <span style="background:var(--bg-tint);color:var(--ink-mid);font-size:.75rem;font-weight:600;padding:.3rem .875rem;border-radius:100px;border:1px solid var(--border)">Neysa — 5/10</span>
+      <span style="background:var(--bg-tint);color:var(--ink-mid);font-size:.75rem;font-weight:600;padding:.3rem .875rem;border-radius:100px;border:1px solid var(--border)">AWS/GCP — 3/10</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     TRACTION
+     Infographics: milestone checklist · readiness radar
+══════════════════════════════ -->
+<section id="traction">
+  <div class="container">
+    <div class="lbl fade-up">Execution Progress</div>
+    <h2 class="fade-up">Everything in place to build.</h2>
+    <div class="traction-2col">
+
+      <!-- ⑲ Milestone checklist -->
+      <div class="traction-list fade-up">
+        <div class="tr-item">
+          <div class="tr-check done"><svg fill="none" stroke="#16a34a" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+          <div><div class="tr-title">500MW Power Allocation Secured</div><div class="tr-desc">Canal-adjacent · water for cooling · dual power feeds</div></div>
+          <div class="tr-status s-done">Completed</div>
+        </div>
+        <div class="tr-item">
+          <div class="tr-check prog"><svg fill="none" stroke="#a16207" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+          <div><div class="tr-title">Government MoU in Final Stages</div><div class="tr-desc">State backing · infrastructure status · regulatory clearances</div></div>
+          <div class="tr-status s-rev">Final Review</div>
+        </div>
+        <div class="tr-item">
+          <div class="tr-check done"><svg fill="none" stroke="#16a34a" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+          <div><div class="tr-title">NVIDIA GB200 Supply Confirmed</div><div class="tr-desc">Direct allocation secured · deployment upon funding</div></div>
+          <div class="tr-status s-conf">Confirmed</div>
+        </div>
+        <div class="tr-item">
+          <div class="tr-check done"><svg fill="none" stroke="#16a34a" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+          <div><div class="tr-title">Technical Design Complete</div><div class="tr-desc">3MW container PoC · CDAC &amp; NSM validated</div></div>
+          <div class="tr-status s-rdy">Ready</div>
+        </div>
+        <div class="tr-item">
+          <div class="tr-check nxt"><svg fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div><div class="tr-title">Ready for Deployment</div><div class="tr-desc">3MW PoC live 6–8 months after funding close</div></div>
+          <div class="tr-status s-next">Next</div>
+        </div>
+      </div>
+
+      <!-- ⑳ Readiness radar chart -->
+      <div class="radar-card fade-up stagger-1">
+        <div class="radar-title">Readiness radar vs typical pre-launch startup</div>
+        <svg viewBox="0 0 300 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
+          <!-- Concentric rings -->
+          <polygon points="150,80 192,105 192,155 150,180 108,155 108,105" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+          <polygon points="150,55 213,92  213,167 150,205 87,167  87,92"   fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+          <polygon points="150,30 234,79  234,179 150,228 66,179  66,79"   fill="none" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <!-- Axis lines -->
+          <line x1="150" y1="30" x2="150" y2="228" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+          <line x1="66"  y1="79" x2="234" y2="179" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+          <line x1="234" y1="79" x2="66"  y2="179" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+          <!-- Antriksh polygon (high scores) -->
+          <polygon points="150,36 228,84 226,168 150,218 78,162 74,86" fill="rgba(59,130,246,.18)" stroke="#3b82f6" stroke-width="2"/>
+          <!-- Industry typical (smaller) -->
+          <polygon points="150,80 195,108 196,151 150,182 108,152 106,108" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.2)" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <!-- Axis labels -->
+          <text x="150" y="24"  fill="rgba(255,255,255,.55)" font-size="8" font-family="IBM Plex Mono" text-anchor="middle">Power</text>
+          <text x="244" y="78"  fill="rgba(255,255,255,.55)" font-size="8" font-family="IBM Plex Mono">Hardware</text>
+          <text x="244" y="184" fill="rgba(255,255,255,.55)" font-size="8" font-family="IBM Plex Mono">Regulatory</text>
+          <text x="150" y="244" fill="rgba(255,255,255,.55)" font-size="8" font-family="IBM Plex Mono" text-anchor="middle">Technical</text>
+          <text x="10"  y="184" fill="rgba(255,255,255,.55)" font-size="8" font-family="IBM Plex Mono">MoU</text>
+          <text x="18"  y="78"  fill="rgba(255,255,255,.55)" font-size="8" font-family="IBM Plex Mono">Funding</text>
+          <!-- Legend -->
+          <rect x="20"  y="255" width="10" height="3" rx="1" fill="#3b82f6"/>
+          <text x="34"  y="261" fill="rgba(255,255,255,.4)" font-size="7" font-family="IBM Plex Mono">Antriksh Cloud</text>
+          <rect x="140" y="255" width="10" height="3" rx="1" fill="rgba(255,255,255,.3)"/>
+          <text x="154" y="261" fill="rgba(255,255,255,.4)" font-size="7" font-family="IBM Plex Mono">Industry typical</text>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     JOURNEY / ROADMAP
+     Infographics: timeline · MW growth area chart
+══════════════════════════════ -->
+<section id="journey">
+  <div class="container">
+    <div class="lbl fade-up">Build Roadmap</div>
+    <h2 class="fade-up">Our journey to 500 MW.</h2>
+
+    <!-- ㉑ Phase timeline -->
+    <div class="tl-wrap">
+      <div class="tl-track"><div class="tl-fill"></div></div>
+      <div class="tl-phases">
+        <div class="tl-phase fade-up">
+          <div class="tl-node active">
+            <svg width="14" height="14" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+          <div class="tl-card active">
+            <div class="tl-ptag">Phase 1</div>
+            <div class="tl-pname">Proof of Concept</div>
+            <div class="tl-ptime">6–8 months</div>
+            <div class="tl-power-bar"><div class="tl-pw-fill" data-pw="0.6%"></div></div>
+            <div class="tl-mw">3 MW</div>
+            <ul class="tl-list">
+              <li>1,728 GB200 GPUs</li>
+              <li>Revenue starts</li>
+              <li>Early access live</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-phase fade-up stagger-1">
+          <div class="tl-node"></div>
+          <div class="tl-card">
+            <div class="tl-ptag">Phase 2</div>
+            <div class="tl-pname">Scale to 100 MW</div>
+            <div class="tl-ptime">Year 1–2</div>
+            <div class="tl-power-bar"><div class="tl-pw-fill" data-pw="20%"></div></div>
+            <div class="tl-mw">100 MW</div>
+            <ul class="tl-list">
+              <li>57,600 GPUs</li>
+              <li>Enterprise contracts</li>
+              <li>Sovereign zones</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-phase fade-up stagger-2">
+          <div class="tl-node"></div>
+          <div class="tl-card">
+            <div class="tl-ptag">Phase 3</div>
+            <div class="tl-pname">Full 500 MW</div>
+            <div class="tl-ptime">Year 5</div>
+            <div class="tl-power-bar"><div class="tl-pw-fill" data-pw="100%"></div></div>
+            <div class="tl-mw">500 MW</div>
+            <ul class="tl-list">
+              <li>288,000 GPUs</li>
+              <li>India's largest AI facility</li>
+              <li>40% of India AI capacity</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ㉒ MW Growth area chart -->
+    <div class="growth-wrap fade-up">
+      <div class="growth-title">Power capacity growth — MW over time</div>
+      <svg viewBox="0 0 700 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block">
+        <defs>
+          <linearGradient id="area-g" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%"   stop-color="#3b82f6" stop-opacity=".35"/>
+            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- Grid -->
+        <line x1="60" y1="10"  x2="60"  y2="130" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+        <line x1="60" y1="130" x2="680" y2="130" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+        <line x1="60" y1="90"  x2="680" y2="90"  stroke="rgba(255,255,255,.04)" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="60" y1="50"  x2="680" y2="50"  stroke="rgba(255,255,255,.04)" stroke-width="1" stroke-dasharray="3 3"/>
+        <!-- Y labels -->
+        <text x="55" y="133" fill="rgba(255,255,255,.25)" font-size="8" font-family="IBM Plex Mono" text-anchor="end">0</text>
+        <text x="55" y="93"  fill="rgba(255,255,255,.25)" font-size="8" font-family="IBM Plex Mono" text-anchor="end">100</text>
+        <text x="55" y="53"  fill="rgba(255,255,255,.25)" font-size="8" font-family="IBM Plex Mono" text-anchor="end">300</text>
+        <text x="55" y="13"  fill="rgba(255,255,255,.25)" font-size="8" font-family="IBM Plex Mono" text-anchor="end">500 MW</text>
+        <!-- Area -->
+        <path d="M80,128 L180,124 L280,120 L380,88 L480,52 L580,20 L680,12 L680,130 L80,130 Z" fill="url(#area-g)"/>
+        <!-- Line -->
+        <polyline points="80,128 180,124 280,120 380,88 480,52 580,20 680,12" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Dots -->
+        <circle cx="80"  cy="128" r="4" fill="#3b82f6"/>
+        <circle cx="180" cy="124" r="4" fill="#3b82f6"/>
+        <circle cx="280" cy="120" r="4" fill="#3b82f6"/>
+        <circle cx="380" cy="88"  r="5" fill="#7c3aed" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="580" cy="20"  r="5" fill="#22c55e" stroke="#fff" stroke-width="1.5"/>
+        <!-- X labels -->
+        <text x="80"  y="148" fill="rgba(255,255,255,.28)" font-size="7.5" font-family="IBM Plex Mono" text-anchor="middle">M0</text>
+        <text x="180" y="148" fill="rgba(255,255,255,.28)" font-size="7.5" font-family="IBM Plex Mono" text-anchor="middle">M6</text>
+        <text x="280" y="148" fill="rgba(255,255,255,.28)" font-size="7.5" font-family="IBM Plex Mono" text-anchor="middle">Y1</text>
+        <text x="380" y="148" fill="rgba(255,255,255,.28)" font-size="7.5" font-family="IBM Plex Mono" text-anchor="middle">Y2</text>
+        <text x="480" y="148" fill="rgba(255,255,255,.28)" font-size="7.5" font-family="IBM Plex Mono" text-anchor="middle">Y3</text>
+        <text x="580" y="148" fill="rgba(255,255,255,.28)" font-size="7.5" font-family="IBM Plex Mono" text-anchor="middle">Y4</text>
+        <text x="680" y="148" fill="rgba(255,255,255,.28)" font-size="7.5" font-family="IBM Plex Mono" text-anchor="middle">Y5</text>
+        <!-- Callout labels -->
+        <text x="83"  y="116" fill="rgba(59,130,246,.8)"  font-size="7.5" font-family="IBM Plex Mono">3 MW</text>
+        <text x="325" y="80"  fill="rgba(124,58,237,.85)" font-size="7.5" font-family="IBM Plex Mono">100 MW</text>
+        <text x="596" y="16"  fill="rgba(34,197,94,.85)"  font-size="7.5" font-family="IBM Plex Mono">500 MW</text>
+      </svg>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="tl-stats">
+      <div class="tl-stat scale-in stagger-1"><div class="tl-sv"><span class="count-num" data-count="126">126</span></div><div class="tl-su">ExaFLOPS</div><div class="tl-sl">at 500 MW</div></div>
+      <div class="tl-div"></div>
+      <div class="tl-stat scale-in stagger-2"><div class="tl-sv"><span class="count-num" data-count="288" data-suffix="K">288K</span></div><div class="tl-su">GPUs</div><div class="tl-sl">at full build</div></div>
+      <div class="tl-div"></div>
+      <div class="tl-stat scale-in stagger-3"><div class="tl-sv"><span class="count-num" data-count="5">5</span></div><div class="tl-su">Years</div><div class="tl-sl">to full campus</div></div>
+      <div class="tl-div"></div>
+      <div class="tl-stat scale-in stagger-4"><div class="tl-sv"><span class="count-num" data-count="10" data-suffix="K+">10K+</span></div><div class="tl-su">Startups</div><div class="tl-sl">enabled</div></div>
+    </div>
+
+    <!-- Campus render photo strip -->
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:1.25rem;margin-top:1.5rem" class="fade-up">
+      <div class="photo-card" style="min-height:240px">
+        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1000&q=80&auto=format&fit=crop" alt="Data centre campus aerial" loading="lazy">
+        <div class="photo-overlay">
+          <div class="photo-tag">Campus · Phase 1 site · Delhi NCR</div>
+          <div class="photo-bignum">25 hectares</div>
+          <div class="photo-sub">Canal-adjacent · dual-feed power · expandable to 500 MW</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:12px;overflow:hidden">
+        <div style="flex:1;background:var(--bg-sub);padding:1.125rem;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-size:.65rem;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.375rem">Land secured</div>
+          <div style="font-size:1.25rem;font-weight:700;color:var(--ink);letter-spacing:-0.02em">25 ha</div>
+          <div style="font-size:.72rem;color:var(--ink-soft);margin-top:.1rem">Uttarakhand / Delhi NCR</div>
+        </div>
+        <div style="flex:1;background:var(--bg-sub);padding:1.125rem;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-size:.65rem;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.375rem">Water supply</div>
+          <div style="font-size:1.25rem;font-weight:700;color:var(--blue);letter-spacing:-0.02em">Canal</div>
+          <div style="font-size:.72rem;color:var(--ink-soft);margin-top:.1rem">Perennial · zero liquid discharge</div>
+        </div>
+        <div style="flex:1;background:var(--bg-sub);padding:1.125rem;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-size:.65rem;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.375rem">Power cost</div>
+          <div style="font-size:1.25rem;font-weight:700;color:var(--green);letter-spacing:-0.02em">₹0.08</div>
+          <div style="font-size:.72rem;color:var(--ink-soft);margin-top:.1rem">per kWh · hydropower</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     CAREERS
+     Infographics: job cards · office photo · perks · locations
+══════════════════════════════ -->
+<section id="careers">
+  <div class="container">
+    <div class="lbl lbl-dk">We're Hiring</div>
+    <h2>Build India's AI backbone<br>with us.</h2>
+    <p class="careers-sub">Engineering, sales, and venture — San Francisco and Delhi NCR.</p>
+    <div class="careers-2col">
+
+      <!-- ㉓ Job cards -->
+      <div class="jobs-grid fade-up">
+        <div class="jb"><div class="jb-left"><div class="jbtag te">Engineering · SF / Delhi</div><div class="jbtitle">Cloud Infrastructure Architect</div><div class="jbloc">Kubernetes, GPU orchestration, distributed systems</div></div><span class="jb-arr">→</span></div>
+        <div class="jb"><div class="jb-left"><div class="jbtag te">Engineering · Delhi</div><div class="jbtitle">GPU Cluster Engineer</div><div class="jbloc">NVIDIA, InfiniBand, NCCL, NVLink</div></div><span class="jb-arr">→</span></div>
+        <div class="jb"><div class="jb-left"><div class="jbtag te">Engineering · SF / Remote</div><div class="jbtitle">ML Infrastructure Engineer</div><div class="jbloc">PyTorch, CUDA, inference optimisation</div></div><span class="jb-arr">→</span></div>
+        <div class="jb"><div class="jb-left"><div class="jbtag te">Engineering · Delhi</div><div class="jbtitle">Network Performance Engineer</div><div class="jbloc">RDMA, InfiniBand, ultra-low latency</div></div><span class="jb-arr">→</span></div>
+        <div class="jb"><div class="jb-left"><div class="jbtag tb">Sales · Delhi / Mumbai</div><div class="jbtitle">Enterprise Sales Lead</div><div class="jbloc">BFSI, healthcare, government</div></div><span class="jb-arr">→</span></div>
+        <div class="jb"><div class="jb-left"><div class="jbtag tb">Sales · SF / Delhi</div><div class="jbtitle">Solutions Architect</div><div class="jbloc">Pre-sales, AI workload design</div></div><span class="jb-arr">→</span></div>
+        <div class="jb"><div class="jb-left"><div class="jbtag tb">Marketing · SF</div><div class="jbtitle">Developer Relations Lead</div><div class="jbloc">Community, content, events</div></div><span class="jb-arr">→</span></div>
+        <div class="jb"><div class="jb-left"><div class="jbtag tv">Venture · Delhi</div><div class="jbtitle">Venture Partner</div><div class="jbloc">AI startup ecosystem, deal sourcing</div></div><span class="jb-arr">→</span></div>
+        <div class="jb"><div class="jb-left"><div class="jbtag tv">Venture · Delhi / SF</div><div class="jbtitle">Associate — Founder's Office</div><div class="jbloc">Reporting to CEO · broad mandate</div></div><span class="jb-arr">→</span></div>
+      </div>
+
+      <!-- ㉔ Office photo + perks + locations -->
+      <div class="fade-up stagger-1">
+        <div class="office-photo">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80&auto=format&fit=crop" alt="Team at work" loading="lazy">
+          <div class="office-overlay">
+            <div style="font-size:.7rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.45);font-family:'IBM Plex Mono',monospace;margin-bottom:.5rem">Why join us</div>
+            <div class="perks-grid">
+              <div class="perk">🚀 Early equity</div>
+              <div class="perk">🌏 SF + Delhi</div>
+              <div class="perk">🔬 Frontier tech</div>
+              <div class="perk">💡 Mission-driven</div>
+            </div>
+          </div>
+        </div>
+        <div class="locations-card">
+          <div class="locations-title">Offices</div>
+          <div class="locations-row">
+            <div class="loc-item">
+              <div class="loc-flag" style="background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.25)">🇮🇳</div>
+              <div><div class="loc-name">Delhi NCR</div><div class="loc-role">Engineering · Operations</div></div>
+            </div>
+            <div class="loc-item">
+              <div class="loc-flag" style="background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.25)">🇺🇸</div>
+              <div><div class="loc-name">San Francisco</div><div class="loc-role">Sales · BD · Partnerships</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="careers-ft">
+      <a href="mailto:careers@antriksh.cloud" class="btn btn-primary">Apply &mdash; careers@antriksh.cloud</a>
+      <span class="careers-note">Competitive equity · ESOP · SF &amp; Delhi NCR</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     FAQ
+══════════════════════════════ -->
+<section id="faq">
+  <div class="container">
+    <div class="lbl fade-up">Questions</div>
+    <h2 class="fade-up">Frequently asked.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="faq(this)">When will Antriksh be available?<span class="faq-ch">▾</span></button>
+        <div class="faq-a">3 MW container PoC goes live ~6–8 months after funding close with 1,728 GB200 GPUs. Early access customers are onboarded first — join the waitlist to secure your spot.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="faq(this)">Which GPUs will be available?<span class="faq-ch">▾</span></button>
+        <div class="faq-a">NVIDIA GB200 and GB300 only — Blackwell-generation hardware from the start. No H100, no legacy chips. Early access customers will be consulted on the right configuration for their workload before go-live.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="faq(this)">How is this different from AWS, GCP, or Azure?<span class="faq-ch">▾</span></button>
+        <div class="faq-a">Antriksh is AI-native from the ground up — 10× denser racks, liquid cooling that prevents GPU throttling, 40–50% lower pricing, INR billing, zero egress fees, and true data sovereignty with no cross-border flows, ever. Foreign hyperscalers are general-purpose clouds that added GPUs. We are a GPU-first company that is building India's compute stack.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="faq(this)">Is my data safe? What about sovereignty?<span class="faq-ch">▾</span></button>
+        <div class="faq-a">Your data never leaves India — by architecture, not by policy. Full tenant isolation, encryption at rest and in transit, air-gapped zones for regulated industries. Zero staff access to your data without your explicit authorisation. We are designed for DPDP Act compliance, CERT-In standards, and RBI data localisation requirements.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="faq(this)">Can I trial before committing?<span class="faq-ch">▾</span></button>
+        <div class="faq-a">Yes. Early access customers get a trial allocation to benchmark their workloads before signing any contract. We want you to verify the performance numbers yourself — run your actual training job and see the cost and latency difference first-hand.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="faq(this)">What is the minimum cluster size?<span class="faq-ch">▾</span></button>
+        <div class="faq-a">8 GPUs minimum for on-demand workloads. There is no maximum — scale to 1,024 GPUs in a single cluster. Enterprise customers can reserve larger dedicated blocks. All provisioned via API or dashboard in under 15 minutes.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="faq(this)">How does the Venture Compute programme work?<span class="faq-ch">▾</span></button>
+        <div class="faq-a">We permanently reserve 10% of our capacity for AI startups we incubate. Credits range from $50K to $2M in GPU compute, allocated based on your stage and compute requirements. There is no equity ask for the credits themselves — we participate in your upside through the incubation programme separately. Apply via the waitlist with a note about your company.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="faq(this)">What frameworks and software are supported?<span class="faq-ch">▾</span></button>
+        <div class="faq-a">Full CUDA compatibility — PyTorch, JAX, TensorFlow, vLLM, TensorRT, Triton, HuggingFace, DeepSpeed, Megatron-LM, and anything that runs on NVIDIA hardware. We do not restrict your software stack. Bring your own Docker image or use our base images. NVLink and InfiniBand are fully exposed so multi-node frameworks like PyTorch DDP and FSDP work natively.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="faq(this)">Is there an SLA? What uptime do you guarantee?<span class="faq-ch">▾</span></button>
+        <div class="faq-a">Enterprise and reserved contracts include 99.9% uptime SLAs with financial credits for downtime. On-demand workloads are best-effort with typical availability above 99.5%. We have dual power feeds from two independent sources, N+2 cooling redundancy, and 72-hour diesel backup — designed to the same reliability standards as hyperscale facilities.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="ft-inner">
+      <div>
+        <div class="ft-logo">
+          <div class="ft-mark">
+            <svg width="16" height="16" viewBox="56 48 58 48" fill="white">
+              <path d="M83.58 78.95v-.57l-1.06.32-1.03-3.41 6.86-2.08 1.03 3.41-1.63.5v2.02l9.28 17.65h-2.33l-7.16-13.33 4.36 13.33h-2.32l-4.76-14.44-8.27 14.44h-2.33L83.58 78.95z"/>
+              <path d="M76.58 72.97l-9.23 2.69-2.69-9.29 9.23-2.69 2.69 9.29z"/>
+              <path d="M63.96 68.88l1.56 5.4-3.17.93-1.56-5.4 3.17-.93z"/>
+              <path d="M110.13 57.83c.96 3.3-.27 6.55-2.74 7.27l-3.45-11.94c2.47-.71 5.24 1.38 6.19 4.67z"/>
+              <path d="M102.51 51.5l4.56 15.81-6.26 1.82-4.53-15.81 6.23-1.82z"/>
+              <path d="M73.95 60.79l21.43-6.25 4.01 13.99-21.4 6.23-4.04-13.97z"/>
+            </svg>
+          </div>
+          Antriksh Cloud
+        </div>
+        <p class="ft-tagline">India&#39;s sovereign AI GPU infrastructure.<br>Delhi NCR &middot; San Francisco.</p>
+      </div>
+      <div class="ft-col">
+        <h5>Platform</h5>
+        <a href="index.html#why">Why Antriksh</a>
+        <a href="index.html#gpus">GPUs</a>
+        <a href="platform.html#cluster">Architecture</a>
+        <a href="platform.html#compare">Compare</a>
+        <a href="platform.html#revenue">Pricing</a>
+      </div>
+      <div class="ft-col">
+        <h5>Company</h5>
+        <a href="platform.html#traction">Milestones</a>
+        <a href="platform.html#journey">Roadmap</a>
+        <a href="platform.html#careers">Careers</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="Market analysis/Index.html">Market Analysis &#8599;</a>
+      </div>
+      <div class="ft-col">
+        <h5>Contact</h5>
+        <a href="mailto:info@antriksh.cloud">info@antriksh.cloud</a>
+        <a href="mailto:sales@antriksh.cloud">sales@antriksh.cloud</a>
+        <a href="mailto:careers@antriksh.cloud">careers@antriksh.cloud</a>
+        <a href="https://calendly.com/antrikshcloud" target="_blank" rel="noopener">Schedule a Call &#8599;</a>
+        <a href="tel:+917090152557">IN +91 70901 52557</a>
+        <a href="tel:+12066650905">US +1 (206) 665-0905</a>
+      </div>
+    </div>
+    <div class="ft-copy">
+      &copy; 2025 Antriksh Cloud Private Limited &middot; Delhi NCR, India &middot; San Francisco, USA
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button id="back-top" aria-label="Back to top"
+  style="position:fixed;bottom:1.75rem;right:1.75rem;width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:300;opacity:0;transition:opacity .3s,transform .2s;pointer-events:none;font-size:1rem;box-shadow:0 4px 16px rgba(0,0,0,.25)"
+  onmouseover="this.style.transform='scale(1.12)'" onmouseout="this.style.transform=''">&#8593;
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
