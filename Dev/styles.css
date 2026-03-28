@@ -37,6 +37,12 @@
 
   /* Ink kept for waitlist section */
   --ink: #0f172a;
+
+  /* Dark-theme aliases (keep old names working in inline styles) */
+  --ink-mid:   #94a3b8;
+  --ink-soft:  #64748b;
+  /* Redefine --ink for text contexts — dark bg means text must be light */
+  /* NOTE: use --bg-card for backgrounds, not --ink */
 }
 
 /* ── RESET ──────────────────────────────────────────────*/
@@ -64,7 +70,7 @@ section { padding:5.5rem 0; }
   position:fixed;
   top:0; left:0;
   width:100vw; height:100vh;
-  z-index:0;
+  z-index:-1;
   pointer-events:none;
   opacity:0;
   transition:opacity 1s;
