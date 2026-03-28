@@ -58,7 +58,7 @@
   </div>
 </nav>
 
-<section id="hero" class="content-layer" class="content-layer">
+<section id="hero" class="content-layer">
   <canvas id="hero-canvas-2d"></canvas>
   <div class="container">
     <div class="hero-content">
@@ -526,7 +526,7 @@
       <!-- ⑧ PUE Gauge chart -->
       <div class="pue-card fade-up">
         <div class="pue-title">Energy Efficiency · PUE (Power Usage Effectiveness — lower = less waste)</div>
-        <div class="pue-row" style="background:var(--blue-lt);border-color:#bfdbfe">
+        <div class="pue-row" style="background:rgba(59,130,246,.12);border-color:#bfdbfe">
           <div class="pue-arc">
             <svg viewBox="0 0 60 36" width="70">
               <path d="M6 30 A24 24 0 0 1 54 30" fill="none" stroke="#dbeafe" stroke-width="7" stroke-linecap="round"/>
@@ -549,7 +549,7 @@
           </div>
           <div class="pue-info">
             <div class="pue-name">Hyperscalers (AWS / GCP)</div>
-            <div class="pue-num" style="color:var(--ink-mid)">1.2–1.4</div>
+            <div class="pue-num" style="color:#94a3b8">1.2–1.4</div>
             <div class="pue-sub">Mixed air &amp; water cooling</div>
             <div class="pue-badge pb-avg">Industry average</div>
           </div>
@@ -649,15 +649,15 @@
         </div>
         <div class="ttg-row">
           <div class="ttg-header">
-            <span class="ttg-who" style="color:var(--ink-soft)">AWS / GCP India region</span>
-            <span class="ttg-time" style="color:var(--ink-soft)">Hours–days</span>
+            <span class="ttg-who" style="color:#64748b">AWS / GCP India region</span>
+            <span class="ttg-time" style="color:#64748b">Hours–days</span>
           </div>
           <div class="ttg-bar ttg-hyp">Queue wait + limited availability</div>
         </div>
         <div class="ttg-row" style="margin-bottom:0">
           <div class="ttg-header">
-            <span class="ttg-who" style="color:var(--ink-soft)">Enterprise procurement</span>
-            <span class="ttg-time" style="color:var(--ink-soft)">Weeks–months</span>
+            <span class="ttg-who" style="color:#64748b">Enterprise procurement</span>
+            <span class="ttg-time" style="color:#64748b">Weeks–months</span>
           </div>
           <div class="ttg-bar ttg-hyp">RFP → approval → hardware lead time</div>
         </div>
@@ -916,7 +916,7 @@
   </div>
 </section>
 
-<section id="how" class="content-layer" style="background:var(--bg-sub);padding:5rem 0">
+<section id="how" class="content-layer" style="background:rgba(15,22,41,0.75);padding:5rem 0">
   <div class="container">
     <div class="lbl fade-up">Developer Experience</div>
     <h2 class="fade-up">Launch a cluster in<br>three API calls.</h2>
@@ -966,33 +966,33 @@
       <!-- 3-step flow -->
       <div style="display:flex;flex-direction:column;gap:1.25rem" class="fade-up stagger-1">
 
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow=''">
+        <div style="background:rgba(10,14,26,0.6);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow=''">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;font-size:.875rem;color:#fff">1</div>
           <div>
-            <div style="font-weight:700;font-size:.9375rem;color:var(--ink);margin-bottom:.3rem">Sign up &amp; get API key</div>
-            <div style="font-size:.8125rem;color:var(--ink-soft);line-height:1.65">Submit your request — our team onboards you personally. No self-serve black hole.</div>
-            <div style="margin-top:.75rem;font-family:'IBM Plex Mono',monospace;font-size:.72rem;background:var(--bg-tint);padding:.5rem .875rem;border-radius:6px;color:var(--ink-mid)"> · &lt;15 min response</div>
+            <div style="font-weight:700;font-size:.9375rem;color:#e2e8f0;margin-bottom:.3rem">Sign up &amp; get API key</div>
+            <div style="font-size:.8125rem;color:#64748b;line-height:1.65">Submit your request — our team onboards you personally. No self-serve black hole.</div>
+            <div style="margin-top:.75rem;font-family:'IBM Plex Mono',monospace;font-size:.72rem;background:rgba(20,27,45,0.85);padding:.5rem .875rem;border-radius:6px;color:#94a3b8"> · &lt;15 min response</div>
           </div>
         </div>
 
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow=''">
+        <div style="background:rgba(10,14,26,0.6);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow=''">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;font-size:.875rem;color:#fff">2</div>
           <div>
-            <div style="font-weight:700;font-size:.9375rem;color:var(--ink);margin-bottom:.3rem">Provision via API or dashboard</div>
-            <div style="font-size:.8125rem;color:var(--ink-soft);line-height:1.65">Choose your GPU count (8–1,024), region, and isolation level. Cluster spins up in 15 minutes.</div>
+            <div style="font-weight:700;font-size:.9375rem;color:#e2e8f0;margin-bottom:.3rem">Provision via API or dashboard</div>
+            <div style="font-size:.8125rem;color:#64748b;line-height:1.65">Choose your GPU count (8–1,024), region, and isolation level. Cluster spins up in 15 minutes.</div>
             <div style="margin-top:.75rem;display:flex;gap:.5rem;flex-wrap:wrap">
               <span style="font-size:.72rem;font-weight:600;padding:.25rem .625rem;background:#f5f3ff;color:var(--purple);border-radius:100px">Python SDK</span>
-              <span style="font-size:.72rem;font-weight:600;padding:.25rem .625rem;background:var(--blue-lt);color:var(--blue);border-radius:100px">REST API</span>
+              <span style="font-size:.72rem;font-weight:600;padding:.25rem .625rem;background:rgba(59,130,246,.12);color:var(--blue);border-radius:100px">REST API</span>
               <span style="font-size:.72rem;font-weight:600;padding:.25rem .625rem;background:#f0fdf4;color:var(--green);border-radius:100px">CLI</span>
             </div>
           </div>
         </div>
 
-        <div style="background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow=''">
+        <div style="background:rgba(10,14,26,0.6);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;gap:1.25rem;align-items:flex-start;transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow=''">
           <div style="width:36px;height:36px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;font-size:.875rem;color:#fff">3</div>
           <div>
-            <div style="font-weight:700;font-size:.9375rem;color:var(--ink);margin-bottom:.3rem">Train, infer, iterate</div>
-            <div style="font-size:.8125rem;color:var(--ink-soft);line-height:1.65">SSH in or mount NFS. Run PyTorch, JAX, vLLM — anything CUDA-compatible. Pay per second. Terminate instantly.</div>
+            <div style="font-weight:700;font-size:.9375rem;color:#e2e8f0;margin-bottom:.3rem">Train, infer, iterate</div>
+            <div style="font-size:.8125rem;color:#64748b;line-height:1.65">SSH in or mount NFS. Run PyTorch, JAX, vLLM — anything CUDA-compatible. Pay per second. Terminate instantly.</div>
             <div style="margin-top:.75rem;font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--green);font-weight:600">→ Zero minimum commitment</div>
           </div>
         </div>
@@ -1067,7 +1067,7 @@
     </div>
 
     <!-- ㉖ Interactive pricing calculator -->
-    <div style="background:var(--ink);border-radius:14px;padding:2rem;margin-top:1.25rem" class="fade-up">
+    <div style="background:rgba(15,23,42,0.9);border-radius:14px;padding:2rem;margin-top:1.25rem" class="fade-up">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.75rem">
         <div>
           <div style="font-size:.65rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.28);font-family:'IBM Plex Mono',monospace">Interactive</div>
@@ -1230,12 +1230,12 @@
 
     <!-- Score pills -->
     <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem;align-items:center" class="fade-up stagger-3">
-      <span style="font-size:.75rem;color:var(--ink-soft);font-weight:500">Score (out of 10 criteria):</span>
+      <span style="font-size:.75rem;color:#64748b;font-weight:500">Score (out of 10 criteria):</span>
       <span style="background:var(--blue);color:#fff;font-size:.75rem;font-weight:700;padding:.3rem .875rem;border-radius:100px">Antriksh — 10/10</span>
-      <span style="background:var(--bg-tint);color:var(--ink-mid);font-size:.75rem;font-weight:600;padding:.3rem .875rem;border-radius:100px;border:1px solid var(--border)">CoreWeave — 6/10</span>
-      <span style="background:var(--bg-tint);color:var(--ink-mid);font-size:.75rem;font-weight:600;padding:.3rem .875rem;border-radius:100px;border:1px solid var(--border)">Lambda — 4/10</span>
-      <span style="background:var(--bg-tint);color:var(--ink-mid);font-size:.75rem;font-weight:600;padding:.3rem .875rem;border-radius:100px;border:1px solid var(--border)">Neysa — 5/10</span>
-      <span style="background:var(--bg-tint);color:var(--ink-mid);font-size:.75rem;font-weight:600;padding:.3rem .875rem;border-radius:100px;border:1px solid var(--border)">AWS/GCP — 3/10</span>
+      <span style="background:rgba(20,27,45,0.85);color:#94a3b8;font-size:.75rem;font-weight:600;padding:.3rem .875rem;border-radius:100px;border:1px solid var(--border)">CoreWeave — 6/10</span>
+      <span style="background:rgba(20,27,45,0.85);color:#94a3b8;font-size:.75rem;font-weight:600;padding:.3rem .875rem;border-radius:100px;border:1px solid var(--border)">Lambda — 4/10</span>
+      <span style="background:rgba(20,27,45,0.85);color:#94a3b8;font-size:.75rem;font-weight:600;padding:.3rem .875rem;border-radius:100px;border:1px solid var(--border)">Neysa — 5/10</span>
+      <span style="background:rgba(20,27,45,0.85);color:#94a3b8;font-size:.75rem;font-weight:600;padding:.3rem .875rem;border-radius:100px;border:1px solid var(--border)">AWS/GCP — 3/10</span>
     </div>
   </div>
 
@@ -1243,7 +1243,7 @@
   </div>
 </section>
 
-<section id="ecosystem" class="content-layer" style="background:var(--bg);padding:5rem 0">
+<section id="ecosystem" class="content-layer" style="background:rgba(10,14,26,0.6);padding:5rem 0">
   <div class="container">
     <div class="lbl fade-up">Who It's Built For</div>
     <h2 class="fade-up">The backbone for India's<br>entire AI stack.</h2>
@@ -1251,61 +1251,61 @@
     <!-- 6-card grid of use-case tiles -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem" class="fade-up stagger-1">
 
-      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--bg-sub);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:rgba(15,22,41,0.75);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="font-size:2rem;margin-bottom:.75rem">🤖</div>
-        <div style="font-weight:700;font-size:.9375rem;color:var(--ink);margin-bottom:.375rem">AI Startups</div>
-        <div style="font-size:.8125rem;color:var(--ink-soft);line-height:1.65">Build and ship your product without hyperscaler lock-in. GPU credits available to incubated companies.</div>
+        <div style="font-weight:700;font-size:.9375rem;color:#e2e8f0;margin-bottom:.375rem">AI Startups</div>
+        <div style="font-size:.8125rem;color:#64748b;line-height:1.65">Build and ship your product without hyperscaler lock-in. GPU credits available to incubated companies.</div>
       </div>
 
-      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--bg-sub);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:rgba(15,22,41,0.75);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="font-size:2rem;margin-bottom:.75rem">🏦</div>
-        <div style="font-weight:700;font-size:.9375rem;color:var(--ink);margin-bottom:.375rem">BFSI &amp; Insurance</div>
-        <div style="font-size:.8125rem;color:var(--ink-soft);line-height:1.65">Fraud detection, credit scoring, underwriting AI — all within RBI-compliant data boundaries.</div>
+        <div style="font-weight:700;font-size:.9375rem;color:#e2e8f0;margin-bottom:.375rem">BFSI &amp; Insurance</div>
+        <div style="font-size:.8125rem;color:#64748b;line-height:1.65">Fraud detection, credit scoring, underwriting AI — all within RBI-compliant data boundaries.</div>
       </div>
 
-      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--bg-sub);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:rgba(15,22,41,0.75);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="font-size:2rem;margin-bottom:.75rem">🏛️</div>
-        <div style="font-weight:700;font-size:.9375rem;color:var(--ink);margin-bottom:.375rem">Government &amp; Defence</div>
-        <div style="font-size:.8125rem;color:var(--ink-soft);line-height:1.65">Air-gapped sovereign zones. No foreign jurisdiction. Full audit trail for classified workloads.</div>
+        <div style="font-weight:700;font-size:.9375rem;color:#e2e8f0;margin-bottom:.375rem">Government &amp; Defence</div>
+        <div style="font-size:.8125rem;color:#64748b;line-height:1.65">Air-gapped sovereign zones. No foreign jurisdiction. Full audit trail for classified workloads.</div>
       </div>
 
-      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--bg-sub);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:rgba(15,22,41,0.75);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="font-size:2rem;margin-bottom:.75rem">🏥</div>
-        <div style="font-weight:700;font-size:.9375rem;color:var(--ink);margin-bottom:.375rem">Healthcare &amp; Pharma</div>
-        <div style="font-size:.8125rem;color:var(--ink-soft);line-height:1.65">Medical imaging, drug discovery, genomics — patient data never leaves the country.</div>
+        <div style="font-weight:700;font-size:.9375rem;color:#e2e8f0;margin-bottom:.375rem">Healthcare &amp; Pharma</div>
+        <div style="font-size:.8125rem;color:#64748b;line-height:1.65">Medical imaging, drug discovery, genomics — patient data never leaves the country.</div>
       </div>
 
-      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--bg-sub);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:rgba(15,22,41,0.75);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="font-size:2rem;margin-bottom:.75rem">🎓</div>
-        <div style="font-weight:700;font-size:.9375rem;color:var(--ink);margin-bottom:.375rem">Research &amp; Academia</div>
-        <div style="font-size:.8125rem;color:var(--ink-soft);line-height:1.65">IITs, IISc, CDAC — access frontier compute for Indian language models and foundational AI research.</div>
+        <div style="font-weight:700;font-size:.9375rem;color:#e2e8f0;margin-bottom:.375rem">Research &amp; Academia</div>
+        <div style="font-size:.8125rem;color:#64748b;line-height:1.65">IITs, IISc, CDAC — access frontier compute for Indian language models and foundational AI research.</div>
       </div>
 
-      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:var(--bg-sub);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="border:1px solid var(--border);border-radius:12px;padding:1.5rem;background:rgba(15,22,41,0.75);transition:transform .22s,box-shadow .22s" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
         <div style="font-size:2rem;margin-bottom:.75rem">🏭</div>
-        <div style="font-weight:700;font-size:.9375rem;color:var(--ink);margin-bottom:.375rem">Enterprise &amp; Manufacturing</div>
-        <div style="font-size:.8125rem;color:var(--ink-soft);line-height:1.65">Predictive maintenance, quality control vision AI, supply chain optimisation at production scale.</div>
+        <div style="font-weight:700;font-size:.9375rem;color:#e2e8f0;margin-bottom:.375rem">Enterprise &amp; Manufacturing</div>
+        <div style="font-size:.8125rem;color:#64748b;line-height:1.65">Predictive maintenance, quality control vision AI, supply chain optimisation at production scale.</div>
       </div>
 
     </div>
 
     <!-- Stat callout bar -->
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:12px;overflow:hidden;margin-top:2rem;border:1px solid var(--border)" class="fade-up stagger-2">
-      <div style="padding:1.25rem;background:var(--bg);text-align:center">
+      <div style="padding:1.25rem;background:rgba(10,14,26,0.6);text-align:center">
         <div style="font-size:1.5rem;font-weight:700;color:var(--blue);letter-spacing:-0.025em">40%</div>
-        <div style="font-size:.72rem;color:var(--ink-soft);margin-top:.2rem">of India AI capacity at 500 MW</div>
+        <div style="font-size:.72rem;color:#64748b;margin-top:.2rem">of India AI capacity at 500 MW</div>
       </div>
-      <div style="padding:1.25rem;background:var(--bg);text-align:center">
+      <div style="padding:1.25rem;background:rgba(10,14,26,0.6);text-align:center">
         <div style="font-size:1.5rem;font-weight:700;color:var(--purple);letter-spacing:-0.025em">3 sectors</div>
-        <div style="font-size:.72rem;color:var(--ink-soft);margin-top:.2rem">where foreign cloud legally risky</div>
+        <div style="font-size:.72rem;color:#64748b;margin-top:.2rem">where foreign cloud legally risky</div>
       </div>
-      <div style="padding:1.25rem;background:var(--bg);text-align:center">
+      <div style="padding:1.25rem;background:rgba(10,14,26,0.6);text-align:center">
         <div style="font-size:1.5rem;font-weight:700;color:var(--green);letter-spacing:-0.025em">$0</div>
-        <div style="font-size:.72rem;color:var(--ink-soft);margin-top:.2rem">egress cost — ever</div>
+        <div style="font-size:.72rem;color:#64748b;margin-top:.2rem">egress cost — ever</div>
       </div>
-      <div style="padding:1.25rem;background:var(--bg);text-align:center">
+      <div style="padding:1.25rem;background:rgba(10,14,26,0.6);text-align:center">
         <div style="font-size:1.5rem;font-weight:700;color:var(--amber);letter-spacing:-0.025em">INR</div>
-        <div style="font-size:.72rem;color:var(--ink-soft);margin-top:.2rem">billing — no forex risk</div>
+        <div style="font-size:.72rem;color:#64748b;margin-top:.2rem">billing — no forex risk</div>
       </div>
     </div>
 
@@ -1337,8 +1337,8 @@
             <li><span class="ar">→</span><span>Managed MLOps available</span></li>
           </ul>
         </div>
-        <div class="vc-card fade-up stagger-2" style="background:var(--bg-tint)">
-          <div style="font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:.625rem">Optimised workloads</div>
+        <div class="vc-card fade-up stagger-2" style="background:rgba(20,27,45,0.85)">
+          <div style="font-size:.8rem;font-weight:600;color:#e2e8f0;margin-bottom:.625rem">Optimised workloads</div>
           <div class="chips">
             <span class="chip">LLM training</span>
             <span class="chip">Inference</span>
@@ -1579,20 +1579,20 @@
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:12px;overflow:hidden">
-        <div style="flex:1;background:var(--bg-sub);padding:1.125rem;display:flex;flex-direction:column;justify-content:center">
-          <div style="font-size:.65rem;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.375rem">Land secured</div>
-          <div style="font-size:1.25rem;font-weight:700;color:var(--ink);letter-spacing:-0.02em">25 ha</div>
-          <div style="font-size:.72rem;color:var(--ink-soft);margin-top:.1rem">Uttarakhand / Delhi NCR</div>
+        <div style="flex:1;background:rgba(15,22,41,0.75);padding:1.125rem;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-size:.65rem;color:#64748b;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.375rem">Land secured</div>
+          <div style="font-size:1.25rem;font-weight:700;color:#e2e8f0;letter-spacing:-0.02em">25 ha</div>
+          <div style="font-size:.72rem;color:#64748b;margin-top:.1rem">Uttarakhand / Delhi NCR</div>
         </div>
-        <div style="flex:1;background:var(--bg-sub);padding:1.125rem;display:flex;flex-direction:column;justify-content:center">
-          <div style="font-size:.65rem;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.375rem">Water supply</div>
+        <div style="flex:1;background:rgba(15,22,41,0.75);padding:1.125rem;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-size:.65rem;color:#64748b;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.375rem">Water supply</div>
           <div style="font-size:1.25rem;font-weight:700;color:var(--blue);letter-spacing:-0.02em">Canal</div>
-          <div style="font-size:.72rem;color:var(--ink-soft);margin-top:.1rem">Perennial · zero liquid discharge</div>
+          <div style="font-size:.72rem;color:#64748b;margin-top:.1rem">Perennial · zero liquid discharge</div>
         </div>
-        <div style="flex:1;background:var(--bg-sub);padding:1.125rem;display:flex;flex-direction:column;justify-content:center">
-          <div style="font-size:.65rem;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.375rem">Power cost</div>
+        <div style="flex:1;background:rgba(15,22,41,0.75);padding:1.125rem;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-size:.65rem;color:#64748b;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.375rem">Power cost</div>
           <div style="font-size:1.25rem;font-weight:700;color:var(--green);letter-spacing:-0.02em">₹0.08</div>
-          <div style="font-size:.72rem;color:var(--ink-soft);margin-top:.1rem">per kWh · hydropower</div>
+          <div style="font-size:.72rem;color:#64748b;margin-top:.1rem">per kWh · hydropower</div>
         </div>
       </div>
     </div>
@@ -1788,7 +1788,7 @@
         <a href="Market analysis/Index.html">Market Analysis &#8599;</a>
       </div>
       <div class="ft-col">
-        <h5>Contact</h5>
+                <h5>Contact</h5>
         <a href="mailto:info@antriksh.cloud">info@antriksh.cloud</a>
         <a href="mailto:sales@antriksh.cloud">sales@antriksh.cloud</a>
         <a href="mailto:careers@antriksh.cloud">careers@antriksh.cloud</a>
@@ -1804,10 +1804,9 @@
 </footer>
 
 <!-- Scroll to top -->
-<button id="back-top" aria-label="Back to top"
-  style="position:fixed;bottom:1.75rem;right:1.75rem;width:44px;height:44px;border-radius:50%;background:rgba(15,23,42,.95);color:#fff;border:1px solid rgba(59,130,246,.3);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:300;opacity:0;transition:opacity .3s,transform .2s;pointer-events:none;font-size:1rem;box-shadow:0 0 20px rgba(59,130,246,.3)"
-  onmouseover="this.style.transform=\'scale(1.12)\'" onmouseout="this.style.transform=\'\'">&uarr;
-</button>
+
+<!-- Scroll to top -->
+<button id="back-top" aria-label="Back to top">&#8593;</button>
 
 <script src="script.js"></script>
 </body>
