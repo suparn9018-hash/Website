@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="Antriksh Cloud — India's sovereign AI GPU infrastructure. GB200 & GB300, 30% cheaper, data never leaves India.">
+  <title>Antriksh Cloud — GPU Compute for India's AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container">
+    <a href="#" class="nav-logo">
+      <div class="nav-mark">
+        <svg width="16" height="16" viewBox="56 48 58 48" fill="white">
+          <path d="M83.58 78.95v-.57l-1.06.32-1.03-3.41 6.86-2.08 1.03 3.41-1.63.5v2.02l9.28 17.65h-2.33l-7.16-13.33 4.36 13.33h-2.32l-4.76-14.44-8.27 14.44h-2.33L83.58 78.95z"/>
+          <path d="M76.58 72.97l-9.23 2.69-2.69-9.29 9.23-2.69 2.69 9.29z"/>
+          <path d="M63.96 68.88l1.56 5.4-3.17.93-1.56-5.4 3.17-.93z"/>
+          <path d="M110.13 57.83c.96 3.3-.27 6.55-2.74 7.27l-3.45-11.94c2.47-.71 5.24 1.38 6.19 4.67z"/>
+          <path d="M102.51 51.5l4.56 15.81-6.26 1.82-4.53-15.81 6.23-1.82z"/>
+          <path d="M73.95 60.79l21.43-6.25 4.01 13.99-21.4 6.23-4.04-13.97z"/>
+        </svg>
+      </div>
+      Antriksh Cloud
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#gpus">GPUs</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#builders">For Builders</a></li>
+      <li><a href="platform.html">Platform &#8599;</a></li>
+      <li><a href="#waitlist" class="nav-cta">Get Early Access</a></li>
+    </ul>
+    <button class="nav-btn" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner container">
+    <div class="hero-badge reveal">
+      <span class="hero-dot"></span>
+      Early access now open
+    </div>
+    <h1 class="hero-h reveal d1">AI Factory built for<br>for <span class="grad-shimmer">AI Builders.</span></h1>
+    <p class="hero-sub reveal d2">GB200 &amp; GB300 clusters. 40% cheaper than hyperscalers. Data never leaves India.</p>
+    <div class="hero-actions reveal d3">
+      <a href="#waitlist" class="btn btn-primary">Get Early Access</a>
+      <a href="platform.html" class="btn btn-ghost">See Full Platform</a>
+    </div>
+    <div class="hero-stats reveal d4">
+      <div class="hstat">
+        <div class="hstat-val"><span class="count-num" data-count="40" data-suffix="%">30%</span></div>
+        <div class="hstat-lbl">Below hyperscaler pricing</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val"><span class="count-num" data-count="15" data-suffix=" min">15 min</span></div>
+        <div class="hstat-lbl">Cluster provisioning</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val"><span class="count-num" data-count="500" data-suffix=" MW">500 MW</span></div>
+        <div class="hstat-lbl">Planned capacity</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val">100%</div>
+        <div class="hstat-lbl">India data residency</div>
+      </div>
+    </div>
+  </div>
+  <div class="heatmap-strip">
+    <div class="container">
+      <div class="hm-bar">
+        <span class="hm-label">Cluster utilisation — 1,728 GB200 GPUs simulated</span>
+        <span class="hm-live"><span class="hm-dot"></span>Live simulation</span>
+      </div>
+      <canvas id="heatmap" height="56"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="t-item"><span class="t-sep"></span>GB200 &amp; GB300 Blackwell</span>
+    <span class="t-item"><span class="t-sep"></span>Direct-to-chip liquid cooling · PUE &lt;1.10</span>
+    <span class="t-item"><span class="t-sep"></span>CERT-In · DPDP Act · CDAC Validated</span>
+    <span class="t-item"><span class="t-sep"></span>8 to 1,024 GPUs on demand</span>
+    <span class="t-item"><span class="t-sep"></span>Delhi NCR · Government MoU in final stages</span>
+    <span class="t-item"><span class="t-sep"></span>From $2.50/GPU/hr · INR billing · Zero egress</span>
+    <span class="t-item"><span class="t-sep"></span>500 MW · 288,000 GPUs at scale</span>
+    <span class="t-item"><span class="t-sep"></span>GB200 &amp; GB300 Blackwell</span>
+    <span class="t-item"><span class="t-sep"></span>Direct-to-chip liquid cooling · PUE &lt;1.10</span>
+    <span class="t-item"><span class="t-sep"></span>CERT-In · DPDP Act · CDAC Validated</span>
+    <span class="t-item"><span class="t-sep"></span>8 to 1,024 GPUs on demand</span>
+    <span class="t-item"><span class="t-sep"></span>Delhi NCR · Government MoU in final stages</span>
+    <span class="t-item"><span class="t-sep"></span>From $2.50/GPU/hr · INR billing · Zero egress</span>
+    <span class="t-item"><span class="t-sep"></span>500 MW · 288,000 GPUs at scale</span>
+  </div>
+</div>
+
+<!-- WHY -->
+<section id="why" style="position:relative;overflow:hidden">
+  <canvas class="section-net" id="net-why"></canvas>
+  <div class="why-bg"></div>
+  <div class="why-inner container">
+    <div class="why-intro">
+      <div class="eyebrow reveal">The case for Antriksh</div>
+      <h2 class="reveal d1">Built in India <br>Built for AI.</h2>
+      <p class="reveal d2">90% of India's AI runs on foreign infrastructure — slower, costlier, legally exposed.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <div class="why-num">01</div>
+        <div class="why-title">Frontier hardware.</div>
+        <div class="why-desc">GB200 &amp; GB300 from day one. Not H100 hand-me-downs.</div>
+      </div>
+      <div class="why-item reveal d1">
+        <div class="why-num">02</div>
+        <div class="why-title">Data stays in India.</div>
+        <div class="why-desc">Not a policy. An architecture. DPDP-compliant by design.</div>
+      </div>
+      <div class="why-item reveal d2">
+        <div class="why-num">03</div>
+        <div class="why-title">30% below hyperscaler pricing.</div>
+        <div class="why-desc">INR billing. Zero egress. 15-minute provisioning.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOVEREIGN STRIP -->
+<section id="sovereign" style="padding:2.5rem 0">
+  <div class="container">
+    <div class="sovereign-bar reveal">
+      <div class="sovereign-headline">Your data never crosses a border — guaranteed by architecture, not policy.</div>
+      <div class="s-badges">
+        <div class="s-badge"><span class="s-badge-dot">&#9679;</span>DPDP Act</div>
+        <div class="s-badge"><span class="s-badge-dot">&#9679;</span>CERT-In</div>
+        <div class="s-badge"><span class="s-badge-dot">&#9679;</span>Air-gapped zones</div>
+        <div class="s-badge"><span class="s-badge-dot">&#9679;</span>RBI Compliant</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GPUS -->
+<section id="gpus" style="position:relative;overflow:hidden">
+  <canvas class="section-net" id="net-gpu"></canvas>
+  <div class="container">
+    <div class="gpus-header">
+      <div class="eyebrow reveal">Hardware</div>
+      <h2 class="reveal d1">NVIDIA Blackwell.<br>No compromises.</h2>
+    </div>
+    <div class="gpus-grid">
+      <div class="gpu-card reveal">
+        <img src="img-hbm3e.png" alt="HBM3e memory stacks" class="gpu-photo">
+        <div class="gpu-body">
+          <div class="gpu-tag">Available at launch</div>
+          <div class="gpu-name">GB200</div>
+          <div class="gpu-pitch">Next-gen Blackwell for large-scale training and inference.</div>
+          <div class="gpu-specs">
+            <div class="gpu-spec"><div class="gpu-spec-val">192 GB</div><div class="gpu-spec-lbl">HBM3e</div></div>
+            <div class="gpu-spec"><div class="gpu-spec-val">1.4 TB/s</div><div class="gpu-spec-lbl">Memory BW</div></div>
+            <div class="gpu-spec"><div class="gpu-spec-val">NVLink</div><div class="gpu-spec-lbl">Interconnect</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="gpu-card reveal d1">
+        <img src="img-hbm3e.png" alt="HBM3e memory stacks" class="gpu-photo">
+        <div class="gpu-body">
+          <div class="gpu-tag">Available at launch</div>
+          <div class="gpu-name">GB300</div>
+          <div class="gpu-pitch">Ultra-class Blackwell. Maximum throughput for frontier AI.</div>
+          <div class="gpu-specs">
+            <div class="gpu-spec"><div class="gpu-spec-val">288 GB</div><div class="gpu-spec-lbl">HBM3e</div></div>
+            <div class="gpu-spec"><div class="gpu-spec-val">1.6 TB/s</div><div class="gpu-spec-lbl">Memory BW</div></div>
+            <div class="gpu-spec"><div class="gpu-spec-val">NVLink</div><div class="gpu-spec-lbl">Interconnect</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bw-section reveal">
+      <div class="bw-title">Memory bandwidth comparison</div>
+      <div class="bw-row">
+        <span class="bw-label" style="color:#a78bfa">GB300</span>
+        <div class="bw-track"><div class="bw-fill" data-w="100%" style="background:linear-gradient(90deg,#7c3aed,#a78bfa)"></div></div>
+        <span class="bw-val" style="color:#a78bfa">1,600 GB/s</span>
+      </div>
+      <div class="bw-row">
+        <span class="bw-label" style="color:#93c5fd">GB200</span>
+        <div class="bw-track"><div class="bw-fill" data-w="87%" style="background:linear-gradient(90deg,#1d4ed8,#3b82f6)"></div></div>
+        <span class="bw-val" style="color:#93c5fd">1,400 GB/s</span>
+      </div>
+      <div class="bw-row">
+        <span class="bw-label" style="color:#475569">H100</span>
+        <div class="bw-track"><div class="bw-fill" data-w="30%" style="background:rgba(255,255,255,.15)"></div></div>
+        <span class="bw-val" style="color:#475569">80 GB/s</span>
+      </div>
+    </div>
+    <div class="chips reveal">
+      <span class="chip">LLM Training</span><span class="chip">Inference</span>
+      <span class="chip">Fine-tuning</span><span class="chip">Indian language models</span>
+      <span class="chip">Vision &amp; multimodal</span><span class="chip">Agentic AI</span>
+      <span class="chip">Sovereign AI (Govt)</span><span class="chip">Enterprise RAG</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="position:relative;overflow:hidden">
+  <canvas class="section-net" id="net-how"></canvas>
+  <div class="container">
+    <div class="eyebrow reveal">Developer experience</div>
+    <h2 class="reveal d1">Launch a cluster<br>in three steps.</h2>
+    <div class="how-grid">
+      <div class="how-steps">
+        <div class="how-step reveal">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Get access</h3>
+            <p>Join the waitlist. Our team onboards you personally — no ticket queues.</p>
+            <div class="step-code">sales@antriksh.cloud · &lt;15 min response</div>
+          </div>
+        </div>
+        <div class="how-step reveal d1">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>Provision via API</h3>
+            <p>Choose GPU count, region, sovereign isolation. Live in 15 minutes.</p>
+            <div class="step-code">Python SDK · REST API · CLI · Terraform</div>
+          </div>
+        </div>
+        <div class="how-step reveal d2">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Train, infer, ship</h3>
+            <p>SSH in. Run anything CUDA-compatible. Pay by the second. Zero lock-in.</p>
+            <div class="step-code">PyTorch · JAX · vLLM · HuggingFace · DeepSpeed</div>
+          </div>
+        </div>
+      </div>
+      <div id="terminal-wrap">
+        <div class="terminal reveal d1">
+          <div class="terminal-bar">
+            <span class="tb-dot tb-r"></span><span class="tb-dot tb-y"></span><span class="tb-dot tb-g"></span>
+            <span class="tb-name">quickstart.py</span>
+          </div>
+          <div class="terminal-body">
+            <span class="t-c term-line" data-text="# Antriksh Cloud — Python SDK"></span>
+            <span class="t-l term-line" data-text="import antriksh"></span>
+            <span class="t-l term-line" data-text=""></span>
+            <span class="t-l term-line" data-text='client = antriksh.Client(api_key="ak_...")'></span>
+            <span class="t-l term-line" data-text=""></span>
+            <span class="t-c term-line" data-text="# Provision 64 x GB200 in Delhi NCR"></span>
+            <span class="t-l term-line" data-text="cluster = client.clusters.create("></span>
+            <span class="t-s term-line" data-text='    gpu="GB200", count=64,'></span>
+            <span class="t-s term-line" data-text='    region="in-north-1",'></span>
+            <span class="t-k term-line" data-text="    sovereign=True"></span>
+            <span class="t-l term-line" data-text=")"></span>
+            <span class="t-l term-line" data-text=""></span>
+            <span class="t-o term-line" data-text="print(cluster.status)"></span>
+            <span class="t-l t-cursor term-line" data-text="# RUNNING (14m 38s)"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR BUILDERS -->
+<section id="builders" style="position:relative;overflow:hidden">
+  <canvas class="section-net" id="net-builders"></canvas>
+  <div class="container">
+    <div class="eyebrow reveal">For builders</div>
+    <h2 class="reveal d1">Startup or enterprise.<br>Built for both.</h2>
+    <div class="builders-grid">
+      <div class="builder-card feat reveal">
+        <div class="builder-tag">AI Startups</div>
+        <h3>GPU credits. No equity ask.</h3>
+        <p>We reserve 10% of capacity for startups we back. Build without burning runway.</p>
+        <ul class="builder-list">
+          <li>$50K to $2M in GPU credits</li>
+          <li>GTM, hiring &amp; regulatory support</li>
+          <li>Priority access at scale</li>
+          <li>Direct line to infrastructure team</li>
+        </ul>
+      </div>
+      <div class="builder-card reveal d1">
+        <div class="builder-tag e">Enterprise &amp; Government</div>
+        <h3>Reserved capacity. SLA-backed.</h3>
+        <p>Guaranteed allocation with air-gapped sovereign zones for BFSI, healthcare, and defence.</p>
+        <ul class="builder-list">
+          <li>99.9% uptime SLA</li>
+          <li>Sovereign zones · INR billing · Zero egress</li>
+          <li>Managed MLOps available</li>
+          <li>RBI, DPDP, CERT-In compliant</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST -->
+<section id="waitlist">
+  <div class="container">
+    <div class="wl-inner">
+      <div class="wl-left reveal">
+        <div style="font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.875rem">Early access</div>
+        <h2>Be first on India's<br>sovereign AI cloud.</h2>
+        <p>Priority allocation. Locked pricing. Direct team access.</p>
+        <div class="wl-benefits">
+          <div class="wl-b"><div class="wl-b-icon">&#128274;</div><div class="wl-b-text">Locked-in pricing from $2.50/GPU/hr</div></div>
+          <div class="wl-b"><div class="wl-b-icon">&#9889;</div><div class="wl-b-text">Priority allocation for GB200 clusters</div></div>
+          <div class="wl-b"><div class="wl-b-icon">&#128737;&#65039;</div><div class="wl-b-text">Trial your workload before committing</div></div>
+          <div class="wl-b"><div class="wl-b-icon">&#129309;</div><div class="wl-b-text">Engineer-to-engineer onboarding</div></div>
+        </div>
+        <div class="wl-btns">
+          <a href="https://calendly.com/antrikshcloud" target="_blank" rel="noopener" class="btn btn-wl-white">Schedule a call</a>
+          <a href="mailto:sales@antriksh.cloud" class="btn btn-wl-ghost">Talk to Sales</a>
+        </div>
+      </div>
+      <div class="wl-right reveal d1">
+        <iframe aria-label="Antriksh Cloud Early Access Request" frameborder="0"
+          style="height:520px;width:100%;border:none;"
+          src="https://forms.zohopublic.in/antrikshcloud1/form/AntrikshCloudEarlyAccessRequest/formperma/wU2PvY3lX72yfA3Hft-wloC37EMvOoTv5GGJ3U899I0">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="position:relative;overflow:hidden">
+  <canvas class="section-net" id="net-faq"></canvas>
+  <div class="container">
+    <div class="faq-wrap">
+      <div class="faq-intro reveal">
+        <h2>Common<br>questions.</h2>
+        <p style="margin-top:.75rem">More on the <a href="platform.html" style="color:var(--blue)">Platform page</a>.</p>
+      </div>
+      <div class="faq-list reveal d1">
+        <div class="faq-item">
+          <button class="faq-q" onclick="faq(this)">When will Antriksh be available?<span class="faq-icon">+</span></button>
+          <div class="faq-a">3 MW PoC goes live 6-8 months after funding close — 1,728 GB200 GPUs. Early access customers onboard first.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="faq(this)">Which GPUs are available?<span class="faq-icon">+</span></button>
+          <div class="faq-a">GB200 and GB300. Blackwell from day one — no legacy hardware.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="faq(this)">How is this different from AWS or GCP?<span class="faq-icon">+</span></button>
+          <div class="faq-a">30-40% cheaper, INR billing, zero egress, 15-minute provisioning, and true data sovereignty. Data never crosses a border.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="faq(this)">Is my data safe?<span class="faq-icon">+</span></button>
+          <div class="faq-a">By architecture, not policy. DPDP Act, CERT-In, air-gapped sovereign zones. No cross-border flows, ever.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="faq(this)">Can I trial before committing?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Yes. Early access customers get a trial allocation — benchmark your workload, verify the numbers yourself.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <h4>Antriksh Cloud</h4>
+        <p>India's sovereign AI GPU infrastructure. Delhi NCR · San Francisco.</p>
+      </div>
+      <div class="ft-col">
+        <h5>Platform</h5>
+        <a href="#why">Why Antriksh</a>
+        <a href="#gpus">GPUs</a>
+        <a href="platform.html#architecture">Architecture</a>
+        <a href="platform.html#pricing">Pricing</a>
+        <a href="platform.html#compare">Compare</a>
+      </div>
+      <div class="ft-col">
+        <h5>Company</h5>
+        <a href="platform.html#traction">Milestones</a>
+        <a href="platform.html#roadmap">Roadmap</a>
+        <a href="platform.html#careers">Careers</a>
+        <a href="platform.html#faq">Full FAQ</a>
+        <a href="Market analysis/Index.html">Market Analysis</a>
+      </div>
+      <div class="ft-col">
+        <h5>Contact</h5>
+        <a href="mailto:info@antriksh.cloud">info@antriksh.cloud</a>
+        <a href="mailto:sales@antriksh.cloud">sales@antriksh.cloud</a>
+        <a href="mailto:careers@antriksh.cloud">careers@antriksh.cloud</a>
+        <a href="https://calendly.com/antrikshcloud" target="_blank" rel="noopener">Schedule a Call</a>
+        <a href="tel:+917090152557">IN +91 70901 52557</a>
+        <a href="tel:+12066650905">US +1 (206) 665-0905</a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span class="ft-copy">&#169; 2025 Antriksh Cloud Private Limited &middot; Delhi NCR, India &middot; San Francisco, USA</span>
+    </div>
+  </div>
+</footer>
+
+<button id="back-top" aria-label="Back to top">&#8593;</button>
+<script src="script.js"></script>
+</body>
+</html>
