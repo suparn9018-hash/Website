@@ -235,6 +235,19 @@ function isInView(el) {
 
 const SEL = '.reveal, .bar-fill, .bw-fill, .phase-fill, .count-num';
 
+// ── Staggered sibling reveals ──
+// When a parent has multiple .reveal children, auto-cascade their delays
+document.querySelectorAll('section, .wl-benefits, .why-grid, .builders-grid, .gpu-grid').forEach(parent => {
+  const siblings = Array.from(parent.querySelectorAll(':scope > .reveal, :scope > * > .reveal'));
+  if (siblings.length < 2) return;
+  siblings.forEach((el, i) => {
+    // Only set if no explicit .d1/.d2/.d3 delay already
+    if (!el.classList.contains('d1') && !el.classList.contains('d2') && !el.classList.contains('d3')) {
+      el.style.transitionDelay = (i * 90) + 'ms';
+    }
+  });
+});
+
 // IntersectionObserver for scroll-triggered reveals
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -466,8 +479,8 @@ window.faq = faq;
         d.x += d.vx; d.y += d.vy;
         const disp  = Math.hypot(d.x - d.ox, d.y - d.oy);
         const pulse = 0.5 + 0.5 * Math.sin(t * 1.8 + d.ph);
-        const alpha = 0.22 + Math.min(disp / 8, 1) * 0.45 + pulse * 0.13;
-        const r     = R + (dist < REACH ? (REACH - dist) / REACH * 1.6 : 0);
+        const alpha = 0.22 + Math.min(disp / 8, 1) * 0.4 + pulse * 0.13;
+        const r     = R + (dist < REACH ? (REACH - dist) / REACH * 1.4 : 0);
         ctx.beginPath();
         ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${d.col[0]},${d.col[1]},${d.col[2]},${alpha})`;
@@ -475,7 +488,7 @@ window.faq = faq;
         if (dist < REACH) {
           ctx.beginPath();
           ctx.arc(d.x, d.y, r * 3.5, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${d.col[0]},${d.col[1]},${d.col[2]},${0.05 * (REACH - dist) / REACH})`;
+          ctx.fillStyle = `rgba(${d.col[0]},${d.col[1]},${d.col[2]},${0.022 * (REACH - dist) / REACH})`;
           ctx.fill();
         }
       });
@@ -554,4 +567,107 @@ window.toggleStackLayer = toggleStackLayer;
   applyLayout();
   let rt;
   window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(applyLayout, 200); });
+})();
+
+/* ── TASTE-SKILL: Magnetic hover on primary CTAs ── */
+(function () {
+  if (window.innerWidth < 768) return; /* desktop only */
+
+  const STRENGTH = 0.18; /* how far the button follows cursor, 0–1 */
+
+  document.querySelectorAll('.btn-primary, .nav-cta, .btn-wl-white').forEach(function(btn) {
+    var raf = null;
+    var tx = 0, ty = 0;   /* target */
+    var cx = 0, cy = 0;   /* current (lerped) */
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function frame() {
+      cx = lerp(cx, tx, 0.12);
+      cy = lerp(cy, ty, 0.12);
+      btn.style.transform = 'translate(' + cx.toFixed(2) + 'px,' + cy.toFixed(2) + 'px)';
+      if (Math.abs(cx - tx) > 0.05 || Math.abs(cy - ty) > 0.05) {
+        raf = requestAnimationFrame(frame);
+      } else {
+        raf = null;
+      }
+    }
+
+    btn.addEventListener('mousemove', function(e) {
+      var r = btn.getBoundingClientRect();
+      tx = (e.clientX - (r.left + r.width  / 2)) * STRENGTH;
+      ty = (e.clientY - (r.top  + r.height / 2)) * STRENGTH;
+      if (!raf) raf = requestAnimationFrame(frame);
+    });
+
+    btn.addEventListener('mouseleave', function() {
+      tx = 0; ty = 0;
+      if (!raf) raf = requestAnimationFrame(frame);
+    });
+  });
+})();
+
+/* ── BF-CODE: typewriter animation for the Founder card's training.py ──
+   Triggers on first viewport entry. Types each line char-by-char with a
+   small inter-line pause, then runs the "RUNNING · XXm" status timer
+   ticking up from 00m to suggest a live training job.
+*/
+(function () {
+  var code = document.getElementById('bf-code-anim');
+  if (!code) return;
+  var lines = code.querySelectorAll('.bf-code-line');
+  var timerEl = document.getElementById('bf-code-timer');
+  if (!lines.length) return;
+
+  function typeLine(el, onDone) {
+    var text = el.getAttribute('data-text') || '';
+    el.classList.add('typing');
+    var i = 0;
+    var CHAR_MS = 18;        /* per-character speed */
+    function step() {
+      if (i <= text.length) {
+        el.textContent = text.slice(0, i++);
+        setTimeout(step, CHAR_MS);
+      } else {
+        el.classList.remove('typing');
+        if (onDone) onDone();
+      }
+    }
+    step();
+  }
+
+  function typeAllLines(idx) {
+    if (idx >= lines.length) {
+      startTimer();
+      return;
+    }
+    typeLine(lines[idx], function () {
+      setTimeout(function () { typeAllLines(idx + 1); }, 200);
+    });
+  }
+
+  function startTimer() {
+    if (!timerEl) return;
+    var minutes = 0;
+    function tick() {
+      minutes += 1;
+      timerEl.textContent = String(minutes).padStart(2, '0') + 'm';
+      /* slow down after a while so it doesn't run away */
+      var nextDelay = minutes < 15 ? 1100 : 2800;
+      if (minutes < 99) setTimeout(tick, nextDelay);
+    }
+    setTimeout(tick, 600);
+  }
+
+  var played = false;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting && !played) {
+        played = true;
+        typeAllLines(0);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.35 });
+  obs.observe(code);
 })();

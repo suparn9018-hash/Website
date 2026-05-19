@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta name="description" content="Antriksh Cloud — India's sovereign AI GPU infrastructure. GB200 & GB300, 30% cheaper, data never leaves India.">
-  <title>Antriksh Cloud — GPU Compute for India's AI</title>
+  <meta name="description" content="Antriksh Cloud — GPU compute built for builders. NVIDIA Blackwell on demand for AI startups, researchers, and indie hackers. Instant access. Limitless scale. Builder-friendly pricing.">
+  <title>Antriksh Cloud — GPU compute built for builders</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&family=Exo+2:wght@300;400;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -28,12 +28,12 @@
       Antriksh Cloud
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#why">Why Us</a></li>
+      <li><a href="#built-for">Built for</a></li>
+      <li><a href="#what-you-do">What you can do</a></li>
+      <li><a href="#why">Why us</a></li>
       <li><a href="#gpus">GPUs</a></li>
-      <li><a href="#how">How It Works</a></li>
-      <li><a href="#builders">For Builders</a></li>
       <li><a href="platform.html">Platform &#8599;</a></li>
-      <li><a href="#waitlist" class="nav-cta">Get Early Access</a></li>
+      <li><a href="#waitlist" class="nav-cta">Reserve compute</a></li>
     </ul>
     <button class="nav-btn" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
       <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -41,50 +41,322 @@
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO — builder-focused, no dollar amounts, single blue accent -->
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-inner container">
     <div class="hero-badge reveal">
       <span class="hero-dot"></span>
-      Early access now open
+      GPU cloud for builders
     </div>
-    <h1 class="hero-h reveal d1">AI Factory built for<br>for <span class="grad-shimmer">AI Builders.</span></h1>
-    <p class="hero-sub reveal d2">GB200 &amp; GB300 clusters. 30% cheaper than hyperscalers. Data never leaves India.</p>
+    <h1 class="hero-h reveal d1">AI compute at<br><span class="grad-shimmer">your fingertips.</span></h1>
+    <p class="hero-sub reveal d2">NVIDIA Blackwell, ready when you are. For startups shipping AI products, researchers and academics, developers exploring new ideas &mdash; and teams ready to scale.</p>
     <div class="hero-actions reveal d3">
-      <a href="#waitlist" class="btn btn-primary">Get Early Access</a>
-      <a href="platform.html" class="btn btn-ghost">See Full Platform</a>
+      <a href="#waitlist" class="btn btn-primary">Start building</a>
       <a href="https://calendly.com/antrikshcloud" target="_blank" rel="noopener" class="btn btn-contact">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Book a Meeting
+        Talk to us
       </a>
     </div>
-    <div class="hero-stats reveal d4">
-      <div class="hstat">
-        <div class="hstat-val"><span class="count-num" data-count="30" data-suffix="%">30%</span></div>
-        <div class="hstat-lbl">Below hyperscaler pricing</div>
+    <!-- Three pillars (mirrors the printed flyer) -->
+    <div class="hero-pillars reveal d4">
+      <div class="hpill">
+        <div class="hpill-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="hpill-t">Instant access</div>
+        <div class="hpill-d">GPUs ready when you are.</div>
       </div>
-      <div class="hstat">
-        <div class="hstat-val"><span class="count-num" data-count="15" data-suffix=" min">15 min</span></div>
-        <div class="hstat-lbl">Cluster provisioning</div>
+      <div class="hpill">
+        <div class="hpill-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+        </div>
+        <div class="hpill-t">Limitless scale</div>
+        <div class="hpill-d">One node to thousands, seamlessly.</div>
       </div>
-      <div class="hstat">
-        <div class="hstat-val"><span class="count-num" data-count="500" data-suffix=" MW">500 MW</span></div>
-        <div class="hstat-lbl">Planned capacity</div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-val">100%</div>
-        <div class="hstat-lbl">India data residency</div>
+      <div class="hpill">
+        <div class="hpill-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="hpill-t">Builder-friendly pricing</div>
+        <div class="hpill-d">Pay as you go. No lock-in.</div>
       </div>
     </div>
   </div>
-  <div class="heatmap-strip">
-    <div class="container">
-      <div class="hm-bar">
-        <span class="hm-label">Cluster utilisation — 1,728 GB200 GPUs simulated</span>
-        <span class="hm-live"><span class="hm-dot"></span>Live simulation</span>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     BUILT FOR — three audiences, asymmetric editorial layout
+     (skill rule: avoid the 3 equal columns AI tell)
+════════════════════════════════════════════════════ -->
+<section id="built-for">
+  <div class="container">
+    <div class="bf-head">
+      <div class="eyebrow reveal">Built for</div>
+      <h2 class="bf-h reveal d1">The people&nbsp;actually<br>building&nbsp;something.</h2>
+      <p class="bf-lede reveal d2">If you&rsquo;ve felt the pain of waiting weeks for a GPU quota that never lands, this is for you.</p>
+    </div>
+
+    <div class="bf-grid">
+      <!-- Founder — large feature card with code snippet -->
+      <article class="bf-card bf-card-lg reveal">
+        <div class="bf-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Startup founders
+        </div>
+        <h3 class="bf-title">You&rsquo;re shipping an AI product. Compute shouldn&rsquo;t be the bottleneck.</h3>
+        <p class="bf-desc">Get your training run started this afternoon. Scale to a thousand GPUs when your idea works. Drop to zero between runs.</p>
+
+        <!-- Infographic: a real Python SDK call + animated status -->
+        <div class="bf-code" id="bf-code-anim">
+          <div class="bf-code-bar">
+            <span class="bf-code-dot r"></span><span class="bf-code-dot y"></span><span class="bf-code-dot g"></span>
+            <span class="bf-code-name">training.py</span>
+            <span class="bf-code-status">
+              <span class="bf-status-dot"></span>RUNNING &middot; <span id="bf-code-timer">00m</span>
+            </span>
+          </div>
+          <div class="bf-code-body">
+            <span class="bf-code-line bf-code-c" data-text="# Training run for the V2 model"></span>
+            <span class="bf-code-line bf-code-l" data-text="cluster = antriksh.create("></span>
+            <span class="bf-code-line bf-code-l indent" data-text='    gpu="GB200", count=64,'></span>
+            <span class="bf-code-line bf-code-l indent" data-text='    duration="3w", priority="high",'></span>
+            <span class="bf-code-line bf-code-l" data-text=")"></span>
+            <span class="bf-code-line bf-code-c" data-text="# 14 of 21 epochs &mdash; on track"></span>
+          </div>
+          <div class="bf-code-progress" aria-hidden="true">
+            <div class="bf-code-progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="bf-quote">
+          <p>&ldquo;We needed Blackwell for a model that didn&rsquo;t exist yet. Antriksh got us on capacity in a day &mdash; not three months.&rdquo;</p>
+          <div class="bf-quote-by">&mdash; AI founder, Series&nbsp;A</div>
+        </div>
+      </article>
+
+      <!-- Researcher — medium card with 7-day usage burst viz -->
+      <article class="bf-card bf-card-md reveal d1">
+        <div class="bf-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6l-1 5 7 7-5 1v6"/><circle cx="18" cy="6" r="3"/></svg>
+          Researchers &amp; labs
+        </div>
+        <h3 class="bf-title">Your paper deadline doesn&rsquo;t care about quota queues.</h3>
+        <p class="bf-desc">Burst onto Blackwell for the ablation. Off again when the run finishes. Pay only for the hours your jobs ran.</p>
+
+        <!-- Infographic: a "deadline burst" usage pattern -->
+        <div class="bf-burst">
+          <div class="bf-burst-label">GPU-hours / day</div>
+          <svg class="bf-burst-svg" viewBox="0 0 280 80" preserveAspectRatio="none" aria-hidden="true">
+            <!-- Baseline -->
+            <line x1="0" y1="75" x2="280" y2="75" stroke="currentColor" stroke-width="1" opacity=".18"/>
+            <!-- Bars -->
+            <rect x="4"   y="65" width="32" height="10" rx="2" class="bf-burst-bar"/>
+            <rect x="42"  y="62" width="32" height="13" rx="2" class="bf-burst-bar"/>
+            <rect x="80"  y="56" width="32" height="19" rx="2" class="bf-burst-bar"/>
+            <rect x="118" y="38" width="32" height="37" rx="2" class="bf-burst-bar bf-burst-bar-active"/>
+            <rect x="156" y="12" width="32" height="63" rx="2" class="bf-burst-bar bf-burst-bar-active"/>
+            <rect x="194" y="22" width="32" height="53" rx="2" class="bf-burst-bar bf-burst-bar-active"/>
+            <rect x="232" y="68" width="32" height="7"  rx="2" class="bf-burst-bar"/>
+          </svg>
+          <div class="bf-burst-axis">
+            <span>mon</span><span>tue</span><span>wed</span><span>thu</span><span>fri</span><span>sat</span><span>sun</span>
+          </div>
+          <div class="bf-burst-anno">
+            <span class="bf-burst-pin">paper deadline &mdash; fri 5pm</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Indie — small card with weekend timeline -->
+      <article class="bf-card bf-card-sm reveal d2">
+        <div class="bf-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+          Indie &amp; weekend builders
+        </div>
+        <h3 class="bf-title">Eight GPUs for a Saturday. Then nothing.</h3>
+        <p class="bf-desc">No minimum commit. No annual contract. SSH, run, walk away. Pay only for the hours you used.</p>
+
+        <!-- Infographic: weekend usage timeline -->
+        <div class="bf-timeline">
+          <div class="bf-timeline-track">
+            <div class="bf-timeline-active"></div>
+          </div>
+          <div class="bf-timeline-labels">
+            <span>Sat 10am</span>
+            <span class="bf-timeline-end">Sun 11pm</span>
+          </div>
+          <div class="bf-timeline-meta">
+            <span class="bf-timeline-tag">8 &times; GB200</span>
+            <span class="bf-timeline-tag">37h billed</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     WHAT YOU CAN DO — bento layout, NOT 3 equal columns
+═════════════════════════════════════════════════════ -->
+<section id="what-you-do">
+  <div class="container">
+    <div class="wyd-head">
+      <div class="eyebrow reveal">What you can do</div>
+      <h2 class="reveal d1">Whatever your job&nbsp;is,<br>the&nbsp;hardware doesn&rsquo;t blink.</h2>
+    </div>
+
+    <div class="wyd-bento">
+      <!-- Big feature: Train — NVLink mesh topology -->
+      <div class="wyd-tile wyd-train reveal">
+        <div class="wyd-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-9 4 18 3-9h4"/></svg>
+        </div>
+        <div class="wyd-tag">Foundation training</div>
+        <h3>Train a frontier model from scratch.</h3>
+        <p>Multi-thousand-GPU runs across NVLink + InfiniBand. Configured once, scaled on demand.</p>
+
+        <!-- Infographic: 16-GPU mesh topology -->
+        <div class="wyd-topo">
+          <div class="wyd-topo-label">Cluster topology &middot; 16 &times; GB200 &middot; NVLink&nbsp;5</div>
+          <svg class="wyd-topo-svg" viewBox="0 0 360 180" aria-hidden="true">
+            <!-- Connection lines (drawn first, behind nodes) -->
+            <g class="wyd-topo-edges" stroke="currentColor" stroke-width="1" fill="none">
+              <!-- Horizontal rows -->
+              <line x1="45"  y1="35"  x2="315" y2="35"/>
+              <line x1="45"  y1="85"  x2="315" y2="85"/>
+              <line x1="45"  y1="135" x2="315" y2="135"/>
+              <!-- Vertical columns -->
+              <line x1="45"  y1="35" x2="45"  y2="135"/>
+              <line x1="135" y1="35" x2="135" y2="135"/>
+              <line x1="225" y1="35" x2="225" y2="135"/>
+              <line x1="315" y1="35" x2="315" y2="135"/>
+              <!-- Diagonals (mesh feel) -->
+              <line x1="45"  y1="35"  x2="135" y2="85" stroke-dasharray="2 3"/>
+              <line x1="135" y1="35"  x2="225" y2="85" stroke-dasharray="2 3"/>
+              <line x1="225" y1="35"  x2="315" y2="85" stroke-dasharray="2 3"/>
+              <line x1="45"  y1="85"  x2="135" y2="135" stroke-dasharray="2 3"/>
+              <line x1="135" y1="85"  x2="225" y2="135" stroke-dasharray="2 3"/>
+              <line x1="225" y1="85"  x2="315" y2="135" stroke-dasharray="2 3"/>
+            </g>
+            <!-- GPU nodes -->
+            <g class="wyd-topo-nodes">
+              <!-- Row 1 -->
+              <rect x="33"  y="23" width="24" height="24" rx="4" class="wyd-topo-node"/>
+              <rect x="123" y="23" width="24" height="24" rx="4" class="wyd-topo-node"/>
+              <rect x="213" y="23" width="24" height="24" rx="4" class="wyd-topo-node"/>
+              <rect x="303" y="23" width="24" height="24" rx="4" class="wyd-topo-node"/>
+              <!-- Row 2 (highlighted as "active") -->
+              <rect x="33"  y="73" width="24" height="24" rx="4" class="wyd-topo-node wyd-topo-active"/>
+              <rect x="123" y="73" width="24" height="24" rx="4" class="wyd-topo-node wyd-topo-active"/>
+              <rect x="213" y="73" width="24" height="24" rx="4" class="wyd-topo-node wyd-topo-active"/>
+              <rect x="303" y="73" width="24" height="24" rx="4" class="wyd-topo-node wyd-topo-active"/>
+              <!-- Row 3 -->
+              <rect x="33"  y="123" width="24" height="24" rx="4" class="wyd-topo-node"/>
+              <rect x="123" y="123" width="24" height="24" rx="4" class="wyd-topo-node"/>
+              <rect x="213" y="123" width="24" height="24" rx="4" class="wyd-topo-node"/>
+              <rect x="303" y="123" width="24" height="24" rx="4" class="wyd-topo-node"/>
+            </g>
+            <!-- Bandwidth annotation -->
+            <text x="180" y="170" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" fill="currentColor" opacity=".55">1.8 TB/s aggregate &middot; all-reduce ready</text>
+          </svg>
+        </div>
+
+        <div class="wyd-meta">PyTorch &middot; JAX &middot; DeepSpeed &middot; Megatron</div>
       </div>
-      <canvas id="heatmap" height="56"></canvas>
+
+      <!-- Fine-tune — base model + adapter delta -->
+      <div class="wyd-tile wyd-tune reveal d1">
+        <div class="wyd-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6"/></svg>
+        </div>
+        <div class="wyd-tag">Fine-tune</div>
+        <h3>Make a model yours.</h3>
+        <p>LoRA, full SFT, DPO. From 8 GPUs to 256.</p>
+
+        <!-- Infographic: base + delta blocks -->
+        <div class="wyd-delta">
+          <div class="wyd-delta-row">
+            <div class="wyd-delta-block wyd-delta-base">
+              <div class="wyd-delta-bar" style="width:90%"></div>
+              <div class="wyd-delta-bar" style="width:78%"></div>
+              <div class="wyd-delta-bar" style="width:84%"></div>
+            </div>
+            <div class="wyd-delta-plus">+</div>
+            <div class="wyd-delta-block wyd-delta-lora">
+              <div class="wyd-delta-bar" style="width:60%"></div>
+              <div class="wyd-delta-bar" style="width:42%"></div>
+            </div>
+          </div>
+          <div class="wyd-delta-legend">
+            <span><span class="wyd-delta-key wyd-delta-key-base"></span>frozen base</span>
+            <span><span class="wyd-delta-key wyd-delta-key-lora"></span>your adapter</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inference — latency sparkline -->
+      <div class="wyd-tile wyd-infer reveal d2">
+        <div class="wyd-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="wyd-tag">Inference</div>
+        <h3>Serve at production speed.</h3>
+        <p>vLLM, TGI, SGLang behind your own routing.</p>
+
+        <!-- Infographic: latency sparkline + p50/p99 -->
+        <div class="wyd-lat">
+          <svg class="wyd-lat-svg" viewBox="0 0 240 60" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="lat-fill" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%"  stop-color="#2563eb" stop-opacity=".22"/>
+                <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <!-- p99 ceiling -->
+            <line x1="0" y1="14" x2="240" y2="14" stroke="#ef4444" stroke-width="1" stroke-dasharray="3 4" opacity=".55"/>
+            <!-- p50 line -->
+            <line x1="0" y1="38" x2="240" y2="38" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3" opacity=".30"/>
+            <!-- Sparkline -->
+            <path d="M0,42 L20,38 L40,40 L60,32 L80,36 L100,30 L120,34 L140,28 L160,32 L180,26 L200,30 L220,24 L240,28 L240,60 L0,60 Z" fill="url(#lat-fill)"/>
+            <path d="M0,42 L20,38 L40,40 L60,32 L80,36 L100,30 L120,34 L140,28 L160,32 L180,26 L200,30 L220,24 L240,28" fill="none" stroke="#2563eb" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="wyd-lat-legend">
+            <span class="wyd-lat-p"><span class="wyd-lat-dot wyd-lat-p50"></span>p50 &middot; 24ms</span>
+            <span class="wyd-lat-p"><span class="wyd-lat-dot wyd-lat-p99"></span>p99 &middot; 71ms</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sovereign — regional boundary diagram -->
+      <div class="wyd-tile wyd-sov reveal d3">
+        <div class="wyd-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4z"/></svg>
+        </div>
+        <div class="wyd-tag">Sovereign workloads</div>
+        <h3>Regulated by default.</h3>
+        <p>Air-gapped zones for government, BFSI, healthcare.</p>
+
+        <!-- Infographic: region boundary + data flow -->
+        <div class="wyd-sov-vis">
+          <div class="wyd-sov-boundary">
+            <div class="wyd-sov-label">SOVEREIGN ZONE</div>
+            <div class="wyd-sov-nodes">
+              <div class="wyd-sov-node">GPU</div>
+              <div class="wyd-sov-node">DATA</div>
+              <div class="wyd-sov-node">LOGS</div>
+            </div>
+            <div class="wyd-sov-shield">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+          </div>
+          <div class="wyd-sov-cert">
+            <span class="wyd-sov-badge">DPDP</span>
+            <span class="wyd-sov-badge">CERT-In</span>
+            <span class="wyd-sov-badge">Air-gapped</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -106,29 +378,23 @@
 
     <!-- Stage 1: The chip -->
     <div class="gpu-seq-txt" id="gst-1">
-      <div class="gst-inner">
-        <div class="gst-eyebrow">The Hardware</div>
-        <h2 class="gst-h">GB200 NVL72.</h2>
-        <p class="gst-p">NVIDIA's most powerful AI accelerator — allocated exclusively to Indian builders.</p>
-      </div>
+      <div class="gst-eyebrow">The Hardware</div>
+      <h2 class="gst-h">GB200 NVL72.</h2>
+      <p class="gst-p">NVIDIA&rsquo;s most powerful AI accelerator &mdash;<br>deployed at scale, available without the queue.</p>
     </div>
 
     <!-- Stage 2: Scale -->
     <div class="gpu-seq-txt" id="gst-2">
-      <div class="gst-inner">
-        <div class="gst-eyebrow">The Scale</div>
-        <h2 class="gst-h">288,000 GPUs.</h2>
-        <p class="gst-p">500 MW of compute capacity in Delhi NCR — the largest sovereign AI cluster in Asia.</p>
-      </div>
+      <div class="gst-eyebrow">The Scale</div>
+      <h2 class="gst-h">Eight GPUs or&nbsp;a&nbsp;thousand.</h2>
+      <p class="gst-p">Start with what your project needs.<br>Scale into something bigger when it works.</p>
     </div>
 
-    <!-- Stage 3: Sovereign -->
+    <!-- Stage 3: Builders -->
     <div class="gpu-seq-txt" id="gst-3">
-      <div class="gst-inner">
-        <div class="gst-eyebrow">The Guarantee</div>
-        <h2 class="gst-h">Sovereign by design.</h2>
-        <p class="gst-p">Your data never crosses a border. Guaranteed by architecture, not policy.</p>
-      </div>
+      <div class="gst-eyebrow">For builders</div>
+      <h2 class="gst-h">Compute.<br>At&nbsp;your&nbsp;fingertips.</h2>
+      <p class="gst-p">No queue. No procurement. No drama.<br>Show up, get going, ship the thing.</p>
     </div>
 
     <!-- Scroll progress bar -->
@@ -145,51 +411,55 @@
   </div>
 </div>
 
-<!-- TICKER -->
+<!-- TICKER — builder-focused items, no MW/GPU count brags -->
 <div class="ticker">
   <div class="ticker-track">
-    <span class="t-item"><span class="t-sep"></span>GB200 &amp; GB300 Blackwell</span>
-    <span class="t-item"><span class="t-sep"></span>Direct-to-chip liquid cooling · PUE &lt;1.10</span>
-    <span class="t-item"><span class="t-sep"></span>CERT-In · DPDP Act · CDAC Validated</span>
-    <span class="t-item"><span class="t-sep"></span>8 to 1,024 GPUs on demand</span>
-    <span class="t-item"><span class="t-sep"></span>Delhi NCR · Government MoU in final stages</span>
-    <span class="t-item"><span class="t-sep"></span>From $2.50/GPU/hr · INR billing · Zero egress</span>
-    <span class="t-item"><span class="t-sep"></span>500 MW · 288,000 GPUs at scale</span>
-    <span class="t-item"><span class="t-sep"></span>GB200 &amp; GB300 Blackwell</span>
-    <span class="t-item"><span class="t-sep"></span>Direct-to-chip liquid cooling · PUE &lt;1.10</span>
-    <span class="t-item"><span class="t-sep"></span>CERT-In · DPDP Act · CDAC Validated</span>
-    <span class="t-item"><span class="t-sep"></span>8 to 1,024 GPUs on demand</span>
-    <span class="t-item"><span class="t-sep"></span>Delhi NCR · Government MoU in final stages</span>
-    <span class="t-item"><span class="t-sep"></span>From $2.50/GPU/hr · INR billing · Zero egress</span>
-    <span class="t-item"><span class="t-sep"></span>500 MW · 288,000 GPUs at scale</span>
+    <span class="t-item"><span class="t-sep"></span>NVIDIA Blackwell GB200 &amp; GB300</span>
+    <span class="t-item"><span class="t-sep"></span>Pay by the second &middot; no minimum commit</span>
+    <span class="t-item"><span class="t-sep"></span>PyTorch &middot; JAX &middot; vLLM &middot; HuggingFace</span>
+    <span class="t-item"><span class="t-sep"></span>Eight GPUs to a thousand &middot; same workflow</span>
+    <span class="t-item"><span class="t-sep"></span>Sovereign zones available on request</span>
+    <span class="t-item"><span class="t-sep"></span>Engineer-to-engineer onboarding</span>
+    <span class="t-item"><span class="t-sep"></span>USD or INR billing &middot; no egress fees</span>
+    <span class="t-item"><span class="t-sep"></span>NVIDIA Blackwell GB200 &amp; GB300</span>
+    <span class="t-item"><span class="t-sep"></span>Pay by the second &middot; no minimum commit</span>
+    <span class="t-item"><span class="t-sep"></span>PyTorch &middot; JAX &middot; vLLM &middot; HuggingFace</span>
+    <span class="t-item"><span class="t-sep"></span>Eight GPUs to a thousand &middot; same workflow</span>
+    <span class="t-item"><span class="t-sep"></span>Sovereign zones available on request</span>
+    <span class="t-item"><span class="t-sep"></span>Engineer-to-engineer onboarding</span>
+    <span class="t-item"><span class="t-sep"></span>USD or INR billing &middot; no egress fees</span>
   </div>
 </div>
 
-<!-- WHY -->
+<!-- WHY — four builder pillars, light, no numbers -->
 <section id="why" style="position:relative;overflow:hidden">
   <canvas class="section-net" id="net-why"></canvas>
-  <div class="why-bg"></div>
   <div class="why-inner container">
     <div class="why-intro">
-      <div class="eyebrow reveal">The case for Antriksh</div>
-      <h2 class="reveal d1">Built in India <br>Built for AI.</h2>
-      <p class="reveal d2">90% of India's AI runs on foreign infrastructure — slower, costlier, legally exposed.</p>
+      <div class="eyebrow reveal">Why us</div>
+      <h2 class="reveal d1">We run the&nbsp;stack so&nbsp;you don&rsquo;t have to.</h2>
+      <p class="reveal d2">Our own datacenter. Our own scheduling. Our own engineers picking up the phone. No reseller layer between you and the silicon.</p>
     </div>
-    <div class="why-grid">
+    <div class="why-grid why-grid-4">
       <div class="why-item reveal">
-        <div class="why-num">01</div>
-        <div class="why-title">Frontier hardware.</div>
-        <div class="why-desc">GB200 &amp; GB300 from day one. Not H100 hand-me-downs.</div>
+        <div class="why-num">01 / Instant</div>
+        <div class="why-title">Capacity when&nbsp;you&nbsp;ask.</div>
+        <div class="why-desc">We hold real Blackwell capacity for our customers. No quota review board, no quarterly allocation cycle &mdash; ask, and we point you at the GPUs.</div>
       </div>
       <div class="why-item reveal d1">
-        <div class="why-num">02</div>
-        <div class="why-title">Data stays in India.</div>
-        <div class="why-desc">Not a policy. An architecture. DPDP-compliant by design.</div>
+        <div class="why-num">02 / Limitless</div>
+        <div class="why-title">Eight to a&nbsp;thousand&nbsp;GPUs.</div>
+        <div class="why-desc">Start small, scale into a multi-thousand-GPU run, then drop back to zero when the experiment is done. No reserved-instance commitments to outgrow.</div>
       </div>
       <div class="why-item reveal d2">
-        <div class="why-num">03</div>
-        <div class="why-title">30% below hyperscaler pricing.</div>
-        <div class="why-desc">INR billing. Zero egress. 15-minute provisioning.</div>
+        <div class="why-num">03 / Builder pricing</div>
+        <div class="why-title">Pay only for what&nbsp;you used.</div>
+        <div class="why-desc">Billing by the second, in USD or INR. No egress fees. No cross-region surprises. No procurement contract to negotiate before your first run.</div>
+      </div>
+      <div class="why-item reveal d3">
+        <div class="why-num">04 / Sovereign</div>
+        <div class="why-title">Your data, your&nbsp;jurisdiction.</div>
+        <div class="why-desc">Sovereign zones available when you need them &mdash; DPDP, CERT-In, air-gapped, for regulated workloads. If you don&rsquo;t need them, you don&rsquo;t pay for them.</div>
       </div>
     </div>
   </div>
@@ -380,23 +650,23 @@
             </svg>
           </div>
 
-          <!-- Stats bar -->
+          <!-- Stats bar — builder-focused, not infrastructure brag -->
           <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(40,212,212,0.1);border-top:1px solid rgba(40,212,212,0.12);width:100%;margin-top:.5rem">
             <div style="padding:1rem;text-align:center;background:#080c14">
-              <div style="font-family:'Exo 2',sans-serif;font-size:clamp(12px,2vw,14px);font-weight:700;color:#28d4d4;letter-spacing:1px">500 MW</div>
-              <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(200,230,255,0.35);margin-top:3px;letter-spacing:1px">CAPACITY</div>
+              <div style="font-family:'Exo 2',sans-serif;font-size:clamp(12px,2vw,14px);font-weight:700;color:#28d4d4;letter-spacing:1px">BLACKWELL</div>
+              <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(200,230,255,0.35);margin-top:3px;letter-spacing:1px">GB200 &middot; GB300</div>
             </div>
             <div style="padding:1rem;text-align:center;background:#080c14">
-              <div style="font-family:'Exo 2',sans-serif;font-size:clamp(12px,2vw,14px);font-weight:700;color:#28d4d4;letter-spacing:1px">288K GPUs</div>
-              <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(200,230,255,0.35);margin-top:3px;letter-spacing:1px">AT SCALE</div>
+              <div style="font-family:'Exo 2',sans-serif;font-size:clamp(12px,2vw,14px);font-weight:700;color:#28d4d4;letter-spacing:1px">ON DEMAND</div>
+              <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(200,230,255,0.35);margin-top:3px;letter-spacing:1px">8 TO 1,000+ GPUS</div>
             </div>
             <div style="padding:1rem;text-align:center;background:#080c14">
-              <div style="font-family:'Exo 2',sans-serif;font-size:clamp(12px,2vw,14px);font-weight:700;color:#28d4d4;letter-spacing:1px">PUE &lt;1.10</div>
-              <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(200,230,255,0.35);margin-top:3px;letter-spacing:1px">EFFICIENCY</div>
+              <div style="font-family:'Exo 2',sans-serif;font-size:clamp(12px,2vw,14px);font-weight:700;color:#28d4d4;letter-spacing:1px">SOVEREIGN</div>
+              <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(200,230,255,0.35);margin-top:3px;letter-spacing:1px">AVAILABLE ON REQUEST</div>
             </div>
             <div style="padding:1rem;text-align:center;background:#080c14">
-              <div style="font-family:'Exo 2',sans-serif;font-size:clamp(12px,2vw,14px);font-weight:700;color:#28d4d4;letter-spacing:1px">LIQUID COOLED</div>
-              <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(200,230,255,0.35);margin-top:3px;letter-spacing:1px">DIRECT-TO-CHIP</div>
+              <div style="font-family:'Exo 2',sans-serif;font-size:clamp(12px,2vw,14px);font-weight:700;color:#28d4d4;letter-spacing:1px">PAY-AS-YOU-GO</div>
+              <div style="font-family:'DM Mono',monospace;font-size:9px;color:rgba(200,230,255,0.35);margin-top:3px;letter-spacing:1px">BY THE SECOND</div>
             </div>
           </div>
 
@@ -408,11 +678,11 @@
   </div>
 </section>
 
-<!-- SOVEREIGN STRIP -->
+<!-- SOVEREIGN STRIP — capability, not the lead pitch -->
 <section id="sovereign" style="padding:2.5rem 0">
   <div class="container">
     <div class="sovereign-bar reveal">
-      <div class="sovereign-headline">Your data never crosses a border — guaranteed by architecture, not policy.</div>
+      <div class="sovereign-headline">Sovereign zones available for India, government &amp; regulated workloads &mdash; not the default for everyone, ready when you need it.</div>
       <div class="s-badges">
         <div class="s-badge"><span class="s-badge-dot">&#9679;</span>DPDP Act</div>
         <div class="s-badge"><span class="s-badge-dot">&#9679;</span>CERT-In</div>
@@ -428,8 +698,9 @@
   <canvas class="section-net" id="net-gpu"></canvas>
   <div class="container">
     <div class="gpus-header">
-      <div class="eyebrow reveal">Hardware</div>
-      <h2 class="reveal d1">NVIDIA Blackwell.<br>No compromises.</h2>
+      <div class="eyebrow reveal">The hardware</div>
+      <h2 class="reveal d1">NVIDIA Blackwell.<br>The good&nbsp;stuff.</h2>
+      <p class="reveal d2" style="font-size:1.125rem; color:var(--muted); margin-top:1rem; max-width:540px">Blackwell from day one. No H100 hand-me-downs, no legacy SKUs lurking in the rack rotation.</p>
     </div>
     <div class="gpus-grid">
       <div class="gpu-card reveal">
@@ -547,33 +818,33 @@
   </div>
 </section>
 
-<!-- FOR BUILDERS -->
+<!-- FOR BUILDERS — startup + enterprise programs, builder-friendly framing -->
 <section id="builders" style="position:relative;overflow:hidden">
   <canvas class="section-net" id="net-builders"></canvas>
   <div class="container">
-    <div class="eyebrow reveal">For builders</div>
-    <h2 class="reveal d1">Startup or enterprise.<br>Built for both.</h2>
+    <div class="eyebrow reveal">Programs</div>
+    <h2 class="reveal d1">Built for builders.<br>Backed for the&nbsp;hard&nbsp;parts.</h2>
     <div class="builders-grid">
       <div class="builder-card feat reveal">
-        <div class="builder-tag">AI Startups</div>
-        <h3>GPU credits. No equity ask.</h3>
-        <p>We reserve 10% of capacity for startups we back. Build without burning runway.</p>
+        <div class="builder-tag">For startups</div>
+        <h3>GPU credits, not a&nbsp;cap table.</h3>
+        <p>We back early-stage AI startups with compute credits, hands-on engineering, and a real human you can call. No equity ask, no markup, no procurement gymnastics.</p>
         <ul class="builder-list">
-          <li>$50K to $2M in GPU credits</li>
-          <li>GTM, hiring &amp; regulatory support</li>
-          <li>Priority access at scale</li>
-          <li>Direct line to infrastructure team</li>
+          <li>Compute credits sized to your stage</li>
+          <li>Direct line to our engineering team</li>
+          <li>Priority capacity when you scale</li>
+          <li>Help with launch, hiring, regulation when you need it</li>
         </ul>
       </div>
       <div class="builder-card reveal d1">
-        <div class="builder-tag e">Enterprise &amp; Government</div>
-        <h3>Reserved capacity. SLA-backed.</h3>
-        <p>Guaranteed allocation with air-gapped sovereign zones for BFSI, healthcare, and defence.</p>
+        <div class="builder-tag e">For research &amp; enterprise</div>
+        <h3>Reserved capacity, on your terms.</h3>
+        <p>For labs, regulated industries, and teams that need guarantees: reserved allocation, sovereign zones, and an SLA you can show your compliance team.</p>
         <ul class="builder-list">
-          <li>99.9% uptime SLA</li>
-          <li>Sovereign zones · INR billing · Zero egress</li>
-          <li>Managed MLOps available</li>
-          <li>RBI, DPDP, CERT-In compliant</li>
+          <li>Reserved capacity with uptime SLA</li>
+          <li>Sovereign zones for regulated workloads</li>
+          <li>Managed MLOps available on request</li>
+          <li>DPDP &middot; CERT-In &middot; compliant by architecture</li>
         </ul>
       </div>
     </div>
@@ -581,27 +852,28 @@
 </section>
 
 <!-- WAITLIST -->
-<section id="waitlist">
+<section id="waitlist" style="position:relative;overflow:hidden">
+  <canvas class="section-net" id="net-waitlist"></canvas>
   <div class="container">
     <div class="wl-inner">
       <div class="wl-left reveal">
-        <div style="font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#60a5fa;margin-bottom:.875rem">Early access</div>
-        <h2>Be first on India's<br>sovereign AI cloud.</h2>
-        <p>Priority allocation. Locked pricing. Direct team access.</p>
+        <div class="eyebrow">Reserve compute</div>
+        <h2>Get on the&nbsp;list.<br>Get on the&nbsp;hardware.</h2>
+        <p>Reservations are open now. Early customers onboard first, lock in launch pricing, and get a direct line to our engineering team.</p>
         <div class="wl-benefits">
-          <div class="wl-b"><div class="wl-b-icon">&#128274;</div><div class="wl-b-text">Locked-in pricing from $2.50/GPU/hr</div></div>
-          <div class="wl-b"><div class="wl-b-icon">&#9889;</div><div class="wl-b-text">Priority allocation for GB200 clusters</div></div>
-          <div class="wl-b"><div class="wl-b-icon">&#128737;&#65039;</div><div class="wl-b-text">Trial your workload before committing</div></div>
-          <div class="wl-b"><div class="wl-b-icon">&#129309;</div><div class="wl-b-text">Engineer-to-engineer onboarding</div></div>
+          <div class="wl-b"><div class="wl-b-icon">&#128274;</div><div class="wl-b-text">Lock in launch pricing for your first&nbsp;year</div></div>
+          <div class="wl-b"><div class="wl-b-icon">&#9889;</div><div class="wl-b-text">Priority capacity when clusters come&nbsp;online</div></div>
+          <div class="wl-b"><div class="wl-b-icon">&#128737;&#65039;</div><div class="wl-b-text">Trial your workload before you&nbsp;commit</div></div>
+          <div class="wl-b"><div class="wl-b-icon">&#129309;</div><div class="wl-b-text">Real engineers on the other end of an&nbsp;email</div></div>
         </div>
         <div class="wl-btns">
           <a href="https://calendly.com/antrikshcloud" target="_blank" rel="noopener" class="btn btn-wl-white">Schedule a call</a>
-          <a href="mailto:sales@antriksh.cloud" class="btn btn-wl-ghost">Talk to Sales</a>
+          <a href="mailto:sales@antriksh.cloud" class="btn btn-wl-ghost">Email us</a>
         </div>
         <div style="margin-top:1.5rem">
           <a href="platform.html" class="btn-wl-plat">
             Explore the full platform
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </div>
       </div>
@@ -626,24 +898,28 @@
       </div>
       <div class="faq-list reveal d1">
         <div class="faq-item">
-          <button class="faq-q" onclick="faq(this)">When will Antriksh be available?<span class="faq-icon">+</span></button>
-          <div class="faq-a">3 MW PoC goes live 6-8 months after funding close — 1,728 GB200 GPUs. Early access customers onboard first.</div>
+          <button class="faq-q" onclick="faq(this)">I&rsquo;m a US startup. Why train on infrastructure based in India?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Three reasons. <strong>Supply</strong> &mdash; we have GB200s when AWS doesn&rsquo;t. <strong>Price</strong> &mdash; 40% under hyperscaler list. <strong>Speed</strong> &mdash; sub-15-min provisioning vs. weeks of procurement. For training jobs, geography rarely matters; for inference closer to your users, US/EU edge is on the roadmap. Reach out and we&rsquo;ll talk through your specific workload.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" onclick="faq(this)">Which GPUs are available?<span class="faq-icon">+</span></button>
-          <div class="faq-a">GB200 and GB300. Blackwell from day one — no legacy hardware.</div>
+          <button class="faq-q" onclick="faq(this)">When can I actually get on capacity?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Our first cluster goes live in the next 6&ndash;8 months. Reservations are open now &mdash; early customers onboard first, lock in launch pricing, and get direct contact with the engineering team.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" onclick="faq(this)">How is this different from AWS or GCP?<span class="faq-icon">+</span></button>
-          <div class="faq-a">30-40% cheaper, INR billing, zero egress, 15-minute provisioning, and true data sovereignty. Data never crosses a border.</div>
+          <button class="faq-q" onclick="faq(this)">Which GPUs do you offer?<span class="faq-icon">+</span></button>
+          <div class="faq-a">NVIDIA Blackwell only &mdash; GB200 (192 GB HBM3e) and GB300 (288 GB HBM3e). No legacy H100 / A100 hand-me-downs. Liquid-cooled, NVLink-interconnected, configured for both training and inference.</div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" onclick="faq(this)">Is my data safe?<span class="faq-icon">+</span></button>
-          <div class="faq-a">By architecture, not policy. DPDP Act, CERT-In, air-gapped sovereign zones. No cross-border flows, ever.</div>
+          <button class="faq-q" onclick="faq(this)">How does pricing actually compare to AWS / GCP?<span class="faq-icon">+</span></button>
+          <div class="faq-a">From <strong>$2.50/GPU/hr</strong> on GB200, against AWS p5 list at roughly $5/hr equivalent. No egress fees, no cross-region transfer surprises, no reserved-instance lock-in. Pay by the second. Billing in USD or INR &mdash; your call.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="faq(this)">Can I trial before committing?<span class="faq-icon">+</span></button>
-          <div class="faq-a">Yes. Early access customers get a trial allocation — benchmark your workload, verify the numbers yourself.</div>
+          <div class="faq-a">Yes. Reservation customers get a trial allocation &mdash; benchmark your workload, verify the numbers yourself, then scale up.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="faq(this)">What about data sovereignty?<span class="faq-icon">+</span></button>
+          <div class="faq-a">If you need it, we&rsquo;re built for it: DPDP Act, CERT-In, air-gapped sovereign zones for government, BFSI, and regulated workloads. If you don&rsquo;t need it, you don&rsquo;t pay for it &mdash; standard tenancy is the default.</div>
         </div>
       </div>
     </div>
@@ -656,15 +932,16 @@
     <div class="ft-grid">
       <div class="ft-brand">
         <h4>Antriksh Cloud</h4>
-        <p>India's sovereign AI GPU infrastructure. Delhi NCR · San Francisco.</p>
+        <p>GPU compute built for builders. NVIDIA Blackwell on demand &mdash; for the people who actually ship.</p>
       </div>
       <div class="ft-col">
-        <h5>Platform</h5>
-        <a href="#why">Why Antriksh</a>
+        <h5>Product</h5>
+        <a href="#built-for">Built for</a>
+        <a href="#what-you-do">What you can do</a>
+        <a href="#why">Why us</a>
         <a href="#gpus">GPUs</a>
         <a href="platform.html#architecture">Architecture</a>
         <a href="platform.html#pricing">Pricing</a>
-        <a href="platform.html#compare">Compare</a>
       </div>
       <div class="ft-col">
         <h5>Company</h5>
