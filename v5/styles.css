@@ -438,17 +438,28 @@ section > .why-inner { position:relative; z-index:1; }
     radial-gradient(circle at 80% 70%, rgba(37,99,235,.04) 1px, transparent 1px);
   background-size:auto, 32px 32px, 28px 28px;
 }
-/* On smaller screens, push the photo further off-canvas + dial opacity down
-   so the headline always wins. */
+/* On phones: scale the image larger (so we see only the orbital-arc
+   portion, not the "Cosmic blueprint" text on the left), anchor to
+   the top, and use mix-blend-mode: multiply so thin blue lines
+   stay crisp against white instead of fading to invisible. */
 @media(max-width:760px) {
   .hero-bg {
     background:
-      url('images/hero-cosmic.png') right -40% center / cover no-repeat,
+      url('images/hero-cosmic.png') 80% top / 220% auto no-repeat,
       var(--bg);
-    opacity:.28;
+    opacity:1;
+    mix-blend-mode:multiply;
   }
   .hero-bg::after {
-    background:linear-gradient(180deg, var(--bg) 0%, rgba(255,255,255,.7) 60%, transparent 100%);
+    /* Soft downward fade so the headline area at the bottom of the
+       hero stays readable. Top of image stays crisp. */
+    background:linear-gradient(180deg,
+      transparent 0%,
+      transparent 30%,
+      rgba(255,255,255,.65) 65%,
+      var(--bg) 95%
+    );
+    mix-blend-mode:normal;
   }
 }
 .hero-inner { position:relative; z-index:1; }
