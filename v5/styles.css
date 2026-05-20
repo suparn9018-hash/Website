@@ -168,6 +168,9 @@ p  { color:var(--muted); line-height:1.8;   font-size:1.0625rem; }
   #cursor-glow { display:none !important; }
 }
 
+/* Mobile card containment override is at end of file (search for
+   "MOBILE CARD CONTAINMENT — FINAL") so it wins the cascade. */
+
 /* Shimmer gradient used on hero headline */
 .grad-shimmer {
   background:linear-gradient(90deg, #60a5fa, #a78bfa, #38bdf8, #60a5fa);
@@ -218,26 +221,32 @@ section    { padding:5.5rem 0; }    /* taste-skill: more generous whitespace */
 #hero .btn-ghost { color:#fff; background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.22); }
 #hero .btn-ghost:hover { background:rgba(255,255,255,.2); }
 
-/* Contact / Book a Meeting button */
+/* "Talk to us" / Book a Meeting button — light-theme treatment.
+   Was inherited from the v4 dark hero (white text on translucent white)
+   which rendered as a visible empty box on the v5 white hero. */
 .btn-contact {
   display:inline-flex; align-items:center; gap:.5rem;
-  background:rgba(255,255,255,.08);
-  color:#fff;
-  border:1px solid rgba(255,255,255,.22);
+  background:var(--bg);
+  color:var(--text);
+  border:1px solid var(--border-hi);
   border-radius:8px;
   padding:.875rem 1.875rem;
   font-size:1rem; font-weight:600;
   letter-spacing:.01em;
-  transition:color .2s, border-color .2s, background .2s, box-shadow .2s, transform .4s var(--spring-bounce);
+  box-shadow:var(--shadow-sm);
+  transition:color .2s, border-color .2s, background .2s, box-shadow .25s, transform .4s var(--spring-bounce);
   white-space:nowrap;
 }
 .btn-contact:hover {
-  color:#fff;
-  border-color:rgba(255,255,255,.45);
-  background:rgba(255,255,255,.15);
-  box-shadow:0 4px 20px rgba(0,0,0,.25);
+  color:var(--blue-text);
+  border-color:var(--blue);
+  background:var(--blue-soft);
+  box-shadow:var(--shadow-md);
 }
-.btn-contact svg { flex-shrink:0; }
+.btn-contact svg {
+  flex-shrink:0;
+  color:var(--blue);          /* calendar icon stays blue for accent */
+}
 
 .btn-sm { padding:.5625rem 1.25rem; font-size:.9rem; }
 
@@ -624,6 +633,12 @@ section > .why-inner { position:relative; z-index:1; }
   text-wrap:balance;
 }
 .bf-card-lg .bf-title { font-size:2rem; line-height:1.15; }
+/* On mobile, the asymmetric grid collapses to one column — no reason
+   for the large card's title to outsize the small ones. Unify. */
+@media (max-width:760px) {
+  .bf-title,
+  .bf-card-lg .bf-title { font-size:1.375rem; line-height:1.25; }
+}
 
 .bf-desc {
   font-size:1.0625rem;
@@ -2165,12 +2180,20 @@ section > .why-inner { position:relative; z-index:1; }
 .wl-benefits   { display:flex; flex-direction:column; gap:1rem; margin-bottom:2.5rem; }
 .wl-b          { display:flex; align-items:center; gap:1rem; }
 .wl-b-icon     {
-  font-size:1.125rem; width:44px; height:44px;
+  width:44px; height:44px;
   background:var(--bg-1);
   border:1px solid var(--border);
   border-radius:10px;
   display:flex; align-items:center; justify-content:center; flex-shrink:0;
   box-shadow:var(--shadow-sm);
+  color:var(--blue);                     /* SVG stroke="currentColor" picks this up */
+}
+.wl-b-icon svg { width:20px; height:20px; display:block; }
+/* Tiny hover treatment — icon row lifts slightly to feel alive */
+.wl-b { transition:transform .35s var(--spring); }
+.wl-b:hover .wl-b-icon {
+  background:var(--blue-soft);
+  border-color:rgba(37,99,235,.30);
 }
 .wl-b-text     {
   font-size:1rem; font-weight:500;
@@ -2209,9 +2232,27 @@ section > .why-inner { position:relative; z-index:1; }
 /* ══════════════════════════════════════════════════════════
    FAQ
 ══════════════════════════════════════════════════════════ */
-/* FAQ — bg-1 so it differs from the adjacent saturated #waitlist (bg-3) above */
-#faq { background:var(--bg-1); position:relative; overflow:hidden; padding:7rem 0; }
+/* FAQ — pure white so it sits cleanly between the blue Waitlist
+   (bg-3) above and the light-gray Footer (bg-1) below. Previously
+   FAQ + Footer both used bg-1 and read as one continuous block. */
+#faq { background:var(--bg); position:relative; overflow:hidden; padding:7rem 0; }
 @media(max-width:760px) { #faq { padding:5rem 0; } }
+/* Add a subtle right-side blueprint flourish to give the section
+   character beyond just "white" so it doesn't look empty either */
+#faq::before {
+  content:''; position:absolute;
+  right:-8%; top:50%;
+  width:40%; aspect-ratio:1/1;
+  background:
+    radial-gradient(circle, rgba(37,99,235,.06) 1px, transparent 1px);
+  background-size:28px 28px;
+  transform:translateY(-50%);
+  opacity:.7;
+  pointer-events:none;
+  z-index:0;
+}
+#faq > .container { position:relative; z-index:1; }
+@media(max-width:760px) { #faq::before { display:none; } }
 
 .faq-wrap {
   display:grid;
@@ -3243,3 +3284,79 @@ input[type="range"]::-webkit-slider-thumb {
 }
 #back-top:hover    { background:var(--blue); color:#fff; transform:scale(1.1); box-shadow:0 6px 24px rgba(59,130,246,.3); }
 #back-top.visible  { opacity:1; pointer-events:auto; }
+
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE-FIRST POLISH PASS — adopted from Helium template audit.
+   Principles: confident typography, generous whitespace, asymmetric
+   1px borders. No section dividers (whitespace handles separation).
+   No parallax, no word reveals. Loaded last so it wins the cascade.
+══════════════════════════════════════════════════════════ */
+@media (max-width: 760px) {
+
+  /* — 1. Section padding: 64px top/bottom, 24px sides (Helium) — */
+  section,
+  #built-for, #what-you-do, #why, #how-it-works, #sovereign,
+  #gpus, #how, #builders, #waitlist, #faq, #problem, #explore-platform {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+  .container { padding-left: 1.5rem; padding-right: 1.5rem; }
+
+  /* — 2. Drop the section divider gradient on mobile.
+        Helium has none. Whitespace + confident type does the work. — */
+  #built-for::after, #what-you-do::after, #why::after, #how-it-works::after,
+  #gpus::after, #how::after, #builders::after, #waitlist::after,
+  #faq::after, #problem::after, #explore-platform::after {
+    display: none;
+  }
+
+  /* — 3. Asymmetric card borders — light-theme adaptation of Helium's
+        dark-card trick. Top + left lighter, bottom + right darker:
+        fakes a gravity / light-source treatment without a box-shadow. — */
+  .why-item,
+  .bf-card,
+  .builder-card,
+  .gpu-card,
+  .phase-card,
+  .prob-card,
+  .wyd-tile {
+    border: none !important;
+    border-top:    1px solid rgba(15, 23, 42, 0.06) !important;
+    border-left:   1px solid rgba(15, 23, 42, 0.06) !important;
+    border-right:  1px solid rgba(15, 23, 42, 0.14) !important;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.14) !important;
+    box-shadow: none !important;
+  }
+
+  /* — 4. Letter-spacing curve on display type (Helium's "tightening") — */
+  h1 { letter-spacing: -0.05em !important; }
+  h2 { letter-spacing: -0.045em !important; }
+  h3 { letter-spacing: -0.025em !important; }
+  .hero-sub, .bf-desc, .wyd-tile p, .why-desc {
+    letter-spacing: -0.015em !important;
+  }
+  /* Bump card title up a notch — Helium uses 28px, mine was 22px */
+  .bf-title, .bf-card-lg .bf-title,
+  .wyd-tile h3, .builder-card h3, .phase-card h3 {
+    font-size: 1.5rem !important;     /* 24px */
+    line-height: 1.2 !important;
+  }
+
+  /* — 5. Disable word-by-word reveal on mobile (Helium doesn't do it).
+        Section H2s should appear as a single block — no per-word stagger.
+        We still get the smooth opacity/translate from .reveal. — */
+  .rw-word { transform: none !important; transition: none !important; }
+  .rw-wrap { display: inline !important; overflow: visible !important; }
+
+  /* — 6. Simpler page-element reveal: bigger translate, single pass — */
+  .reveal { transform: translateY(48px); }
+
+  /* — 7. Tighter container spacing for stacked cards — */
+  .why-grid, .builders-grid, .bf-grid, .wyd-bento, .prob-grid {
+    gap: 1rem !important;
+  }
+
+  /* — 8. Cursor glow hidden (already done, keep for fallback) — */
+  #cursor-glow { display: none !important; }
+}
