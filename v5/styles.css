@@ -137,18 +137,35 @@ h2 { font-size:clamp(2rem,4vw,3.5rem);     font-weight:700; letter-spacing:-.042
 h3 { font-size:clamp(1.25rem,2.5vw,1.375rem); font-weight:700; }
 p  { color:var(--muted); line-height:1.8;   font-size:1.0625rem; }
 
-/* ── MOBILE FONT SCALE ── */
+/* ── MOBILE FONT SCALE ──
+   Reduced one notch — previous sizes felt too large at phone width.
+   Anchors: body 16px, h1 30px min, h2 24px min. */
 @media (max-width: 640px) {
-  body        { font-size: 1.0625rem; }                 /* 17px base */
-  h1          { font-size: clamp(2.25rem, 9vw, 4rem); }
-  h2          { font-size: clamp(1.875rem, 7vw, 3rem); }
-  p           { font-size: 1.0625rem; }
-  .hero-sub   { font-size: 1.125rem; }
-  .why-desc   { font-size: 1.0625rem; }
-  .hstat-lbl  { font-size: .875rem; }
-  .eyebrow    { font-size: .8125rem; }
-  .nav-links a{ font-size: 1.0625rem; }
-  .btn        { font-size: 1.0625rem; }
+  body        { font-size: 1rem; }                          /* 16px base */
+  h1          { font-size: clamp(1.875rem, 7.5vw, 3.25rem); }
+  h2          { font-size: clamp(1.5rem, 6vw, 2.5rem); }
+  h3          { font-size: 1.125rem; }
+  p           { font-size: .9375rem; }
+  .hero-sub   { font-size: 1rem; }
+  .why-desc, .bf-desc, .wyd-tile p { font-size: .9375rem; }
+  .hstat-lbl  { font-size: .8125rem; }
+  .eyebrow    { font-size: .75rem; }
+  .nav-links a{ font-size: 1rem; }
+  .btn        { font-size: .9375rem; padding:.75rem 1.5rem; }
+  /* Pull section heading scaling down too — these had their own clamp() */
+  .bf-h, .wyd-head h2, .why-intro h2, .gpus-header h2, .wl-left h2,
+  #builders h2, #problem .prob-intro h2 {
+    font-size: clamp(1.625rem, 6vw, 2.5rem) !important;
+  }
+  /* Hero pillar text */
+  .hpill-t    { font-size: .9375rem; }
+  .hpill-d    { font-size: .8125rem; }
+}
+
+/* Hard fallback: hide cursor-glow on small viewports even if (hover:none)
+   isn't honored by an older browser */
+@media (max-width: 760px) {
+  #cursor-glow { display:none !important; }
 }
 
 /* Shimmer gradient used on hero headline */
@@ -438,28 +455,25 @@ section > .why-inner { position:relative; z-index:1; }
     radial-gradient(circle at 80% 70%, rgba(37,99,235,.04) 1px, transparent 1px);
   background-size:auto, 32px 32px, 28px 28px;
 }
-/* On phones: scale the image larger (so we see only the orbital-arc
-   portion, not the "Cosmic blueprint" text on the left), anchor to
-   the top, and use mix-blend-mode: multiply so thin blue lines
-   stay crisp against white instead of fading to invisible. */
+/* On phones: simpler treatment. No mix-blend-mode (caused opacity glitches
+   on some mobile browsers — sections rendered "see-through"). Just direct
+   opacity. Position the image at top so only the orbital arcs show. */
 @media(max-width:760px) {
   .hero-bg {
     background:
-      url('images/hero-cosmic.png') 80% top / 220% auto no-repeat,
+      url('images/hero-cosmic.png') 78% top / 220% auto no-repeat,
       var(--bg);
-    opacity:1;
-    mix-blend-mode:multiply;
+    opacity:.72;
+    mix-blend-mode:normal;
+    transform:none !important;  /* belt + suspenders: kill parallax transform here too */
   }
   .hero-bg::after {
-    /* Soft downward fade so the headline area at the bottom of the
-       hero stays readable. Top of image stays crisp. */
     background:linear-gradient(180deg,
       transparent 0%,
-      transparent 30%,
-      rgba(255,255,255,.65) 65%,
-      var(--bg) 95%
+      rgba(255,255,255,.25) 28%,
+      rgba(255,255,255,.85) 62%,
+      var(--bg) 90%
     );
-    mix-blend-mode:normal;
   }
 }
 .hero-inner { position:relative; z-index:1; }
@@ -1449,8 +1463,122 @@ section > .why-inner { position:relative; z-index:1; }
 }
 .why-desc  {
   font-size:1rem; color:var(--muted);
-  line-height:1.75;
+  line-height:1.65;
+  margin-bottom:1.5rem;
 }
+
+/* ── Why Us — mini-infographics per card ───────────────── */
+.why-viz {
+  margin-top:auto;
+  padding-top:1rem;
+  border-top:1px solid var(--border);
+}
+
+/* 01 — Comparison bars (AWS queue vs Us) */
+.wviz-row { display:flex; align-items:center; gap:.625rem; margin-bottom:.5rem; }
+.wviz-row:last-child { margin-bottom:0; }
+.wviz-lbl {
+  font-family:'DM Mono',monospace;
+  font-size:.6875rem; font-weight:500;
+  letter-spacing:.04em; text-transform:uppercase;
+  color:var(--muted);
+  width:36px; flex-shrink:0;
+}
+.wviz-lbl.wviz-us, .wviz-val.wviz-us {
+  color:var(--blue); font-weight:700;
+}
+.wviz-bar {
+  flex:1; height:6px;
+  background:var(--bg-2);
+  border-radius:100px; overflow:hidden;
+  position:relative;
+}
+.wviz-fill {
+  display:block; height:100%;
+  background:#dc2626;        /* red — the "bad" baseline */
+  border-radius:100px;
+  transition:width 1s var(--spring);
+}
+.wviz-fill-good { background:var(--blue); }
+.wviz-val {
+  font-family:'DM Mono',monospace;
+  font-size:.6875rem; font-weight:600;
+  color:var(--muted);
+  width:54px; text-align:right; flex-shrink:0;
+}
+
+/* 02 — Range bar 8 → 1,024 */
+.wviz-range {
+  display:flex; align-items:center; gap:.625rem;
+}
+.wviz-range-min, .wviz-range-max {
+  font-family:'DM Mono',monospace;
+  font-size:.75rem; font-weight:700;
+  color:var(--text); flex-shrink:0;
+}
+.wviz-range-track {
+  flex:1; height:6px;
+  background:var(--bg-2);
+  border-radius:100px;
+  position:relative;
+  overflow:visible;
+}
+.wviz-range-fill {
+  position:absolute; left:0; top:0;
+  width:100%; height:100%;
+  background:linear-gradient(90deg, var(--blue) 0%, var(--blue-md) 100%);
+  border-radius:100px;
+}
+.wviz-range-dot {
+  position:absolute; top:50%;
+  width:10px; height:10px;
+  margin-left:-5px; margin-top:-5px;
+  background:var(--blue);
+  border:2px solid var(--bg);
+  border-radius:50%;
+  box-shadow:0 0 0 1px var(--blue);
+}
+.wviz-range-cap {
+  margin-top:.625rem;
+  font-family:'DM Mono',monospace;
+  font-size:.6875rem; font-weight:500;
+  color:var(--muted);
+  letter-spacing:.04em; text-transform:uppercase;
+  text-align:center;
+}
+
+/* 03 — Pricing rows */
+.wviz-pricing { display:flex; flex-direction:column; gap:.5rem; }
+.wviz-price-row {
+  display:flex; justify-content:space-between; align-items:baseline;
+  padding:.4rem .625rem;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:6px;
+  font-family:'DM Mono',monospace;
+  font-size:.75rem;
+}
+.wviz-price-k { color:var(--muted); letter-spacing:.02em; }
+.wviz-price-v { color:var(--text); font-weight:700; }
+.wviz-price-v.wviz-zero { color:#16a34a; }
+
+/* 04 — Compliance badges */
+.wviz-badges {
+  display:flex; flex-wrap:wrap; gap:.4rem;
+}
+.wviz-badge {
+  font-family:'DM Mono',monospace;
+  font-size:.6875rem; font-weight:600;
+  letter-spacing:.04em;
+  padding:.35rem .625rem;
+  background:var(--blue-soft);
+  border:1px solid rgba(37,99,235,.22);
+  color:var(--blue-text);
+  border-radius:6px;
+}
+
+/* Make the .why-item a flex column so .why-viz can sit at the bottom */
+.why-item { display:flex; flex-direction:column; }
 
 
 /* ══════════════════════════════════════════════════════════
@@ -1869,6 +1997,67 @@ section > .why-inner { position:relative; z-index:1; }
 #builders { background:var(--bg); position:relative; overflow:hidden; padding:7rem 0; }
 #builders .builder-card { background:var(--bg-1); }
 #builders .builder-card.feat { background:linear-gradient(135deg, var(--blue-soft) 0%, var(--bg-1) 65%); }
+
+/* ══════════════════════════════════════════════════════════
+   EXPLORE PLATFORM — slim CTA card that replaces the deeper
+   Programs section. Single horizontal block, builder-friendly.
+══════════════════════════════════════════════════════════ */
+#explore-platform { background:var(--bg); padding:4rem 0; position:relative; }
+@media(max-width:760px) { #explore-platform { padding:2.5rem 0; } }
+
+.ep-card {
+  display:flex; align-items:center; gap:2rem;
+  padding:2.25rem 2.5rem;
+  background:linear-gradient(135deg, var(--blue-soft) 0%, var(--bg-1) 80%);
+  border:1px solid rgba(37,99,235,.18);
+  border-radius:var(--radius-xl);
+  box-shadow:var(--shadow-sm);
+  transition:transform .5s var(--spring), box-shadow .5s var(--spring), border-color .25s;
+  text-decoration:none;
+}
+.ep-card:hover {
+  transform:translateY(-3px);
+  border-color:rgba(37,99,235,.35);
+  box-shadow:var(--shadow-md);
+}
+.ep-left { flex:1; min-width:0; }
+.ep-eyebrow {
+  font-family:'DM Mono',monospace;
+  font-size:.6875rem; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase;
+  color:var(--blue);
+  margin-bottom:.5rem;
+}
+.ep-h {
+  font-family:'Manrope',sans-serif;
+  font-size:clamp(1.25rem, 2.5vw, 1.625rem);
+  font-weight:800;
+  letter-spacing:-.025em;
+  color:var(--text);
+  margin-bottom:.5rem;
+  line-height:1.2;
+  text-wrap:balance;
+}
+.ep-sub {
+  font-size:.9375rem; color:var(--muted);
+  line-height:1.6;
+}
+.ep-right { flex-shrink:0; }
+.ep-cta {
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.75rem 1.25rem;
+  background:var(--blue);
+  color:#fff;
+  border-radius:8px;
+  font-weight:600; font-size:.9375rem;
+  white-space:nowrap;
+}
+.ep-cta svg { transition:transform .35s var(--spring); }
+.ep-card:hover .ep-cta svg { transform:translateX(4px); }
+@media(max-width:760px) {
+  .ep-card { flex-direction:column; align-items:flex-start; gap:1.5rem; padding:1.75rem; }
+  .ep-cta { width:100%; justify-content:center; }
+}
 @media(max-width:760px) { #builders { padding:5rem 0; } }
 #builders .section-net { opacity:.30; }
 #builders h2 {

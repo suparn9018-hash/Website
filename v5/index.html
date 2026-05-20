@@ -50,7 +50,7 @@
       GPU cloud for builders
     </div>
     <h1 class="hero-h reveal d1">AI compute at<br><span class="grad-shimmer">your fingertips.</span></h1>
-    <p class="hero-sub reveal d2">NVIDIA Blackwell, ready when you are. For startups shipping AI products, researchers and academics, developers exploring new ideas &mdash; and teams ready to scale.</p>
+    <p class="hero-sub reveal d2">NVIDIA Blackwell, ready when you are. No queue, no procurement, no annual contracts.</p>
     <div class="hero-actions reveal d3">
       <a href="#waitlist" class="btn btn-primary">Start building</a>
       <a href="https://calendly.com/antrikshcloud" target="_blank" rel="noopener" class="btn btn-contact">
@@ -213,8 +213,8 @@
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-9 4 18 3-9h4"/></svg>
         </div>
         <div class="wyd-tag">Foundation training</div>
-        <h3>Train a frontier model from scratch.</h3>
-        <p>Multi-thousand-GPU runs across NVLink + InfiniBand. Configured once, scaled on demand.</p>
+        <h3>Train a frontier model.</h3>
+        <p>Multi-thousand-GPU runs across NVLink + InfiniBand.</p>
 
         <!-- Infographic: 16-GPU mesh topology -->
         <div class="wyd-topo">
@@ -441,25 +441,82 @@
       <p class="reveal d2">Our own datacenter. Our own scheduling. Our own engineers picking up the phone. No reseller layer between you and the silicon.</p>
     </div>
     <div class="why-grid why-grid-4">
+      <!-- 01 — Instant: compare bars (AWS queue vs Antriksh) -->
       <div class="why-item reveal">
         <div class="why-num">01 / Instant</div>
-        <div class="why-title">Capacity when&nbsp;you&nbsp;ask.</div>
-        <div class="why-desc">We hold real Blackwell capacity for our customers. No quota review board, no quarterly allocation cycle &mdash; ask, and we point you at the GPUs.</div>
+        <div class="why-title">No queue. No&nbsp;quota call.</div>
+        <div class="why-desc">Ask. Get GPUs.</div>
+        <div class="why-viz">
+          <div class="wviz-row">
+            <span class="wviz-lbl">AWS</span>
+            <div class="wviz-bar wviz-bar-bad"><span class="wviz-fill" style="width:100%"></span></div>
+            <span class="wviz-val">months</span>
+          </div>
+          <div class="wviz-row">
+            <span class="wviz-lbl wviz-us">Us</span>
+            <div class="wviz-bar"><span class="wviz-fill wviz-fill-good" style="width:6%"></span></div>
+            <span class="wviz-val wviz-us">15&nbsp;min</span>
+          </div>
+        </div>
       </div>
+
+      <!-- 02 — Limitless: range bar 8 → 1,024 -->
       <div class="why-item reveal d1">
         <div class="why-num">02 / Limitless</div>
-        <div class="why-title">Eight to a&nbsp;thousand&nbsp;GPUs.</div>
-        <div class="why-desc">Start small, scale into a multi-thousand-GPU run, then drop back to zero when the experiment is done. No reserved-instance commitments to outgrow.</div>
+        <div class="why-title">Eight or a&nbsp;thousand.</div>
+        <div class="why-desc">Scale up. Scale down. No commit.</div>
+        <div class="why-viz">
+          <div class="wviz-range">
+            <span class="wviz-range-min">8</span>
+            <div class="wviz-range-track">
+              <span class="wviz-range-fill"></span>
+              <span class="wviz-range-dot" style="left:8%"></span>
+              <span class="wviz-range-dot" style="left:32%"></span>
+              <span class="wviz-range-dot" style="left:64%"></span>
+              <span class="wviz-range-dot" style="left:96%"></span>
+            </div>
+            <span class="wviz-range-max">1,024+</span>
+          </div>
+          <div class="wviz-range-cap">GPUs per cluster</div>
+        </div>
       </div>
+
+      <!-- 03 — Builder pricing: $/sec callout -->
       <div class="why-item reveal d2">
         <div class="why-num">03 / Builder pricing</div>
-        <div class="why-title">Pay only for what&nbsp;you used.</div>
-        <div class="why-desc">Billing by the second, in USD or INR. No egress fees. No cross-region surprises. No procurement contract to negotiate before your first run.</div>
+        <div class="why-title">Pay only what you used.</div>
+        <div class="why-desc">By the second. USD or&nbsp;INR.</div>
+        <div class="why-viz">
+          <div class="wviz-pricing">
+            <div class="wviz-price-row">
+              <span class="wviz-price-k">Granularity</span>
+              <span class="wviz-price-v">/ second</span>
+            </div>
+            <div class="wviz-price-row">
+              <span class="wviz-price-k">Egress fees</span>
+              <span class="wviz-price-v wviz-zero">&times; none</span>
+            </div>
+            <div class="wviz-price-row">
+              <span class="wviz-price-k">Min commit</span>
+              <span class="wviz-price-v wviz-zero">&times; none</span>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- 04 — Sovereign: compliance badges -->
       <div class="why-item reveal d3">
         <div class="why-num">04 / Sovereign</div>
-        <div class="why-title">Your data, your&nbsp;jurisdiction.</div>
-        <div class="why-desc">Sovereign zones available when you need them &mdash; DPDP, CERT-In, air-gapped, for regulated workloads. If you don&rsquo;t need them, you don&rsquo;t pay for them.</div>
+        <div class="why-title">Your data, your&nbsp;ground.</div>
+        <div class="why-desc">Available when you need it.</div>
+        <div class="why-viz">
+          <div class="wviz-badges">
+            <span class="wviz-badge">DPDP</span>
+            <span class="wviz-badge">CERT-In</span>
+            <span class="wviz-badge">Air-gapped</span>
+            <span class="wviz-badge">RBI-ready</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -682,7 +739,7 @@
 <section id="sovereign" style="padding:2.5rem 0">
   <div class="container">
     <div class="sovereign-bar reveal">
-      <div class="sovereign-headline">Sovereign zones available for India, government &amp; regulated workloads &mdash; not the default for everyone, ready when you need it.</div>
+      <div class="sovereign-headline">Sovereign zones, ready when you need them.</div>
       <div class="s-badges">
         <div class="s-badge"><span class="s-badge-dot">&#9679;</span>DPDP Act</div>
         <div class="s-badge"><span class="s-badge-dot">&#9679;</span>CERT-In</div>
@@ -818,36 +875,22 @@
   </div>
 </section>
 
-<!-- FOR BUILDERS — startup + enterprise programs, builder-friendly framing -->
-<section id="builders" style="position:relative;overflow:hidden">
-  <canvas class="section-net" id="net-builders"></canvas>
+<!-- EXPLORE PLATFORM — single-row CTA, replaces the heavier Programs section -->
+<section id="explore-platform">
   <div class="container">
-    <div class="eyebrow reveal">Programs</div>
-    <h2 class="reveal d1">Built for builders.<br>Backed for the&nbsp;hard&nbsp;parts.</h2>
-    <div class="builders-grid">
-      <div class="builder-card feat reveal">
-        <div class="builder-tag">For startups</div>
-        <h3>GPU credits, not a&nbsp;cap table.</h3>
-        <p>We back early-stage AI startups with compute credits, hands-on engineering, and a real human you can call. No equity ask, no markup, no procurement gymnastics.</p>
-        <ul class="builder-list">
-          <li>Compute credits sized to your stage</li>
-          <li>Direct line to our engineering team</li>
-          <li>Priority capacity when you scale</li>
-          <li>Help with launch, hiring, regulation when you need it</li>
-        </ul>
+    <a href="platform.html" class="ep-card reveal">
+      <div class="ep-left">
+        <div class="ep-eyebrow">More on the platform</div>
+        <div class="ep-h">Programs, pricing, architecture &mdash; in detail.</div>
+        <div class="ep-sub">GPU credits, reserved capacity, the competitor matrix, the calculator, the roadmap, and open roles.</div>
       </div>
-      <div class="builder-card reveal d1">
-        <div class="builder-tag e">For research &amp; enterprise</div>
-        <h3>Reserved capacity, on your terms.</h3>
-        <p>For labs, regulated industries, and teams that need guarantees: reserved allocation, sovereign zones, and an SLA you can show your compliance team.</p>
-        <ul class="builder-list">
-          <li>Reserved capacity with uptime SLA</li>
-          <li>Sovereign zones for regulated workloads</li>
-          <li>Managed MLOps available on request</li>
-          <li>DPDP &middot; CERT-In &middot; compliant by architecture</li>
-        </ul>
+      <div class="ep-right">
+        <span class="ep-cta">
+          Explore the platform
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
@@ -899,7 +942,7 @@
       <div class="faq-list reveal d1">
         <div class="faq-item">
           <button class="faq-q" onclick="faq(this)">I&rsquo;m a US startup. Why train on infrastructure based in India?<span class="faq-icon">+</span></button>
-          <div class="faq-a">Three reasons. <strong>Supply</strong> &mdash; we have GB200s when AWS doesn&rsquo;t. <strong>Price</strong> &mdash; 40% under hyperscaler list. <strong>Speed</strong> &mdash; sub-15-min provisioning vs. weeks of procurement. For training jobs, geography rarely matters; for inference closer to your users, US/EU edge is on the roadmap. Reach out and we&rsquo;ll talk through your specific workload.</div>
+          <div class="faq-a"><strong>Supply</strong> &mdash; we have GB200s when AWS doesn&rsquo;t. <strong>Price</strong> &mdash; ~40% under hyperscaler list. <strong>Speed</strong> &mdash; sub-15-min provisioning. For inference closer to your users, US/EU edge is on the roadmap.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="faq(this)">When can I actually get on capacity?<span class="faq-icon">+</span></button>

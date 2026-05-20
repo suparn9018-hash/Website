@@ -745,18 +745,20 @@ window.toggleStackLayer = toggleStackLayer;
     requestAnimationFrame(glowFrame);
   }
 
-  /* ── 4. Hero background parallax ────────────────────────── */
+  /* ── 4. Hero background parallax (desktop only) ─────────────
+     Skip on mobile — the transform created stacking-context glitches
+     that made adjacent sections appear "not opaque" on some phones. */
   var heroBg = document.querySelector('.hero-bg');
-  if (heroBg && !reducedMotion) {
+  var isMobile = window.matchMedia('(max-width: 760px)').matches;
+  if (heroBg && !reducedMotion && !isMobile) {
     var heroBgY = 0, heroBgTarget = 0;
     function heroFrame() {
       heroBgY += (heroBgTarget - heroBgY) * 0.12;
       heroBg.style.transform = 'translate3d(0, ' + heroBgY.toFixed(2) + 'px, 0)';
       requestAnimationFrame(heroFrame);
     }
-    /* Lenis dispatches its own scroll callback; fall back to window scroll */
     function updateHeroTarget() {
-      heroBgTarget = window.scrollY * 0.35;   /* image moves at 35% scroll speed */
+      heroBgTarget = window.scrollY * 0.35;
     }
     if (lenisInstance) {
       lenisInstance.on('scroll', updateHeroTarget);
